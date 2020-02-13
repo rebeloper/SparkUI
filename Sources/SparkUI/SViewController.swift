@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SViewController.swift
 //  
 //
 //  Created by Alex Nagy on 13/02/2020.
@@ -9,7 +9,7 @@ import UIKit
 import Layoutless
 
 /// Spark ViewController with predifend, commonly used elements
-class ViewController: UIViewController {
+class SViewController: UIViewController {
     
     /// ViewController's container view to add any view onto it
     public let container = UIView()
