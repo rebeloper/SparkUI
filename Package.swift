@@ -19,7 +19,8 @@ let package = Package(
         .package(url: "https://github.com/rebeloper/Layoutless.git", .upToNextMajor(from: "0.0.0")),
         .package(url: "https://github.com/rebeloper/SparkExtensions.git", .upToNextMajor(from: "0.0.0")),
         .package(url: "https://github.com/JonasGessner/JGProgressHUD", .upToNextMajor(from: "2.0.0")),
-        .package(url: "https://github.com/DeclarativeHub/ReactiveKit.git", .upToNextMajor(from: "3.10.0"))
+        .package(url: "https://github.com/DeclarativeHub/ReactiveKit.git", .upToNextMajor(from: "3.10.0")),
+        .package(url: "https://github.com/DeclarativeHub/Bond.git", .upToNextMajor(from: "7.4.1")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -30,7 +31,8 @@ let package = Package(
                 "LayoutlessRebeloper",
                 "SparkExtensions",
                 "JGProgressHUD",
-                "ReactiveKit"
+                "ReactiveKit",
+                "Bond"
         ]),
         .testTarget(
             name: "SparkUITests",
