@@ -9,7 +9,7 @@ import UIKit
 import Layoutless
 
 /// Spark ViewController with predifend, commonly used elements
-public class SViewController: UIViewController {
+open class SViewController: UIViewController {
     
     /// ViewController's container view to add any view onto it
     public let container = UIView()
