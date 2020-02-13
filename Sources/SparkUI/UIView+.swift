@@ -69,6 +69,15 @@ extension UIView {
     }
     
     @discardableResult
+    public func setBackground(image: UIImage, contentMode: ContentMode = .scaleAspectFit) -> UIView {
+        let imageView = UIImageView(image: image.withRenderingMode(.alwaysOriginal))
+        imageView.contentMode = contentMode
+        self.addSubview(imageView)
+        imageView.edgeTo(self)
+        return self
+    }
+    
+    @discardableResult
     public func horizontal(_ type: SSpacerType) -> UIView {
         switch type {
         case .extraSmall:
