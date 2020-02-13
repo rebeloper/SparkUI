@@ -5,7 +5,7 @@
 //  Created by Alex Nagy on 13/02/2020.
 //
 
-import Foundation
+import UIKit
 import SparkExtensions
 
 public class SAlertController {
