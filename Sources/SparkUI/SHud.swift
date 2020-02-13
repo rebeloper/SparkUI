@@ -68,11 +68,10 @@ public class SHud {
     
     public static func create() -> JGProgressHUD {
         if let visibleViewController = visibleViewController() {
-            visibleViewController.traitCollection.userInterfaceStyle == .dark ? create(style: .dark) : create(style: .light)
+            return visibleViewController.traitCollection.userInterfaceStyle == .dark ? create(style: .dark) : create(style: .light)
         } else {
-            create(style: .light)
+            return create(style: .light)
         }
-        
     }
     
     fileprivate static func create(style: JGProgressHUDStyle) -> JGProgressHUD {
