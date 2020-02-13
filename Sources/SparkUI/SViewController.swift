@@ -17,13 +17,12 @@ open class SViewController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        viewDidLoadSetup()
+        container.backgroundColor = .systemBackground
         layoutViews()
         bind()
         observe()
+        continueViewDidLoad()
     }
-    
-    open viewDidLoadSetup() {}
     
     open func layoutViews(safeArea: SSafeArea = .all) {
         view.addSubview(container)
@@ -31,6 +30,6 @@ open class SViewController: UIViewController {
     }
     
     open func bind() {}
-    
     open func observe() {}
+    open func continueViewDidLoad() {}
 }
