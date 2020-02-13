@@ -32,7 +32,7 @@ public class SAlertController {
             })
         }
         
-        let textFieldAction = UIAlertAction(title: submitActionTitle, style: .defaul) { (action) in
+        let textFieldAction = UIAlertAction(title: submitActionTitle, style: .default) { (action) in
             var textFieldsTexts: [String] = []
             if let alertTextFields = alert.textFields {
                 for textField in alertTextFields {
