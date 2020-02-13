@@ -7,8 +7,9 @@
 
 import UIKit
 import JGProgressHUD
+import SparkExtensions
 
-public enum HudType {
+public enum SHudType {
     case none
     case show
     case update
@@ -20,26 +21,26 @@ public enum HudType {
     case closeWithErrorAlert
 }
 
-public struct HudInfo {
-    let type: HudType
+public struct SHudInfo {
+    let type: SHudType
     let text: String
     let detailText: String
     
-    public init(type: HudType, text: String = "", detailText: String = "") {
+    public init(type: SHudType, text: String = "", detailText: String = "") {
         self.type = type
         self.text = text
         self.detailText = detailText
     }
 }
 
-public let closeHudInfo = HudInfo(type: .close, text: "", detailText: "")
+public let closeHudInfo = SHudInfo(type: .close, text: "", detailText: "")
 
-public class Hud {
+public class SHud {
     
     // MARK: -
     // MARK: Handle hud
     
-    public static func handle(_ hud: JGProgressHUD, with info: HudInfo) {
+    public static func handle(_ hud: JGProgressHUD, with info: SHudInfo) {
         switch info.type {
         case .none:
             return
@@ -66,7 +67,16 @@ public class Hud {
     // MARK: Create hud
     
     public static func create() -> JGProgressHUD {
-        let hud = JGProgressHUD(style: .light)
+        if let visibleViewController = visibleViewController() {
+            visibleViewController.traitCollection.userInterfaceStyle == .dark ? create(style: .dark) : create(style: .light)
+        } else {
+            create(style: .light)
+        }
+        
+    }
+    
+    fileprivate static func create(style: JGProgressHUDStyle) -> JGProgressHUD {
+        let hud = JGProgressHUD(style: style)
         hud.interactionType = .blockAllTouches
         return hud
     }
@@ -97,7 +107,7 @@ public class Hud {
     // MARK: -
     // MARK: Dismiss hud
     
-    static func dismiss(_ hud: JGProgressHUD, type: HudType, text: String, detailText: String) {
+    static func dismiss(_ hud: JGProgressHUD, type: SHudType, text: String, detailText: String) {
         DispatchQueue.main.async {
             hud.textLabel.text = text
             hud.detailTextLabel.text = detailText
