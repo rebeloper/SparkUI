@@ -89,8 +89,8 @@ public class SHud {
         if detailText != "" {
             hud.detailTextLabel.text = detailText
         }
-        if let topVC = UIApplication.getTopMostViewController() {
-            hud.show(in: topVC.view)
+        if let visibleViewController = visibleViewController() {
+            hud.show(in: visibleViewController.view)
         }
     }
     
@@ -122,7 +122,6 @@ public class SHud {
     static func closeWithAlert(_ hud: JGProgressHUD, text: String, detailText: String) {
         SAlertController.showAlert(style: .alert, title: text, message: detailText)
         handle(hud, with: closeHudInfo)
-        print(message)
     }
     
     // MARK: -
@@ -131,7 +130,6 @@ public class SHud {
     static func closeWithSuccessAlert(_ hud: JGProgressHUD, detailText: String) {
         SAlertController.showAlert(style: .alert, title: "Success", message: detailText)
         handle(hud, with: closeHudInfo)
-        print(message)
     }
     
     // MARK: -
@@ -140,7 +138,6 @@ public class SHud {
     static func closeWithErrorAlert(_ hud: JGProgressHUD, detailText: String) {
         SAlertController.showAlert(style: .alert, title: "Error", message: detailText)
         handle(hud, with: closeHudInfo)
-        print(message)
     }
     
 }
