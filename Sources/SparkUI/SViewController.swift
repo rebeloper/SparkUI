@@ -8,12 +8,10 @@
 import UIKit
 import Layoutless
 
-/// Spark ViewController with predifend, commonly used elements
 open class SViewController: UIViewController {
     
     public let hud = SHud.create()
     
-    /// ViewController's container view to add any view onto it
     public let container = UIView()
     
     override open func viewDidLoad() {
@@ -24,16 +22,13 @@ open class SViewController: UIViewController {
         observe()
     }
     
-    /// layout views onto the 'container'
     open func layoutViews(relativeToSafeArea: Bool = true) {
         stack(.vertical)(
             container
             ).fillingParent(relativeToSafeArea: relativeToSafeArea).layout(in: view)
     }
     
-    /// bind your views here
     open func bind() {}
     
-    /// observe your views here
     open func observe() {}
 }
