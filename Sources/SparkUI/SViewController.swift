@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Layoutless
+import SparkExtensions
 
 open class SViewController: UIViewController {
     
@@ -22,10 +22,9 @@ open class SViewController: UIViewController {
         observe()
     }
     
-    open func layoutViews(relativeToSafeArea: Bool = true) {
-        stack(.vertical)(
-            container
-            ).fillingParent(relativeToSafeArea: relativeToSafeArea).layout(in: view)
+    open func layoutViews(safeArea: SSafeArea = .all) {
+        view.addSubview(container)
+        container.edgeTo(view, safeArea: safeArea)
     }
     
     open func bind() {}
