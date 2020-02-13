@@ -17,10 +17,13 @@ open class SViewController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        viewDidLoadSetup()
         layoutViews()
         bind()
         observe()
     }
+    
+    open viewDidLoadSetup() {}
     
     open func layoutViews(safeArea: SSafeArea = .all) {
         view.addSubview(container)
