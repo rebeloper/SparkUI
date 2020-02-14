@@ -9,10 +9,10 @@ import UIKit
 
 public class SImageView: UIView {
     
-    public var element: UIImageView?
+    public var object: UIImageView?
     
     public init(uiImageView: UIImageView) {
-        self.element = uiImageView
+        self.object = uiImageView
         super.init(frame: .zero)
         
         addSubview(uiImageView)

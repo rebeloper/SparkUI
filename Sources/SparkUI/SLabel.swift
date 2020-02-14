@@ -9,10 +9,10 @@ import UIKit
 
 public class SLabel: UIView {
     
-    public var element: UILabel?
+    public var object: UILabel?
     
     public init(uiLabel: UILabel) {
-        self.element = uiLabel
+        self.object = uiLabel
         super.init(frame: .zero)
         
         addSubview(uiLabel)
