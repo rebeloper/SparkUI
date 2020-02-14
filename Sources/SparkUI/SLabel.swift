@@ -1,5 +1,5 @@
 //
-//  SButton.swift
+//  SLabel.swift
 //  
 //
 //  Created by Alex Nagy on 14/02/2020.
@@ -7,20 +7,19 @@
 
 import UIKit
 
-public class SButton: UIView {
+public class SLabel: UIView {
     
-    public var button: UIButton?
+    public var label: UILabel?
     
-    public init(_ button: UIButton) {
-        self.button = button
+    public init(_ label: UILabel) {
+        self.label = label
         super.init(frame: .zero)
         
-        addSubview(button)
-        button.edgeTo(self)
+        addSubview(label)
+        label.edgeTo(self)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
