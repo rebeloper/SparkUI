@@ -13,7 +13,7 @@ public enum SDividerType {
 
 open class SDivider: UIView {
     
-    public init(_ type: SDividerType = .vertical, thikness: CGFloat = 1.0, color: UIColor = .systemGray) {
+    public init(_ type: SDividerType = .horizontal, thikness: CGFloat = 1.0, color: UIColor = UIColor.systemGray.withAlphaComponent(0.5)) {
         super.init(frame: .zero)
         self.backgroundColor = color
         switch type {
