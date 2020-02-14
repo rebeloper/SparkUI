@@ -9,14 +9,14 @@ import UIKit
 
 public class SLabel: UIView {
     
-    public var label: UILabel?
+    public var element: UILabel?
     
-    public init(_ label: UILabel) {
-        self.label = label
+    public init(uiLabel: UILabel) {
+        self.element = uiLabel
         super.init(frame: .zero)
         
-        addSubview(label)
-        label.edgeTo(self)
+        addSubview(uiLabel)
+        uiLabel.edgeTo(self)
     }
     
     required init?(coder aDecoder: NSCoder) {
