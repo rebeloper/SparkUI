@@ -28,7 +28,7 @@ let package = Package(
         .target(
             name: "SparkUI",
             dependencies: [
-                "LayoutlessRebeloper",
+                "Layoutless",
                 "SparkExtensions",
                 "JGProgressHUD",
                 "ReactiveKit",
