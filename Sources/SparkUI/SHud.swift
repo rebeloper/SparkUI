@@ -40,12 +40,35 @@ public class SHud {
     // MARK: -
     // MARK: Handle hud
     
-    public static func handle(_ hud: JGProgressHUD, with info: SHudInfo, onViewController: UIViewController? = nil) {
+    public static func handle(_ hud: JGProgressHUD, with info: SHudInfo, inViewController: UIViewController? = nil) {
         switch info.type {
         case .none:
             return
         case .show:
-            show(hud, text: info.text, detailText: info.detailText, onViewController: onViewController)
+            show(hud, text: info.text, detailText: info.detailText, inViewController: inViewController)
+        case .update:
+            change(hud, text: info.text, detailText: info.detailText)
+        case .success:
+            dismiss(hud, type: info.type, text: info.text, detailText: info.detailText)
+        case .error:
+            dismiss(hud, type: info.type, text: info.text, detailText: info.detailText)
+        case .close:
+            hud.dismiss(animated: true)
+        case .closeWithAlert:
+            closeWithAlert(hud, text: info.text, detailText: info.detailText)
+        case .closeWithSuccessAlert:
+            closeWithSuccessAlert(hud, detailText: info.detailText)
+        case .closeWithErrorAlert:
+            closeWithErrorAlert(hud, detailText: info.detailText)
+        }
+    }
+    
+    public static func handle(_ hud: JGProgressHUD, with info: SHudInfo, inView: UIView? = nil) {
+        switch info.type {
+        case .none:
+            return
+        case .show:
+            show(hud, text: info.text, detailText: info.detailText, inView: inView)
         case .update:
             change(hud, text: info.text, detailText: info.detailText)
         case .success:
@@ -95,7 +118,20 @@ public class SHud {
                 hud.show(in: visibleViewController.view)
             }
         }
-        
+    }
+    
+    static func show(_ hud: JGProgressHUD, text: String, detailText: String = "", inView: UIView? = nil) {
+        hud.textLabel.text = text
+        if detailText != "" {
+            hud.detailTextLabel.text = detailText
+        }
+        if let inView = inView {
+            hud.show(in: inView)
+        } else {
+            if let visibleViewController = visibleViewController() {
+                hud.show(in: visibleViewController.view)
+            }
+        }
     }
     
     // MARK: -
