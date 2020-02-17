@@ -40,12 +40,12 @@ public class SHud {
     // MARK: -
     // MARK: Handle hud
     
-    public static func handle(_ hud: JGProgressHUD, with info: SHudInfo) {
+    public static func handle(_ hud: JGProgressHUD, with info: SHudInfo, onViewController: UIViewController? = nil) {
         switch info.type {
         case .none:
             return
         case .show:
-            show(hud, text: info.text, detailText: info.detailText)
+            show(hud, text: info.text, detailText: info.detailText, onViewController: onViewController)
         case .update:
             change(hud, text: info.text, detailText: info.detailText)
         case .success:
@@ -83,14 +83,19 @@ public class SHud {
     // MARK: -
     // MARK: Show hud
     
-    static func show(_ hud: JGProgressHUD, text: String, detailText: String = "") {
+    static func show(_ hud: JGProgressHUD, text: String, detailText: String = "", onViewController: UIViewController? = nil) {
         hud.textLabel.text = text
         if detailText != "" {
             hud.detailTextLabel.text = detailText
         }
-        if let visibleViewController = visibleViewController() {
-            hud.show(in: visibleViewController.view)
+        if let onViewController = onViewController {
+            hud.show(in: onViewController.view)
+        } else {
+            if let visibleViewController = visibleViewController() {
+                hud.show(in: visibleViewController.view)
+            }
         }
+        
     }
     
     // MARK: -
