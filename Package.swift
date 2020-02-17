@@ -16,7 +16,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/rebeloper/Layoutless.git", .upToNextMajor(from: "0.4.5")),
+        .package(url: "https://github.com/DeclarativeHub/Layoutless.git", .upToNextMajor(from: "0.4.2")),
         .package(url: "https://github.com/rebeloper/SparkExtensions.git", .upToNextMajor(from: "0.0.11")),
         .package(url: "https://github.com/JonasGessner/JGProgressHUD", .upToNextMajor(from: "2.1.0")),
         .package(url: "https://github.com/DeclarativeHub/ReactiveKit.git", .upToNextMajor(from: "3.10.0")),
