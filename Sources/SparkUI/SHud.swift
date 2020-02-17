@@ -106,12 +106,12 @@ public class SHud {
     // MARK: -
     // MARK: Show hud
     
-    static func show(_ hud: JGProgressHUD, text: String, detailText: String = "", onViewController: UIViewController? = nil) {
+    static func show(_ hud: JGProgressHUD, text: String, detailText: String = "", inViewController: UIViewController? = nil) {
         hud.textLabel.text = text
         if detailText != "" {
             hud.detailTextLabel.text = detailText
         }
-        if let onViewController = onViewController {
+        if let inViewController = inViewController {
             hud.show(in: onViewController.view)
         } else {
             if let visibleViewController = visibleViewController() {
