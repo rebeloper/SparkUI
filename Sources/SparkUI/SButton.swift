@@ -7,7 +7,7 @@
 
 import UIKit
 import Layoutless
-
+import SparkMisc
 
 public class SButton: UIView {
     
@@ -68,11 +68,28 @@ public class SButton: UIView {
         activityIndicatorViewMessageLabel.text(text)
     }
     
-    public func stopActivityIndicator() {
-        isUserInteractionEnabled = true
-        self.object?.addFadeTo(1.0, duration: 0.2, completion: nil)
-        activityIndicatorViewMessageLabel.isHidden(true)
-        
+    public func stopActivityIndicator(text: String = "") {
         activityIndicatorView.stopAnimating()
+        activityIndicatorViewMessageLabel.text(text)
+        
+        if text != "" {
+            isUserInteractionEnabled = true
+            self.object?.addFadeTo(1.0, duration: 0.2, completion: nil)
+            activityIndicatorViewMessageLabel.isHidden(true)
+        } else {
+            SDispatchQueue.delay(bySeconds: 1) {
+                isUserInteractionEnabled = true
+                self.object?.addFadeTo(1.0, duration: 0.2, completion: nil)
+                activityIndicatorViewMessageLabel.isHidden(true)
+            }
+        }
+    }
+    
+    public func stopActivityIndicatorWithError() {
+        stopActivityIndicator(text: "Error")
+    }
+    
+    public func stopActivityIndicatorWithSuccess() {
+        stopActivityIndicator(text: "Success")
     }
 }
