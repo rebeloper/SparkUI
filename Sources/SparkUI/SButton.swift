@@ -17,7 +17,7 @@ public class SButton: UIView {
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         self.addFadeTo(0.2) { (success) in
-            self.addFadeTo(1.0, duration: 0.4, completion: nil)
+            self.addFadeTo(1.0, duration: 0.2, completion: nil)
         }
     }
     
