@@ -73,15 +73,15 @@ public class SButton: UIView {
         activityIndicatorViewMessageLabel.text(text)
         
         if text != "" {
-            isUserInteractionEnabled = true
-            object?.addFadeTo(1.0, duration: 0.2, completion: nil)
-            activityIndicatorViewMessageLabel.isHidden(true)
-        } else {
             SDispatchQueue.delay(bySeconds: 1) {
                 self.isUserInteractionEnabled = true
                 self.object?.addFadeTo(1.0, duration: 0.2, completion: nil)
                 self.activityIndicatorViewMessageLabel.isHidden(true)
             }
+        } else {
+            isUserInteractionEnabled = true
+            object?.addFadeTo(1.0, duration: 0.2, completion: nil)
+            activityIndicatorViewMessageLabel.isHidden(true)
         }
     }
     
