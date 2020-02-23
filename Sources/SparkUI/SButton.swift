@@ -31,7 +31,7 @@ public class SButton: UIView {
     }
     
     public init(uiView: UIView) {
-        self.object = uiView
+        object = uiView
         super.init(frame: .zero)
         
         addSubview(uiView)
@@ -49,13 +49,13 @@ public class SButton: UIView {
         activityIndicatorViewMessageLabel.isHidden(false)
         
         if text != "" {
-            self.object?.addFadeTo(0.0, duration: 0.0)
+            object?.addFadeTo(0.0, duration: 0.0)
             stack(.horizontal, spacing: 10)(
                 activityIndicatorView,
             activityIndicatorViewMessageLabel.text(text).text(color: textColor)
             ).centeringInParent().layout(in: self)
         } else {
-            self.object?.addFadeTo(0.2, duration: 0.0)
+            object?.addFadeTo(0.2, duration: 0.0)
             stack(.horizontal)(
                 activityIndicatorView
                 ).centeringInParent().layout(in: self)
@@ -74,13 +74,13 @@ public class SButton: UIView {
         
         if text != "" {
             isUserInteractionEnabled = true
-            self.object?.addFadeTo(1.0, duration: 0.2, completion: nil)
+            object?.addFadeTo(1.0, duration: 0.2, completion: nil)
             activityIndicatorViewMessageLabel.isHidden(true)
         } else {
             SDispatchQueue.delay(bySeconds: 1) {
-                isUserInteractionEnabled = true
+                self.isUserInteractionEnabled = true
                 self.object?.addFadeTo(1.0, duration: 0.2, completion: nil)
-                activityIndicatorViewMessageLabel.isHidden(true)
+                self.activityIndicatorViewMessageLabel.isHidden(true)
             }
         }
     }
