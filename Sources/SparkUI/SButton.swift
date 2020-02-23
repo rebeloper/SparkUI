@@ -46,7 +46,7 @@ public class SButton: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func startActivityIndicator(text: String = "", textColor: UIColor = .systemGray, indicatorColor: UIColor = .systemGray, backgroundColor: UIColor = .systemBackground, borderColor: UIColor = .systemGray) {
+    public func startActivityIndicator(text: String = "", textColor: UIColor = .systemGray, indicatorColor: UIColor = .systemGray, backgroundColor: UIColor = .systemBackground, borderColor: UIColor = .systemGray, borderWidth: CGFloat = 2, cornerRadius: CGFloat = 10) {
         isUserInteractionEnabled = false
         
         activityIndicatorView.isHidden = false
@@ -55,7 +55,8 @@ public class SButton: UIView {
         
         activityBackgroundView
             .setBackground(color: backgroundColor)
-            .setBorder(width: 2, color: borderColor)
+            .setBorder(width: borderWidth, color: borderColor)
+            .setCorner(cornerRadius)
         activityBackgroundView.isHidden = false
         
         stack(.horizontal, spacing: 10)(
