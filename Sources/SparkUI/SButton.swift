@@ -60,11 +60,11 @@ public class SButton: UIView {
         
         if self.text != "" {
             stack(.horizontal, spacing: 10)(
-                activityIndicatorView,
-                activityIndicatorViewMessageLabel.text(self.text).text(color: textColor)
+                activityIndicatorView.setBackground(color: .systemRed),
+                activityIndicatorViewMessageLabel.text(self.text).text(color: textColor).setBackground(color: .systemGreen)
             ).centeringInParent().layout(in: activityBackgroundView)
         } else {
-            stack(.horizontal, spacing: 10)(
+            stack(.horizontal)(
                 activityIndicatorView
             ).centeringInParent().layout(in: activityBackgroundView)
         }
@@ -78,7 +78,7 @@ public class SButton: UIView {
         if self.text != "" {
             activityIndicatorViewMessageLabel.text(text)
         } else {
-            print("ERROR: SButton 'updateActivityIndicator' error: Could not update activity indicator with text: \(text) -> Please start the 'startActivityIndicator' with the 'text' parameter with a non-empty string")
+            print("ERROR: SButton 'updateActivityIndicator' error: Could not update activity indicator with text: \(text) -> Please start the 'startActivityIndicator' with the 'text' parameter as a non-empty string")
         }
         
     }
