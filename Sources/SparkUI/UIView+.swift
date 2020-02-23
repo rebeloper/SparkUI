@@ -69,6 +69,14 @@ extension UIView {
     }
     
     @discardableResult
+    public func centerIn(_ view: UIView) -> UIView {
+        translatesAutoresizingMaskIntoConstraints = false
+        centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        return self
+    }
+    
+    @discardableResult
     public func setBackground(image: UIImage, contentMode: ContentMode = .scaleAspectFit) -> UIView {
         let imageView = UIImageView(image: image.withRenderingMode(.alwaysOriginal))
         imageView.contentMode = contentMode
