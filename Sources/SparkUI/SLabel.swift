@@ -12,6 +12,7 @@ public class SLabel: UIView {
     public var object: UILabel?
     
     public init(uiLabel: UILabel) {
+        uiLabel.setMultiline()
         self.object = uiLabel
         super.init(frame: .zero)
         
