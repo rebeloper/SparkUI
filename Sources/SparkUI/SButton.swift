@@ -42,13 +42,14 @@ public class SButton: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func startActivityIndicator(text: String = "", textColor: UIColor = .systemGray, indicatorColor: UIColor = .systemGray) {
+    public func startActivityIndicator(text: String = "", textColor: UIColor = .systemGray, indicatorColor: UIColor = .systemGray, borderColor: .systemGray) {
         isUserInteractionEnabled = false
         
         activityIndicatorView.color = indicatorColor
         activityIndicatorViewMessageLabel.isHidden(false)
         
         object?.addFadeTo(0.05, duration: 0.0)
+        object?.setBorder(width: 5, color: .systemOrange)
         stack(.horizontal, spacing: 10)(
             activityIndicatorView,
             activityIndicatorViewMessageLabel.text(text).text(color: textColor)
