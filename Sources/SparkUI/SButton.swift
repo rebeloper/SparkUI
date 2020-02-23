@@ -59,8 +59,8 @@ public class SButton: UIView {
         
         if self.text != "" {
             stack(.horizontal, spacing: 10)(
-                activityIndicatorView.setBackground(color: .systemRed),
-                activityIndicatorViewMessageLabel.text(self.text).text(color: textColor).setBackground(color: .systemGreen)
+                activityIndicatorView,
+                activityIndicatorViewMessageLabel.text(self.text).text(color: textColor)
             ).centeringInParent().layout(in: activityContainerView)
         } else {
             stack(.horizontal)(
