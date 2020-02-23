@@ -48,18 +48,11 @@ public class SButton: UIView {
         activityIndicatorView.color = indicatorColor
         activityIndicatorViewMessageLabel.isHidden(false)
         
-        if text != "" {
-            object?.addFadeTo(0.0, duration: 0.0)
-            stack(.horizontal, spacing: 10)(
-                activityIndicatorView,
+        object?.addFadeTo(0.05, duration: 0.0)
+        stack(.horizontal, spacing: 10)(
+            activityIndicatorView,
             activityIndicatorViewMessageLabel.text(text).text(color: textColor)
-            ).centeringInParent().layout(in: self)
-        } else {
-            object?.addFadeTo(0.2, duration: 0.0)
-            stack(.horizontal)(
-                activityIndicatorView
-                ).centeringInParent().layout(in: self)
-        }
+        ).centeringInParent().layout(in: self)
         
         activityIndicatorView.startAnimating()
     }
