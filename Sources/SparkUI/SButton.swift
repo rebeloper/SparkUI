@@ -42,7 +42,7 @@ public class SButton: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func startActivityIndicator(text: String = "", textColor: UIColor = .systemGray, indicatorColor: UIColor = .secondarySystemBackground) {
+    public func startActivityIndicator(text: String = "", textColor: UIColor = .systemGray, indicatorColor: UIColor = .systemGray) {
         isUserInteractionEnabled = false
         
         activityIndicatorView.color = indicatorColor
@@ -70,6 +70,7 @@ public class SButton: UIView {
     
     public func stopActivityIndicator(text: String = "") {
         activityIndicatorView.stopAnimating()
+        activityIndicatorView.isHidden = true
         activityIndicatorViewMessageLabel.text(text)
         
         if text != "" {
@@ -78,6 +79,7 @@ public class SButton: UIView {
                 self.object?.addFadeTo(1.0, duration: 0.4, completion: nil)
                 self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
                     self.activityIndicatorViewMessageLabel.isHidden(true)
+                    self.activityIndicatorView.isHidden = false
                     self.activityIndicatorViewMessageLabel.addFadeTo(1.0, duration: 0.0)
                 }
             }
@@ -86,6 +88,7 @@ public class SButton: UIView {
             object?.addFadeTo(1.0, duration: 0.4, completion: nil)
             self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
                 self.activityIndicatorViewMessageLabel.isHidden(true)
+                self.activityIndicatorView.isHidden = false
                 self.activityIndicatorViewMessageLabel.addFadeTo(1.0, duration: 0.0)
             }
         }
