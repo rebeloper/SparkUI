@@ -59,10 +59,10 @@ public class SButton: UIView {
         activityBackgroundView.isHidden = false
         
         if self.text != "" {
-            stack(.horizontal, spacing: 10)(
+            stack(.horizontal, spacing: 10, alignment: .center)(
                 activityIndicatorView.setBackground(color: .systemRed),
                 activityIndicatorViewMessageLabel.text(self.text).text(color: textColor).setBackground(color: .systemGreen)
-            ).centeringInParent().layout(in: activityBackgroundView)
+            ).fillingParent().layout(in: activityBackgroundView)
         } else {
             stack(.horizontal)(
                 activityIndicatorView
