@@ -15,6 +15,7 @@ public class SButton: UIView {
     var activityBackgroundView = UIView().setHidden(true)
     var activityIndicatorView = UIActivityIndicatorView()
     var activityIndicatorViewMessageLabel = UILabel().setMultiline().bold()
+    var text = ""
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -48,7 +49,7 @@ public class SButton: UIView {
     
     public func startActivityIndicator(text: String = "", textColor: UIColor = .systemGray, indicatorColor: UIColor = .systemGray, backgroundColor: UIColor = .systemBackground, borderColor: UIColor = .systemGray, borderWidth: CGFloat = 2, cornerRadius: CGFloat = 10) {
         isUserInteractionEnabled = false
-        
+        self.text = text
         activityIndicatorView.color = indicatorColor
         
         activityBackgroundView
@@ -57,23 +58,36 @@ public class SButton: UIView {
             .setCorner(cornerRadius)
         activityBackgroundView.isHidden = false
         
-        stack(.horizontal, spacing: 10)(
-            activityIndicatorView,
-            activityIndicatorViewMessageLabel.text(text).text(color: textColor)
-        ).centeringInParent().layout(in: activityBackgroundView)
+        if self.text != "" {
+            stack(.horizontal, spacing: 10)(
+                activityIndicatorView,
+                activityIndicatorViewMessageLabel.text(self.text).text(color: textColor)
+            ).centeringInParent().layout(in: activityBackgroundView)
+        } else {
+            stack(.horizontal, spacing: 10)(
+                activityIndicatorView
+            ).centeringInParent().layout(in: activityBackgroundView)
+        }
+        
+        
         
         activityIndicatorView.startAnimating()
     }
     
     public func updateActivityIndicator(text: String) {
-        activityIndicatorViewMessageLabel.text(text)
+        if self.text != "" {
+            activityIndicatorViewMessageLabel.text(text)
+        } else {
+            print("ERROR: SButton 'updateActivityIndicator' error: Could not update activity indicator with text: \(text) -> Please start the 'startActivityIndicator' with the 'text' parameter with a non-empty string")
+        }
+        
     }
     
     public func stopActivityIndicator(text: String = "") {
         activityIndicatorView.stopAnimating()
         activityIndicatorViewMessageLabel.text(text)
         
-        if text != "" {
+        if self.text != "" {
             SDispatchQueue.delay(bySeconds: 1) {
                 self.isUserInteractionEnabled = true
                 self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
