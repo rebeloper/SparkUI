@@ -13,7 +13,7 @@ public class SButton: UIView {
     
     public var object: UIView?
     var activityIndicatorView = UIActivityIndicatorView()
-    var activityIndicatorViewMessageLabel = UILabel().bold()
+    var activityIndicatorViewMessageLabel = UILabel().setMultiline().bold()
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
