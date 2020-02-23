@@ -49,9 +49,7 @@ public class SButton: UIView {
     public func startActivityIndicator(text: String = "", textColor: UIColor = .systemGray, indicatorColor: UIColor = .systemGray, backgroundColor: UIColor = .systemBackground, borderColor: UIColor = .systemGray, borderWidth: CGFloat = 2, cornerRadius: CGFloat = 10) {
         isUserInteractionEnabled = false
         
-        activityIndicatorView.isHidden = false
         activityIndicatorView.color = indicatorColor
-        activityIndicatorViewMessageLabel.isHidden(false)
         
         activityBackgroundView
             .setBackground(color: backgroundColor)
@@ -62,7 +60,7 @@ public class SButton: UIView {
         stack(.horizontal, spacing: 10)(
             activityIndicatorView,
             activityIndicatorViewMessageLabel.text(text).text(color: textColor)
-        ).centeringInParent().layout(in: self)
+        ).centeringInParent().layout(in: activityBackgroundView)
         
         activityIndicatorView.startAnimating()
     }
@@ -73,7 +71,6 @@ public class SButton: UIView {
     
     public func stopActivityIndicator(text: String = "") {
         activityIndicatorView.stopAnimating()
-        activityIndicatorView.isHidden = true
         activityIndicatorViewMessageLabel.text(text)
         
         if text != "" {
@@ -81,7 +78,6 @@ public class SButton: UIView {
                 self.isUserInteractionEnabled = true
                 self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
                     self.activityBackgroundView.isHidden = true
-                    self.activityIndicatorViewMessageLabel.isHidden(true)
                     self.activityIndicatorViewMessageLabel.addFadeTo(1.0, duration: 0.0)
                 }
             }
@@ -89,7 +85,6 @@ public class SButton: UIView {
             isUserInteractionEnabled = true
             self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
                 self.activityBackgroundView.isHidden = true
-                self.activityIndicatorViewMessageLabel.isHidden(true)
                 self.activityIndicatorViewMessageLabel.addFadeTo(1.0, duration: 0.0)
             }
         }
