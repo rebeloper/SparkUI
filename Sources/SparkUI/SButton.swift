@@ -6,15 +6,28 @@
 //
 
 import UIKit
+import SparkMisc
 
 public class SButton: UIView {
     
     public var object: UIView?
     var activityIndicatorView = UIActivityIndicatorView()
     
+    lazy var tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        object?.alpha = 0.2
+        SDispatchQueue.delay(bySeconds: 1) {
+            object?.alpha = 1.0
+        }
+    }
+    
     public init(uiView: UIView) {
         self.object = uiView
         super.init(frame: .zero)
+        
+        uiView.addGestureRecognizer(tap)
+        uiView.isUserInteractionEnabled = true
         
         addSubview(uiView)
         addSubview(activityIndicatorView)
