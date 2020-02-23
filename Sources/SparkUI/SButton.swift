@@ -16,9 +16,9 @@ public class SButton: UIView {
     lazy var tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        object?.alpha = 0.2
+        self.object?.alpha = 0.2
         SDispatchQueue.delay(bySeconds: 1) {
-            object?.alpha = 1.0
+            self.object?.alpha = 1.0
         }
     }
     
@@ -41,12 +41,12 @@ public class SButton: UIView {
     }
     
     public func startActivityIndicator() {
-        object?.alpha = 0.2
+        self.object?.alpha = 0.2
         activityIndicatorView.startAnimating()
     }
     
     public func stopActivityIndicator() {
-        object?.alpha = 1.0
+        self.object?.alpha = 1.0
         activityIndicatorView.stopAnimating()
     }
 }
