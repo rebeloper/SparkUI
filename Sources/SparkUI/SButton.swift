@@ -82,7 +82,7 @@ public class SButton: UIView {
         
     }
     
-    public func stopActivityIndicator(text: String = "") {
+    public func stopActivityIndicator(text: String = "", completion: @escaping (Bool) -> () = { _ in }) {
         activityIndicatorView.stopAnimating()
         activityIndicatorViewMessageLabel.text(text)
         
@@ -90,21 +90,23 @@ public class SButton: UIView {
             SDispatchQueue.delay(bySeconds: 1) {
                 self.isUserInteractionEnabled = true
                 self.activityContainerView.addFadeTo(0.0, duration: 0.4)
+                completion(true)
             }
         } else {
             isUserInteractionEnabled = true
             self.activityContainerView.addFadeTo(0.0, duration: 0.4)
+            completion(true)
         }
     }
     
-    public func stopActivityIndicatorWithError() {
+    public func stopActivityIndicatorWithError(completion: @escaping (Bool) -> () = { _ in }) {
         activityIndicatorViewMessageLabel.text(color: .systemRed)
-        stopActivityIndicator(text: "Error")
+        stopActivityIndicator(text: "Error", completion: completion)
     }
     
-    public func stopActivityIndicatorWithSuccess() {
+    public func stopActivityIndicatorWithSuccess(completion: @escaping (Bool) -> () = { _ in }) {
         activityIndicatorViewMessageLabel.text(color: .systemGreen)
-        stopActivityIndicator(text: "Success")
+        stopActivityIndicator(text: "Success", completion: completion)
     }
     
     public func enable() {
