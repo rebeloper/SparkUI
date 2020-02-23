@@ -14,7 +14,7 @@ public class SButton: UIView {
     public var object: UIView?
     var activityBackgroundView = UIView().setHidden(true)
     var activityIndicatorView = UIActivityIndicatorView()
-    var activityIndicatorViewMessageLabel = UILabel().setMultiline().bold()
+    var activityIndicatorViewMessageLabel = UILabel().bold()
     var text = ""
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -59,10 +59,10 @@ public class SButton: UIView {
         activityBackgroundView.isHidden = false
         
         if self.text != "" {
-            stack(.horizontal, spacing: 10, alignment: .center)(
+            stack(.horizontal, spacing: 10)(
                 activityIndicatorView.setBackground(color: .systemRed),
                 activityIndicatorViewMessageLabel.text(self.text).text(color: textColor).setBackground(color: .systemGreen)
-            ).fillingParent().layout(in: activityBackgroundView)
+            ).centeringInParent().layout(in: activityBackgroundView)
         } else {
             stack(.horizontal)(
                 activityIndicatorView
