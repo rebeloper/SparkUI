@@ -12,6 +12,7 @@ import SparkMisc
 public class SButton: UIView {
     
     public var object: UIView?
+    var activityBackgroundView = UIView().setBackground(color: .systemBackground).setHidden(true)
     var activityIndicatorView = UIActivityIndicatorView()
     var activityIndicatorViewMessageLabel = UILabel().setMultiline().bold()
     
@@ -35,7 +36,10 @@ public class SButton: UIView {
         super.init(frame: .zero)
         
         addSubview(uiView)
+        addSubview(activityBackgroundView)
+        
         uiView.edgeTo(self)
+        activityBackgroundView.edgeTo(self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,11 +49,13 @@ public class SButton: UIView {
     public func startActivityIndicator(text: String = "", textColor: UIColor = .systemGray, indicatorColor: UIColor = .systemGray, borderColor: UIColor = .systemGray) {
         isUserInteractionEnabled = false
         
+        activityIndicatorView.isHidden = false
         activityIndicatorView.color = indicatorColor
         activityIndicatorViewMessageLabel.isHidden(false)
         
-        object?.addFadeTo(0.05, duration: 0.0)
-        object?.setBorder(width: 5, color: .systemOrange)
+//        object?.addFadeTo(0.05, duration: 0.0)
+//        object?.setBorder(width: 5, color: borderColor)
+        activityBackgroundView.isHidden = false
         stack(.horizontal, spacing: 10)(
             activityIndicatorView,
             activityIndicatorViewMessageLabel.text(text).text(color: textColor)
@@ -70,19 +76,19 @@ public class SButton: UIView {
         if text != "" {
             SDispatchQueue.delay(bySeconds: 1) {
                 self.isUserInteractionEnabled = true
-                self.object?.addFadeTo(1.0, duration: 0.4, completion: nil)
+//                self.object?.addFadeTo(1.0, duration: 0.4, completion: nil)
                 self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
+                    self.activityBackgroundView.isHidden = true
                     self.activityIndicatorViewMessageLabel.isHidden(true)
-                    self.activityIndicatorView.isHidden = false
                     self.activityIndicatorViewMessageLabel.addFadeTo(1.0, duration: 0.0)
                 }
             }
         } else {
             isUserInteractionEnabled = true
-            object?.addFadeTo(1.0, duration: 0.4, completion: nil)
+//            object?.addFadeTo(1.0, duration: 0.4, completion: nil)
             self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
+                self.activityBackgroundView.isHidden = true
                 self.activityIndicatorViewMessageLabel.isHidden(true)
-                self.activityIndicatorView.isHidden = false
                 self.activityIndicatorViewMessageLabel.addFadeTo(1.0, duration: 0.0)
             }
         }
