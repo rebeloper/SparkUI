@@ -108,12 +108,12 @@ public class SButton: UIView {
     }
     
     public func enable() {
-        object?.tintColor = .clear
+        object?.tintColor = UIColor.clear
         isUserInteractionEnabled = true
     }
     
     public func disable() {
-        object?.tintColor = .systemGray.withAlphaComponent(0.5)
+        object?.tintColor = UIColor.systemGray.withAlphaComponent(0.5)
         isUserInteractionEnabled = false
     }
 }
