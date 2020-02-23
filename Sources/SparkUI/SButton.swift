@@ -78,7 +78,7 @@ public class SButton: UIView {
                 self.object?.addFadeTo(1.0, duration: 0.4, completion: nil)
                 self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
                     self.activityIndicatorViewMessageLabel.isHidden(true)
-                    self.activityIndicatorViewMessageLabel.addFadeTo(1.0)
+                    self.activityIndicatorViewMessageLabel.addFadeTo(1.0, duration: 0.0)
                 }
             }
         } else {
@@ -86,7 +86,7 @@ public class SButton: UIView {
             object?.addFadeTo(1.0, duration: 0.4, completion: nil)
             self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
                 self.activityIndicatorViewMessageLabel.isHidden(true)
-                self.activityIndicatorViewMessageLabel.addFadeTo(1.0)
+                self.activityIndicatorViewMessageLabel.addFadeTo(1.0, duration: 0.0)
             }
         }
     }
