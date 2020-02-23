@@ -13,7 +13,7 @@ public class SButton: UIView {
     
     public var object: UIView?
     var activityIndicatorView = UIActivityIndicatorView()
-    var activityIndicatorViewMessageLabel = UILabel()
+    var activityIndicatorViewMessageLabel = UILabel().bold()
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -86,10 +86,12 @@ public class SButton: UIView {
     }
     
     public func stopActivityIndicatorWithError() {
+        activityIndicatorViewMessageLabel.text(color: .systemRed)
         stopActivityIndicator(text: "Error")
     }
     
     public func stopActivityIndicatorWithSuccess() {
+        activityIndicatorViewMessageLabel.text(color: .systemGreen)
         stopActivityIndicator(text: "Success")
     }
 }
