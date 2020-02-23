@@ -75,13 +75,19 @@ public class SButton: UIView {
         if text != "" {
             SDispatchQueue.delay(bySeconds: 1) {
                 self.isUserInteractionEnabled = true
-                self.object?.addFadeTo(1.0, duration: 0.2, completion: nil)
-                self.activityIndicatorViewMessageLabel.isHidden(true)
+                self.object?.addFadeTo(1.0, duration: 0.4, completion: nil)
+                self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
+                    self.activityIndicatorViewMessageLabel.isHidden(true)
+                    self.activityIndicatorViewMessageLabel.addFadeTo(1.0)
+                }
             }
         } else {
             isUserInteractionEnabled = true
-            object?.addFadeTo(1.0, duration: 0.2, completion: nil)
-            activityIndicatorViewMessageLabel.isHidden(true)
+            object?.addFadeTo(1.0, duration: 0.4, completion: nil)
+            self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
+                self.activityIndicatorViewMessageLabel.isHidden(true)
+                self.activityIndicatorViewMessageLabel.addFadeTo(1.0)
+            }
         }
     }
     
