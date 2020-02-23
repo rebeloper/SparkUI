@@ -106,4 +106,14 @@ public class SButton: UIView {
         activityIndicatorViewMessageLabel.text(color: .systemGreen)
         stopActivityIndicator(text: "Success")
     }
+    
+    public func enable() {
+        object?.tintColor = .clear
+        isUserInteractionEnabled = true
+    }
+    
+    public func disable() {
+        object?.tintColor = .systemGray.withAlphaComponent(0.5)
+        isUserInteractionEnabled = false
+    }
 }
