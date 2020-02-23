@@ -12,7 +12,7 @@ import SparkMisc
 public class SButton: UIView {
     
     public var object: UIView?
-    var activityBackgroundView = UIView().setHidden(true)
+    var activityContainerView = UIView().alpha(0)
     var activityIndicatorView = UIActivityIndicatorView()
     var activityIndicatorViewMessageLabel = UILabel().bold()
     var text = ""
@@ -37,10 +37,10 @@ public class SButton: UIView {
         super.init(frame: .zero)
         
         addSubview(uiView)
-        addSubview(activityBackgroundView)
+        addSubview(activityContainerView)
         
         uiView.edgeTo(self)
-        activityBackgroundView.edgeTo(self)
+        activityContainerView.edgeTo(self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,24 +52,23 @@ public class SButton: UIView {
         self.text = text
         activityIndicatorView.color = indicatorColor
         
-        activityBackgroundView
+        activityContainerView
             .setBackground(color: backgroundColor)
             .setBorder(width: borderWidth, color: borderColor)
             .setCorner(cornerRadius)
-        activityBackgroundView.isHidden = false
         
         if self.text != "" {
             stack(.horizontal, spacing: 10)(
                 activityIndicatorView.setBackground(color: .systemRed),
                 activityIndicatorViewMessageLabel.text(self.text).text(color: textColor).setBackground(color: .systemGreen)
-            ).centeringInParent().layout(in: activityBackgroundView)
+            ).centeringInParent().layout(in: activityContainerView)
         } else {
             stack(.horizontal)(
                 activityIndicatorView
-            ).centeringInParent().layout(in: activityBackgroundView)
+            ).centeringInParent().layout(in: activityContainerView)
         }
         
-        
+        self.activityContainerView.addFadeTo(1.0, duration: 0.4)
         
         activityIndicatorView.startAnimating()
     }
@@ -90,17 +89,11 @@ public class SButton: UIView {
         if self.text != "" {
             SDispatchQueue.delay(bySeconds: 1) {
                 self.isUserInteractionEnabled = true
-                self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
-                    self.activityBackgroundView.isHidden = true
-                    self.activityIndicatorViewMessageLabel.addFadeTo(1.0, duration: 0.0)
-                }
+                self.activityContainerView.addFadeTo(0.0, duration: 0.4)
             }
         } else {
             isUserInteractionEnabled = true
-            self.activityIndicatorViewMessageLabel.addFadeTo(0.0, duration: 0.4) { (finished) in
-                self.activityBackgroundView.isHidden = true
-                self.activityIndicatorViewMessageLabel.addFadeTo(1.0, duration: 0.0)
-            }
+            self.activityContainerView.addFadeTo(0.0, duration: 0.4)
         }
     }
     
