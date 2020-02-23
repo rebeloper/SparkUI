@@ -13,20 +13,24 @@ public class SButton: UIView {
     public var object: UIView?
     var activityIndicatorView = UIActivityIndicatorView()
     
-    lazy var tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        addFadeTo(0.2, duration: 0.0)
+    }
     
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        self.addFadeTo(0.2) { (success) in
-            self.addFadeTo(1.0, duration: 0.2, completion: nil)
-        }
+    public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        addFadeTo(1.0, duration: 0.2)
+    }
+    
+    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        addFadeTo(1.0, duration: 0.2)
     }
     
     public init(uiView: UIView) {
         self.object = uiView
         super.init(frame: .zero)
-        
-        addGestureRecognizer(tap)
-        isUserInteractionEnabled = true
         
         addSubview(uiView)
         addSubview(activityIndicatorView)
