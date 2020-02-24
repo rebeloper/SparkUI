@@ -70,4 +70,12 @@ public class SAlertController {
         showAlert(style: .alert, title: "Error", message: message)
     }
     
+    public static func cancelAction(title: String = "Cancel") -> UIAlertAction {
+        return UIAlertAction(title: title, style: .cancel)
+    }
+    
+    public static func okAction(title: String = "Ok") -> UIAlertAction {
+        return UIAlertAction(title: title, style: .cancel)
+    }
+    
 }
