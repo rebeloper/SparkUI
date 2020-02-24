@@ -18,7 +18,6 @@ open class SViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         container.backgroundColor = .systemBackground
-        layoutViews()
         bind()
         observe()
         continueViewDidLoad()
