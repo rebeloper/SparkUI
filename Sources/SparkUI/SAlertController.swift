@@ -70,12 +70,20 @@ public class SAlertController {
         showAlert(style: .alert, title: "Error", message: message)
     }
     
+    public static func defaultAction(title: String) -> UIAlertAction {
+        return UIAlertAction(title: title, style: .default)
+    }
+    
+    public static func destructiveAction(title: String) -> UIAlertAction {
+        return UIAlertAction(title: title, style: .destructive)
+    }
+    
     public static func cancelAction(title: String = "Cancel") -> UIAlertAction {
         return UIAlertAction(title: title, style: .cancel)
     }
     
-    public static func okAction(title: String = "Ok") -> UIAlertAction {
-        return UIAlertAction(title: title, style: .cancel)
+    public static func okAction(title: String = "Ok", style: UIAlertAction.Style = .default) -> UIAlertAction {
+        return UIAlertAction(title: title, style: style)
     }
     
 }
