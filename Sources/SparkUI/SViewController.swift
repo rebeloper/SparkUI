@@ -24,7 +24,7 @@ open class SViewController: UIViewController {
         continueViewDidLoad()
     }
     
-    open func layoutViews(safeArea: SSafeArea = .all) {
+    open func layoutViews(safeArea: SSafeArea) {
         view.addSubview(container)
         container.edgeTo(view, safeArea: safeArea)
     }
