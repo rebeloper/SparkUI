@@ -10,7 +10,7 @@ import UIKit
 public typealias Spacer = UIView
 
 public enum SSafeArea {
-    case top, leading, trailing, bottom, vertical, horizontal, all, none
+    case top, leading, trailing, bottom, exceptTop, exceptLeading, exceptTrailing, exceptBottom, vertical, horizontal, all, none
 }
 
 public enum SSpacerType {
@@ -44,6 +44,26 @@ extension UIView {
             leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
             trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        case .exceptTop:
+            topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+            bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        case .exceptLeading:
+            topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+            bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        case .exceptTrailing:
+            topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        case .exceptBottom:
+            topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+            bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         case .vertical:
             topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
             leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true

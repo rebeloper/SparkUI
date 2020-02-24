@@ -16,7 +16,7 @@ open class SViewController: UIViewController {
     
     public let container = UIView()
     
-    public init(_ safeArea: SSafeArea = .all) {
+    public init(safeArea: SSafeArea = .all) {
         self.safeArea = safeArea
         super.init(nibName: nil, bundle: nil)
     }
