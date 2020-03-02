@@ -27,6 +27,7 @@ open class SViewController: UIViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         container.backgroundColor = .systemBackground
         layoutViews()
         bind()
