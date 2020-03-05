@@ -72,11 +72,7 @@ open class SWebViewController: SViewController {
         
         cancelBarButtonItem.reactive.tap.observeNext { [weak self] in
             guard let self = self else { return }
-            if let navigationController = self.navigationController {
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                self.dismiss(animated: true, completion: nil)
-            }
+            self.navigationController?.popViewController(animated: true)
         }.dispose(in: bag)
         
         refreshBarButtonItem.reactive.tap.observeNext { [weak self] in
