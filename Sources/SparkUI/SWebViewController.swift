@@ -31,16 +31,16 @@ open class SWebViewController: SViewController {
         return progressView
     }()
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func continueViewDidLoad() {
+    override open func continueViewDidLoad() {
         super.continueViewDidLoad()
         setupNavigation()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         guard let urlString = url, let url = URL(string: urlString) else { return }
@@ -55,7 +55,7 @@ open class SWebViewController: SViewController {
         navigationItem.setRightBarButton(refreshBarButtonItem, animated: false)
     }
     
-    override func layoutViews() {
+    override open func layoutViews() {
         super.layoutViews()
         stack(.vertical)(
             progressView,
@@ -63,11 +63,11 @@ open class SWebViewController: SViewController {
         ).fillingParent().layout(in: container)
     }
     
-    override func bind() {
+    override open func bind() {
         super.bind()
     }
     
-    override func observe() {
+    override open func observe() {
         super.observe()
         
         cancelBarButtonItem.reactive.tap.observeNext { [weak self] in
@@ -84,11 +84,11 @@ open class SWebViewController: SViewController {
 }
 
 extension SWebViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         title = webView.title
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == #keyPath(WKWebView.estimatedProgress) {
             progressView.progress = Float(webView.estimatedProgress)
         }
