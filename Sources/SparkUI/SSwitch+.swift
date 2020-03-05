@@ -34,7 +34,7 @@ extension SSwitch {
     }
     
     @discardableResult
-    public func switchBorder(width: CGFloat, color: UIColor) -> SSwitch {
+    public func setSwitchBorder(width: CGFloat, color: UIColor) -> SSwitch {
         self.setBorder(width: width, cornerRadius: self.frame.height / 2, color: color)
         return self
     }
