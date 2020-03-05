@@ -9,7 +9,7 @@ import UIKit
 
 extension SSwitch {
     
-    public func isOn(_ isOn: Bool) -> Bool? {
+    public func isOn() -> Bool? {
         self.object?.isOn
     }
     
