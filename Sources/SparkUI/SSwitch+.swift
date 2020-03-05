@@ -9,6 +9,10 @@ import UIKit
 
 extension SSwitch {
     
+    public func isOn(_ isOn: Bool) -> Bool? {
+        self.object?.isOn
+    }
+    
     @discardableResult
     public func onTintColor(_ onTintColor: UIColor?) -> SSwitch {
         self.object?.onTintColor(onTintColor)
@@ -44,5 +48,6 @@ extension SSwitch {
         self.object?.setOn(setOn, animated: animated)
         return self
     }
+    
 }
 
