@@ -10,11 +10,11 @@ import ReactiveKit
 import Bond
 import Layoutless
 
-class SWebViewController: SViewController {
+open class SWebViewController: SViewController {
     
-    var url: String?
+    public var url: String?
     
-    lazy var webView: WKWebView = {
+    public lazy var webView: WKWebView = {
         let view = WKWebView()
         view.navigationDelegate = self
         view.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
@@ -22,11 +22,11 @@ class SWebViewController: SViewController {
         return view
     }()
     
-    lazy var cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
+    public lazy var cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
     
-    lazy var refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: nil)
+    public lazy var refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: nil)
     
-    lazy var progressView: UIProgressView = {
+    public lazy var progressView: UIProgressView = {
         let progressView = UIProgressView(progressViewStyle: .default)
         return progressView
     }()
@@ -37,10 +37,7 @@ class SWebViewController: SViewController {
     
     override func continueViewDidLoad() {
         super.continueViewDidLoad()
-        
         setupNavigation()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
