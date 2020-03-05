@@ -34,6 +34,12 @@ extension SSwitch {
     }
     
     @discardableResult
+    public func setBorder(width: CGFloat, color: UIColor) -> SSwitch {
+        self.setBorder(width: width, cornerRadius: self.frame.height / 2, color: color)
+        return self
+    }
+    
+    @discardableResult
     public func setOn(_ setOn: Bool, animated: Bool = true) -> SSwitch {
         self.object?.setOn(setOn, animated: animated)
         return self
