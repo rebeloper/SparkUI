@@ -12,7 +12,7 @@ import Layoutless
 
 public class STextFieldView: UIView {
     
-    public var object: STextField?
+    public var object: STextField!
     private let eyeButton = UIButton()
         .image(UIImage(systemName: "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysTemplate))
         .size(CGSize(width: 30, height: 30))
