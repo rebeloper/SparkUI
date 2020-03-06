@@ -13,7 +13,7 @@ import Layoutless
 public class STextFieldView: UIView {
     
     public var object: STextField?
-    private let eyeButton = UIButton().image(UIImage(systemName: "eye.slash.fill"))
+    private let eyeButton = UIButton().image(UIImage(systemName: "eye.slash.fill")).background(color: .systemGray)
     private let showingSecureText = Property(false)
     
     public init(sTextField: STextField, isSecure: Bool = false, underlined: Bool = true, underlineSpacing: CGFloat = 5) {
@@ -75,10 +75,14 @@ public class STextFieldView: UIView {
         showingSecureText.observeNext { (showing) in
             if showing {
                 self.object?.isSecureTextEntry(false)
-                self.eyeButton.image(UIImage(systemName: "eye.fill"))
+                self.eyeButton
+                    .image(UIImage(systemName: "eye.fill"))
+                    .background(color: .systemRed)
             } else {
                 self.object?.isSecureTextEntry(true)
-                self.eyeButton.image(UIImage(systemName: "eye.slash.fill"))
+                self.eyeButton
+                    .image(UIImage(systemName: "eye.slash.fill"))
+                    .background(color: .systemGray)
             }
         }.dispose(in: bag)
     }
