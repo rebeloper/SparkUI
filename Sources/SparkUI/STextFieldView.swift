@@ -14,7 +14,7 @@ public class STextFieldView: UIView {
     
     public var object: STextField?
     private let eyeButton = UIButton()
-        .image(UIImage(systemName: "eye.slash.fill")?.foreground(color: .systemGray))
+        .image(UIImage(systemName: "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysTemplate))
         .size(CGSize(width: 30, height: 30))
     private let showingSecureText = Property(false)
     
@@ -78,11 +78,11 @@ public class STextFieldView: UIView {
             if showing {
                 self.object?.isSecureTextEntry(false)
                 self.eyeButton
-                    .image(UIImage(systemName: "eye.fill")?.foreground(color: .systemRed))
+                    .image(UIImage(systemName: "eye.fill")?.withTintColor(.systemRed, renderingMode: .alwaysTemplate))
             } else {
                 self.object?.isSecureTextEntry(true)
                 self.eyeButton
-                    .image(UIImage(systemName: "eye.slash.fill")?.foreground(color: .systemGray))
+                    .image(UIImage(systemName: "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysTemplate))
             }
         }.dispose(in: bag)
     }
