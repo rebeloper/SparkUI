@@ -7,9 +7,9 @@
 
 import UIKit
 
-struct SApplication {
+public struct SApplication {
     
-    static func openMailApp() {
+    public static func openMailApp() {
         if let url = URL(string: "message://") {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
