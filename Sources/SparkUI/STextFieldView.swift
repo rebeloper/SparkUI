@@ -15,7 +15,7 @@ public class STextFieldView: UIView {
     public var object: STextField?
     private let eyeButton = UIButton()
         .image(UIImage(systemName: "eye.slash.fill")?.foreground(color: .systemGray))
-        .size(CGSize(width: 50, height: 50))
+        .size(CGSize(width: 30, height: 30))
     private let showingSecureText = Property(false)
     
     public init(sTextField: STextField, isSecure: Bool = false, underlined: Bool = true, underlineSpacing: CGFloat = 5) {
