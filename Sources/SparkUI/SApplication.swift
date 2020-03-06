@@ -5,9 +5,9 @@
 //  Created by Alex Nagy on 06/03/2020.
 //
 
-import Foundation
+import UIKit
 
-extension SApplication {
+struct SApplication {
     
     static func openMailApp() {
         if let url = URL(string: "message://") {
