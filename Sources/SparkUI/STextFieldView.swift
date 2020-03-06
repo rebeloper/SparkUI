@@ -27,18 +27,20 @@ public class STextFieldView: UIView {
             if underlined {
                 let underline = SDivider()
                 stack(.vertical)(
-                    stack(.horizontal, spacing: 5)(
+                    stack(.horizontal)(
                         sTextField.isSecureTextEntry(true),
-                        eyeButton
+                        eyeButton,
+                        Spacer().setWidth(5)
                     ),
                     Spacer().setHeight(underlineSpacing),
                     underline
                     ).fillingParent().layout(in: self)
             } else {
                 stack(.vertical)(
-                    stack(.horizontal, spacing: 5)(
+                    stack(.horizontal)(
                         sTextField.isSecureTextEntry(true),
-                        eyeButton
+                        eyeButton,
+                        Spacer().setWidth(5)
                     )
                 ).fillingParent().layout(in: self)
             }
