@@ -6,14 +6,23 @@
 //
 
 import UIKit
+import Layoutless
 
 open class STextField: UITextField {
     
     public let insets: UIEdgeInsets
     
-    public init(insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)) {
+    public init(insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12), underlined: Bool = false) {
         self.insets = insets
         super.init(frame: .zero)
+        
+        if underlined {
+            let underline = SDivider()
+            stack(.vertical)(
+                Spacer().isUserInteractionEnabled(false)
+                underline
+            )
+        }
     }
     
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
