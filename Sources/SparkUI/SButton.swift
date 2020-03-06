@@ -122,4 +122,12 @@ public class SButton: UIView {
         isUserInteractionEnabled = false
         grayView.addFadeTo(0.5)
     }
+    
+    public func setEnabled(_ enabled: Bool) {
+        if enabled {
+            enable()
+        } else {
+            disable()
+        }
+    }
 }
