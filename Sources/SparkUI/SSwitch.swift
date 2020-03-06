@@ -9,7 +9,7 @@ import UIKit
 
 public class SSwitch: UIView {
     
-    public var object: UISwitch?
+    public var object: UISwitch!
     
     public init(uiSwitch: UISwitch) {
         self.object = uiSwitch

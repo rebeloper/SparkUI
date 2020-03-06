@@ -12,7 +12,7 @@ import Layoutless
 
 open class SWebViewController: SViewController {
     
-    public var url: String?
+    public var url: String!
     
     public lazy var webView: WKWebView = {
         let view = WKWebView()
@@ -43,7 +43,7 @@ open class SWebViewController: SViewController {
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let urlString = url, let url = URL(string: urlString) else { return }
+        guard let url = URL(string: url) else { return }
         let urlRequest = URLRequest(url: url)
         webView.load(urlRequest)
         

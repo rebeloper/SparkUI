@@ -9,10 +9,10 @@ import UIKit
 
 public class SCornerShadowImageView: UIView {
     
-    public var imageView: UIImageView?
+    public var object: UIImageView!
     
     public init(_ imageView: UIImageView, radius: CGFloat, color: UIColor, offset: CGSize, opacity: Float, cornerRadius: CGFloat) {
-        self.imageView = imageView
+        self.object = imageView
         super.init(frame: .zero)
         backgroundColor = .white
         clipsToBounds = true

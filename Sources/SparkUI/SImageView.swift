@@ -9,7 +9,7 @@ import UIKit
 
 public class SImageView: UIView {
     
-    public var object: UIImageView?
+    public var object: UIImageView!
     
     public init(uiImageView: UIImageView) {
         self.object = uiImageView

@@ -9,7 +9,7 @@ import UIKit
 
 public class SLabel: UIView {
     
-    public var object: UILabel?
+    public var object: UILabel!
     
     public init(uiLabel: UILabel) {
         uiLabel.setMultiline()

@@ -11,13 +11,11 @@ import SparkMisc
 
 public class SButton: UIView {
     
-    public var object: UIView?
+    public var object: UIView!
     var activityContainerView = UIView().alpha(0)
     var activityIndicatorView = UIActivityIndicatorView()
     var activityIndicatorViewMessageLabel = UILabel().bold()
     var text = ""
-    
-    var grayView = UIView().setBackground(color: .systemGray).alpha(0)
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -40,11 +38,9 @@ public class SButton: UIView {
         
         addSubview(uiView)
         addSubview(activityContainerView)
-        addSubview(grayView)
         
         uiView.edgeTo(self)
         activityContainerView.edgeTo(self)
-        grayView.edgeTo(self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -115,19 +111,11 @@ public class SButton: UIView {
     
     public func enable() {
         isUserInteractionEnabled = true
-        grayView.addFadeTo(0)
+        addFadeTo(1.0, duration: 0.2)
     }
     
     public func disable() {
         isUserInteractionEnabled = false
-        grayView.addFadeTo(0.5)
-    }
-    
-    public func setEnabled(_ enabled: Bool) {
-        if enabled {
-            enable()
-        } else {
-            disable()
-        }
+        addFadeTo(0.5, duration: 0.2)
     }
 }

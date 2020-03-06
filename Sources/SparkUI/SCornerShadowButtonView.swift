@@ -9,10 +9,10 @@ import UIKit
 
 public class SCornerShadowButtonView: UIView {
     
-    public var button: UIButton?
+    public var object: UIButton!
     
     public init(_ button: UIButton, radius: CGFloat, color: UIColor, offset: CGSize, opacity: Float, cornerRadius: CGFloat) {
-        self.button = button
+        self.object = button
         super.init(frame: .zero)
         backgroundColor = .white
         clipsToBounds       = true
