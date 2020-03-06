@@ -8,7 +8,6 @@
 import UIKit
 
 public struct SApplication {
-    
     public static func openMailApp() {
         if let url = URL(string: "message://") {
             if UIApplication.shared.canOpenURL(url) {
