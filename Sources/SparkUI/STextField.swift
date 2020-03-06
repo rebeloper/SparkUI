@@ -19,9 +19,9 @@ open class STextField: UITextField {
         if underlined {
             let underline = SDivider()
             stack(.vertical)(
-                Spacer().isUserInteractionEnabled(false)
+                Spacer().isUserInteractionEnabled(false),
                 underline
-            )
+                ).fillingParent().layout(in: self)
         }
     }
     

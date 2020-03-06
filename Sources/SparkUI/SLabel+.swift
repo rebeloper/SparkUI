@@ -254,7 +254,7 @@ extension SLabel {
     }
     
     @discardableResult
-    open func isUserInteractionEnabled(_ enabled: Bool) -> SLabel {
+    open func isLabelInteractionEnabled(_ enabled: Bool) -> SLabel {
         self.object?.isUserInteractionEnabled = enabled
         return self
     }
