@@ -28,7 +28,9 @@ public class STextFieldView: UIView {
                 let underline = SDivider()
                 stack(.vertical)(
                     stack(.horizontal)(
-                        sTextField.isSecureTextEntry(true),
+                        sTextField
+                            .isSecureTextEntry(true)
+                            .keyboardType(.default),
                         eyeButton,
                         Spacer().setWidth(5)
                     ),
@@ -38,7 +40,9 @@ public class STextFieldView: UIView {
             } else {
                 stack(.vertical)(
                     stack(.horizontal)(
-                        sTextField.isSecureTextEntry(true),
+                        sTextField
+                            .isSecureTextEntry(true)
+                            .keyboardType(.default),
                         eyeButton,
                         Spacer().setWidth(5)
                     )
