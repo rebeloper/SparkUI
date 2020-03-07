@@ -1,5 +1,5 @@
 //
-//  STextFieldView.swift
+//  STextField.swift
 //  
 //
 //  Created by Alex Nagy on 06/03/2020.
@@ -10,16 +10,16 @@ import ReactiveKit
 import Bond
 import Layoutless
 
-public class STextFieldView: UIView {
+public class STextField: UIView {
     
-    public var object: STextField!
+    public var object: STextFieldBase!
     private let eyeButton = UIButton()
         .image(UIImage(systemName: "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysTemplate))
         .size(CGSize(width: 30, height: 30))
     private let showingSecureText = Property(false)
     
-    public init(sTextField: STextField, isSecure: Bool = false, underlined: Bool = true, underlineSpacing: CGFloat = 5) {
-        self.object = sTextField
+    public init(sTextFieldBase: STextFieldBase, isSecure: Bool = false, underlined: Bool = true, underlineSpacing: CGFloat = 5) {
+        self.object = sTextFieldBase
         super.init(frame: .zero)
         
         if isSecure {
@@ -28,9 +28,7 @@ public class STextFieldView: UIView {
                 let underline = SDivider()
                 stack(.vertical)(
                     stack(.horizontal)(
-                        sTextField
-                            .isSecureTextEntry(true)
-                            .keyboardType(.default),
+                        sTextFieldBase,
                         eyeButton,
                         Spacer().setWidth(5)
                     ),
@@ -40,14 +38,14 @@ public class STextFieldView: UIView {
             } else {
                 stack(.vertical)(
                     stack(.horizontal)(
-                        sTextField
-                            .isSecureTextEntry(true)
-                            .keyboardType(.default),
+                        sTextFieldBase,
                         eyeButton,
                         Spacer().setWidth(5)
                     )
                 ).fillingParent().layout(in: self)
             }
+            
+            self.isSecureTextEntry(true).keyboardType(.default)
             
             observe()
             
@@ -56,13 +54,13 @@ public class STextFieldView: UIView {
             if underlined {
                 let underline = SDivider()
                 stack(.vertical)(
-                    sTextField,
+                    sTextFieldBase,
                     Spacer().setHeight(underlineSpacing),
                     underline
                     ).fillingParent().layout(in: self)
             } else {
                 stack(.vertical)(
-                    sTextField
+                    sTextFieldBase
                 ).fillingParent().layout(in: self)
             }
         }
@@ -82,11 +80,11 @@ public class STextFieldView: UIView {
         
         showingSecureText.observeNext { (showing) in
             if showing {
-                self.object?.isSecureTextEntry(false)
+                self.isSecureTextEntry(false)
                 self.eyeButton
                     .image(UIImage(systemName: "eye.fill")?.withTintColor(.systemRed, renderingMode: .alwaysTemplate))
             } else {
-                self.object?.isSecureTextEntry(true)
+                self.isSecureTextEntry(true)
                 self.eyeButton
                     .image(UIImage(systemName: "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysTemplate))
             }

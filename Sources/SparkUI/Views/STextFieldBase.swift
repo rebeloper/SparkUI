@@ -1,5 +1,5 @@
 //
-//  STextField.swift
+//  STextFieldBase.swift
 //  
 //
 //  Created by Alex Nagy on 04/03/2020.
@@ -8,7 +8,7 @@
 import UIKit
 import Layoutless
 
-open class STextField: UITextField {
+open class STextFieldBase: UITextField {
     
     public let insets: UIEdgeInsets
     
