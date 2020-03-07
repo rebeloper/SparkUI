@@ -151,7 +151,7 @@ extension STextField {
     }
     
     @discardableResult
-    open func delegateView(_ delegateView: UIViewController) -> STextField {
+    open func delegateView(_ delegateView: UIView) -> STextField {
         self.delegate = delegateView as? UITextFieldDelegate
         return self
     }
