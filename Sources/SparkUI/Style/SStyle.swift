@@ -7,6 +7,200 @@
 
 import UIKit
 
+// MARK: - SButton
+
+/// Represents view style with a closure that configures the view.
+public struct SButtonStyle<View: SButton> {
+
+    public let style: (View) -> Void
+
+    public init(style: @escaping (View) -> Void) {
+        self.style = style
+    }
+
+    /// Applies self to the view.
+    public func apply(to view: View) {
+        style(view)
+    }
+
+    /// Style that does nothing (keeps the default/native style).
+    public static var native: SButtonStyle<View> {
+        return SButtonStyle { _ in }
+    }
+}
+
+extension SButton {
+    
+    public convenience init<V>(uiView: UIView, style: SButtonStyle<V>) {
+        self.init(uiView: uiView)
+        apply(style)
+    }
+
+    /// Applies the given style to self.
+    public func apply<V>(_ style: SButtonStyle<V>) {
+        guard let view = self as? V else {
+            print("💥 Could not apply style for \(V.self) to \(type(of: self))")
+            return
+        }
+        style.apply(to: view)
+    }
+    
+    public func styled<V>(with style: SButtonStyle<V>) -> Self {
+        guard let view = self as? V else {
+            print("💥 Could not apply style for \(V.self) to \(type(of: self))")
+            return self
+        }
+        style.apply(to: view)
+        return self
+    }
+}
+
+// MARK: - SImageView
+
+/// Represents view style with a closure that configures the view.
+public struct SImageViewStyle<View: SImageView> {
+
+    public let style: (View) -> Void
+
+    public init(style: @escaping (View) -> Void) {
+        self.style = style
+    }
+
+    /// Applies self to the view.
+    public func apply(to view: View) {
+        style(view)
+    }
+
+    /// Style that does nothing (keeps the default/native style).
+    public static var native: SImageViewStyle<View> {
+        return SImageViewStyle { _ in }
+    }
+}
+
+extension SImageView {
+    
+    public convenience init<V>(uiImageView: UIImageView, style: SImageViewStyle<V>) {
+        self.init(uiImageView: uiImageView)
+        apply(style)
+    }
+
+    /// Applies the given style to self.
+    public func apply<V>(_ style: SImageViewStyle<V>) {
+        guard let view = self as? V else {
+            print("💥 Could not apply style for \(V.self) to \(type(of: self))")
+            return
+        }
+        style.apply(to: view)
+    }
+    
+    public func styled<V>(with style: SImageViewStyle<V>) -> Self {
+        guard let view = self as? V else {
+            print("💥 Could not apply style for \(V.self) to \(type(of: self))")
+            return self
+        }
+        style.apply(to: view)
+        return self
+    }
+}
+
+// MARK: - SLabel
+
+/// Represents view style with a closure that configures the view.
+public struct SLabelStyle<View: SLabel> {
+
+    public let style: (View) -> Void
+
+    public init(style: @escaping (View) -> Void) {
+        self.style = style
+    }
+
+    /// Applies self to the view.
+    public func apply(to view: View) {
+        style(view)
+    }
+
+    /// Style that does nothing (keeps the default/native style).
+    public static var native: SLabelStyle<View> {
+        return SLabelStyle { _ in }
+    }
+}
+
+extension SLabel {
+    
+    public convenience init<V>(uiLabel: UILabel, style: SLabelStyle<V>) {
+        self.init(uiLabel: uiLabel)
+        apply(style)
+    }
+
+    /// Applies the given style to self.
+    public func apply<V>(_ style: SLabelStyle<V>) {
+        guard let view = self as? V else {
+            print("💥 Could not apply style for \(V.self) to \(type(of: self))")
+            return
+        }
+        style.apply(to: view)
+    }
+    
+    public func styled<V>(with style: SLabelStyle<V>) -> Self {
+        guard let view = self as? V else {
+            print("💥 Could not apply style for \(V.self) to \(type(of: self))")
+            return self
+        }
+        style.apply(to: view)
+        return self
+    }
+}
+
+// MARK: - SSwitch
+
+/// Represents view style with a closure that configures the view.
+public struct SSwitchStyle<View: SSwitch> {
+
+    public let style: (View) -> Void
+
+    public init(style: @escaping (View) -> Void) {
+        self.style = style
+    }
+
+    /// Applies self to the view.
+    public func apply(to view: View) {
+        style(view)
+    }
+
+    /// Style that does nothing (keeps the default/native style).
+    public static var native: SSwitchStyle<View> {
+        return SSwitchStyle { _ in }
+    }
+}
+
+extension SSwitch {
+    
+    public convenience init<V>(uiSwitch: UISwitch, style: SSwitchStyle<V>) {
+        self.init(uiSwitch: uiSwitch)
+        apply(style)
+    }
+
+    /// Applies the given style to self.
+    public func apply<V>(_ style: SSwitchStyle<V>) {
+        guard let view = self as? V else {
+            print("💥 Could not apply style for \(V.self) to \(type(of: self))")
+            return
+        }
+        style.apply(to: view)
+    }
+    
+    public func styled<V>(with style: SSwitchStyle<V>) -> Self {
+        guard let view = self as? V else {
+            print("💥 Could not apply style for \(V.self) to \(type(of: self))")
+            return self
+        }
+        style.apply(to: view)
+        return self
+    }
+}
+
+// MARK: - STextField
+
 /// Represents view style with a closure that configures the view.
 public struct STextFieldStyle<View: STextField> {
 
@@ -53,8 +247,10 @@ extension STextField {
     }
 }
 
+// MARK: - STextView
+
 /// Represents view style with a closure that configures the view.
-public struct SButtonStyle<View: SButton> {
+public struct STextViewStyle<View: STextView> {
 
     public let style: (View) -> Void
 
@@ -68,20 +264,20 @@ public struct SButtonStyle<View: SButton> {
     }
 
     /// Style that does nothing (keeps the default/native style).
-    public static var native: SButtonStyle<View> {
-        return SButtonStyle { _ in }
+    public static var native: STextViewStyle<View> {
+        return STextViewStyle { _ in }
     }
 }
 
-extension SButton {
+extension STextView {
     
-    public convenience init<V>(uiView: UIView, style: SButtonStyle<V>) {
-        self.init(uiView: uiView)
+    public convenience init<V>(style: STextViewStyle<V>, frame: CGRect, textContainer: NSTextContainer?) {
+        self.init(frame: frame, textContainer: textContainer)
         apply(style)
     }
 
     /// Applies the given style to self.
-    public func apply<V>(_ style: SButtonStyle<V>) {
+    public func apply<V>(_ style: STextViewStyle<V>) {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return
@@ -89,7 +285,7 @@ extension SButton {
         style.apply(to: view)
     }
     
-    public func styled<V>(with style: SButtonStyle<V>) -> Self {
+    public func styled<V>(with style: STextViewStyle<V>) -> Self {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return self
