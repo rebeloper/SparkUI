@@ -168,6 +168,12 @@ extension STextField {
         return self
     }
     
+    @discardableResult
+    public func textAlignment(_ textAlignment: NSTextAlignment) -> STextField {
+        self.textAlignment = textAlignment
+        return self
+    }
+    
 }
 
 
