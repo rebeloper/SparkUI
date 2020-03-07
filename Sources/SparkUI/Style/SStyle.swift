@@ -75,7 +75,7 @@ public struct SButtonStyle<View: SButton> {
 
 extension SButton {
     
-    public convenience init<V>(uiView: UIView, style: STextFieldStyle<V>) {
+    public convenience init<V>(uiView: UIView, style: SButtonStyle<V>) {
         self.init(uiView: uiView)
         apply(style)
     }

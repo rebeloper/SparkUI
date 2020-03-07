@@ -12,10 +12,6 @@ open class STextFieldBase: UITextField {
     
     public let insets: UIEdgeInsets
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
     public init(insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)) {
         self.insets = insets
         super.init(frame: .zero)
