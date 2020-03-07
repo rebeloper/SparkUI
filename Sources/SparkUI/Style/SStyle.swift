@@ -30,7 +30,7 @@ public struct STextFieldStyle<View: STextField> {
 extension STextField {
     
     public convenience init<V>(style: STextFieldStyle<V>) {
-        self.init(frame: .zero)
+        self.init()
         apply(style)
     }
 
