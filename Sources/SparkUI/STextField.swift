@@ -29,8 +29,4 @@ open class STextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func selectAll() {
-        self.selectedTextRange = self.textRange(from: self.beginningOfDocument, to: self.endOfDocument)
-    }
-    
 }
