@@ -56,9 +56,9 @@ extension UIImageView {
         return self
     }
     
-    open func setImage(from imageUrl: String) {
+    open func setImage(from imageUrl: String, placeholderImage: UIImage? = nil) {
         if imageUrl.contains("https:") {
-            self.sd_setImage(with: URL(string: imageUrl)) { (image, err, cacheType, url) in
+            self.sd_setImage(with: URL(string: imageUrl), placeholderImage: placeholderImage) { (image, err, cacheType, url) in
                 guard let url = url else {
                     print("SDWebImage error: Invalid url provided: \(imageUrl)")
                     return
@@ -74,7 +74,11 @@ extension UIImageView {
                 print("Successfully loaded image from Url: \(url.absoluteString) with Cache Type: \(cacheType)")
             }
         } else {
-            self.image = UIImage(named: imageUrl)
+            if let image = UIImage(named: imageUrl) {
+                self.image = UIImage(named: imageUrl)
+            } else if let placeholderImage = placeholderImage {
+                self.image = placeholderImage
+            }
         }
     }
     

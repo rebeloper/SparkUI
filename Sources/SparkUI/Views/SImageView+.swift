@@ -12,7 +12,7 @@ extension SImageView {
     
     @discardableResult
     public func background(color: UIColor) -> SImageView {
-        self.object?.backgroundColor = color
+        self.object.backgroundColor = color
         return self
     }
     
@@ -56,9 +56,9 @@ extension SImageView {
         return self
     }
     
-    open func setImage(from imageUrl: String) {
+    open func setImage(from imageUrl: String, placeholderImage: UIImage? = nil) {
         if imageUrl.contains("https:") {
-            self.object?.sd_setImage(with: URL(string: imageUrl)) { (image, err, cacheType, url) in
+            self.object.sd_setImage(with: URL(string: imageUrl), placeholderImage: placeholderImage) { (image, err, cacheType, url) in
                 guard let url = url else {
                     print("SDWebImage error: Invalid url provided: \(imageUrl)")
                     return
@@ -74,31 +74,35 @@ extension SImageView {
                 print("Successfully loaded image from Url: \(url.absoluteString) with Cache Type: \(cacheType)")
             }
         } else {
-            self.object?.image = UIImage(named: imageUrl)
+            if let image = UIImage(named: imageUrl) {
+                self.object.image = UIImage(named: imageUrl)
+            } else if let placeholderImage = placeholderImage {
+                self.object.image = placeholderImage
+            }
         }
     }
     
     @discardableResult
     open func isHidden(_ isHidden: Bool = true) -> SImageView {
-        self.object?.isHidden = isHidden
+        self.object.isHidden = isHidden
         return self
     }
     
     @discardableResult
     open func contentMode(_ contentMode: ContentMode) -> SImageView {
-        self.object?.contentMode = contentMode
+        self.object.contentMode = contentMode
         return self
     }
     
     @discardableResult
     open func masksToBounds(_ value: Bool = true) -> SImageView {
-        object?.layer.masksToBounds = value
+        object.layer.masksToBounds = value
         return self
     }
     
     @discardableResult
     open func cornerRadius(_ radius: CGFloat) -> SImageView {
-        object?.layer.cornerRadius = radius
+        object.layer.cornerRadius = radius
         return self
     }
 }

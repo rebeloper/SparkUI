@@ -11,19 +11,19 @@ extension SLabel {
     
     @discardableResult
     open func background(color: UIColor) -> SLabel {
-        object?.backgroundColor = color
+        object.backgroundColor = color
         return self
     }
     
     @discardableResult
     open func setMultiline() -> SLabel {
-        object?.numberOfLines = 0
+        object.numberOfLines = 0
         return self
     }
     
     @discardableResult
     open func text(_ text: String?) -> SLabel {
-        self.object?.text = text
+        self.object.text = text
         return self
     }
     
@@ -69,7 +69,7 @@ extension SLabel {
     
     @discardableResult
     open func font(_ font: UIFont) -> SLabel {
-        self.object?.font = font
+        self.object.font = font
         return self
     }
     
@@ -77,11 +77,11 @@ extension SLabel {
     open func textStyle(_ textStyle: TextStyle, ofSize: CGFloat = 17.5) -> SLabel {
         switch textStyle {
         case .regular:
-            self.object?.font = .systemFont(ofSize: ofSize)
+            self.object.font = .systemFont(ofSize: ofSize)
         case .bold:
-            self.object?.font = .boldSystemFont(ofSize: ofSize)
+            self.object.font = .boldSystemFont(ofSize: ofSize)
         case .italic:
-            self.object?.font = .italicSystemFont(ofSize: ofSize)
+            self.object.font = .italicSystemFont(ofSize: ofSize)
         }
         return self
     }
@@ -93,20 +93,20 @@ extension SLabel {
             let attributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.systemFont(ofSize: ofSize),
                 .underlineStyle: underlineStyle.rawValue]
-            let attributeString = NSMutableAttributedString(string: self.object?.text ?? "", attributes: attributes)
-            self.object?.attributedText = attributeString
+            let attributeString = NSMutableAttributedString(string: self.object.text ?? "", attributes: attributes)
+            self.object.attributedText = attributeString
         case .bold:
             let attributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.boldSystemFont(ofSize: ofSize),
                 .underlineStyle: underlineStyle.rawValue]
-            let attributeString = NSMutableAttributedString(string: self.object?.text ?? "", attributes: attributes)
-            self.object?.attributedText = attributeString
+            let attributeString = NSMutableAttributedString(string: self.object.text ?? "", attributes: attributes)
+            self.object.attributedText = attributeString
         case .italic:
             let attributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.italicSystemFont(ofSize: ofSize),
                 .underlineStyle: underlineStyle.rawValue]
-            let attributeString = NSMutableAttributedString(string: self.object?.text ?? "", attributes: attributes)
-            self.object?.attributedText = attributeString
+            let attributeString = NSMutableAttributedString(string: self.object.text ?? "", attributes: attributes)
+            self.object.attributedText = attributeString
         }
         return self
     }
@@ -118,20 +118,20 @@ extension SLabel {
             let attributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.systemFont(ofSize: ofSize),
                 .strikethroughStyle: strikethroughStyle.rawValue]
-            let attributeString = NSMutableAttributedString(string: self.object?.text ?? "", attributes: attributes)
-            self.object?.attributedText = attributeString
+            let attributeString = NSMutableAttributedString(string: self.object.text ?? "", attributes: attributes)
+            self.object.attributedText = attributeString
         case .bold:
             let attributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.boldSystemFont(ofSize: ofSize),
                 .strikethroughStyle: strikethroughStyle.rawValue]
-            let attributeString = NSMutableAttributedString(string: self.object?.text ?? "", attributes: attributes)
-            self.object?.attributedText = attributeString
+            let attributeString = NSMutableAttributedString(string: self.object.text ?? "", attributes: attributes)
+            self.object.attributedText = attributeString
         case .italic:
             let attributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.italicSystemFont(ofSize: ofSize),
                 .strikethroughStyle: strikethroughStyle.rawValue]
-            let attributeString = NSMutableAttributedString(string: self.object?.text ?? "", attributes: attributes)
-            self.object?.attributedText = attributeString
+            let attributeString = NSMutableAttributedString(string: self.object.text ?? "", attributes: attributes)
+            self.object.attributedText = attributeString
         }
         return self
     }
@@ -139,7 +139,7 @@ extension SLabel {
     @discardableResult
     open func regular(_ ofSize: CGFloat = 17.5, weight: UIFont.Weight? = nil) -> SLabel {
         if let weight = weight {
-            self.object?.font = .systemFont(ofSize: ofSize, weight: weight)
+            self.object.font = .systemFont(ofSize: ofSize, weight: weight)
         } else {
             textStyle(.regular, ofSize: ofSize)
         }
@@ -195,110 +195,110 @@ extension SLabel {
     
     @discardableResult
     open func text(color: UIColor) -> SLabel {
-        object?.textColor = color
+        object.textColor = color
         return self
     }
     
     @discardableResult
     open func shadow(color: UIColor?) -> SLabel {
-        object?.shadowColor = color
+        object.shadowColor = color
         return self
     }
     
     @discardableResult
     open func shadow(offset: CGSize) -> SLabel {
-        object?.shadowOffset = offset
+        object.shadowOffset = offset
         return self
     }
     
     @discardableResult
     open func textAlignment(_ textAlignment: NSTextAlignment) -> SLabel {
-        self.object?.textAlignment = textAlignment
+        self.object.textAlignment = textAlignment
         return self
     }
     
     @discardableResult
     open func lineBreakMode(_ lineBreakMode: NSLineBreakMode) -> SLabel {
-        self.object?.lineBreakMode = lineBreakMode
+        self.object.lineBreakMode = lineBreakMode
         return self
     }
     
     @discardableResult
     open func attributedText(_ text: NSAttributedString) -> SLabel {
-        self.object?.attributedText = text
+        self.object.attributedText = text
         return self
     }
     
     @discardableResult
     open func highlightedText(color: UIColor?) -> SLabel {
-        self.object?.highlightedTextColor = color
+        self.object.highlightedTextColor = color
         return self
     }
     
     @discardableResult
     open func isHighlighted(_ isHighlighted: Bool) -> SLabel {
-        self.object?.isHighlighted = isHighlighted
+        self.object.isHighlighted = isHighlighted
         return self
     }
     
     @discardableResult
     open func isLabelInteractionEnabled(_ enabled: Bool) -> SLabel {
-        self.object?.isUserInteractionEnabled = enabled
+        self.object.isUserInteractionEnabled = enabled
         return self
     }
     
     @discardableResult
     open func isEnabled(_ enabled: Bool) -> SLabel {
-        self.object?.isEnabled = enabled
+        self.object.isEnabled = enabled
         return self
     }
     
     @discardableResult
     open func isDisabled(_ isDisabled: Bool, textColor: UIColor = .systemGray) -> SLabel {
-        self.object?.isEnabled = !isDisabled
-        self.object?.textColor = textColor
+        self.object.isEnabled = !isDisabled
+        self.object.textColor = textColor
         return self
     }
     
     @discardableResult
     open func isHidden(_ isHidden: Bool = true) -> SLabel {
-        self.object?.isHidden = isHidden
+        self.object.isHidden = isHidden
         return self
     }
     
     @discardableResult
     open func numberOfLines(_ numberOfLines: Int) -> SLabel {
-        self.object?.numberOfLines = numberOfLines
+        self.object.numberOfLines = numberOfLines
         return self
     }
     
     @discardableResult
     open func adjustsFontSizeToFitWidth(_ adjustsFontSizeToFitWidth: Bool) -> SLabel {
-        self.object?.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
+        self.object.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
         return self
     }
     
     @discardableResult
     open func baselineAdjustment(_ baselineAdjustment: UIBaselineAdjustment) -> SLabel {
-        self.object?.baselineAdjustment = baselineAdjustment
+        self.object.baselineAdjustment = baselineAdjustment
         return self
     }
     
     @discardableResult
     open func minimumScaleFactor(_ factor: CGFloat) -> SLabel {
-        self.object?.minimumScaleFactor = factor
+        self.object.minimumScaleFactor = factor
         return self
     }
     
     @discardableResult
     open func allowsDefaultTighteningForTruncation(_ allowsDefaultTighteningForTruncation: Bool) -> SLabel {
-        self.object?.allowsDefaultTighteningForTruncation = allowsDefaultTighteningForTruncation
+        self.object.allowsDefaultTighteningForTruncation = allowsDefaultTighteningForTruncation
         return self
     }
     
     @discardableResult
     open func preferredMaxLayoutWidth(_ width: CGFloat) -> SLabel {
-        self.object?.preferredMaxLayoutWidth = width
+        self.object.preferredMaxLayoutWidth = width
         return self
     }
 }
