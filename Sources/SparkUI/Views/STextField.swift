@@ -22,7 +22,7 @@ public class STextField: UIView {
         super.init(frame: frame)
     }
     
-    public init(sTextFieldBase: STextFieldBase = STextFieldBase(), isSecure: Bool = false, underlined: Bool = true, underlineSpacing: CGFloat = 5) {
+    public init(sTextFieldBase: STextFieldBase = STextFieldBase(), isSecure: Bool = false, underlined: Bool = false, underlineSpacing: CGFloat = 5) {
         self.object = sTextFieldBase
         super.init(frame: .zero)
         

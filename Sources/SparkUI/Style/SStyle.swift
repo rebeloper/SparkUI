@@ -5,7 +5,7 @@
 //  Created by Alex Nagy on 07/03/2020.
 //
 
-import Foundation
+import UIKit
 
 /// Represents view style with a closure that configures the view.
 public struct STextFieldStyle<View: STextField> {
@@ -29,8 +29,8 @@ public struct STextFieldStyle<View: STextField> {
 
 extension STextField {
     
-    public convenience init<V>(style: STextFieldStyle<V>) {
-        self.init(sTextFieldBase: STextFieldBase(), isSecure: false, underlined: true, underlineSpacing: 5)
+    public convenience init<V>(style: STextFieldStyle<V>, sTextFieldBase: STextFieldBase = STextFieldBase(), isSecure: Bool = false, underlined: Bool = false, underlineSpacing: CGFloat = 5) {
+        self.init(sTextFieldBase: sTextFieldBase, isSecure: isSecure, underlined: underlined, underlineSpacing: underlineSpacing)
         apply(style)
     }
 
