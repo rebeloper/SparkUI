@@ -31,7 +31,7 @@ public struct SButtonStyle<View: SButton> {
 
 extension SButton {
     
-    public convenience init<V>(uiView: UIView, style: SButtonStyle<V>) {
+    public convenience init<V>(uiView: UIView = UIView(), style: SButtonStyle<V>) {
         self.init(uiView: uiView)
         apply(style)
     }
@@ -79,7 +79,7 @@ public struct SImageViewStyle<View: SImageView> {
 
 extension SImageView {
     
-    public convenience init<V>(uiImageView: UIImageView, style: SImageViewStyle<V>) {
+    public convenience init<V>(uiImageView: UIImageView = UIImageView(), style: SImageViewStyle<V>) {
         self.init(uiImageView: uiImageView)
         apply(style)
     }
@@ -127,7 +127,7 @@ public struct SLabelStyle<View: SLabel> {
 
 extension SLabel {
     
-    public convenience init<V>(uiLabel: UILabel, style: SLabelStyle<V>) {
+    public convenience init<V>(uiLabel: UILabel = UILabel(), style: SLabelStyle<V>) {
         self.init(uiLabel: uiLabel)
         apply(style)
     }
@@ -175,7 +175,7 @@ public struct SSwitchStyle<View: SSwitch> {
 
 extension SSwitch {
     
-    public convenience init<V>(uiSwitch: UISwitch, style: SSwitchStyle<V>) {
+    public convenience init<V>(uiSwitch: UISwitch = UISwitch(), style: SSwitchStyle<V>) {
         self.init(uiSwitch: uiSwitch)
         apply(style)
     }
@@ -223,7 +223,7 @@ public struct STextFieldStyle<View: STextField> {
 
 extension STextField {
     
-    public convenience init<V>(style: STextFieldStyle<V>, sTextFieldBase: STextFieldBase = STextFieldBase(), isSecure: Bool = false, underlined: Bool = false, underlineSpacing: CGFloat = 5) {
+    public convenience init<V>(sTextFieldBase: STextFieldBase = STextFieldBase(), isSecure: Bool = false, underlined: Bool = false, underlineSpacing: CGFloat = 5, style: STextFieldStyle<V>) {
         self.init(sTextFieldBase: sTextFieldBase, isSecure: isSecure, underlined: underlined, underlineSpacing: underlineSpacing)
         apply(style)
     }
@@ -271,7 +271,7 @@ public struct STextViewStyle<View: STextView> {
 
 extension STextView {
     
-    public convenience init<V>(style: STextViewStyle<V>, frame: CGRect, textContainer: NSTextContainer?) {
+    public convenience init<V>(frame: CGRect, textContainer: NSTextContainer?, style: STextViewStyle<V>) {
         self.init(frame: frame, textContainer: textContainer)
         apply(style)
     }
