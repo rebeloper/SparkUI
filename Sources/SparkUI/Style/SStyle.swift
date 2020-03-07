@@ -30,7 +30,7 @@ public struct STextFieldStyle<View: STextField> {
 extension STextField {
     
     public convenience init<V>(style: STextFieldStyle<V>) {
-        self.init()
+        self.init(sTextFieldBase: STextFieldBase(), isSecure: false, underlined: true, underlineSpacing: 5)
         apply(style)
     }
 
