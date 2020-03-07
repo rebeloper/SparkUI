@@ -151,8 +151,20 @@ extension STextField {
     }
     
     @discardableResult
-    open func delegateView(_ delegateView: UIView) -> STextField {
-        self.delegate = delegateView as? UITextFieldDelegate
+    open func delegateView(_ delegate: UIView) -> STextField {
+        self.delegate = delegate as? UITextFieldDelegate
+        return self
+    }
+    
+    @discardableResult
+    open func delegateCollectionView(_ delegate: UICollectionViewCell) -> STextField {
+        self.delegate = delegate as? UITextFieldDelegate
+        return self
+    }
+    
+    @discardableResult
+    open func delegateCollectionReusableView(_ delegate: UICollectionReusableView) -> STextField {
+        self.delegate = delegate as? UITextFieldDelegate
         return self
     }
     
