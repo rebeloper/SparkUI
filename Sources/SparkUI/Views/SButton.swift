@@ -7,7 +7,6 @@
 
 import UIKit
 import Layoutless
-import SparkMisc
 
 public class SButton: UIView {
     
