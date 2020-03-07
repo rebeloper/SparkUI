@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SparkExtensions
 
 public struct SActivityController {
     

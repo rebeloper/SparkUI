@@ -66,10 +66,6 @@ extension STextView {
         return self
     }
     
-    public enum TextStyle {
-        case regular, bold, italic
-    }
-    
     @discardableResult
     open func textStyle(_ textStyle: TextStyle, ofSize: CGFloat = 17.5) -> STextView {
         switch textStyle {

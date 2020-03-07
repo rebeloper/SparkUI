@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SparkExtensions
 
 public class SCollectionReusableView: UICollectionReusableView {
     

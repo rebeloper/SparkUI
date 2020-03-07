@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SparkExtensions
 
 open class SViewController: UIViewController {
     

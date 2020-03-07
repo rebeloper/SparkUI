@@ -7,7 +7,6 @@
 
 import UIKit
 import JGProgressHUD
-import SparkExtensions
 
 public enum SHudType {
     case none
