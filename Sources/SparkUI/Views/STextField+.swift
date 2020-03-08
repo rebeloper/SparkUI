@@ -34,16 +34,6 @@ extension STextField {
     }
     
     @discardableResult
-    public func insets(_ insets: UIEdgeInsets) -> STextField {
-        translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: self.topAnchor, constant: insets.top).isActive = true
-        bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: insets.bottom).isActive = true
-        leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: insets.left).isActive = true
-        trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: insets.right).isActive = true
-        return self
-    }
-    
-    @discardableResult
     open func size(_ size: CGSize) -> STextField {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: size.width).isActive = true
