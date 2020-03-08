@@ -61,6 +61,38 @@ extension STextView {
     }
     
     @discardableResult
+    public func insets(_ insets: UIEdgeInsets) -> STextView {
+        translatesAutoresizingMaskIntoConstraints = false
+        topAnchor.constraint(equalTo: self.topAnchor, constant: insets.top).isActive = true
+        bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: insets.bottom).isActive = true
+        leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: insets.left).isActive = true
+        trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: insets.right).isActive = true
+        return self
+    }
+    
+    @discardableResult
+    open func size(_ size: CGSize) -> STextView {
+        translatesAutoresizingMaskIntoConstraints = false
+        widthAnchor.constraint(equalToConstant: size.width).isActive = true
+        heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        return self
+    }
+    
+    @discardableResult
+    open func height(_ height: CGFloat) -> STextView {
+        translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraint(equalToConstant: height).isActive = true
+        return self
+    }
+    
+    @discardableResult
+    open func width(_ width: CGFloat) -> STextView {
+        translatesAutoresizingMaskIntoConstraints = false
+        widthAnchor.constraint(equalToConstant: width).isActive = true
+        return self
+    }
+    
+    @discardableResult
     public func font(_ font: UIFont) -> STextView {
         self.font = font
         return self
