@@ -271,7 +271,7 @@ public struct STextViewStyle<View: STextView> {
 
 extension STextView {
     
-    public convenience init<V>(frame: CGRect, textContainer: NSTextContainer?, style: STextViewStyle<V>) {
+    public convenience init<V>(frame: CGRect = .zero, textContainer: NSTextContainer? = nil, style: STextViewStyle<V>) {
         self.init(frame: frame, textContainer: textContainer)
         apply(style)
     }
