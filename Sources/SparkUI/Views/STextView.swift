@@ -132,12 +132,6 @@ extension STextView {
     }
     
     @discardableResult
-    open func isHidden(_ isHidden: Bool = true) -> STextView {
-        self.isHidden = isHidden
-        return self
-    }
-    
-    @discardableResult
     open func delegate(_ delegate: UIViewController) -> STextView {
         self.delegate = delegate as? UITextViewDelegate
         return self
