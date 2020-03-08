@@ -112,5 +112,53 @@ extension STextView {
         self.isHidden = isHidden
         return self
     }
+    
+    @discardableResult
+    public func autocapitalizationType(_ autocapitalizationType: UITextAutocapitalizationType) -> STextView {
+        self.autocapitalizationType = autocapitalizationType
+        return self
+    }
+    
+    @discardableResult
+    public func keyboardType(_ keyboardType: UIKeyboardType) -> STextView {
+        self.keyboardType = keyboardType
+        return self
+    }
+    
+    @discardableResult
+    open func isScrollEnabled(_ isScrollEnabled: Bool) -> STextView {
+        self.isScrollEnabled = isScrollEnabled
+        return self
+    }
+    
+    @discardableResult
+    open func isHidden(_ isHidden: Bool = true) -> STextView {
+        self.isHidden = isHidden
+        return self
+    }
+    
+    @discardableResult
+    open func delegate(_ delegate: UIViewController) -> STextView {
+        self.delegate = delegate as? UITextViewDelegate
+        return self
+    }
+    
+    @discardableResult
+    open func delegateView(_ delegate: UIView) -> STextView {
+        self.delegate = delegate as? UITextViewDelegate
+        return self
+    }
+    
+    @discardableResult
+    open func delegateCollectionView(_ delegate: UICollectionViewCell) -> STextView {
+        self.delegate = delegate as? UITextViewDelegate
+        return self
+    }
+    
+    @discardableResult
+    open func delegateCollectionReusableView(_ delegate: UICollectionReusableView) -> STextView {
+        self.delegate = delegate as? UITextViewDelegate
+        return self
+    }
 }
 
