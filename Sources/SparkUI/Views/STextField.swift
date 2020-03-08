@@ -18,10 +18,6 @@ public class STextField: UIView {
         .size(CGSize(width: 30, height: 30))
     private let showingSecureText = Property(false)
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
     public init(sTextFieldBase: STextFieldBase = STextFieldBase(), isSecure: Bool = false, underlined: Bool = false, underlineSpacing: CGFloat = 5) {
         self.object = sTextFieldBase
         super.init(frame: .zero)
