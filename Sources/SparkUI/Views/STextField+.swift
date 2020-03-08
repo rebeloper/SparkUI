@@ -192,5 +192,11 @@ extension STextField {
         return self
     }
     
+    @discardableResult
+    public func tag(_ tag: Int) -> STextField {
+        object.tag = tag
+        return self
+    }
+    
 }
 
