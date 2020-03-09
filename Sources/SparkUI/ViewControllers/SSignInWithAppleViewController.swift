@@ -11,8 +11,8 @@ import AuthenticationServices
 import CryptoKit
 
 public struct SSignInWithAppleObserver {
+    public let name: String
     public let nonce: String
-    public let appleIDToken: Data
     public let idTokenString: String
 }
 
@@ -24,8 +24,8 @@ open class SSignInWithAppleViewController: SViewController {
     
     // MARK: - Default observers
     
-    public let defaultSignInWithApple = SSignInWithAppleObserver(nonce: "", appleIDToken: Data(), idTokenString: "")
-    public let defaultSignInWithAppleError = SSignInWithAppleErrorObserver(error: NSError())
+    public let defaultSignInWithAppleObserver = SSignInWithAppleObserver(name: "", nonce: "", idTokenString: "")
+    public let defaultSignInWithAppleErrorObserver = SSignInWithAppleErrorObserver(error: NSError())
     
     // MARK: - Properties
     
@@ -33,8 +33,8 @@ open class SSignInWithAppleViewController: SViewController {
     
     // MARK: - Observers
     
-    public lazy var signInWithAppleObserver = Property(defaultSignInWithApple)
-    public lazy var signInWithAppleErrorObserver = Property(defaultSignInWithAppleError)
+    public lazy var signInWithAppleObserver = Property(defaultSignInWithAppleObserver)
+    public lazy var signInWithAppleErrorObserver = Property(defaultSignInWithAppleErrorObserver)
     
     // MARK: - Views
     public var signInWithAppleButton: ASAuthorizationAppleIDButton!
@@ -186,7 +186,7 @@ extension SSignInWithAppleViewController: ASAuthorizationControllerDelegate, ASA
                 return
             }
             
-            self.signInWithAppleObserver.value = SSignInWithAppleObserver(nonce: nonce, appleIDToken: appleIDToken, idTokenString: idTokenString)
+            self.signInWithAppleObserver.value = SSignInWithAppleObserver(name: getName(from: appleIDCredential), nonce: nonce, idTokenString: idTokenString)
             SHud.handle(self.hud, with: SHudInfo(type: .close))
             
         } else {
