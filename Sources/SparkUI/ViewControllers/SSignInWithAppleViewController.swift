@@ -9,7 +9,7 @@ import UIKit
 import AuthenticationServices
 import CryptoKit
 
-public class SSignInWithAppleViewController: SViewController {
+open class SSignInWithAppleViewController: SViewController {
     
     // MARK: - Dependencies
     
