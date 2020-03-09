@@ -11,9 +11,9 @@ import AuthenticationServices
 import CryptoKit
 
 public struct SSignInWithAppleObserver {
-    let nonce: String
-    let appleIDToken: Data
-    let idTokenString: String
+    public let nonce: String
+    public let appleIDToken: Data
+    public let idTokenString: String
 }
 
 public struct SSignInWithAppleErrorObserver {
@@ -188,30 +188,6 @@ extension SSignInWithAppleViewController: ASAuthorizationControllerDelegate, ASA
             
             self.signInWithAppleObserver.value = SSignInWithAppleObserver(nonce: nonce, appleIDToken: appleIDToken, idTokenString: idTokenString)
             SHud.handle(self.hud, with: SHudInfo(type: .close))
-            
-//            SparkAuth.signIn(providerID: SparkAuthProviderID.apple, idTokenString: idTokenString, nonce: nonce) { (result) in
-//                SHud.handle(self.hud, with: SHudInfo(type: .close))
-//                switch result {
-//                case .success(let authDataResult):
-//                    let email = authDataResult.user.email ?? ""
-//                    let profile = Profile(uid: authDataResult.user.uid,
-//                                          state: ProfileState.created,
-//                                          typeUsed: SparkProperty.profileTypeUsed.value.rawValue,
-//                                          name: self.getName(from: appleIDCredential),
-//                                          email: email,
-//                                          profileImageUrl: "",
-//                                          headerImageUrl: "",
-//                                          ownerUids: [],
-//                                          clientUids: [],
-//                                          invitationUrl: "",
-//                                          isStripeConnectAuthorized: false)
-//                    SparkProperty.profile.value = profile
-//                    // let configureFirebaseStateDidChange take care of saving the profile to Firestore / updating the profile in Firestore if necessary
-//
-//                case .failure(let err):
-//                    SHud.handle(self.hud, with: SHudInfo(type: .closeWithErrorAlert, text: "", detailText: err.localizedDescription))
-//                }
-//            }
             
         } else {
             SHud.handle(self.hud, with: SHudInfo(type: .closeWithErrorAlert, text: "", detailText: "No Apple ID Credential found"))
