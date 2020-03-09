@@ -9,19 +9,19 @@ import MessageUI
 
 public class SMailComposeViewController: MFMailComposeViewController {
     
-    var recipients: [String]?
-    var subject: String
-    var messageBody: String
-    var messageBodyIsHTML: Bool
+    public var recipients: [String]?
+    public var subject: String
+    public var messageBody: String
+    public var messageBodyIsHTML: Bool
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         setToRecipients(recipients)
         setSubject(subject)
         setMessageBody(messageBody, isHTML: messageBodyIsHTML)
     }
     
-    init(recipients: [String]?, subject: String = "", messageBody: String = "", messageBodyIsHTML: Bool = true) {
+    public init(recipients: [String]?, subject: String = "", messageBody: String = "", messageBodyIsHTML: Bool = true) {
         self.recipients = recipients
         self.subject = subject
         self.messageBody = messageBody
@@ -30,7 +30,7 @@ public class SMailComposeViewController: MFMailComposeViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
