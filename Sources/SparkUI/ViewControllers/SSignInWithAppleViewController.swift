@@ -6,22 +6,38 @@
 //
 
 import UIKit
+import ReactiveKit
 import AuthenticationServices
 import CryptoKit
 
+public struct SSignInWithAppleObserver {
+    let nonce: String
+    let appleIDToken: Data
+    let idTokenString: String
+}
+
+public struct SSignInWithAppleErrorObserver {
+    let error: Error
+}
+
 open class SSignInWithAppleViewController: SViewController {
     
-    // MARK: - Dependencies
+    // MARK: - Default observers
     
-    // MARK: - Delegates
+    public let defaultSignInWithApple = SSignInWithAppleObserver(nonce: "", appleIDToken: Data(), idTokenString: "")
+    public let defaultSignInWithAppleError = SSignInWithAppleErrorObserver(error: NSError())
     
     // MARK: - Properties
     
-    // Unhashed nonce.
-    public var currentNonce: String?
+    public var currentNonce: String? // Unhashed nonce.
+    
+    // MARK: - Observers
+    
+    public lazy var signInWithAppleObserver = Property(defaultSignInWithApple)
+    public lazy var signInWithAppleErrorObserver = Property(defaultSignInWithAppleError)
     
     // MARK: - Views
-    public var signInWithAppleButton: ASAuthorizationAppleIDButton?
+    public var signInWithAppleButton: ASAuthorizationAppleIDButton!
     
     @objc public func didTapSignInWithAppleButton() {
         #if !targetEnvironment(simulator)
@@ -125,6 +141,25 @@ extension SSignInWithAppleViewController {
     }
 }
 
+extension SSignInWithAppleViewController {
+    public func getName(from appleIDCredential: ASAuthorizationAppleIDCredential) -> String {
+        var name = ""
+        let fullName = appleIDCredential.fullName
+        let givenName = fullName?.givenName ?? ""
+        let middleName = fullName?.middleName ?? ""
+        let familyName = fullName?.familyName ?? ""
+        let names = [givenName, middleName, familyName]
+        let filteredNames = names.filter {$0 != ""}
+        for i in 0..<filteredNames.count {
+            name += filteredNames[i]
+            if i != filteredNames.count - 1 {
+                name += " "
+            }
+        }
+        return name
+    }
+}
+
 extension SSignInWithAppleViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     
     public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
@@ -140,12 +175,19 @@ extension SSignInWithAppleViewController: ASAuthorizationControllerDelegate, ASA
             }
             guard let appleIDToken = appleIDCredential.identityToken else {
                 SHud.handle(self.hud, with: SHudInfo(type: .closeWithErrorAlert, text: "", detailText: "Unable to fetch identity token"))
+                let err = NSError(domain: "Unable to fetch identity token", code: 4, userInfo: nil)
+                self.signInWithAppleErrorObserver.value = SSignInWithAppleErrorObserver(error: err)
                 return
             }
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                 SHud.handle(self.hud, with: SHudInfo(type: .closeWithErrorAlert, text: "", detailText: "Unable to serialize token string from data"))
+                let err = NSError(domain: "Unable to serialize token string from data", code: 4, userInfo: nil)
+                self.signInWithAppleErrorObserver.value = SSignInWithAppleErrorObserver(error: err)
                 return
             }
+            
+            self.signInWithAppleObserver.value = SSignInWithAppleObserver(nonce: nonce, appleIDToken: appleIDToken, idTokenString: idTokenString)
+            SHud.handle(self.hud, with: SHudInfo(type: .close))
             
 //            SparkAuth.signIn(providerID: SparkAuthProviderID.apple, idTokenString: idTokenString, nonce: nonce) { (result) in
 //                SHud.handle(self.hud, with: SHudInfo(type: .close))
@@ -176,24 +218,8 @@ extension SSignInWithAppleViewController: ASAuthorizationControllerDelegate, ASA
         }
     }
     
-    public func getName(from appleIDCredential: ASAuthorizationAppleIDCredential) -> String {
-        var name = ""
-        let fullName = appleIDCredential.fullName
-        let givenName = fullName?.givenName ?? ""
-        let middleName = fullName?.middleName ?? ""
-        let familyName = fullName?.familyName ?? ""
-        let names = [givenName, middleName, familyName]
-        let filteredNames = names.filter {$0 != ""}
-        for i in 0..<filteredNames.count {
-            name += filteredNames[i]
-            if i != filteredNames.count - 1 {
-                name += " "
-            }
-        }
-        return name
-    }
-    
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        self.signInWithAppleErrorObserver.value = SSignInWithAppleErrorObserver(error: error)
         SHud.handle(self.hud, with: SHudInfo(type: .closeWithErrorAlert, text: "", detailText: error.localizedDescription))
     }
     
