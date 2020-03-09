@@ -21,7 +21,7 @@ public class SMailComposeViewController: MFMailComposeViewController {
         setMessageBody(messageBody, isHTML: messageBodyIsHTML)
     }
     
-    public init(recipients: [String]?, subject: String = "", messageBody: String = "", messageBodyIsHTML: Bool = true) {
+    public init(recipients: [String]?, subject: String = "", messageBody: String = "", messageBodyIsHTML: Bool = false) {
         self.recipients = recipients
         self.subject = subject
         self.messageBody = messageBody
