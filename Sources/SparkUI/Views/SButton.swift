@@ -117,4 +117,16 @@ public class SButton: UIView {
         isUserInteractionEnabled = false
         addFadeTo(0.5, duration: 0.2)
     }
+    
+    @discardableResult
+    public func enabled() -> SButton {
+        self.enable()
+        return self
+    }
+    
+    @discardableResult
+    public func disabled() -> SButton {
+        self.disable()
+        return self
+    }
 }
