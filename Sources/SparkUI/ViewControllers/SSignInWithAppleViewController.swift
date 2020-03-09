@@ -18,20 +18,20 @@ public class SSignInWithAppleViewController: SViewController {
     // MARK: - Properties
     
     // Unhashed nonce.
-    var currentNonce: String?
+    public var currentNonce: String?
     
     // MARK: - Views
-    var signInWithAppleButton: ASAuthorizationAppleIDButton?
+    public var signInWithAppleButton: ASAuthorizationAppleIDButton?
     
-    @objc func didTapSignInWithAppleButton() {
+    @objc public func didTapSignInWithAppleButton() {
         #if !targetEnvironment(simulator)
         SHud.handle(self.hud, with: SHudInfo(type: .show, text: "Working", detailText: "Signing in with Apple..."))
-        let nonce = SparkAuth.randomNonceString()
+        let nonce = randomNonceString()
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
-        request.nonce = SparkAuth.sha256(nonce)
+        request.nonce = sha256(nonce)
         
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
@@ -81,7 +81,7 @@ public class SSignInWithAppleViewController: SViewController {
 
 extension SSignInWithAppleViewController {
     // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
-    static func randomNonceString(length: Int = 32) -> String {
+    public func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: Array<Character> =
             Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
@@ -114,7 +114,7 @@ extension SSignInWithAppleViewController {
     }
     
     @available(iOS 13, *)
-    static func sha256(_ input: String) -> String {
+    public func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
         let hashString = hashedData.compactMap {
@@ -176,7 +176,7 @@ extension SSignInWithAppleViewController: ASAuthorizationControllerDelegate, ASA
         }
     }
     
-    fileprivate func getName(from appleIDCredential: ASAuthorizationAppleIDCredential) -> String {
+    public func getName(from appleIDCredential: ASAuthorizationAppleIDCredential) -> String {
         var name = ""
         let fullName = appleIDCredential.fullName
         let givenName = fullName?.givenName ?? ""
