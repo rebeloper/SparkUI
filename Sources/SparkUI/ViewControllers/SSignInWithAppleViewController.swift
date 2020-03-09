@@ -24,7 +24,7 @@ open class SSignInWithAppleViewController: SViewController {
     
     // MARK: - Provider ID
     
-    public let appleSignInProviderID = "apple.com"
+    public let firebaseSignInProviderIDForAppleSignIn = "apple.com"
     
     // MARK: - Default observers
     
