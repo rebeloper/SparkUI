@@ -73,6 +73,7 @@ open class SSignInWithAppleViewController: SViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
+        signInWithAppleButton.addTarget(self, action: #selector(didTapSignInWithAppleButton), for: .touchUpInside)
     }
     
     override open func continueViewDidLoad() {
