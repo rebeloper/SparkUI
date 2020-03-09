@@ -7,7 +7,7 @@
 
 import MessageUI
 
-class SMailComposeViewController: MFMailComposeViewController {
+public class SMailComposeViewController: MFMailComposeViewController {
     
     var recipients: [String]?
     var subject: String
