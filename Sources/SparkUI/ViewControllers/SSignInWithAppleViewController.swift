@@ -22,6 +22,10 @@ public struct SSignInWithAppleErrorObserver {
 
 open class SSignInWithAppleViewController: SViewController {
     
+    // MARK: - Provider ID
+    
+    public let appleSignInProviderID = "apple.com"
+    
     // MARK: - Default observers
     
     public let defaultSignInWithAppleObserver = SSignInWithAppleObserver(name: "", nonce: "", idTokenString: "")
