@@ -202,8 +202,8 @@ extension UIButton {
     
     @discardableResult
     public func circular(radius: CGFloat) -> UIButton {
-        layer.masksToBounds = true
         layer.cornerRadius = radius
+        layer.masksToBounds = true
         size(CGSize(width: radius * 2, height: radius * 2))
         return self
     }

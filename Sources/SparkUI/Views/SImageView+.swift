@@ -18,8 +18,8 @@ extension SImageView {
     
     @discardableResult
     public func circular(radius: CGFloat) -> SImageView {
-        layer.masksToBounds = true
         layer.cornerRadius = radius
+        layer.masksToBounds = true
         setSize(CGSize(width: radius * 2, height: radius * 2))
         return self
     }
@@ -93,6 +93,7 @@ extension SImageView {
     @discardableResult
     open func cornerRadius(_ radius: CGFloat) -> SImageView {
         object.layer.cornerRadius = radius
+        object.layer.masksToBounds = true
         return self
     }
 }

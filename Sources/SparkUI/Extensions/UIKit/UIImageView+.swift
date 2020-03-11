@@ -18,8 +18,8 @@ extension UIImageView {
     
     @discardableResult
     public func circular(radius: CGFloat) -> UIImageView {
-        layer.masksToBounds = true
         layer.cornerRadius = radius
+        layer.masksToBounds = true
         setSize(CGSize(width: radius * 2, height: radius * 2))
         return self
     }
@@ -104,6 +104,7 @@ extension UIImageView {
     open func cornerRadius(_ radius: CGFloat, maskedCorners: CACornerMask = allCorners) -> UIImageView {
         layer.cornerRadius = radius
         layer.maskedCorners = maskedCorners
+        layer.masksToBounds = true
         return self
     }
 }

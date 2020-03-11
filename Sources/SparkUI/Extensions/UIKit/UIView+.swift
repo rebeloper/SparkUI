@@ -391,8 +391,8 @@ extension UIView {
     
     @discardableResult
     public func setCircular(_ radius: CGFloat) -> UIView {
-        layer.masksToBounds = true
         layer.cornerRadius = radius
+        layer.masksToBounds = true
         setSize(CGSize(width: radius * 2, height: radius * 2))
         return self
     }
