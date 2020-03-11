@@ -22,3 +22,7 @@ public enum FontStyleSize: CGFloat {
 public enum CapsuleBorderOrientation {
     case horizontal, vertical
 }
+
+public enum SCorner {
+    case topLeft, topRight, bottomLeft, bottomRight
+}
