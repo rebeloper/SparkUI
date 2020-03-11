@@ -18,7 +18,7 @@ public class SCornerShadowView: UIView {
         layer.shadowOffset = offset
         layer.shadowRadius = shadowRadius
         layer.shadowOpacity = opacity
-        roundCorners(corners: UIRectCorner, radius: cornerRadius)
+        roundCorners(corners: corners, radius: cornerRadius)
     }
     
     required init?(coder aDecoder: NSCoder) {
