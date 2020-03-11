@@ -9,7 +9,7 @@ import UIKit
 
 public class SCornerShadowView: UIView {
     
-    public init(radius: CGFloat, color: UIColor, offset: CGSize, opacity: Float, cornerRadius: CGFloat, clipsToViewBounds: Bool = true, masksToViewBounds: Bool = true) {
+    public init(radius: CGFloat, color: UIColor, offset: CGSize, opacity: Float, cornerRadius: CGFloat, clipsToViewBounds: Bool = true, masksToViewBounds: Bool = false) {
         super.init(frame: .zero)
         backgroundColor = .white
         clipsToBounds = clipsToViewBounds
@@ -18,7 +18,11 @@ public class SCornerShadowView: UIView {
         layer.shadowOffset = offset
         layer.shadowRadius = radius
         layer.shadowOpacity = opacity
-        layer.cornerRadius = cornerRadius
+//        layer.cornerRadius = cornerRadius
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10).cgPath)
+        layer.mask = maskLayer
     }
     
     required init?(coder aDecoder: NSCoder) {
