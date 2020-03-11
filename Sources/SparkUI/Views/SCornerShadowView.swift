@@ -9,7 +9,7 @@ import UIKit
 
 public class SCornerShadowView: UIView {
     
-    public init(shadowRadius: CGFloat, color: UIColor, offset: CGSize, opacity: Float, cornerRadius: CGFloat, maskedCorners: CACornerMask, clipsToViewBounds: Bool = true, masksToViewBounds: Bool = false) {
+    public init(shadowRadius: CGFloat, color: UIColor, offset: CGSize, opacity: Float, cornerRadius: CGFloat, maskedCorners: SCornerMask, clipsToViewBounds: Bool = true, masksToViewBounds: Bool = false) {
         super.init(frame: .zero)
         backgroundColor = .white
         clipsToBounds = clipsToViewBounds

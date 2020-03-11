@@ -11,7 +11,7 @@ public class SCornerShadowImageView: UIView {
     
     public var object: UIImageView!
     
-    public init(_ imageView: UIImageView, radius: CGFloat, color: UIColor, offset: CGSize, opacity: Float, cornerRadius: CGFloat, maskedCorners: CACornerMask, clipsToViewBounds: Bool = true, masksToViewBounds: Bool = false) {
+    public init(_ imageView: UIImageView, radius: CGFloat, color: UIColor, offset: CGSize, opacity: Float, cornerRadius: CGFloat, maskedCorners: SCornerMask, clipsToViewBounds: Bool = true, masksToViewBounds: Bool = false) {
         self.object = imageView
         super.init(frame: .zero)
         backgroundColor = .white
