@@ -7,7 +7,7 @@
 
 import UIKit
 
-typealias SCornerMask = CACornerMask
+public typealias SCornerMask = CACornerMask
 
 public struct SCorner {
     public static let topLeft : SCornerMask = .layerMaxXMinYCorner
