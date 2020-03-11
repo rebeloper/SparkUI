@@ -23,6 +23,6 @@ public enum CapsuleBorderOrientation {
     case horizontal, vertical
 }
 
-public enum SCorner {
+public enum SCornerType {
     case topLeft, topRight, bottomLeft, bottomRight
 }

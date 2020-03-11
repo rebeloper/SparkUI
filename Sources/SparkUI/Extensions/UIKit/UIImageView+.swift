@@ -74,7 +74,7 @@ extension UIImageView {
                 print("Successfully loaded image from Url: \(url.absoluteString) with Cache Type: \(cacheType)")
             }
         } else {
-            if let image = UIImage(named: imageUrl) {
+            if UIImage(named: imageUrl) != nil {
                 self.image = UIImage(named: imageUrl)
             } else if let placeholderImage = placeholderImage {
                 self.image = placeholderImage

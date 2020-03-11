@@ -40,7 +40,7 @@ extension SSwitch {
     @discardableResult
     public func setSwitchBorder(width: CGFloat, color: UIColor) -> SSwitch {
         self.object.layer.borderWidth = width
-        self.object.layer.cornerRadius = (self.object.frame.height ?? 0) / 2
+        self.object.layer.cornerRadius = self.object.frame.height / 2
         self.object.layer.borderColor = color.cgColor
         self.object.layer.masksToBounds = true
         return self

@@ -1,5 +1,5 @@
 //
-//  CACornerMask+.swift
+//  SCorner.swift
 //  
 //
 //  Created by Alex Nagy on 11/03/2020.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-extension CACornerMask {
+struct SCorner {
     
-    public func select(_ corner: SCorner) -> CACornerMask {
+    public func select(_ corner: SCornerType) -> CACornerMask {
         switch corner {
         case .topLeft:
             return .layerMaxXMinYCorner
