@@ -101,8 +101,9 @@ extension UIImageView {
     }
     
     @discardableResult
-    open func cornerRadius(_ radius: CGFloat) -> UIImageView {
+    open func cornerRadius(_ radius: CGFloat, maskedCorners: CACornerMask = allCorners) -> UIImageView {
         layer.cornerRadius = radius
+        layer.maskedCorners = maskedCorners
         return self
     }
 }

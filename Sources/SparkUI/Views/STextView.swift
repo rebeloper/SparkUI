@@ -32,9 +32,10 @@ extension STextView {
     }
     
     @discardableResult
-    public func corner(radius: CGFloat) -> STextView {
-        self.layer.cornerRadius = radius
-        self.layer.masksToBounds = true
+    public func corner(radius: CGFloat, maskedCorners: CACornerMask = allCorners) -> STextView {
+        layer.cornerRadius = radius
+        layer.maskedCorners = maskedCorners
+        layer.masksToBounds = true
         return self
     }
     

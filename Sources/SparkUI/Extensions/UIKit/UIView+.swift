@@ -226,8 +226,9 @@ extension UIView {
     }
     
     @discardableResult
-    public func setCorner(_ radius: CGFloat) -> UIView {
+    public func setCorner(_ radius: CGFloat, maskedCorners: CACornerMask = allCorners) -> UIView {
         layer.cornerRadius = radius
+        layer.maskedCorners = maskedCorners
         layer.masksToBounds = true
         return self
     }
@@ -264,9 +265,10 @@ extension UIView {
     }
     
     @discardableResult
-    public func setBorder(width: CGFloat, cornerRadius: CGFloat, color: UIColor) -> UIView {
+    public func setBorder(width: CGFloat, cornerRadius: CGFloat, color: UIColor, maskedCorners: CACornerMask = allCorners) -> UIView {
         layer.borderWidth = width
         layer.cornerRadius = cornerRadius
+        layer.maskedCorners = maskedCorners
         layer.borderColor = color.cgColor
         layer.masksToBounds = true
         return self

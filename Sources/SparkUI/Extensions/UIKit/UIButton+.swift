@@ -151,8 +151,9 @@ extension UIButton {
     }
     
     @discardableResult
-    public func corner(radius: CGFloat) -> UIButton {
+    public func corner(radius: CGFloat, maskedCorners: CACornerMask = allCorners) -> UIButton {
         layer.cornerRadius = radius
+        layer.maskedCorners = maskedCorners
         layer.masksToBounds = true
         return self
     }
