@@ -7,7 +7,7 @@
 
 import UIKit
 
-public static var leftBottom     : CACornerMask { get { return .layerMinXMaxYCorner}}
-public static var rightBottom    : CACornerMask { get { return .layerMaxXMaxYCorner}}
-public static var leftTop        : CACornerMask { get { return .layerMaxXMinYCorner}}
-public static var rightTop       : CACornerMask { get { return .layerMinXMinYCorner}}
+public var bottomLeftCorner     : CACornerMask { get { return .layerMinXMaxYCorner}}
+public var bottomRightCorner    : CACornerMask { get { return .layerMaxXMaxYCorner}}
+public var topLeftCorner        : CACornerMask { get { return .layerMaxXMinYCorner}}
+public var topRightCorner       : CACornerMask { get { return .layerMinXMinYCorner}}
