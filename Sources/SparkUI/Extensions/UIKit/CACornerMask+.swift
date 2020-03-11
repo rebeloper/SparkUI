@@ -5,7 +5,7 @@
 //  Created by Alex Nagy on 11/03/2020.
 //
 
-import Foundation
+import UIKit
 
 extension CACornerMask {
     
