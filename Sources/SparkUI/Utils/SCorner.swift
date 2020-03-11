@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct SCorner {
+public struct SCorner {
     
     public func select(_ corner: SCornerType) -> CACornerMask {
         switch corner {
