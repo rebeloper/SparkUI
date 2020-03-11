@@ -21,7 +21,7 @@ public class SCornerShadowView: UIView {
 //        layer.cornerRadius = cornerRadius
         
         let maskLayer = CAShapeLayer()
-        maskLayer.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10).cgPath)
+        maskLayer.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10))
         layer.mask = maskLayer
     }
     
