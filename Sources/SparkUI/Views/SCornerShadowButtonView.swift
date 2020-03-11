@@ -11,7 +11,7 @@ public class SCornerShadowButtonView: UIView {
     
     public var object: UIButton!
     
-    public init(_ button: UIButton, radius: CGFloat, color: UIColor, offset: CGSize, opacity: Float, cornerRadius: CGFloat, clipsToViewBounds: Bool = true, masksToViewBounds: Bool = false) {
+    public init(_ button: UIButton, radius: CGFloat, color: UIColor, offset: CGSize, opacity: Float, cornerRadius: CGFloat, maskedCorners: CACornerMask, clipsToViewBounds: Bool = true, masksToViewBounds: Bool = false) {
         self.object = button
         super.init(frame: .zero)
         backgroundColor = .white
@@ -22,8 +22,10 @@ public class SCornerShadowButtonView: UIView {
         layer.shadowRadius  = radius
         layer.shadowOpacity = opacity
         layer.cornerRadius  = cornerRadius
+        layer.maskedCorners = maskedCorners
         
         button.layer.cornerRadius = cornerRadius
+        button.layer.maskedCorners = maskedCorners
         button.clipsToBounds = clipsToViewBounds
         addSubview(button)
         button.edgeTo(self)
