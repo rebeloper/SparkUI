@@ -15,4 +15,24 @@ extension Int {
         formatter.zeroFormattingBehavior = .pad
         return formatter.string(from: TimeInterval(self))!
     }
+    
+    public func toStripeAmount() -> Int {
+        self * 100
+    }
+    
+    public func fromStripeAmount() -> Int {
+        self / 100
+    }
+    
+    public mutating func increment(_ amount: Int = 1) {
+        self += amount
+    }
+    
+    public mutating func decrement(_ amount: Int = 1) {
+        self -= amount
+    }
+    
+    public mutating func makeZero() {
+        self = 0
+    }
 }
