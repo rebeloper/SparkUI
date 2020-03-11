@@ -7,18 +7,7 @@
 
 import UIKit
 
-public struct SCorner {
-    
-    public func select(_ corner: SCornerType) -> CACornerMask {
-        switch corner {
-        case .topLeft:
-            return .layerMaxXMinYCorner
-        case .topRight:
-            return .layerMinXMinYCorner
-        case .bottomLeft:
-            return .layerMinXMaxYCorner
-        case .bottomRight:
-            return .layerMaxXMaxYCorner
-        }
-    }
-}
+public static var leftBottom     : CACornerMask { get { return .layerMinXMaxYCorner}}
+public static var rightBottom    : CACornerMask { get { return .layerMaxXMaxYCorner}}
+public static var leftTop        : CACornerMask { get { return .layerMaxXMinYCorner}}
+public static var rightTop       : CACornerMask { get { return .layerMinXMinYCorner}}
