@@ -9,37 +9,51 @@ import UIKit
 
 public class SCornerShadowView: UIView {
     
-    public init(shadowRadius: CGFloat, color: UIColor, offset: CGSize, opacity: Float, cornerRadius: CGFloat, maskedCorners: CACornerMask? = nil) {
+    private var shadowRadius: CGFloat
+    private var cornerRadius: CGFloat
+    
+    private var corners: UIRectCorner
+    private var shadowColor: UIColor
+    private var shadowOpacity: CGFloat
+    private var shadowOffset: CGSize
+    private var shadowLayerFillColor: UIColor
+    
+    private var shadowLayer: CAShapeLayer!
+    
+    public init(shadowRadius: CGFloat, cornerRadius: CGFloat, corners: UIRectCorner = [.allCorners], shadowColor: UIColor = .black, shadowOpacity: CGFloat = 0.2, shadowOffset: CGSize = CGSize(width: 1.0, height: 1.0), shadowLayerFillColor: UIColor = .systemBackground) {
+        self.shadowRadius = shadowRadius
+        self.shadowColor = shadowColor
+        
+        self.corners = corners
+        self.shadowOpacity = shadowOpacity
+        self.shadowOffset = shadowOffset
+        self.cornerRadius = cornerRadius
+        self.shadowLayerFillColor = shadowLayerFillColor
+        
         super.init(frame: .zero)
-        
-        let shadowView = UIView()
-        shadowView.backgroundColor = .systemBackground
-        
-        shadowView.clipsToBounds = true
-        shadowView.layer.masksToBounds = false
-        shadowView.layer.shadowColor = color.cgColor
-        shadowView.layer.shadowOffset = offset
-        shadowView.layer.shadowRadius = shadowRadius
-        shadowView.layer.shadowOpacity = opacity
-        shadowView.layer.cornerRadius = cornerRadius
-        
-        addSubview(shadowView)
-        shadowView.edgeTo(self)
-        
-        if let maskedCorners = maskedCorners {
-            let maskView = UIView()
-            maskView.backgroundColor = .systemBackground
-            maskView.layer.masksToBounds = true
-            maskView.layer.maskedCorners = maskedCorners
-            
-            addSubview(maskView)
-            maskView.edgeTo(self)
-        }
-        
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+
+        if shadowLayer == nil {
+            shadowLayer = CAShapeLayer()
+            
+            shadowLayer.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
+            
+            shadowLayer.fillColor = shadowLayerFillColor.cgColor
+            shadowLayer.shadowColor = shadowColor.cgColor
+            shadowLayer.shadowPath = shadowLayer.path
+            shadowLayer.shadowOffset = shadowOffset
+            shadowLayer.shadowOpacity = Float(shadowOpacity)
+            shadowLayer.shadowRadius = shadowRadius
+
+            layer.insertSublayer(shadowLayer, at: 0)
+        }
     }
     
 }
