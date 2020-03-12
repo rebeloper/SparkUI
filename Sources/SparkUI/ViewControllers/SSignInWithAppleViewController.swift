@@ -60,7 +60,7 @@ open class SSignInWithAppleViewController: SViewController {
         #endif
     }
     
-    public init(safeArea: SSafeArea, authorizationButtonType: ASAuthorizationAppleIDButton.ButtonType = .continue, authorizationButtonStyle: ASAuthorizationAppleIDButton.Style = .whiteOutline) {
+    public init(safeArea: SSafeArea = .all, authorizationButtonType: ASAuthorizationAppleIDButton.ButtonType = .continue, authorizationButtonStyle: ASAuthorizationAppleIDButton.Style = .whiteOutline) {
         self.signInWithAppleButton = ASAuthorizationAppleIDButton(authorizationButtonType: authorizationButtonType, authorizationButtonStyle: authorizationButtonStyle)
         super.init(safeArea: safeArea)
     }
