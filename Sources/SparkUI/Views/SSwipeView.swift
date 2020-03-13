@@ -19,7 +19,7 @@ open class SSwipeView: UIView {
         object.setSize(size).setBackground(color: color).setCorner(size.height / 2)
         
         stack(.vertical)(
-            stack(.horizontal)(
+            stack(.horizontal, distribution: .equalCentering)(
                 Spacer(),
                 object,
                 Spacer()
