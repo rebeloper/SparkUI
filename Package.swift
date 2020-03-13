@@ -34,8 +34,7 @@ let package = Package(
                 "Bond",
                 "JGProgressHUD",
                 "RSKPlaceholderTextView",
-                "SDWebImage",
-                "Hero"
+                "SDWebImage"
         ]),
         .testTarget(
             name: "SparkUITests",
