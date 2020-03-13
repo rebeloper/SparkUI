@@ -8,8 +8,8 @@
 import UIKit
 import Hero
 
-struct SHero {
-    static func show(_ controller: UIViewController, from fromController: UIViewController, navigationAnimationType: HeroDefaultAnimationType = .autoReverse(presenting: .slide(direction: .leading))) {
+public struct SHero {
+    public static func show(_ controller: UIViewController, from fromController: UIViewController, navigationAnimationType: HeroDefaultAnimationType = .autoReverse(presenting: .slide(direction: .leading))) {
         controller.hero.isEnabled = true
         fromController.navigationController?.hero.isEnabled = true
         fromController.navigationController?.hero.navigationAnimationType = navigationAnimationType
@@ -17,7 +17,7 @@ struct SHero {
     }
     
     // call this in viewWillAppear(animated:) to allow SHero navigation alongside regular UINavigation
-    static func viewWillAppear(in controller: UIViewController) {
+    public static func viewWillAppear(in controller: UIViewController) {
         controller.navigationController?.hero.isEnabled = false
     }
 }
