@@ -6,17 +6,22 @@
 //
 
 import UIKit
+import Hero
 
 open class SViewController: UIViewController {
     
     public var safeArea: SSafeArea
+    public var heroNavigationEnabled: Bool
+    public var heroNavigationAnimationType: HeroDefaultAnimationType
     
     public let hud = SHud.create()
     
     public let container = UIView()
     
-    public init(safeArea: SSafeArea = .all) {
+    public init(safeArea: SSafeArea = .all, heroNavigationEnabled: Bool = false, heroNavigationAnimationType: HeroDefaultAnimationType = .fade) {
         self.safeArea = safeArea
+        self.heroNavigationEnabled = heroNavigationEnabled
+        self.heroNavigationAnimationType = heroNavigationAnimationType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,6 +37,12 @@ open class SViewController: UIViewController {
         bind()
         observe()
         continueViewDidLoad()
+    }
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hero.isEnabled = heroNavigationEnabled
+        navigationController?.hero.navigationAnimationType = heroNavigationAnimationType
     }
     
     open func layoutViews() {
