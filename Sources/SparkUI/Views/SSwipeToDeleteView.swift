@@ -11,8 +11,10 @@ import Layoutless
 
 open class SSwipeToDeleteView: UIView {
     
-    public let container = UIView()
-    public let cellContainerView = UIView()
+    public var width: CGFloat = 0
+    
+    public let scrollingContainerView = UIView()
+    public let containerView = UIView()
     
     public let deleteLabel = UILabel().font(.boldSystemFont(ofSize: 17)).text(color: .white).text("Delete")
     public let deleteContainerView = UIView().setBackground(color: .systemRed)
@@ -21,9 +23,20 @@ open class SSwipeToDeleteView: UIView {
     
     public var didDelete = Property(false)
     
+    public init(width: CGFloat) {
+        super.init(frame: .zero)
+        self.width = width
+        setupView()
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public func setupView() {
         backgroundColor = .systemBackground
-        container.backgroundColor = .systemBackground
+        scrollingContainerView.backgroundColor = .systemBackground
+        containerView.backgroundColor = .systemBackground
         layoutViews()
         bind()
         observe()
@@ -39,18 +52,18 @@ open class SSwipeToDeleteView: UIView {
         ).fillingParent().layout(in: deleteContainerView)
         
         stack(.horizontal, distribution: .fillEqually)(
-            cellContainerView.setWidth(self.frame.width),
-            deleteContainerView.setWidth(self.frame.width)
+            containerView.setWidth(width),
+            deleteContainerView.setWidth(width)
         ).scrolling(.horizontal, configure: { (scrollView) in
             self.scrollView = scrollView
             scrollView.isPagingEnabled = true
             scrollView.showsHorizontalScrollIndicator = false
             scrollView.delegate = self
             scrollView.bounces = false
-        }).fillingParent().layout(in: container)
+        }).fillingParent().layout(in: scrollingContainerView)
         
         stack(.vertical)(
-            container
+            scrollingContainerView
         ).fillingParent().layout(in: self)
         
     }

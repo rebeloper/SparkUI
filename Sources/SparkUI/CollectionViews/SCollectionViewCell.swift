@@ -14,7 +14,7 @@ open class SCollectionViewCell: UICollectionViewCell {
     public let container = UIView()
     public let cellContainerView = UIView()
     
-    public let deleteView = SSwipeToDeleteView()
+    public lazy var deleteView = SSwipeToDeleteView(width: self.frame.width)
     
     public func setupCell(deletable: Bool = true) {
         backgroundColor = .systemBackground
