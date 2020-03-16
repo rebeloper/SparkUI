@@ -9,7 +9,7 @@ import UIKit
 import ReactiveKit
 import Layoutless
 
-public class SCollectionViewCell: UICollectionViewCell {
+open class SCollectionViewCell: UICollectionViewCell {
     
     public let container = UIView()
     public let cellContainerView = UIView()
