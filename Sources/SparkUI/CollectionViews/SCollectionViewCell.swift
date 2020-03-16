@@ -14,18 +14,13 @@ open class SCollectionViewCell: UICollectionViewCell {
     public let cellContainerView = UIView()
     public let deleteContainerView = UIView()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    public func setupCell() {
         backgroundColor = .systemBackground
         container.backgroundColor = .systemBackground
         layoutViews()
         bind()
         observe()
         continueInit()
-    }
-    
-    required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     open func layoutViews() {
