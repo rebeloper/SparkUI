@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class SCollectionReusableView: UICollectionReusableView {
+open class SCollectionReusableView: UICollectionReusableView {
     
     public let container = UIView()
     
