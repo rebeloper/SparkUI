@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ReactiveKit
 import Layoutless
 
 open class SCollectionViewCell: UICollectionViewCell {
@@ -13,8 +14,10 @@ open class SCollectionViewCell: UICollectionViewCell {
     public let container = UIView()
     public let cellContainerView = UIView()
     
-    private let deleteLabel = UILabel().font(.boldSystemFont(ofSize: 17)).text(color: .white).text("Delete")
-    private let deleteContainerView = UIView().setBackground(color: .systemRed)
+    public let deleteLabel = UILabel().font(.boldSystemFont(ofSize: 17)).text(color: .white).text("Delete")
+    public let deleteContainerView = UIView().setBackground(color: .systemRed)
+    
+    public var didDelete = Property(false)
     
     public func setupCell(deletable: Bool = true) {
         backgroundColor = .systemBackground
@@ -63,7 +66,7 @@ open class SCollectionViewCell: UICollectionViewCell {
 extension SCollectionViewCell: UIScrollViewDelegate {
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x >= self.frame.width {
-            
+            didDelete.value = true
         }
     }
 }
