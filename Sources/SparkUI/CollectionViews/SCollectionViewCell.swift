@@ -67,7 +67,7 @@ open class SCollectionViewCell: UICollectionViewCell {
     
     public func resetCell() {
         guard let scrollView = self.scrollView else { return }
-        SDispatchQueue.delay(bySeconds: 2) {
+        SDispatchQueue.delay(bySeconds: 1) {
             scrollView.contentOffset.x = 0
         }
     }
