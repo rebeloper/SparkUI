@@ -67,6 +67,7 @@ extension SCollectionViewCell: UIScrollViewDelegate {
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x >= self.frame.width {
             didDelete.value = true
+            scrollView.contentOffset.x = 0
         }
     }
 }
