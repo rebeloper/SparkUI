@@ -12,32 +12,47 @@ open class SCollectionViewCell: UICollectionViewCell {
     
     public let container = UIView()
     public let cellContainerView = UIView()
-    public let deleteContainerView = UIView()
     
-    public func setupCell() {
+    private let deleteLabel = UILabel().font(.boldSystemFont(ofSize: 17)).text(color: .white).text("Delete")
+    private let deleteContainerView = UIView().setBackground(color: .systemRed)
+    
+    public func setupCell(deletable: Bool = true) {
         backgroundColor = .systemBackground
         container.backgroundColor = .systemBackground
-        layoutViews()
+        layoutViews(deletable: deletable)
         bind()
         observe()
         continueInit()
     }
     
-    open func layoutViews() {
+    open func layoutViews(deletable: Bool) {
         
-        stack(.horizontal, distribution: .fillEqually)(
-            cellContainerView.setWidth(self.frame.width),
-            deleteContainerView.setWidth(self.frame.width)
-        ).scrolling(.horizontal, configure: { (scrollView) in
-            scrollView.isPagingEnabled = true
-            scrollView.showsHorizontalScrollIndicator = false
-            scrollView.delegate = self
-            scrollView.bounces = false
-        }).fillingParent().layout(in: container)
+        if deletable {
+            stack(.horizontal)(
+                Spacer().setWidth(12),
+                deleteLabel,
+                Spacer()
+            ).fillingParent().layout(in: deleteContainerView)
+            
+            stack(.horizontal, distribution: .fillEqually)(
+                cellContainerView.setWidth(self.frame.width),
+                deleteContainerView.setWidth(self.frame.width)
+            ).scrolling(.horizontal, configure: { (scrollView) in
+                scrollView.isPagingEnabled = true
+                scrollView.showsHorizontalScrollIndicator = false
+                scrollView.delegate = self
+                scrollView.bounces = false
+            }).fillingParent().layout(in: container)
+            
+            stack(.vertical)(
+                container
+            ).fillingParent().layout(in: self)
+        } else {
+            stack(.vertical)(
+                cellContainerView
+            ).fillingParent().layout(in: self)
+        }
         
-        stack(.vertical)(
-            container
-        ).fillingParent().layout(in: self)
     }
     
     open func bind() {}
