@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ReactiveKit
 import Layoutless
 
 open class SCollectionViewCell: UICollectionViewCell {
@@ -14,8 +13,6 @@ open class SCollectionViewCell: UICollectionViewCell {
     public let container = UIView()
     public let cellContainerView = UIView()
     public let deleteContainerView = UIView()
-    
-//    public let didDelete = Property(false)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,9 +51,9 @@ open class SCollectionViewCell: UICollectionViewCell {
 }
 
 extension SCollectionViewCell: UIScrollViewDelegate {
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    open func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x >= self.frame.width {
-//            didDelete.value = true
+            
         }
     }
 }
