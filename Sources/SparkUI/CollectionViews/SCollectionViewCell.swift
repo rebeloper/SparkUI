@@ -17,6 +17,8 @@ open class SCollectionViewCell: UICollectionViewCell {
     public let deleteLabel = UILabel().font(.boldSystemFont(ofSize: 17)).text(color: .white).text("Delete")
     public let deleteContainerView = UIView().setBackground(color: .systemRed)
     
+    public var scrollView: UIScrollView?
+    
     public var didDelete = Property(false)
     
     public func setupCell(deletable: Bool = true) {
@@ -41,6 +43,7 @@ open class SCollectionViewCell: UICollectionViewCell {
                 cellContainerView.setWidth(self.frame.width),
                 deleteContainerView.setWidth(self.frame.width)
             ).scrolling(.horizontal, configure: { (scrollView) in
+                self.scrollView = scrollView
                 scrollView.isPagingEnabled = true
                 scrollView.showsHorizontalScrollIndicator = false
                 scrollView.delegate = self
@@ -61,13 +64,17 @@ open class SCollectionViewCell: UICollectionViewCell {
     open func bind() {}
     open func observe() {}
     open func continueInit() {}
+    
+    public func resetCell() {
+        guard let scrollView = self.scrollView else { return }
+        scrollView.contentOffset.x = 0
+    }
 }
 
 extension SCollectionViewCell: UIScrollViewDelegate {
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x >= self.frame.width {
             didDelete.value = true
-            scrollView.contentOffset.x = 0
         }
     }
 }
