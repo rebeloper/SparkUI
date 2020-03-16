@@ -9,7 +9,7 @@ import UIKit
 import Layoutless
 
 public protocol SCollectionViewCellDelegate {
-    public func didDelete()
+    func didDelete()
 }
 
 public class SCollectionViewCell: UICollectionViewCell {
@@ -18,7 +18,7 @@ public class SCollectionViewCell: UICollectionViewCell {
     public let cellContainerView = UIView()
     public let deleteContainerView = UIView()
     
-    public delegate: SCollectionViewCellDelegate?
+    public var delegate: SCollectionViewCellDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,7 +57,7 @@ public class SCollectionViewCell: UICollectionViewCell {
 }
 
 extension SCollectionViewCell: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x >= self.frame.width {
             delegate?.didDelete()
         }
