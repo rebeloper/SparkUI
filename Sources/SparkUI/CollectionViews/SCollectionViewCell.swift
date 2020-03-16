@@ -15,13 +15,13 @@ open class SCollectionViewCell: UICollectionViewCell {
     public let deleteContainerView = UIView()
     
     override init(frame: CGRect) {
+        super.init(frame: frame)
         backgroundColor = .systemBackground
         container.backgroundColor = .systemBackground
         layoutViews()
         bind()
         observe()
         continueInit()
-        super.init(frame: frame)
     }
     
     required public init?(coder: NSCoder) {
