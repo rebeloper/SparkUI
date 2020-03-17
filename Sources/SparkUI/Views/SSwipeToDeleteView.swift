@@ -74,7 +74,6 @@ open class SSwipeToDeleteView: UIView {
     
     public func reset() {
         guard let scrollView = self.scrollView else { return }
-        deleteContainerView.addPop()
         SDispatchQueue.delay(bySeconds: 0.4) {
             scrollView.contentOffset.x = 0
         }
