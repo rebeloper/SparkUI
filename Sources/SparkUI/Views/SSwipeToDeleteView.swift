@@ -80,7 +80,7 @@ open class SSwipeToDeleteView: UIView {
         
         SDispatchQueue.delay(bySeconds: 0.2) {
             UIView.animate(withDuration: 0.2) {
-                self.scrollView.contentOffset.x = 0
+                scrollView.contentOffset.x = 0
                 self.deleteContainerView.setHidden(false)
             }
         }
