@@ -8,7 +8,7 @@
 import UIKit
 
 extension UICollectionView {
-    public func scrollToLastItem(at scrollPosition: UICollectionView.ScrollPosition, adjustment: CGFloat, withDuration duration: TimeInterval = 0.5) {
+    public func scrollToLastItem(at scrollPosition: UICollectionView.ScrollPosition, adjustment: CGFloat = 0.0, withDuration duration: TimeInterval = 0.5) {
         let lastSection = self.numberOfSections - 1
         let lastRowInLastSection = self.numberOfItems(inSection: lastSection)
         if lastSection > 0, lastRowInLastSection > 1 {
