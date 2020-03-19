@@ -16,6 +16,14 @@ extension UISwitch {
     }
     
     @discardableResult
+    public func offTintColor(_ offTintColor: UIColor?) -> UISwitch {
+        tintColor = offTintColor
+        layer.cornerRadius = frame.height / 2
+        backgroundColor = offTintColor
+        return self
+    }
+    
+    @discardableResult
     public func thumbTintColor(_ thumbTintColor: UIColor?) -> UISwitch {
         self.thumbTintColor = thumbTintColor
         return self
