@@ -20,7 +20,7 @@ extension SSwitch {
     }
     
     @discardableResult
-    public func offTintColor(_ offTintColor: UIColor?) -> UISwitch {
+    public func offTintColor(_ offTintColor: UIColor?) -> SSwitch {
         object.offTintColor(offTintColor)
         return self
     }
