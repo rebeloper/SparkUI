@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class SCornerShadowButtonView: UIImageView {
+public class SCornerShadowButtonView: SButton {
         
         private var shadowRadius: CGFloat
         private var cornerRadius: CGFloat
