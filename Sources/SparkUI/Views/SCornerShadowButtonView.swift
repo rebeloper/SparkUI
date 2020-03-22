@@ -20,7 +20,7 @@ public class SCornerShadowButtonView: SButton {
         
         private var shadowLayer: CAShapeLayer!
         
-        public init(shadowRadius: CGFloat, cornerRadius: CGFloat, corners: UIRectCorner = [.allCorners], shadowColor: UIColor = .black, shadowOpacity: CGFloat = 0.2, shadowOffset: CGSize = CGSize(width: 1.0, height: 1.0), shadowLayerFillColor: UIColor = .systemBackground) {
+    public init(uiView: UIView, shadowRadius: CGFloat, cornerRadius: CGFloat, corners: UIRectCorner = [.allCorners], shadowColor: UIColor = .black, shadowOpacity: CGFloat = 0.2, shadowOffset: CGSize = CGSize(width: 1.0, height: 1.0), shadowLayerFillColor: UIColor = .systemBackground) {
             self.shadowRadius = shadowRadius
             self.shadowColor = shadowColor
             
@@ -30,7 +30,7 @@ public class SCornerShadowButtonView: SButton {
             self.cornerRadius = cornerRadius
             self.shadowLayerFillColor = shadowLayerFillColor
             
-            super.init(frame: .zero)
+        super.init(uiView: uiView)
         }
         
         required public init?(coder: NSCoder) {
