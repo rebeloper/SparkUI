@@ -11,7 +11,7 @@ import Layoutless
 
 open class SSwipeToDeleteView: UIView {
     
-    public var width: CGFloat = 0
+    public var width: CGFloat
     
     public let scrollingContainerView = UIView()
     public let containerView = UIView()
@@ -24,8 +24,8 @@ open class SSwipeToDeleteView: UIView {
     public var didDelete = Property(false)
     
     public init(width: CGFloat) {
-        super.init(frame: .zero)
         self.width = width
+        super.init(frame: .zero)
         setupView()
     }
     
