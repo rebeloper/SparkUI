@@ -22,6 +22,7 @@ public struct SHero {
     }
     
     // call this in viewWillAppear(animated:) if you're coming from a view controller that has SHero disabled into a view controller that needs SHero enabled
+    // needed if you can navigate back to this view controller with the navigationItem back button
     public static func enable(in controller: UIViewController) {
         controller.navigationController?.hero.isEnabled = true
     }
