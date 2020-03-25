@@ -39,6 +39,11 @@ open class SViewController: UIViewController {
         SHero.enable(in: self)
     }
     
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SHero.disable(in: self)
+    }
+    
     open func layoutViews() {
         view.addSubview(container)
         container.edgeTo(view, safeArea: safeArea)
