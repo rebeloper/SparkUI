@@ -16,8 +16,13 @@ public struct SHero {
         fromController.navigationController?.pushViewController(controller, animated: true)
     }
     
-    // call this in viewWillAppear(animated:) to allow SHero navigation alongside regular UINavigation
-    public static func viewWillAppear(in controller: UIViewController) {
+    // call this whenever you leave the SHero enabled view controller and you want to disable SHero
+    public static func disable(in controller: UIViewController) {
         controller.navigationController?.hero.isEnabled = false
+    }
+    
+    // call this in viewWillAppear(animated:) if you're coming from a view controller that has SHero disabled into a view controller that needs SHero enabled
+    public static func enable(in controller: UIViewController) {
+        controller.navigationController?.hero.isEnabled = true
     }
 }
