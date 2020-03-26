@@ -10,7 +10,8 @@ import SDWebImage
 
 extension UIButton {
     
-    open func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, placeholderImage: UIImage? = nil) {
+    open func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil) {
+        imageView?.contentMode = contentMode
         if imageUrl.contains("https:") {
             self.sd_setImage(with: URL(string: imageUrl), for: .normal, placeholderImage: placeholderImage, options: .lowPriority) { (image, err, cacheType, url) in
                 guard let url = url else {
