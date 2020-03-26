@@ -97,7 +97,7 @@ extension STextField {
     }
     
     @discardableResult
-    public func corner(radius: CGFloat, maskedCorners: CACornerMask = allCorners) -> STextField {
+    public func corner(radius: CGFloat, maskedCorners: CACornerMask = CACornerMask_allCorners) -> STextField {
         object.layer.cornerRadius = radius
         object.layer.maskedCorners = maskedCorners
         object.layer.masksToBounds = true
