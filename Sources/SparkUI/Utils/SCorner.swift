@@ -7,12 +7,12 @@
 
 import UIKit
 
-public var topLeftCorner: CACornerMask { get { return .layerMaxXMinYCorner}}
-public var topRightCorner: CACornerMask { get { return .layerMinXMinYCorner}}
-public var bottomLeftCorner: CACornerMask { get { return .layerMinXMaxYCorner}}
-public var bottomRightCorner: CACornerMask { get { return .layerMaxXMaxYCorner}}
-public var topCorners: CACornerMask { get { return [.layerMaxXMinYCorner, .layerMinXMinYCorner]}}
-public var bottomCorners: CACornerMask { get { return [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]}}
-public var leftCorners: CACornerMask { get { return [.layerMinXMaxYCorner, .layerMaxXMinYCorner]}}
-public var rightCorners: CACornerMask { get { return [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]}}
-public var allCorners: CACornerMask { get { return [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]}}
+public var CACornerMask_topLeadingCorner: CACornerMask { get { return .layerMaxXMinYCorner}}
+public var CACornerMask_topTrailingCorner: CACornerMask { get { return .layerMinXMinYCorner}}
+public var CACornerMask_bottomLeadingCorner: CACornerMask { get { return .layerMinXMaxYCorner}}
+public var CACornerMask_bottomTrailingCorner: CACornerMask { get { return .layerMaxXMaxYCorner}}
+public var CACornerMask_topCorners: CACornerMask { get { return [.layerMaxXMinYCorner, .layerMinXMinYCorner]}}
+public var CACornerMask_bottomCorners: CACornerMask { get { return [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]}}
+public var CACornerMask_leadingCorners: CACornerMask { get { return [.layerMinXMaxYCorner, .layerMaxXMinYCorner]}}
+public var CACornerMask_trailingCorners: CACornerMask { get { return [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]}}
+public var CACornerMask_allCorners: CACornerMask { get { return [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]}}
