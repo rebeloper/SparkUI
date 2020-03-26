@@ -6,8 +6,35 @@
 //
 
 import UIKit
+import SDWebImage
 
 extension UIButton {
+    
+    open func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, placeholderImage: UIImage? = nil) {
+        if imageUrl.contains("https:") {
+            self.sd_setImage(with: URL(string: imageUrl), for: .normal, placeholderImage: placeholderImage, options: .lowPriority) { (image, err, cacheType, url) in
+                guard let url = url else {
+                    print("SDWebImage error: Invalid url provided: \(imageUrl)")
+                    return
+                }
+                if let err = err {
+                    print(err.localizedDescription)
+                    return
+                }
+                guard image != nil else {
+                    print("SDWebImage error: Could not load image; it is nil")
+                    return
+                }
+                print("Successfully loaded image from Url: \(url.absoluteString) with Cache Type: \(cacheType)")
+            }
+        } else {
+            if UIImage(named: imageUrl) != nil {
+                setImage(UIImage(named: imageUrl)?.withRenderingMode(renderingMode), for: .normal)
+            } else if let placeholderImage = placeholderImage {
+                setImage(placeholderImage.withRenderingMode(renderingMode), for: .normal)
+            }
+        }
+    }
     
     @discardableResult
     open func image(_ image: UIImage?, renderingMode: UIImage.RenderingMode = .alwaysOriginal) -> UIButton {
