@@ -56,7 +56,8 @@ extension UIImageView {
         return self
     }
     
-    open func setImage(from imageUrl: String, placeholderImage: UIImage? = nil) {
+    open func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil) {
+        self.contentMode = contentMode
         if imageUrl.contains("https:") {
             self.sd_setImage(with: URL(string: imageUrl), placeholderImage: placeholderImage) { (image, err, cacheType, url) in
                 guard let url = url else {
@@ -75,9 +76,9 @@ extension UIImageView {
             }
         } else {
             if UIImage(named: imageUrl) != nil {
-                self.image = UIImage(named: imageUrl)
+                self.image = UIImage(named: imageUrl)?.withRenderingMode(renderingMode)
             } else if let placeholderImage = placeholderImage {
-                self.image = placeholderImage
+                self.image = placeholderImage.withRenderingMode(renderingMode)
             }
         }
     }
