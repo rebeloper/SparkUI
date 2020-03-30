@@ -11,13 +11,7 @@ import Layoutless
 
 open class SSwipeToDeleteView: UIView {
     
-    public var width: CGFloat {
-        didSet {
-            if width == 0 {
-                fatalError("Width is 0. This usually happens when a view is reused, like a UICollectionViewCell. Consider using 'UIScreen.main.bounds.size.width' instead of 'self.frame.width' to set the width of the SSwipeToDeleteView view")
-            }
-        }
-    }
+    public var width: CGFloat
     
     public let scrollingContainerView = UIView()
     public let containerView = UIView()
@@ -30,6 +24,9 @@ open class SSwipeToDeleteView: UIView {
     public var didDelete = Property(false)
     
     public init(width: CGFloat) {
+        if width == 0 {
+            fatalError("Width is 0. This usually happens when a view is reused, like a UICollectionViewCell. Consider using 'UIScreen.main.bounds.size.width' instead of 'self.frame.width' to set the width of the SSwipeToDeleteView view")
+        }
         self.width = width
         super.init(frame: .zero)
         setupView()
