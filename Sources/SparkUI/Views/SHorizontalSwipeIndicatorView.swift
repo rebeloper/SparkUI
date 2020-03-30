@@ -1,5 +1,5 @@
 //
-//  SSwipeView.swift
+//  SHorizontalSwipeIndicatorView.swift
 //  
 //
 //  Created by Alex Nagy on 13/03/2020.
@@ -8,7 +8,7 @@
 import UIKit
 import Layoutless
 
-open class SSwipeView: UIView {
+open class SHorizontalSwipeIndicatorView: UIView {
     
     public var object = UIView()
     
