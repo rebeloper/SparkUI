@@ -48,7 +48,7 @@ extension UIColor {
 
 extension UIColor {
     public static var systemBlack: UIColor {
-        if SAppearance.get() == SAppearenceType.dark {
+        if SAppearance.mode.value == SAppearenceMode.light {
             return .white
         } else {
             return .black
@@ -56,7 +56,7 @@ extension UIColor {
     }
     
     public static var systemWhite: UIColor {
-        if SAppearance.get() == SAppearenceType.dark {
+        if SAppearance.mode.value == SAppearenceMode.dark {
             return .black
         } else {
             return .white

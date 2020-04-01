@@ -6,18 +6,33 @@
 //
 
 import UIKit
+import ReactiveKit
 
 public struct SAppearance {
-    public static func get() -> SAppearenceType {
+    
+    public static var mode = Property(SAppearenceMode.none)
+    
+    public static func observe() {
         if #available(iOS 13.0, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark {
-                return SAppearenceType.dark
+                mode.value = SAppearenceMode.dark
             } else {
-                return SAppearenceType.light
+                mode.value = SAppearenceMode.light
             }
         } else {
-            print("UITraitCollection is not available pre-iOS13, but returning SAppearenceType.light")
-            return SAppearenceType.light
+            mode.value = SAppearenceMode.preiOS13
+        }
+    }
+    
+    public static func get() -> SAppearenceMode {
+        if #available(iOS 13.0, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark {
+                return SAppearenceMode.dark
+            } else {
+                return SAppearenceMode.light
+            }
+        } else {
+            return SAppearenceMode.preiOS13
         }
     }
 }

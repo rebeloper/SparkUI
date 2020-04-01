@@ -27,6 +27,6 @@ public enum SCornerType {
     case topLeft, topRight, bottomLeft, bottomRight
 }
 
-public enum SAppearenceType {
-    case light, dark
+public enum SAppearenceMode: Int {
+    case none = 0, light = 1, dark = 2, preiOS13 = 3
 }
