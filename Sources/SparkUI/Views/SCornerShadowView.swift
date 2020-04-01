@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class SCornerShadowView: UIView {
+public class SCornerShadowView: SView {
     
     private var shadowRadius: CGFloat
     private var cornerRadius: CGFloat
