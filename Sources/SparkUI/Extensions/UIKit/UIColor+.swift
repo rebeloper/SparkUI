@@ -56,6 +56,8 @@ extension UIColor {
                 return .white
             case .dark:
                 return .black
+            @unknown default:
+                fatalError()
             }
         }
     }
@@ -69,6 +71,8 @@ extension UIColor {
                 return .black
             case .dark:
                 return .white
+            @unknown default:
+                fatalError()
             }
         }
     }
