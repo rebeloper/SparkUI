@@ -22,6 +22,7 @@ public struct SAppearance {
         } else {
             mode.value = SAppearenceMode.preiOS13
         }
+        print("SAppearance.mode changed to: \(mode.value)")
     }
     
     public static func get() -> SAppearenceMode {
