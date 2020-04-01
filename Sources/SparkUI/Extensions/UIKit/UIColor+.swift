@@ -53,9 +53,9 @@ extension UIColor {
             case .unspecified:
                 return .black
             case .light:
-                return .white
-            case .dark:
                 return .black
+            case .dark:
+                return .white
             @unknown default:
                 fatalError()
             }
@@ -68,9 +68,9 @@ extension UIColor {
             case .unspecified:
                 return .white
             case .light:
-                return .black
-            case .dark:
                 return .white
+            case .dark:
+                return .black
             @unknown default:
                 fatalError()
             }
