@@ -65,8 +65,7 @@ public class SCornerShadowView: SView {
         guard let hasUserInterfaceStyleChanged = previousTraitCollection?.hasDifferentColorAppearance(comparedTo: traitCollection) else { return }
         
         if hasUserInterfaceStyleChanged {
-            layer.sublayers?.forEach { $0.removeFromSuperlayer() }
-            insertShadowLayer()
+            layer.sublayers?.first?.shadowColor = shadowColor.cgColor
         }
     }
     
