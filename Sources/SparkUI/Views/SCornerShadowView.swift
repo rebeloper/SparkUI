@@ -56,5 +56,15 @@ public class SCornerShadowView: SView {
         }
     }
     
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard let hasUserInterfaceStyleChanged = previousTraitCollection.hasDifferentColorAppearance(comparedTo: traitCollection) else { return }
+        
+        if hasUserInterfaceStyleChanged {
+            layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        }
+    }
+    
 }
 
