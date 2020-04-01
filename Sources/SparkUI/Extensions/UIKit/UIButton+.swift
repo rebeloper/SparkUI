@@ -282,7 +282,7 @@ extension UIButton {
     }
     
     @discardableResult
-    open func isDisabled(_ isDisabled: Bool, textColor: UIColor = .white, backgroundColor: UIColor = .systemGray) -> UIButton {
+    open func isDisabled(_ isDisabled: Bool, textColor: UIColor = .systemWhite, backgroundColor: UIColor = .systemGray) -> UIButton {
         self.isEnabled = !isDisabled
         setTitleColor(textColor, for: .normal)
         self.backgroundColor = backgroundColor

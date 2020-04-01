@@ -22,7 +22,7 @@ extension UINavigationController {
             self.view.backgroundColor = UIColor.clear
         } else {
             self.navigationBar.isTranslucent = false
-            self.view.backgroundColor = UIColor.white
+            self.view.backgroundColor = UIColor.systemWhite
         }
         
     }

@@ -16,7 +16,7 @@ open class SSwipeToDeleteView: UIView {
     public let scrollingContainerView = UIView()
     public let containerView = UIView()
     
-    public let deleteLabel = UILabel().font(.boldSystemFont(ofSize: 17)).text(color: .white).text("Delete")
+    public let deleteLabel = UILabel().font(.boldSystemFont(ofSize: 17)).text(color: .systemWhite).text("Delete")
     public let deleteContainerView = UIView().setBackground(color: .systemRed)
     
     public var scrollView: UIScrollView?
