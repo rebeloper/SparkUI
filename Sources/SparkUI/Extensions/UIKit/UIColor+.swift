@@ -48,18 +48,28 @@ extension UIColor {
 
 extension UIColor {
     public static var systemBlack: UIColor {
-        if SAppearance.mode.value == SAppearenceMode.light {
-            return .white
-        } else {
-            return .black
+        return UIColor { (traitCollection) -> UIColor in
+            switch traitCollection.userInterfaceStyle {
+            case .unspecified:
+                return .black
+            case .light:
+                return .white
+            case .dark:
+                return .black
+            }
         }
     }
     
     public static var systemWhite: UIColor {
-        if SAppearance.mode.value == SAppearenceMode.dark {
-            return .black
-        } else {
-            return .white
+        return UIColor { (traitCollection) -> UIColor in
+            switch traitCollection.userInterfaceStyle {
+            case .unspecified:
+                return .white
+            case .light:
+                return .black
+            case .dark:
+                return .white
+            }
         }
     }
 }
