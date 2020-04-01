@@ -39,7 +39,10 @@ public class SCornerShadowView: SView {
     
     override open func layoutSubviews() {
         super.layoutSubviews()
-
+        insertShadowLayer()
+    }
+    
+    func insertShadowLayer() {
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
             
@@ -63,6 +66,7 @@ public class SCornerShadowView: SView {
         
         if hasUserInterfaceStyleChanged {
             layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+            insertShadowLayer()
         }
     }
     
