@@ -27,7 +27,8 @@ public class SAlertController {
         
         for textField in textFields {
             alert.addTextField(configurationHandler: { (theTextField) in
-                theTextField = textField
+                theTextField.placeholder = textField.placeholder
+                theTextField.autocapitalizationType = textField.autocapitalizationType
             })
         }
         
