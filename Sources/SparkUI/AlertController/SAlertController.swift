@@ -29,6 +29,7 @@ public class SAlertController {
             alert.addTextField(configurationHandler: { (theTextField) in
                 theTextField.placeholder = textField.placeholder
                 theTextField.autocapitalizationType = textField.autocapitalizationType
+                theTextField.font = textField.font
             })
         }
         
