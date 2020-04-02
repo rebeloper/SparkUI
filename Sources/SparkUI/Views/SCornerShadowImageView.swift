@@ -39,20 +39,34 @@ public class SCornerShadowImageView: UIImageView {
     
     override open func layoutSubviews() {
         super.layoutSubviews()
-
+        insertShadowLayer()
+    }
+    
+    func insertShadowLayer() {
+        
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
-            
-            shadowLayer.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
-            
-            shadowLayer.fillColor = shadowLayerFillColor.cgColor
-            shadowLayer.shadowColor = shadowColor.cgColor
-            shadowLayer.shadowPath = shadowLayer.path
-            shadowLayer.shadowOffset = shadowOffset
-            shadowLayer.shadowOpacity = Float(shadowOpacity)
-            shadowLayer.shadowRadius = shadowRadius
+        }
+        
+        shadowLayer.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
+        
+        shadowLayer.fillColor = shadowLayerFillColor.cgColor
+        shadowLayer.shadowColor = shadowColor.cgColor
+        shadowLayer.shadowPath = shadowLayer.path
+        shadowLayer.shadowOffset = shadowOffset
+        shadowLayer.shadowOpacity = Float(shadowOpacity)
+        shadowLayer.shadowRadius = shadowRadius
 
-            layer.insertSublayer(shadowLayer, at: 0)
+        layer.insertSublayer(shadowLayer, at: 0)
+    }
+    
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard let hasUserInterfaceStyleChanged = previousTraitCollection?.hasDifferentColorAppearance(comparedTo: traitCollection) else { return }
+        
+        if hasUserInterfaceStyleChanged {
+            layer.sublayers?.first?.removeFromSuperlayer()
         }
     }
     
