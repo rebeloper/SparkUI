@@ -27,7 +27,7 @@ public class SAlertController {
         
         for textField in textFields {
             alert.addTextField(configurationHandler: { (theTextField) in
-                theTextField.placeholder = textField.placeholder
+                theTextField = textF`ield
             })
         }
         
