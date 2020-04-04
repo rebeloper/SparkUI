@@ -301,6 +301,28 @@ extension UILabel {
         self.preferredMaxLayoutWidth = width
         return self
     }
+    
+    @discardableResult
+    open func lineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) -> UILabel {
+
+        let labelText = self.text ?? ""
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpacing
+        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+
+        let attributedString:NSMutableAttributedString
+        if let labelAttributedText = self.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: labelAttributedText)
+        } else {
+            attributedString = NSMutableAttributedString(string: labelText)
+        }
+        
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range: NSMakeRange(0, attributedString.length))
+
+        self.attributedText = attributedString
+        return self
+    }
 }
 
 

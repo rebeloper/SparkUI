@@ -291,5 +291,27 @@ extension SLabel {
         self.object.preferredMaxLayoutWidth = width
         return self
     }
+    
+    @discardableResult
+    open func lineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) -> SLabel {
+
+        let labelText = self.object.text ?? ""
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpacing
+        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+
+        let attributedString:NSMutableAttributedString
+        if let labelAttributedText = self.object.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: labelAttributedText)
+        } else {
+            attributedString = NSMutableAttributedString(string: labelText)
+        }
+        
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range: NSMakeRange(0, attributedString.length))
+
+        self.object.attributedText = attributedString
+        return self
+    }
 }
 
