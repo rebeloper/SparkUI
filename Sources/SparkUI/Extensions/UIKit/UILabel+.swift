@@ -303,7 +303,7 @@ extension UILabel {
     }
     
     @discardableResult
-    open func lineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) -> UILabel {
+    open func lineSpacing(_ lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) -> UILabel {
 
         let labelText = self.text ?? ""
 

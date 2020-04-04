@@ -293,7 +293,7 @@ extension SLabel {
     }
     
     @discardableResult
-    open func lineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) -> SLabel {
+    open func lineSpacing(_ lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) -> SLabel {
 
         let labelText = self.object.text ?? ""
 
