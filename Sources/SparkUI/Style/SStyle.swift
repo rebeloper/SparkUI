@@ -223,7 +223,7 @@ public struct STextFieldStyle<View: STextField> {
 
 extension STextField {
     
-    public convenience init<V>(placeholder: UILabel,
+    public convenience init<V>(placeholder: UILabel = UILabel(),
                                placeholderInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 4, right: 0),
                                placeholderAnimation: STextFieldPlaceholderAnimation = .fade,
                                sTextFieldBase: STextFieldBase = STextFieldBase(),

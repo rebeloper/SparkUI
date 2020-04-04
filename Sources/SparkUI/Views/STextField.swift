@@ -21,7 +21,7 @@ public class STextField: UIView {
     public var placeholder: UILabel
     public var placeholderAnimation: STextFieldPlaceholderAnimation
     
-    public init(placeholder: UILabel,
+    public init(placeholder: UILabel = UILabel(),
                 placeholderInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 4, right: 0),
                 placeholderAnimation: STextFieldPlaceholderAnimation = .fade,
                 sTextFieldBase: STextFieldBase = STextFieldBase(),
