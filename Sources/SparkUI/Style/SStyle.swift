@@ -223,8 +223,15 @@ public struct STextFieldStyle<View: STextField> {
 
 extension STextField {
     
-    public convenience init<V>(sTextFieldBase: STextFieldBase = STextFieldBase(), isSecure: Bool = false, underlined: Bool = false, underlineSpacing: CGFloat = 5, style: STextFieldStyle<V>) {
-        self.init(sTextFieldBase: sTextFieldBase, isSecure: isSecure, underlined: underlined, underlineSpacing: underlineSpacing)
+    public convenience init<V>(placeholder: UILabel,
+                               placeholderInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 4, right: 0),
+                               placeholderAnimation: STextFieldPlaceholderAnimation = .fade,
+                               sTextFieldBase: STextFieldBase = STextFieldBase(),
+                               isSecure: Bool = false,
+                               underlined: Bool = false,
+                               underlineSpacing: CGFloat = 5,
+                               style: STextFieldStyle<V>) {
+        self.init(placeholder: placeholder, placeholderInsets: placeholderInsets, placeholderAnimation: placeholderAnimation, sTextFieldBase: sTextFieldBase, isSecure: isSecure, underlined: underlined, underlineSpacing: underlineSpacing)
         apply(style)
     }
 

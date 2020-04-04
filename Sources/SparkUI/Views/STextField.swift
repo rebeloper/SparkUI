@@ -10,7 +10,7 @@ import ReactiveKit
 import Bond
 import Layoutless
 
-open class STextField: UIView {
+public class STextField: UIView {
     
     public var object: STextFieldBase!
     private let eyeButton = UIButton()
@@ -18,9 +18,27 @@ open class STextField: UIView {
         .size(CGSize(width: 30, height: 30))
     private let showingSecureText = Property(false)
     
-    public init(sTextFieldBase: STextFieldBase = STextFieldBase(), isSecure: Bool = false, underlined: Bool = false, underlineSpacing: CGFloat = 5) {
+    public var placeholder: UILabel
+    public var placeholderAnimation: STextFieldPlaceholderAnimation
+    
+    public init(placeholder: UILabel,
+                placeholderInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 4, right: 0),
+                placeholderAnimation: STextFieldPlaceholderAnimation = .fade,
+                sTextFieldBase: STextFieldBase = STextFieldBase(),
+                isSecure: Bool = false,
+                underlined: Bool = false,
+                underlineSpacing: CGFloat = 5) {
+        self.placeholder = placeholder
+        self.placeholderAnimation = placeholderAnimation
         self.object = sTextFieldBase
         super.init(frame: .zero)
+        
+        self.object.delegate = self
+        
+        stack(.horizontal)(
+            placeholder,
+            Spacer()
+            ).fillingParent(insets: placeholderInsets).layout(in: self)
         
         if isSecure {
             
@@ -89,5 +107,67 @@ open class STextField: UIView {
                     .image(UIImage(systemName: "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysTemplate))
             }
         }.dispose(in: bag)
+        
+    }
+    
+    func hidePlaceholder() {
+        switch self.placeholderAnimation {
+        case .fade:
+            UIView.animate(withDuration: 0.25) {
+                self.placeholder.alpha = 0.0
+            }
+        case .slideUp:
+            UIView.animate(withDuration: 0.25) {
+                self.placeholder.alpha = 0.6
+                self.placeholder.frame.origin.y -= 24
+                self.placeholder.frame.origin.x -= 12
+                self.placeholder.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            }
+        }
+    }
+    
+    func showPlaceholder() {
+        switch self.placeholderAnimation {
+        case .fade:
+            UIView.animate(withDuration: 0.25) {
+                self.placeholder.alpha = 1.0
+            }
+        case .slideUp:
+            UIView.animate(withDuration: 0.25) {
+                self.placeholder.alpha = 1.0
+                self.placeholder.frame.origin.y += 24
+                self.placeholder.frame.origin.x += 12
+                self.placeholder.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }
+        }
+    }
+    
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard let hasUserInterfaceStyleChanged = previousTraitCollection?.hasDifferentColorAppearance(comparedTo: traitCollection) else { return }
+        
+        if hasUserInterfaceStyleChanged {
+            // TODO: if appearance changes placeholder gets stuck
+        }
+    }
+    
+}
+
+extension STextField: UITextFieldDelegate {
+    
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        if text.isEmpty {
+            self.hidePlaceholder()
+        }
+        
+    }
+    
+    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        guard let text = textField.text else { return }
+        if text.isEmpty {
+            self.showPlaceholder()
+        }
     }
 }

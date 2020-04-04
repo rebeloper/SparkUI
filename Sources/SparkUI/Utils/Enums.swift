@@ -30,3 +30,7 @@ public enum SCornerType {
 public enum SAppearenceMode: Int {
     case none = 0, light = 1, dark = 2, preiOS13 = 3
 }
+
+public enum STextFieldPlaceholderAnimation {
+    case fade, slideUp
+}

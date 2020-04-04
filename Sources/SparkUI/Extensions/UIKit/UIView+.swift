@@ -447,13 +447,3 @@ extension UIView {
     }
 }
 
-extension UIView {
-    public func x() -> CGFloat {
-        return self.frame.origin.x + self.frame.size.width / 2
-    }
-    
-    public func y() -> CGFloat {
-        return self.frame.origin.y + self.frame.size.height / 2
-    }
-}
-
