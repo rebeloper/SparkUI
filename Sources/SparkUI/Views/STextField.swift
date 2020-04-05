@@ -21,16 +21,20 @@ public class STextField: UIView {
     public var placeholder: UILabel
     public var placeholderAnimation: STextFieldPlaceholderAnimation
     
+    public var actionButton: SNextButton?
+    
     public init(placeholder: UILabel = UILabel(),
                 placeholderInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 4, right: 0),
                 placeholderAnimation: STextFieldPlaceholderAnimation = .fade,
                 sTextFieldBase: STextFieldBase = STextFieldBase(),
                 isSecure: Bool = false,
                 underlined: Bool = false,
-                underlineSpacing: CGFloat = 5) {
+                underlineSpacing: CGFloat = 5,
+                actionButton: SNextButton? = nil) {
         self.placeholder = placeholder
         self.placeholderAnimation = placeholderAnimation
         self.object = sTextFieldBase
+        self.actionButton = actionButton
         super.init(frame: .zero)
         
         self.object.delegate = self
@@ -40,49 +44,105 @@ public class STextField: UIView {
             Spacer()
             ).fillingParent(insets: placeholderInsets).layout(in: self)
         
-        if isSecure {
+        if let actionButton = self.actionButton {
             
-            if underlined {
-                let underline = SDivider()
-                stack(.vertical)(
-                    stack(.horizontal)(
-                        sTextFieldBase,
-                        eyeButton,
-                        Spacer().setWidth(5)
-                    ),
-                    Spacer().setHeight(underlineSpacing),
-                    underline
+            if isSecure {
+                
+                if underlined {
+                    let underline = SDivider()
+                    stack(.vertical)(
+                        stack(.horizontal)(
+                            sTextFieldBase,
+                            eyeButton,
+                            Spacer().setWidth(5),
+                            actionButton
+                        ),
+                        Spacer().setHeight(underlineSpacing),
+                        underline
+                        ).fillingParent().layout(in: self)
+                } else {
+                    stack(.vertical)(
+                        stack(.horizontal)(
+                            sTextFieldBase,
+                            eyeButton,
+                            Spacer().setWidth(5),
+                            actionButton
+                        )
                     ).fillingParent().layout(in: self)
+                }
+                
+                self.isSecureTextEntry(true).keyboardType(.default)
+                
+                observe()
+                
             } else {
-                stack(.vertical)(
-                    stack(.horizontal)(
-                        sTextFieldBase,
-                        eyeButton,
-                        Spacer().setWidth(5)
-                    )
-                ).fillingParent().layout(in: self)
+                
+                if underlined {
+                    let underline = SDivider()
+                    stack(.vertical)(
+                        stack(.horizontal)(
+                            sTextFieldBase,
+                            actionButton
+                        ),
+                        Spacer().setHeight(underlineSpacing),
+                        underline
+                        ).fillingParent().layout(in: self)
+                } else {
+                    stack(.vertical)(
+                        stack(.horizontal)(
+                            sTextFieldBase,
+                            actionButton
+                        )
+                    ).fillingParent().layout(in: self)
+                }
             }
-            
-            self.isSecureTextEntry(true).keyboardType(.default)
-            
-            observe()
             
         } else {
             
-            if underlined {
-                let underline = SDivider()
-                stack(.vertical)(
-                    sTextFieldBase,
-                    Spacer().setHeight(underlineSpacing),
-                    underline
+            if isSecure {
+                
+                if underlined {
+                    let underline = SDivider()
+                    stack(.vertical)(
+                        stack(.horizontal)(
+                            sTextFieldBase,
+                            eyeButton,
+                            Spacer().setWidth(5)
+                        ),
+                        Spacer().setHeight(underlineSpacing),
+                        underline
+                        ).fillingParent().layout(in: self)
+                } else {
+                    stack(.vertical)(
+                        stack(.horizontal)(
+                            sTextFieldBase,
+                            eyeButton,
+                            Spacer().setWidth(5)
+                        )
                     ).fillingParent().layout(in: self)
+                }
+                
+                self.isSecureTextEntry(true).keyboardType(.default)
+                
+                observe()
+                
             } else {
-                stack(.vertical)(
-                    sTextFieldBase
-                ).fillingParent().layout(in: self)
+                
+                if underlined {
+                    let underline = SDivider()
+                    stack(.vertical)(
+                        sTextFieldBase,
+                        Spacer().setHeight(underlineSpacing),
+                        underline
+                        ).fillingParent().layout(in: self)
+                } else {
+                    stack(.vertical)(
+                        sTextFieldBase
+                    ).fillingParent().layout(in: self)
+                }
             }
+            
         }
-        
         
     }
     
