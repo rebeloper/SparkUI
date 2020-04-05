@@ -85,6 +85,7 @@ extension UIImageView {
     
     @discardableResult
     open func setImage(_ named: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil) -> UIImageView {
+        self.contentMode = contentMode
         if UIImage(named: named) != nil {
             self.image = UIImage(named: named)?.withRenderingMode(renderingMode)
         } else if let placeholderImage = placeholderImage {
@@ -95,6 +96,7 @@ extension UIImageView {
     
     @discardableResult
     open func setSystemImage(_ systemName: String, renderingMode: UIImage.RenderingMode = .alwaysTemplate, contentMode: UIView.ContentMode = .scaleAspectFit, placeholderImage: UIImage? = nil) -> UIImageView {
+        self.contentMode = contentMode
         if UIImage(systemName: systemName) != nil {
             self.image = UIImage(systemName: systemName)?.withRenderingMode(renderingMode)
         } else if let placeholderImage = placeholderImage {
