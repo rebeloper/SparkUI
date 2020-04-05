@@ -42,14 +42,14 @@ extension UISwitch {
     }
     
     @discardableResult
-    public func isOn(_ isOn: Bool = true) -> UISwitch {
-        self.isOn = isOn
+    public func setToOn(_ on: Bool = true, animated: Bool = true) -> UISwitch {
+        self.setOn(on, animated: animated)
         return self
     }
     
     @discardableResult
-    public func isOff(_ isOff: Bool = true) -> UISwitch {
-        self.isOn = !isOff
+    public func setToOff(_ off: Bool = true, animated: Bool = true) -> UISwitch {
+        self.setOn(!off, animated: animated)
         return self
     }
     

@@ -38,18 +38,6 @@ extension SSwitch {
     }
     
     @discardableResult
-    public func isOn(_ isOn: Bool = true) -> SSwitch {
-        object.isOn(isOn)
-        return self
-    }
-    
-    @discardableResult
-    public func isOff(_ isOff: Bool = true) -> SSwitch {
-        object.isOn(!isOff)
-        return self
-    }
-    
-    @discardableResult
     public func setSwitchBorder(width: CGFloat, color: UIColor) -> SSwitch {
         object.layer.borderWidth = width
         object.layer.cornerRadius = self.object.frame.height / 2
@@ -59,8 +47,14 @@ extension SSwitch {
     }
     
     @discardableResult
-    public func setOn(_ setOn: Bool, animated: Bool = true) -> SSwitch {
-        object.setOn(setOn, animated: animated)
+    public func setToOn(_ on: Bool, animated: Bool = true) -> SSwitch {
+        object.setOn(on, animated: animated)
+        return self
+    }
+    
+    @discardableResult
+    public func setToOff(_ off: Bool, animated: Bool = true) -> SSwitch {
+        object.setOn(!off, animated: animated)
         return self
     }
     
