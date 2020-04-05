@@ -62,13 +62,13 @@ public class SNextButton: UIView {
     }
     
     @discardableResult
-    public func enabled() -> SButton {
+    public func enabled() -> SNextButton {
         self.enable()
         return self
     }
     
     @discardableResult
-    public func disabled() -> SButton {
+    public func disabled() -> SNextButton {
         self.disable()
         return self
     }
