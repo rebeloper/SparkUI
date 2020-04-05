@@ -47,13 +47,13 @@ extension SSwitch {
     }
     
     @discardableResult
-    public func setToOn(_ on: Bool, animated: Bool = true) -> SSwitch {
+    public func setToOn(_ on: Bool = true, animated: Bool = true) -> SSwitch {
         object.setOn(on, animated: animated)
         return self
     }
     
     @discardableResult
-    public func setToOff(_ off: Bool, animated: Bool = true) -> SSwitch {
+    public func setToOff(_ off: Bool = true, animated: Bool = true) -> SSwitch {
         object.setOn(!off, animated: animated)
         return self
     }
