@@ -84,6 +84,26 @@ extension UIImageView {
     }
     
     @discardableResult
+    open func setImage(_ named: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil) -> UIImageView {
+        if UIImage(named: named) != nil {
+            self.image = UIImage(named: named)?.withRenderingMode(renderingMode)
+        } else if let placeholderImage = placeholderImage {
+            self.image = placeholderImage.withRenderingMode(renderingMode)
+        }
+        return self
+    }
+    
+    @discardableResult
+    open func setSystemImage(_ systemName: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFit, placeholderImage: UIImage? = nil) -> UIImageView {
+        if UIImage(systemName: systemName) != nil {
+            self.image = UIImage(systemName: systemName)?.withRenderingMode(renderingMode)
+        } else if let placeholderImage = placeholderImage {
+            self.image = placeholderImage.withRenderingMode(renderingMode)
+        }
+        return self
+    }
+    
+    @discardableResult
     open func isHidden(_ isHidden: Bool = true) -> UIImageView {
         self.isHidden = isHidden
         return self
