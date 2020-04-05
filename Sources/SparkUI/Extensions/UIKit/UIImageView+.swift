@@ -108,13 +108,19 @@ extension UIImageView {
     @discardableResult
     open func color(_ color: UIColor) -> UIImageView {
         self.image?.withRenderingMode(.alwaysTemplate)
-        self.image?.withTintColor(color)
+        self.tintColor = color
         return self
     }
     
     @discardableResult
     open func isHidden(_ isHidden: Bool = true) -> UIImageView {
         self.isHidden = isHidden
+        return self
+    }
+    
+    @discardableResult
+    open func renderingMode(_ renderingMode: UIImage.RenderingMode = .alwaysOriginal) -> UIImageView {
+        self.image?.withRenderingMode(renderingMode)
         return self
     }
     
