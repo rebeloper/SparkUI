@@ -180,7 +180,7 @@ public class STextField: UIView {
             UIView.animate(withDuration: 0.25) {
                 self.placeholder.alpha = 0.6
                 self.placeholder.frame.origin.y -= 24
-                self.placeholder.frame.origin.x -= self.placeholder.frame.width / 2 //12
+                self.placeholder.frame.origin.x -= 12
                 self.placeholder.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
             }
         }
@@ -196,7 +196,7 @@ public class STextField: UIView {
             UIView.animate(withDuration: 0.25) {
                 self.placeholder.alpha = 1.0
                 self.placeholder.frame.origin.y += 24
-                self.placeholder.frame.origin.x += self.placeholder.frame.width / 2 //12
+                self.placeholder.frame.origin.x += 12
                 self.placeholder.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             }
         }
