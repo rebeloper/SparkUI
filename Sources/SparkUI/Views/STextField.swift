@@ -205,7 +205,7 @@ public class STextField: UIView {
                 self.placeholder.alpha = 1.0
                 self.placeholder.frame.origin.y += 24
                 self.placeholder.frame.origin.x += movementOnX
-                self.placeholder.transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
+                self.placeholder.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             }
         }
     }
