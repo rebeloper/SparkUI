@@ -106,7 +106,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    open func color(_ color: UIColor) -> UIImageView {
+    open func tintColor(_ color: UIColor) -> UIImageView {
         self.tintColor = color
         return self
     }
