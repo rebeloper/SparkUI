@@ -34,7 +34,7 @@ public class SNextButton: UIView {
         .text(color: .systemBlue),
         accessoryView: UIView = UIImageView()
         .setSystemImage("chevron.right")
-        .tintColor(.systemBlue)
+        .templateImageColor(.systemBlue)
         .size(CGSize(width: 22, height: 28))) {
         
         object = uiView

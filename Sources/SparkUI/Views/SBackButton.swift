@@ -34,7 +34,7 @@ public class SBackButton: UIView {
         .text(color: .systemBlue),
         accessoryView: UIView = UIImageView()
         .setSystemImage("chevron.left")
-        .tintColor(.systemBlue)
+        .templateImageColor(.systemBlue)
         .size(CGSize(width: 22, height: 28))) {
         
         object = uiView
