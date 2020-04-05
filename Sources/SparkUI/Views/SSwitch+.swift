@@ -38,7 +38,7 @@ extension SSwitch {
     }
     
     @discardableResult
-    public func isOn(_ isOn: Bool) -> SSwitch {
+    public func isOn(_ isOn: Bool = true) -> SSwitch {
         object.isOn(isOn)
         return self
     }
