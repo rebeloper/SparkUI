@@ -11,7 +11,7 @@ public class SImageView: UIView {
     
     public var object: UIImageView!
     
-    public init(uiImageView: UIImageView) {
+    public init(uiImageView: UIImageView = UIImageView()) {
         self.object = uiImageView
         super.init(frame: .zero)
         
