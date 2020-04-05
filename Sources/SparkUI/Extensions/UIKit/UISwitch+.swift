@@ -42,8 +42,23 @@ extension UISwitch {
     }
     
     @discardableResult
-    public func isOn(_ isOn: Bool) -> UISwitch {
+    public func isOn(_ isOn: Bool = true) -> UISwitch {
         self.isOn = isOn
+        return self
+    }
+    
+    @discardableResult
+    public func isOff(_ isOff: Bool = true) -> UISwitch {
+        self.isOn = !isOff
+        return self
+    }
+    
+    @discardableResult
+    public func setSwitchBorder(width: CGFloat, color: UIColor) -> UISwitch {
+        layer.borderWidth = width
+        layer.cornerRadius = self.frame.height / 2
+        layer.borderColor = color.cgColor
+        layer.masksToBounds = true
         return self
     }
     

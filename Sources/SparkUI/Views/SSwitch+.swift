@@ -44,6 +44,12 @@ extension SSwitch {
     }
     
     @discardableResult
+    public func isOff(_ isOff: Bool = true) -> SSwitch {
+        object.isOn(!isOff)
+        return self
+    }
+    
+    @discardableResult
     public func setSwitchBorder(width: CGFloat, color: UIColor) -> SSwitch {
         object.layer.borderWidth = width
         object.layer.cornerRadius = self.object.frame.height / 2
