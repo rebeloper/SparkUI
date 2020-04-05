@@ -177,11 +177,15 @@ public class STextField: UIView {
                 self.placeholder.alpha = 0.0
             }
         case .slideUp:
+            let scaleFactor = 0.8
+            let placeholdeLabelHalfWidth = self.placeholder.frame.width / 2
+            let smallPlaceholdeLabelHalfWidth = placeholdeLabelHalfWidth * scaleFactor
+            let movementOnX = placeholdeLabelHalfWidth - smallPlaceholdeLabelHalfWidth + 12
             UIView.animate(withDuration: 0.25) {
                 self.placeholder.alpha = 0.6
                 self.placeholder.frame.origin.y -= 24
-                self.placeholder.frame.origin.x -= 12
-                self.placeholder.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                self.placeholder.frame.origin.x -= movementOnX
+                self.placeholder.transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
             }
         }
     }
@@ -193,11 +197,15 @@ public class STextField: UIView {
                 self.placeholder.alpha = 1.0
             }
         case .slideUp:
+            let scaleFactor = 0.8
+            let placeholdeLabelHalfWidth = self.placeholder.frame.width / 2
+            let smallPlaceholdeLabelHalfWidth = placeholdeLabelHalfWidth * scaleFactor
+            let movementOnX = placeholdeLabelHalfWidth - smallPlaceholdeLabelHalfWidth + 12
             UIView.animate(withDuration: 0.25) {
                 self.placeholder.alpha = 1.0
                 self.placeholder.frame.origin.y += 24
-                self.placeholder.frame.origin.x += 12
-                self.placeholder.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                self.placeholder.frame.origin.x += movementOnX
+                self.placeholder.transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
             }
         }
     }
