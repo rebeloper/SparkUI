@@ -177,7 +177,7 @@ public class STextField: UIView {
                 self.placeholder.alpha = 0.0
             }
         case .slideUp:
-            let scaleFactor = 0.8
+            let scaleFactor: CGFloat = 0.8
             let placeholdeLabelHalfWidth = self.placeholder.frame.width / 2
             let smallPlaceholdeLabelHalfWidth = placeholdeLabelHalfWidth * scaleFactor
             let movementOnX = placeholdeLabelHalfWidth - smallPlaceholdeLabelHalfWidth + 12
@@ -197,7 +197,7 @@ public class STextField: UIView {
                 self.placeholder.alpha = 1.0
             }
         case .slideUp:
-            let scaleFactor = 0.8
+            let scaleFactor: CGFloat = 0.8
             let placeholdeLabelHalfWidth = self.placeholder.frame.width / 2
             let smallPlaceholdeLabelHalfWidth = placeholdeLabelHalfWidth * scaleFactor
             let movementOnX = placeholdeLabelHalfWidth - smallPlaceholdeLabelHalfWidth + 12
