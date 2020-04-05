@@ -97,7 +97,6 @@ extension SImageView {
     
     @discardableResult
     open func color(_ color: UIColor) -> SImageView {
-        self.object.image?.withRenderingMode(.alwaysTemplate)
         self.object.tintColor = color
         return self
     }
@@ -105,12 +104,6 @@ extension SImageView {
     @discardableResult
     open func isHidden(_ isHidden: Bool = true) -> SImageView {
         self.object.isHidden = isHidden
-        return self
-    }
-    
-    @discardableResult
-    open func renderingMode(_ renderingMode: UIImage.RenderingMode = .alwaysOriginal) -> SImageView {
-        self.object.image?.withRenderingMode(renderingMode)
         return self
     }
     
