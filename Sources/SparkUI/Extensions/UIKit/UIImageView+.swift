@@ -94,12 +94,19 @@ extension UIImageView {
     }
     
     @discardableResult
-    open func setSystemImage(_ systemName: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFit, placeholderImage: UIImage? = nil) -> UIImageView {
+    open func setSystemImage(_ systemName: String, renderingMode: UIImage.RenderingMode = .alwaysTemplate, contentMode: UIView.ContentMode = .scaleAspectFit, placeholderImage: UIImage? = nil) -> UIImageView {
         if UIImage(systemName: systemName) != nil {
             self.image = UIImage(systemName: systemName)?.withRenderingMode(renderingMode)
         } else if let placeholderImage = placeholderImage {
             self.image = placeholderImage.withRenderingMode(renderingMode)
         }
+        return self
+    }
+    
+    @discardableResult
+    open func color(_ color: UIColor) -> UIImageView {
+        self.image?.withRenderingMode(.alwaysTemplate)
+        self.image?.withTintColor(color)
         return self
     }
     
