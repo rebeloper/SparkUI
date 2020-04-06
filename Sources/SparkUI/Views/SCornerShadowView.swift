@@ -57,8 +57,7 @@ public class SCornerShadowView: SView {
         shadowLayer.shadowOpacity = Float(shadowOpacity)
         shadowLayer.shadowRadius = shadowRadius
         shadowLayer.shouldRasterize = true
-
-        layer.shouldRasterize = true
+        
         layer.insertSublayer(shadowLayer, at: 0)
     }
     

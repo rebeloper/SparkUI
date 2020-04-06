@@ -56,6 +56,7 @@ public class SCornerShadowImageView: UIImageView {
         shadowLayer.shadowOffset = shadowOffset
         shadowLayer.shadowOpacity = Float(shadowOpacity)
         shadowLayer.shadowRadius = shadowRadius
+        shadowLayer.shouldRasterize = true
 
         layer.insertSublayer(shadowLayer, at: 0)
     }
