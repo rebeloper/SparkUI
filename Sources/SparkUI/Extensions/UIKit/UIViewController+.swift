@@ -8,10 +8,11 @@
 import UIKit
 
 extension UIViewController {
-    func setTabBarVisible(_ visible: Bool, animated: Bool = true, duration: TimeInterval = 0.3) {
+    public func hideTabBar(_ hidden: Bool, animated: Bool = true, duration: TimeInterval = 0.3) {
 
         //* This cannot be called before viewDidLayoutSubviews(), because the frame is not set before this time
-
+        
+        let visible = !hidden
         // bail if the current state matches the desired state
         if (tabBarIsVisible() == visible) { return }
 
@@ -33,7 +34,7 @@ extension UIViewController {
         
     }
 
-    func tabBarIsVisible() -> Bool {
+    public func tabBarIsVisible() -> Bool {
         return (self.tabBarController?.tabBar.frame.origin.y)! < self.view.frame.maxY
     }
 
