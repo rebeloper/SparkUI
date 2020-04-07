@@ -14,7 +14,7 @@ extension UIViewController {
         
         let visible = !hidden
         // bail if the current state matches the desired state
-        if (tabBarIsVisible() == visible) { return }
+        if (isTabBarVisible() == visible) { return }
 
         // get a frame calculation ready
         let frame = self.tabBarController?.tabBar.frame
@@ -34,7 +34,7 @@ extension UIViewController {
         
     }
 
-    public func tabBarIsVisible() -> Bool {
+    public func isTabBarVisible() -> Bool {
         return (self.tabBarController?.tabBar.frame.origin.y)! < self.view.frame.maxY
     }
 
