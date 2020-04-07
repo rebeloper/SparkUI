@@ -13,6 +13,8 @@ extension UIViewController {
 
         //* This cannot be called before viewDidLayoutSubviews(), because the frame is not set before this time
         
+        //* make sure that your view controller's view is not pinned to the safe area at the bottom
+        
         let visible = !hidden
         // bail if the current state matches the desired state
         if (isTabBarVisible() == visible) { return }
