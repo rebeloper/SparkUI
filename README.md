@@ -1,3 +1,3 @@
-# ✨ SparkUI
+# 🧙‍♂️ SparkUI
 
-A description of this package.
+Build iOS apps at lightning speed
