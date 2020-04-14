@@ -10,6 +10,10 @@ import ReactiveKit
 
 open class SImagePickerViewController: SViewController {
     public var imagePickerControllerImage = Property(UIImage())
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.resetTransparencyToDefault()
+    }
 }
 
 extension SImagePickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -39,11 +43,11 @@ extension SImagePickerViewController: UIImagePickerControllerDelegate, UINavigat
             let image = originalImage.withRenderingMode(.alwaysOriginal)
             self.imagePickerControllerImage.value = image
         }
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("imagePickerControllerDidCancel")
+        dismiss(animated: true)
     }
     
 }
