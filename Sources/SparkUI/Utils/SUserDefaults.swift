@@ -40,4 +40,8 @@ public struct SUserDefaults {
         }
     }
     
+    public static func resetFirstLaunch() {
+        wasFirstLaunch.wrappedValue = false
+    }
+    
 }
