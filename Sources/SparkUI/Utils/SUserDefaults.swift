@@ -21,11 +21,23 @@ public struct SUserDefaults {
         let count = UserDefaults.standard.dictionaryRepresentation().keys.count
         let keys = Array(UserDefaults.standard.dictionaryRepresentation().keys)
         let values = Array(UserDefaults.standard.dictionaryRepresentation().values)
-        print("--------- sUserDefaults ---------")
+        print("--------- UserDefaults ---------")
         for i in 0..<count {
             print("\(keys[i]) -> \(values[i])")
         }
-        print("--------- sUserDefaults End ---------")
+        print("--------- UserDefaults End ---------")
+    }
+    
+    private static var wasFirstLaunch = SUserDefault(key: "wasFirstLaunch", initialValue: false)
+    
+    public static func doUponFirstLaunch(completion: @escaping () -> ()) {
+        if !wasFirstLaunch.value {
+            wasFirstLaunch.value = true
+            print("UserDefaults: wasFirstLaunch -> true")
+            completion()
+        } else {
+            print("UserDefaults: wasFirstLaunch -> false")
+        }
     }
     
 }
