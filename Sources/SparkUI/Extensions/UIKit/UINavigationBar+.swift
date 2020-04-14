@@ -25,7 +25,7 @@ extension UINavigationBar {
     public func resetTransparencyToDefault() {
         setBackgroundImage(nil, for: .default)
         shadowImage = nil
-        backgroundColor = .systemBackground
+        backgroundColor = nil
     }
     
 }
