@@ -28,7 +28,7 @@ public struct SUserDefaults {
         print("--------- UserDefaults End ---------")
     }
     
-    private static var wasFirstLaunch = SUserDefault(key: "wasFirstLaunch", initialValue: false)
+    public static var wasFirstLaunch = SUserDefault(key: "wasFirstLaunch", initialValue: false)
     
     public static func doUponFirstLaunch(completion: @escaping () -> ()) {
         if !wasFirstLaunch.wrappedValue {
