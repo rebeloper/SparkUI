@@ -8,16 +8,16 @@
 import UIKit
 
 extension UINavigationBar {
-    public func setTransparent(_ transparent: Bool) {
-        if transparent {
-            setBackgroundImage(UIImage(), for: .default)
-            shadowImage = UIImage()
-            isTranslucent = true
-            backgroundColor = .clear
-        } else {
-            setBackgroundImage(nil, for: .default)
-            shadowImage = nil
-            backgroundColor = nil
-        }
+    public func transparent() {
+        setBackgroundImage(UIImage(), for: .default)
+        shadowImage = UIImage()
+        isTranslucent = true
+        backgroundColor = .clear
+    }
+    
+    public func resetTransparency(to backgroundColor: UIColor? = nil) {
+        setBackgroundImage(nil, for: .default)
+        shadowImage = nil
+        self.backgroundColor = backgroundColor
     }
 }
