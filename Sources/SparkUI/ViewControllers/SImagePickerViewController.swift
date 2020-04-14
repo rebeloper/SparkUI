@@ -24,8 +24,8 @@ extension SImagePickerViewController: UIImagePickerControllerDelegate, UINavigat
     }
     
     public func showImagePickerController(sourceType: UIImagePickerController.SourceType, allowsEditing: Bool = true) {
-        navigationController?.navigationBar.resetTransparencyToDefault()
         let imagePickerController = UIImagePickerController()
+        imagePickerController.navigationBar.resetTransparencyToDefault()
         imagePickerController.delegate = self
         imagePickerController.allowsEditing = allowsEditing
         imagePickerController.sourceType = sourceType
