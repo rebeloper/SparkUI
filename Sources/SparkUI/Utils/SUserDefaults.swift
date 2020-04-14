@@ -42,6 +42,7 @@ public struct SUserDefaults {
     
     public static func resetFirstLaunch() {
         wasFirstLaunch.wrappedValue = false
+        print("UserDefaults: reset wasFirstLaunch.wrappedValue = false")
     }
     
 }
