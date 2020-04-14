@@ -29,7 +29,7 @@ public class STextField: UIView {
                 sTextFieldBase: STextFieldBase = STextFieldBase(),
                 isSecure: Bool = false,
                 underlined: Bool = false,
-                underlineSpacing: CGFloat = 4,
+                underlineSpacing: CGFloat = 5,
                 actionButton: SNextButton? = nil) {
         self.placeholder = placeholder
         self.placeholderAnimation = placeholderAnimation
