@@ -31,12 +31,12 @@ public struct SUserDefaults {
     private static var wasFirstLaunch = SUserDefault(key: "wasFirstLaunch", initialValue: false)
     
     public static func doUponFirstLaunch(completion: @escaping () -> ()) {
-        if !wasFirstLaunch.value {
-            wasFirstLaunch.value = true
-            print("UserDefaults: wasFirstLaunch -> true")
+        if !wasFirstLaunch.wrappedValue {
+            wasFirstLaunch.wrappedValue = true
+            print("UserDefaults: wasFirstLaunch.wrappedValue = true")
             completion()
         } else {
-            print("UserDefaults: wasFirstLaunch -> false")
+            print("UserDefaults: wasFirstLaunch.wrappedValue = false")
         }
     }
     

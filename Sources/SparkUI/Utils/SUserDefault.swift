@@ -17,7 +17,7 @@ public struct SUserDefault<T: Codable> {
         self.initialValue = initialValue
     }
 
-    public var value: T {
+    public var wrappedValue: T {
         get {
             // Read value from UserDefaults
             guard let data = UserDefaults.standard.object(forKey: key) as? Data else {
