@@ -8,7 +8,7 @@
 import UIKit
 import ReactiveKit
 
-public class SImagePickerViewController: SViewController {
+open class SImagePickerViewController: SViewController {
     public var imagePickerControllerImage = Property(UIImage())
 }
 

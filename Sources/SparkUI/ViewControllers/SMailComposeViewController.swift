@@ -7,7 +7,7 @@
 
 import MessageUI
 
-public class SMailComposeViewController: MFMailComposeViewController {
+open class SMailComposeViewController: MFMailComposeViewController {
     
     public init(recipients: [String]?, subject: String = "", messageBody: String = "", messageBodyIsHTML: Bool = false) {
         super.init(nibName: nil, bundle: nil)
