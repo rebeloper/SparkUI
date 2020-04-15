@@ -221,11 +221,13 @@ public class STextField: UIView {
     }
     
     public func setText(_ text: String) {
-        SDispatchQueue.delay(bySeconds: 0.25) {
-            self.hidePlaceholder()
-        }
-        SDispatchQueue.delay(bySeconds: 0.5) {
-            self.text(text)
+        if text != "" {
+            SDispatchQueue.delay(bySeconds: 0.25) {
+                self.hidePlaceholder()
+            }
+            SDispatchQueue.delay(bySeconds: 0.5) {
+                self.text(text)
+            }
         }
     }
     
