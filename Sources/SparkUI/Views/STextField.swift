@@ -225,7 +225,7 @@ public class STextField: UIView {
             self.hidePlaceholder()
         }
         SDispatchQueue.delay(bySeconds: 0.5) {
-            self.text(profile.name)
+            self.text(text)
         }
     }
     
