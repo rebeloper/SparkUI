@@ -170,7 +170,7 @@ public class STextField: UIView {
         
     }
     
-    func hidePlaceholder() {
+    public func hidePlaceholder() {
         switch self.placeholderAnimation {
         case .fade:
             UIView.animate(withDuration: 0.25) {
@@ -190,7 +190,7 @@ public class STextField: UIView {
         }
     }
     
-    func showPlaceholder() {
+    public func showPlaceholder() {
         switch self.placeholderAnimation {
         case .fade:
             UIView.animate(withDuration: 0.25) {
