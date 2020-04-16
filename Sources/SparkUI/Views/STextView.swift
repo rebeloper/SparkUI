@@ -42,7 +42,7 @@ extension STextView {
         return self
     }
     
-    public func limitToMaximumNumberOfLines(_ textView: UITextView, replacementText text: String) -> Bool {
+    public static func limitToMaximumNumberOfLines(_ textView: UITextView, replacementText text: String) -> Bool {
         let existingLines = textView.text.components(separatedBy: CharacterSet.newlines)
         let newLines = text.components(separatedBy: CharacterSet.newlines)
         let linesAfterChange = existingLines.count + newLines.count - 1
