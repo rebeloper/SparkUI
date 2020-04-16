@@ -31,10 +31,22 @@ extension STextView {
         return self
     }
     
+    // to line limit to work make sure you set the UITextView delegate to the view / cell and
+    // set
+    // func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    //     return STextView.limitToMaximumNumberOfLines(textView, replacementText: text)
+    // }
     @discardableResult
     open func lineLimit(_ maximumNumberOfLines: Int) -> STextView {
         self.textContainer.maximumNumberOfLines = maximumNumberOfLines
         return self
+    }
+    
+    public func limitToMaximumNumberOfLines(_ textView: UITextView, replacementText text: String) -> Bool {
+        let existingLines = textView.text.components(separatedBy: CharacterSet.newlines)
+        let newLines = text.components(separatedBy: CharacterSet.newlines)
+        let linesAfterChange = existingLines.count + newLines.count - 1
+        return linesAfterChange <= textView.textContainer.maximumNumberOfLines
     }
     
     @discardableResult
