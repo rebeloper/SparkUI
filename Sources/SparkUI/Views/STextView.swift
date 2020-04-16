@@ -31,29 +31,21 @@ extension STextView {
         return self
     }
     
-    public static func applyLimits(maximumNumberOfLines: Int? = nil, maximumNumberOfCharacters: Int? = nil, textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
+    public static func applyLimits(maximumNumberOfLines: Int = Int.max, maximumNumberOfCharacters: Int = Int.max, textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         let numberOfCharacters = newText.count
-        if let maximumNumberOfCharacters = maximumNumberOfCharacters {
-            if numberOfCharacters <= maximumNumberOfCharacters {
-                let existingLines = textView.text.components(separatedBy: CharacterSet.newlines)
-                let newLines = text.components(separatedBy: CharacterSet.newlines)
-                let linesAfterChange = existingLines.count + newLines.count - 1
-                if(text == "\n") {
-                    if let maximumNumberOfLines = maximumNumberOfLines {
-                        return linesAfterChange <= maximumNumberOfLines
-                    } else {
-                        return true
-                    }
-                }
+        if numberOfCharacters <= maximumNumberOfCharacters {
+            let existingLines = textView.text.components(separatedBy: CharacterSet.newlines)
+            let newLines = text.components(separatedBy: CharacterSet.newlines)
+            let linesAfterChange = existingLines.count + newLines.count - 1
+            if(text == "\n") {
+                return linesAfterChange <= maximumNumberOfLines
             } else {
-                return false
+                return true
             }
         } else {
-            return true
+            return false
         }
-        
     }
     
     @discardableResult
