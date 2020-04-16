@@ -32,18 +32,18 @@ extension STextView {
     }
     
     public static func applyLimits(maximumNumberOfLines: Int = Int.max, maximumNumberOfCharacters: Int = Int.max, textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        textView.textContainer.lineBreakMode = .byTruncatingTail
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         let numberOfCharacters = newText.count
         if numberOfCharacters <= maximumNumberOfCharacters {
             let existingLines = textView.text.components(separatedBy: CharacterSet.newlines)
             let newLines = text.components(separatedBy: CharacterSet.newlines)
             let linesAfterChange = existingLines.count + newLines.count - 1
-            if(text == "\n") {
-                return linesAfterChange <= maximumNumberOfLines
-            } else {
-                return true
-            }
+//            if(text == "\n") {
+//                return linesAfterChange <= maximumNumberOfLines
+//            } else {
+//                return true
+//            }
+            return linesAfterChange <= maximumNumberOfLines
         } else {
             return false
         }
