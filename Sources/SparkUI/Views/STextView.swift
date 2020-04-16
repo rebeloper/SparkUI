@@ -18,11 +18,11 @@ extension STextView {
         return self
     }
     
-    @discardableResult
-    open func textColor(_ textColor: UIColor) -> STextView {
-        self.textColor = textColor
-        return self
-    }
+//    @discardableResult
+//    open func textColor(_ textColor: UIColor) -> STextView {
+//        self.textColor = textColor
+//        return self
+//    }
     
     @discardableResult
     open func placeholder(_ placeholder: String, color: UIColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)) -> STextView {
