@@ -38,12 +38,12 @@ extension STextView {
             let existingLines = textView.text.components(separatedBy: CharacterSet.newlines)
             let newLines = text.components(separatedBy: CharacterSet.newlines)
             let linesAfterChange = existingLines.count + newLines.count - 1
-//            if(text == "\n") {
-//                return linesAfterChange <= maximumNumberOfLines
-//            } else {
-//                return true
-//            }
-            return linesAfterChange <= maximumNumberOfLines
+            if(text == "\n") {
+                return linesAfterChange <= maximumNumberOfLines
+            } else {
+                return true
+            }
+//            return linesAfterChange <= maximumNumberOfLines
         } else {
             return false
         }
