@@ -19,8 +19,8 @@ extension STextView {
     }
     
     @discardableResult
-    open func text(color: UIColor) -> STextView {
-        textColor = color
+    open func textColor(_ textColor: UIColor) -> STextView {
+        self.textColor = textColor
         return self
     }
     
