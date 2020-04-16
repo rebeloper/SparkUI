@@ -31,16 +31,14 @@ extension STextView {
         return self
     }
     
-    public static func applyLimits(maximumNumberOfLines: Int?, maximumNumberOfCharacters: Int?, textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    public static func applyLimits(maximumNumberOfLines: Int? = nil, maximumNumberOfCharacters: Int? = nil, textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let existingLines = textView.text.components(separatedBy: CharacterSet.newlines)
         let newLines = text.components(separatedBy: CharacterSet.newlines)
         let linesAfterChange = existingLines.count + newLines.count - 1
-        if(text == "\n") {
-            if let maximumNumberOfLines = maximumNumberOfLines {
-                return linesAfterChange <= maximumNumberOfLines
-            } else {
-                return true
-            }
+        if let maximumNumberOfLines = maximumNumberOfLines {
+            return linesAfterChange <= maximumNumberOfLines
+        } else {
+            return true
         }
 
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
