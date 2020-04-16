@@ -43,7 +43,12 @@ extension STextView {
 //            } else {
 //                return true
 //            }
-            return linesAfterChange <= maximumNumberOfLines
+//            return linesAfterChange <= maximumNumberOfLines
+            if linesAfterChange <= maximumNumberOfLines {
+                return true
+            } else {
+                return false
+            }
         } else {
             return false
         }
