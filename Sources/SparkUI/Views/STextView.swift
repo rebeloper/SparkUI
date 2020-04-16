@@ -20,7 +20,7 @@ extension STextView {
     
     @discardableResult
     open func text(color: UIColor) -> STextView {
-        self.textColor = color
+        textColor = color
         return self
     }
     
