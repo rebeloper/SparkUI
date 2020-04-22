@@ -11,4 +11,10 @@ extension UITextField {
     public func selectAll() {
         self.selectedTextRange = self.textRange(from: self.beginningOfDocument, to: self.endOfDocument)
     }
+    
+    @discardableResult
+    public func autocorrectionType(_ autocorrectionType: UITextAutocorrectionType) -> STextField {
+        self.autocorrectionType = autocorrectionType
+        return self
+    }
 }

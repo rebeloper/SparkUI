@@ -199,5 +199,11 @@ extension STextField {
         return self
     }
     
+    @discardableResult
+    public func autocorrectionType(_ autocorrectionType: UITextAutocorrectionType) -> STextField {
+        object.autocorrectionType = autocorrectionType
+        return self
+    }
+    
 }
 

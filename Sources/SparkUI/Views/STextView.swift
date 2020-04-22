@@ -195,5 +195,11 @@ extension STextView {
         self.delegate = delegate as? UITextViewDelegate
         return self
     }
+    
+    @discardableResult
+    public func autocorrectionType(_ autocorrectionType: UITextAutocorrectionType) -> STextView {
+        self.autocorrectionType = autocorrectionType
+        return self
+    }
 }
 
