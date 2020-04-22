@@ -13,7 +13,7 @@ extension UITextField {
     }
     
     @discardableResult
-    public func autocorrectionType(_ autocorrectionType: UITextAutocorrectionType) -> STextField {
+    public func autocorrectionType(_ autocorrectionType: UITextAutocorrectionType) -> UITextField {
         self.autocorrectionType = autocorrectionType
         return self
     }
