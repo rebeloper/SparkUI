@@ -12,7 +12,19 @@ import Layoutless
 
 open class SWebViewController: SViewController {
     
-    public var url: String!
+    public init(url: String, safeArea: SSafeArea = .none) {
+        super.init(safeArea: safeArea)
+        
+        guard let url = URL(string: url) else { return }
+        let urlRequest = URLRequest(url: url)
+        webView.load(urlRequest)
+
+        title = "Loading..."
+    }
+    
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     public lazy var webView: WKWebView = {
         let view = WKWebView()
@@ -38,16 +50,6 @@ open class SWebViewController: SViewController {
     override open func continueViewDidLoad() {
         super.continueViewDidLoad()
         setupNavigation()
-    }
-    
-    override open func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        guard let url = URL(string: url) else { return }
-        let urlRequest = URLRequest(url: url)
-        webView.load(urlRequest)
-        
-        title = "Loading..."
     }
     
     fileprivate func setupNavigation() {
