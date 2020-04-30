@@ -10,6 +10,15 @@ import Layoutless
 
 public typealias Hud = SHud
 
+public enum SHudDelay: Double {
+    case none = 0.0
+    case mini = 1.0
+    case short = 2.0
+    case normal = 3.0
+    case long = 4.0
+    case extraLong = 5.0
+}
+
 open class SHud {
     public static let apply = SHud()
     
@@ -149,13 +158,15 @@ open class SHud {
         completion()
     }
     
-    public func hide(completion: @escaping () -> () = {}) {
-        UIView.animate(withDuration: self.animationDuration, animations: {
-            self.backgroundView.alpha = 0.0
-        }) { finished in
-            self.activityIndicatorView.stopAnimating()
-            self.backgroundView.removeFromSuperview()
-            completion()
+    public func hide(with delay: SHudDelay = .none, completion: @escaping () -> () = {}) {
+        SDispatchQueue.delay(bySeconds: delay.rawValue) {
+            UIView.animate(withDuration: self.animationDuration, animations: {
+                self.backgroundView.alpha = 0.0
+            }) { finished in
+                self.activityIndicatorView.stopAnimating()
+                self.backgroundView.removeFromSuperview()
+                completion()
+            }
         }
     }
     
@@ -166,7 +177,7 @@ open class SHud {
         }
     }
     
-    public func hideWithSuccessAlert(message: String,completion: @escaping () -> () = {}) {
+    public func hideWithSuccessAlert(message: String, completion: @escaping () -> () = {}) {
         hide {
             SAlertController.showSuccess(message: message)
             completion()
@@ -184,6 +195,38 @@ open class SHud {
         hide {
             SAlertController.showError(message: message)
             completion()
+        }
+    }
+    
+    public func hide(with delay: SHudDelay = .short, title: String, message: String, completion: @escaping () -> () = {}) {
+        update(title: title, message: message) {
+            self.hide(with: delay) {
+                completion()
+            }
+        }
+    }
+    
+    public func hideWithSuccess(with delay: SHudDelay = .short, message: String, completion: @escaping () -> () = {}) {
+        update(title: "Success", message: message) {
+            self.hide(with: delay) {
+                completion()
+            }
+        }
+    }
+    
+    public func hideWithWarning(with delay: SHudDelay = .short, message: String, completion: @escaping () -> () = {}) {
+        update(title: "Warning", message: message) {
+            self.hide(with: delay) {
+                completion()
+            }
+        }
+    }
+    
+    public func hideWithError(with delay: SHudDelay = .short, message: String, completion: @escaping () -> () = {}) {
+        update(title: "Error", message: message) {
+            self.hide(with: delay) {
+                completion()
+            }
         }
     }
     
