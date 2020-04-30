@@ -13,7 +13,7 @@ extension UIApplication {
             if self.shared.canOpenURL(url) {
                 self.shared.open(url)
             } else {
-                SAlertController.showError(message: "Could not open Mail app")
+                Alert.showError(message: "Could not open Mail app")
             }
         }
     }

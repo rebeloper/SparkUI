@@ -172,28 +172,28 @@ open class SHud {
     
     public func hideWithAlert(title: String, message: String, completion: @escaping () -> () = {}) {
         hide {
-            SAlertController.showAlert(style: .alert, title: title, message: message)
+            Alert.show(.alert, title: title, message: message)
             completion()
         }
     }
     
     public func hideWithSuccessAlert(message: String, completion: @escaping () -> () = {}) {
         hide {
-            SAlertController.showSuccess(message: message)
+            Alert.showSuccess(message: message)
             completion()
         }
     }
     
     public func hideWithWarningAlert(message: String, completion: @escaping () -> () = {}) {
         hide {
-            SAlertController.showWarning(message: message)
+            Alert.showWarning(message: message)
             completion()
         }
     }
     
     public func hideWithErrorAlert(message: String, completion: @escaping () -> () = {}) {
         hide {
-            SAlertController.showError(message: message)
+            Alert.showError(message: message)
             completion()
         }
     }

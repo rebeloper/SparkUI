@@ -20,7 +20,7 @@ extension SImagePickerViewController: UIImagePickerControllerDelegate, UINavigat
         let cameraAction = UIAlertAction(title: cameraActionTitle, style: .default) { (action) in
             self.showImagePickerController(sourceType: .camera, allowsEditing: allowsEditing)
         }
-        SAlertController.showAlert(style: .actionSheet, title: nil, message: nil, actions: [photoLibraryAction, cameraAction, SAlertController.cancelAction()], completion: nil)
+        Alert.show(.actionSheet, title: nil, message: nil, actions: [photoLibraryAction, cameraAction, Alert.cancelAction()], completion: nil)
     }
     
     public func showImagePickerController(sourceType: UIImagePickerController.SourceType, allowsEditing: Bool = true) {
