@@ -19,7 +19,6 @@ let package = Package(
         .package(url: "https://github.com/DeclarativeHub/Layoutless.git", .upToNextMajor(from: "0.4.2")),
         .package(url: "https://github.com/DeclarativeHub/ReactiveKit.git", .upToNextMajor(from: "3.17.0")),
         .package(url: "https://github.com/DeclarativeHub/Bond.git", .upToNextMajor(from: "7.6.6")),
-        .package(url: "https://github.com/JonasGessner/JGProgressHUD", .upToNextMajor(from: "2.1.0")),
         .package(url: "https://github.com/ruslanskorb/RSKPlaceholderTextView.git", .upToNextMajor(from: "6.0.2")),
         .package(url: "https://github.com/SDWebImage/SDWebImage.git", .upToNextMajor(from: "5.6.0")),
         .package(url: "https://github.com/HeroTransitions/Hero.git", .upToNextMajor(from: "1.5.0"))
@@ -33,7 +32,6 @@ let package = Package(
                 "Layoutless",
                 "ReactiveKit",
                 "Bond",
-                "JGProgressHUD",
                 "RSKPlaceholderTextView",
                 "SDWebImage",
                 "Hero"
