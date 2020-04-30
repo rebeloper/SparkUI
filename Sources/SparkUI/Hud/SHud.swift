@@ -127,6 +127,12 @@ open class SHud {
         })
     }
     
+    public func showWorking(message: String, withHudView: Bool = true, completion: @escaping () -> () = {}) {
+        show(title: "Working", message: message, withHudView: withHudView) {
+            completion()
+        }
+    }
+    
     public func update(title: String, completion: @escaping () -> () = {}) {
         titleLabel.text = title
         completion()
