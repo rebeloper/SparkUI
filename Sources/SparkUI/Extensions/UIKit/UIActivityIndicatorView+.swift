@@ -21,21 +21,4 @@ extension UIActivityIndicatorView {
         return self
     }
     
-    @discardableResult
-    public func hidesWhenStopped(_ hidesWhenStopped: Bool = true) -> UIActivityIndicatorView {
-        self.hidesWhenStopped = hidesWhenStopped
-        return self
-    }
-    
-    @discardableResult
-    public func start() -> UIActivityIndicatorView {
-        self.startAnimating()
-        return self
-    }
-    
-    @discardableResult
-    public func stop() -> UIActivityIndicatorView {
-        self.stopAnimating()
-        return self
-    }
 }
