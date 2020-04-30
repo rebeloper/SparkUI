@@ -8,7 +8,7 @@
 import UIKit
 import Layoutless
 
-typealias Hud = SHud
+public typealias Hud = SHud
 
 open class SHud {
     public static let apply = SHud()
