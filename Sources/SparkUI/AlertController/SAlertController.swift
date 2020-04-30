@@ -11,7 +11,7 @@ public typealias Alert = SAlertController
 
 public class SAlertController {
     
-    public static func showAlert(style: UIAlertController.Style, title: String?, message: String?, actions: [UIAlertAction] = [UIAlertAction(title: "OK", style: .cancel, handler: nil)], completion: (() -> Swift.Void)? = nil) {
+    public static func show(style: UIAlertController.Style, title: String?, message: String?, actions: [UIAlertAction] = [UIAlertAction(title: "OK", style: .cancel, handler: nil)], completion: (() -> Swift.Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         for action in actions {
             alert.addAction(action)
@@ -24,7 +24,7 @@ public class SAlertController {
         }
     }
     
-    public static func showAlert(style: UIAlertController.Style, title: String?, message: String?, textFields: [UITextField], submitActionTitle: String = "Submit", completion: @escaping ([String]?) -> ()) {
+    public static func show(style: UIAlertController.Style, title: String?, message: String?, textFields: [UITextField], submitActionTitle: String = "Submit", completion: @escaping ([String]?) -> ()) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         
         for textField in textFields {
