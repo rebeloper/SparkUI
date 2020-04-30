@@ -8,8 +8,10 @@
 import UIKit
 import Layoutless
 
+typealias Hud = SHud
+
 open class SHud {
-    public static let shared = SHud()
+    public static let apply = SHud()
     
     private let backgroundView: UIView
     private let hudView: UIView

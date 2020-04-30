@@ -11,8 +11,6 @@ open class SViewController: UIViewController {
     
     public var safeArea: SSafeArea
     
-    public let Hud = SHud.shared
-    
     public let container = UIView()
     
     public init(safeArea: SSafeArea = .all) {

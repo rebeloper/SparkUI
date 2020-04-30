@@ -45,7 +45,7 @@ open class SSignInWithAppleViewController: SViewController {
     
     @objc public func didTapSignInWithAppleButton() {
         #if !targetEnvironment(simulator)
-        Hud.show(title: "Working", message: "Signing In with Apple...")
+        Hud.apply.show(title: "Working", message: "Signing In with Apple...")
         let nonce = randomNonceString()
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
@@ -180,30 +180,30 @@ extension SSignInWithAppleViewController: ASAuthorizationControllerDelegate, ASA
             }
             guard let appleIDToken = appleIDCredential.identityToken else {
                 let errMessage = "Unable to fetch identity token"
-                Hud.hideWithErrorAlert(message: errMessage)
+                Hud.apply.hideWithErrorAlert(message: errMessage)
                 let err = NSError(domain: errMessage, code: 4, userInfo: nil)
                 self.signInWithAppleErrorObserver.value = SSignInWithAppleErrorObserver(error: err)
                 return
             }
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                 let errMessage = "Unable to serialize token string from data"
-                Hud.hideWithErrorAlert(message: errMessage)
+                Hud.apply.hideWithErrorAlert(message: errMessage)
                 let err = NSError(domain: errMessage, code: 4, userInfo: nil)
                 self.signInWithAppleErrorObserver.value = SSignInWithAppleErrorObserver(error: err)
                 return
             }
             
             self.signInWithAppleObserver.value = SSignInWithAppleObserver(name: getName(from: appleIDCredential), nonce: nonce, idTokenString: idTokenString)
-            Hud.hide()
+            Hud.apply.hide()
             
         } else {
-            Hud.hideWithErrorAlert(message: "No Apple ID Credential found")
+            Hud.apply.hideWithErrorAlert(message: "No Apple ID Credential found")
         }
     }
     
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         self.signInWithAppleErrorObserver.value = SSignInWithAppleErrorObserver(error: error)
-        Hud.hideWithErrorAlert(message: error.localizedDescription)
+        Hud.apply.hideWithErrorAlert(message: error.localizedDescription)
     }
     
 }
