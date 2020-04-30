@@ -6,171 +6,182 @@
 //
 
 import UIKit
-import JGProgressHUD
+import Layoutless
 
-public enum SHudType {
-    case none
-    case show
-    case update
-    case success
-    case error
-    case close
-    case closeWithAlert
-    case closeWithSuccessAlert
-    case closeWithErrorAlert
-}
-
-public struct SHudInfo {
-    let type: SHudType
-    let text: String
-    let detailText: String
+open class SHud {
+    public static let shared = SHud()
     
-    public init(type: SHudType, text: String = "", detailText: String = "") {
-        self.type = type
-        self.text = text
-        self.detailText = detailText
-    }
-}
-
-public let closeHudInfo = SHudInfo(type: .close, text: "", detailText: "")
-
-public class SHud {
+    private let backgroundView: UIView
+    private let hudView: UIView
+    private let activityIndicatorView: UIActivityIndicatorView
+    private let titleLabel: UILabel
+    private let messageLabel: UILabel
+    private let animationDuration: TimeInterval
     
-    // MARK: -
-    // MARK: Handle hud
-    
-    public static func handle(_ hud: JGProgressHUD, with info: SHudInfo, inViewController: UIViewController? = nil) {
-        switch info.type {
-        case .none:
-            return
-        case .show:
-            show(hud, text: info.text, detailText: info.detailText, inViewController: inViewController)
-        case .update:
-            change(hud, text: info.text, detailText: info.detailText)
-        case .success:
-            dismiss(hud, type: info.type, text: info.text, detailText: info.detailText)
-        case .error:
-            dismiss(hud, type: info.type, text: info.text, detailText: info.detailText)
-        case .close:
-            hud.dismiss(animated: true)
-        case .closeWithAlert:
-            closeWithAlert(hud, text: info.text, detailText: info.detailText)
-        case .closeWithSuccessAlert:
-            closeWithSuccessAlert(hud, detailText: info.detailText)
-        case .closeWithErrorAlert:
-            closeWithErrorAlert(hud, detailText: info.detailText)
-        }
+    public init(backgroundColor: UIColor = UIColor.systemBlack.withAlphaComponent(0.2),
+         hudColor: UIColor = UIColor.systemWhite,
+         hudCornerRadius: CGFloat = 10,
+         activityIndicatorViewStyle: UIActivityIndicatorView.Style = .large,
+         activityIndicatorViewColor: UIColor = .systemBlack,
+         titleLabelFont: UIFont = .systemFont(ofSize: 24, weight: .medium),
+         titleLabelColor: UIColor = .systemBlack,
+         messageLabelFont: UIFont = .systemFont(ofSize: 14, weight: .medium),
+         messageLabelColor: UIColor = .systemGray,
+         animationDuration: TimeInterval = 0.25) {
+        
+        self.backgroundView = UIView().setBackground(color: backgroundColor)
+        self.hudView = UIView().setBackground(color: hudColor).setCorner(hudCornerRadius)
+        self.activityIndicatorView = UIActivityIndicatorView().style(activityIndicatorViewStyle).color(activityIndicatorViewColor)
+        self.titleLabel = UILabel().text(color: titleLabelColor).textAlignment(.center).setMultiline().font(titleLabelFont)
+        self.messageLabel = UILabel().text(color: messageLabelColor).textAlignment(.center).setMultiline().font(messageLabelFont)
+        self.animationDuration = animationDuration
     }
     
-    public static func handle(_ hud: JGProgressHUD, with info: SHudInfo, inView: UIView) {
-        switch info.type {
-        case .none:
-            return
-        case .show:
-            show(hud, text: info.text, detailText: info.detailText, inView: inView)
-        case .update:
-            change(hud, text: info.text, detailText: info.detailText)
-        case .success:
-            dismiss(hud, type: info.type, text: info.text, detailText: info.detailText)
-        case .error:
-            dismiss(hud, type: info.type, text: info.text, detailText: info.detailText)
-        case .close:
-            hud.dismiss(animated: true)
-        case .closeWithAlert:
-            closeWithAlert(hud, text: info.text, detailText: info.detailText)
-        case .closeWithSuccessAlert:
-            closeWithSuccessAlert(hud, detailText: info.detailText)
-        case .closeWithErrorAlert:
-            closeWithErrorAlert(hud, detailText: info.detailText)
-        }
+    public init(backgroundView: UIView = UIView().setBackground(color: UIColor.systemBlack.withAlphaComponent(0.2)),
+         hudView: UIView = UIView().setBackground(color: .systemWhite).setCorner(10),
+         activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView().style(.large).color(.systemBlack),
+         titleLabel: UILabel = UILabel().text(color: .systemBlack).textAlignment(.center).setMultiline().font(.systemFont(ofSize: 24, weight: .medium)),
+         messageLabel: UILabel = UILabel().text(color: .systemGray).textAlignment(.center).setMultiline().font(.systemFont(ofSize: 14, weight: .medium)),
+         animationDuration: TimeInterval = 0.25) {
+        
+        self.backgroundView = backgroundView
+        self.hudView = hudView
+        self.activityIndicatorView = activityIndicatorView
+        self.titleLabel = titleLabel
+        self.messageLabel = messageLabel
+        self.animationDuration = animationDuration
     }
     
-    // MARK: -
-    // MARK: Create hud
-    
-    public static func create() -> JGProgressHUD {
-        if let visibleViewController = visibleViewController() {
-            return visibleViewController.traitCollection.userInterfaceStyle == .dark ? create(style: .dark) : create(style: .light)
+    public func show(withHudView: Bool = false, completion: @escaping () -> () = {}) {
+        guard let visibleViewController = visibleViewController() else { return }
+        
+        clearLabels()
+        
+        activityIndicatorView.startAnimating()
+        
+        stack(.vertical)(
+            backgroundView
+        ).fillingParent().layout(in: visibleViewController.view)
+        
+        if withHudView {
+            stack(.vertical)(
+                hudView.sizing(toWidth: Length(integerLiteral: Int(visibleViewController.view.frame.size.width) - 96))
+            ).centeringInParent().layout(in: backgroundView)
+            
+            stack(.vertical, spacing: 12)(
+                activityIndicatorView
+            ).insetting(by: 24).fillingParent().layout(in: hudView)
         } else {
-            return create(style: .light)
+            stack(.vertical)(
+                activityIndicatorView
+            ).centeringInParent().layout(in: backgroundView)
         }
+        
+        backgroundView.alpha = 0.0
+        UIView.animate(withDuration: self.animationDuration, animations: {
+            self.backgroundView.alpha = 1.0
+            completion()
+        })
     }
     
-    fileprivate static func create(style: JGProgressHUDStyle) -> JGProgressHUD {
-        let hud = JGProgressHUD(style: style)
-        hud.interactionType = .blockAllTouches
-        return hud
-    }
-    
-    // MARK: -
-    // MARK: Show hud
-    
-    static func show(_ hud: JGProgressHUD, text: String, detailText: String = "", inViewController: UIViewController? = nil) {
-        hud.textLabel.text = text
-        if detailText != "" {
-            hud.detailTextLabel.text = detailText
-        }
-        if let inViewController = inViewController {
-            hud.show(in: inViewController.view)
+    public func show(title: String, message: String, withHudView: Bool = true, completion: @escaping () -> () = {}) {
+        guard let visibleViewController = visibleViewController() else { return }
+        
+        clearLabels()
+        
+        activityIndicatorView.startAnimating()
+        
+        stack(.vertical)(
+            backgroundView
+        ).fillingParent().layout(in: visibleViewController.view)
+        
+        if withHudView {
+            stack(.vertical)(
+                hudView.sizing(toWidth: Length(integerLiteral: Int(visibleViewController.view.frame.size.width) - 96))
+            ).centeringInParent().layout(in: backgroundView)
+            
+            stack(.vertical, spacing: 12)(
+                activityIndicatorView,
+                titleLabel.text(title),
+                messageLabel.text(message)
+            ).insetting(by: 24).fillingParent().layout(in: hudView)
+            
         } else {
-            if let visibleViewController = visibleViewController() {
-                hud.show(in: visibleViewController.view)
-            }
+            stack(.vertical)(
+                hudView.setBackground(color: .clear).sizing(toWidth: Length(integerLiteral: Int(visibleViewController.view.frame.size.width) - 96))
+            ).centeringInParent().layout(in: backgroundView)
+            
+            stack(.vertical, spacing: 12)(
+                activityIndicatorView,
+                titleLabel.text(title),
+                messageLabel.text(message)
+            ).insetting(by: 24).fillingParent().layout(in: hudView)
+        }
+        
+        backgroundView.alpha = 0.0
+        UIView.animate(withDuration: self.animationDuration, animations: {
+            self.backgroundView.alpha = 1.0
+            completion()
+        })
+    }
+    
+    public func update(title: String, completion: @escaping () -> () = {}) {
+        titleLabel.text = title
+        completion()
+    }
+    
+    public func update(message: String, completion: @escaping () -> () = {}) {
+        messageLabel.text = message
+        completion()
+    }
+    
+    public func update(title: String, message: String, completion: @escaping () -> () = {}) {
+        titleLabel.text = title
+        messageLabel.text = message
+        completion()
+    }
+    
+    public func hide(completion: @escaping () -> () = {}) {
+        UIView.animate(withDuration: self.animationDuration, animations: {
+            self.backgroundView.alpha = 0.0
+        }) { finished in
+            self.activityIndicatorView.stopAnimating()
+            self.backgroundView.removeFromSuperview()
+            completion()
         }
     }
     
-    static func show(_ hud: JGProgressHUD, text: String, detailText: String = "", inView: UIView) {
-        hud.textLabel.text = text
-        if detailText != "" {
-            hud.detailTextLabel.text = detailText
-        }
-        hud.show(in: inView)
-    }
-    
-    // MARK: -
-    // MARK: Change hud
-    
-    static func change(_ hud: JGProgressHUD, text: String, detailText: String = "") {
-        hud.textLabel.text = text
-        if detailText != "" {
-            hud.detailTextLabel.text = detailText
+    public func hideWithAlert(title: String, message: String, completion: @escaping () -> () = {}) {
+        hide {
+            SAlertController.showAlert(style: .alert, title: title, message: message)
+            completion()
         }
     }
     
-    // MARK: -
-    // MARK: Dismiss hud
-    
-    static func dismiss(_ hud: JGProgressHUD, type: SHudType, text: String, detailText: String) {
-        DispatchQueue.main.async {
-            hud.textLabel.text = text
-            hud.detailTextLabel.text = detailText
-            let delay = type == .success ? TimeInterval(0.5) : TimeInterval(1.0)
-            hud.dismiss(afterDelay: delay , animated: true)
+    public func hideWithSuccessAlert(message: String,completion: @escaping () -> () = {}) {
+        hide {
+            SAlertController.showSuccess(message: message)
+            completion()
         }
     }
     
-    // MARK: -
-    // MARK: Close hud with alert
-    
-    static func closeWithAlert(_ hud: JGProgressHUD, text: String, detailText: String) {
-        SAlertController.showAlert(style: .alert, title: text, message: detailText)
-        handle(hud, with: closeHudInfo)
+    public func hideWithWarningAlert(message: String, completion: @escaping () -> () = {}) {
+        hide {
+            SAlertController.showWarning(message: message)
+            completion()
+        }
     }
     
-    // MARK: -
-    // MARK: Close hud with success alert
-    
-    static func closeWithSuccessAlert(_ hud: JGProgressHUD, detailText: String) {
-        SAlertController.showAlert(style: .alert, title: "Success", message: detailText)
-        handle(hud, with: closeHudInfo)
+    public func hideWithErrorAlert(message: String, completion: @escaping () -> () = {}) {
+        hide {
+            SAlertController.showError(message: message)
+            completion()
+        }
     }
     
-    // MARK: -
-    // MARK: Close hud with error alert
-    
-    static func closeWithErrorAlert(_ hud: JGProgressHUD, detailText: String) {
-        SAlertController.showAlert(style: .alert, title: "Error", message: detailText)
-        handle(hud, with: closeHudInfo)
+    private func clearLabels() {
+        titleLabel.text = ""
+        messageLabel.text = ""
     }
     
 }
