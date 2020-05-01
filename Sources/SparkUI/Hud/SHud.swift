@@ -29,6 +29,12 @@ open class SHud {
     private let messageLabel: UILabel
     private let animationDuration: TimeInterval
     
+    private let headerView = UIView()
+    private let headerImageView = UIImageView()
+        .setSystemImage("exclamationmark.triangle")
+        .templateImageColor(.systemOrange)
+        .size(CGSize(width: 14, height: 17)
+    
     public init(backgroundColor: UIColor = UIColor.systemBlack.withAlphaComponent(0.2),
          hudColor: UIColor = UIColor.systemWhite,
          hudCornerRadius: CGFloat = 10,
@@ -71,6 +77,14 @@ open class SHud {
         activityIndicatorView.startAnimating()
         
         stack(.vertical)(
+            activityIndicatorView
+            ).fillingParent().layout(in: headerView)
+        
+        stack(.vertical)(
+            headerImageView
+        ).fillingParent().layout(in: headerView)
+        
+        stack(.vertical)(
             backgroundView
         ).fillingParent().layout(in: visibleViewController.view)
         
@@ -80,7 +94,7 @@ open class SHud {
             ).centeringInParent().layout(in: backgroundView)
             
             stack(.vertical, spacing: 12)(
-                activityIndicatorView
+                headerView
             ).insetting(by: 24).fillingParent().layout(in: hudView)
         } else {
             stack(.vertical)(
