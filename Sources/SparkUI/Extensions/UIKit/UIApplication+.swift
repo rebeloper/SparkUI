@@ -18,7 +18,7 @@ extension UIApplication {
         }
     }
     
-    public static func preventScreenDimming(_ preventScreenDimming: Bool = true) {
-        shared.isIdleTimerDisabled = preventScreenDimming
+    public static func preventsScreenDimming(_ preventsScreenDimming: Bool = true) {
+        shared.isIdleTimerDisabled = preventsScreenDimming
     }
 }
