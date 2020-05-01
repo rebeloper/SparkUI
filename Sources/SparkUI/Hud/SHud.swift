@@ -33,7 +33,7 @@ open class SHud {
     private let headerImageView = UIImageView()
         .setSystemImage("exclamationmark.triangle")
         .templateImageColor(.systemOrange)
-        .size(CGSize(width: 14, height: 17))
+        .size(CGSize(width: 14, height: 17)).setBackground(color: .systemRed)
     
     public init(backgroundColor: UIColor = UIColor.systemBlack.withAlphaComponent(0.2),
          hudColor: UIColor = UIColor.systemWhite,
