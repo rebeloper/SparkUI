@@ -71,7 +71,8 @@ open class SHud {
         self.errorImageView = UIImageView().setSystemImage("xclamationmark.circle", configuration: UIImage.SymbolConfiguration(font: errorImageViewFont)).templateImageColor(errorImageViewColor)
     }
     
-    public init(backgroundView: UIView = UIView().setBackground(color: UIColor.systemBlack.withAlphaComponent(0.2)),
+    // backgroundView: UIView = UIView().setBackground(color: UIColor.systemBlack.withAlphaComponent(0.2)),
+    public init(backgroundView: UIView = SBlurView(style: .light, intensity: 0.3),
                 hudView: UIView = UIView().setBackground(color: .systemWhite).setCorner(15),
                 hudHorizontalPadding: Int = 48,
                 activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView().style(.large).color(.systemBlack),
