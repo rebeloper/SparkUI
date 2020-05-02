@@ -1,5 +1,5 @@
 //
-//  SVisualEffectView.swift
+//  SBlurView.swift
 //  
 //
 //  Created by Alex Nagy on 03/05/2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class SVisualEffectView: UIVisualEffectView {
+open class SBlurView: UIVisualEffectView {
     
     private var animator: UIViewPropertyAnimator!
     private let blurEffect = (NSClassFromString("_UICustomBlurEffect") as! UIBlurEffect.Type).init()
