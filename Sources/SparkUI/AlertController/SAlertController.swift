@@ -61,6 +61,10 @@ public class SAlertController {
         }
     }
     
+    public static func showInfo(message: String) {
+        show(.alert, title: "Info", message: message)
+    }
+    
     public static func showSuccess(message: String) {
         show(.alert, title: "Success", message: message)
     }
