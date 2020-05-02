@@ -39,7 +39,7 @@ open class SHud {
     private let headerView = UIView()
     
     public init(backgroundColor: UIColor = UIColor.systemBlack.withAlphaComponent(0.2),
-                hudColor: UIColor = UIColor.systemWhite,
+                hudColor: UIColor = UIColor.systemWhite.withAlphaComponent(0.9),
                 hudCornerRadius: CGFloat = 15,
                 hudHorizontalPadding: Int = 48,
                 activityIndicatorViewStyle: UIActivityIndicatorView.Style = .large,
@@ -71,9 +71,8 @@ open class SHud {
         self.errorImageView = UIImageView().setSystemImage("xclamationmark.circle", configuration: UIImage.SymbolConfiguration(font: errorImageViewFont)).templateImageColor(errorImageViewColor)
     }
     
-    // backgroundView: UIView = UIView().setBackground(color: UIColor.systemBlack.withAlphaComponent(0.2)),
-    public init(backgroundView: UIView = SBlurView(style: .light, intensity: 0.3),
-                hudView: UIView = UIView().setBackground(color: .systemWhite).setCorner(15),
+    public init(backgroundView: UIView = UIView().setBackground(color: UIColor.systemBlack.withAlphaComponent(0.2)),
+                hudView: UIView = UIView().setBackground(color: UIColor.systemWhite.withAlphaComponent(0.9)).setCorner(15),
                 hudHorizontalPadding: Int = 48,
                 activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView().style(.large).color(.systemBlack),
                 titleLabel: UILabel = UILabel().text(color: .systemBlack).textAlignment(.center).setMultiline().font(.systemFont(ofSize: 24, weight: .medium)),
