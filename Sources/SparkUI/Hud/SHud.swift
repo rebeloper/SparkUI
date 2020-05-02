@@ -31,9 +31,8 @@ open class SHud {
     
     private let headerView = UIView()
     private let headerImageView = UIImageView()
-        .setSystemImage("exclamationmark.triangle")
+        .setSystemImage("exclamationmark.triangle", configuration: UIImage.SymbolConfiguration(font: .boldSystemFont(ofSize: 14), scale: .large))
         .templateImageColor(.systemOrange)
-        .size(CGSize(width: 14, height: 17)).setBackground(color: .systemRed)
     
     public init(backgroundColor: UIColor = UIColor.systemBlack.withAlphaComponent(0.2),
          hudColor: UIColor = UIColor.systemWhite,
@@ -76,9 +75,9 @@ open class SHud {
         
         activityIndicatorView.startAnimating()
         
-//        stack(.vertical)(
+        stack(.vertical)(
 //            activityIndicatorView
-//            ).fillingParent().layout(in: headerView)
+            ).fillingParent().layout(in: headerView)
         
         stack(.vertical)(
             headerImageView
@@ -98,7 +97,7 @@ open class SHud {
             ).insetting(by: 24).fillingParent().layout(in: hudView)
         } else {
             stack(.vertical)(
-                activityIndicatorView
+                headerView
             ).centeringInParent().layout(in: backgroundView)
         }
         
