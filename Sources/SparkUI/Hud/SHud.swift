@@ -35,15 +35,15 @@ open class SHud {
         .templateImageColor(.systemOrange)
     
     public init(backgroundColor: UIColor = UIColor.systemBlack.withAlphaComponent(0.2),
-         hudColor: UIColor = UIColor.systemWhite,
-         hudCornerRadius: CGFloat = 10,
-         activityIndicatorViewStyle: UIActivityIndicatorView.Style = .large,
-         activityIndicatorViewColor: UIColor = .systemBlack,
-         titleLabelFont: UIFont = .systemFont(ofSize: 24, weight: .medium),
-         titleLabelColor: UIColor = .systemBlack,
-         messageLabelFont: UIFont = .systemFont(ofSize: 14, weight: .medium),
-         messageLabelColor: UIColor = .systemGray,
-         animationDuration: TimeInterval = 0.25) {
+                hudColor: UIColor = UIColor.systemWhite,
+                hudCornerRadius: CGFloat = 10,
+                activityIndicatorViewStyle: UIActivityIndicatorView.Style = .large,
+                activityIndicatorViewColor: UIColor = .systemBlack,
+                titleLabelFont: UIFont = .systemFont(ofSize: 24, weight: .medium),
+                titleLabelColor: UIColor = .systemBlack,
+                messageLabelFont: UIFont = .systemFont(ofSize: 14, weight: .medium),
+                messageLabelColor: UIColor = .systemGray,
+                animationDuration: TimeInterval = 0.25) {
         
         self.backgroundView = UIView().setBackground(color: backgroundColor)
         self.hudView = UIView().setBackground(color: hudColor).setCorner(hudCornerRadius)
@@ -54,11 +54,11 @@ open class SHud {
     }
     
     public init(backgroundView: UIView = UIView().setBackground(color: UIColor.systemBlack.withAlphaComponent(0.2)),
-         hudView: UIView = UIView().setBackground(color: .systemWhite).setCorner(10),
-         activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView().style(.large).color(.systemBlack),
-         titleLabel: UILabel = UILabel().text(color: .systemBlack).textAlignment(.center).setMultiline().font(.systemFont(ofSize: 24, weight: .medium)),
-         messageLabel: UILabel = UILabel().text(color: .systemGray).textAlignment(.center).setMultiline().font(.systemFont(ofSize: 14, weight: .medium)),
-         animationDuration: TimeInterval = 0.25) {
+                hudView: UIView = UIView().setBackground(color: .systemWhite).setCorner(10),
+                activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView().style(.large).color(.systemBlack),
+                titleLabel: UILabel = UILabel().text(color: .systemBlack).textAlignment(.center).setMultiline().font(.systemFont(ofSize: 24, weight: .medium)),
+                messageLabel: UILabel = UILabel().text(color: .systemGray).textAlignment(.center).setMultiline().font(.systemFont(ofSize: 14, weight: .medium)),
+                animationDuration: TimeInterval = 0.25) {
         
         self.backgroundView = backgroundView
         self.hudView = hudView
@@ -76,8 +76,8 @@ open class SHud {
         activityIndicatorView.startAnimating()
         
         stack(.vertical)(
-//            activityIndicatorView
-            ).fillingParent().layout(in: headerView)
+            activityIndicatorView
+        ).fillingParent().layout(in: headerView)
         
         stack(.vertical)(
             headerImageView
@@ -116,6 +116,14 @@ open class SHud {
         activityIndicatorView.startAnimating()
         
         stack(.vertical)(
+            activityIndicatorView
+        ).fillingParent().layout(in: headerView)
+        
+        stack(.vertical)(
+            headerImageView
+        ).fillingParent().layout(in: headerView)
+        
+        stack(.vertical)(
             backgroundView
         ).fillingParent().layout(in: visibleViewController.view)
         
@@ -125,7 +133,7 @@ open class SHud {
             ).centeringInParent().layout(in: backgroundView)
             
             stack(.vertical, spacing: 12)(
-                activityIndicatorView,
+                headerView,
                 titleLabel.text(title),
                 messageLabel.text(message)
             ).insetting(by: 24).fillingParent().layout(in: hudView)
@@ -136,7 +144,7 @@ open class SHud {
             ).centeringInParent().layout(in: backgroundView)
             
             stack(.vertical, spacing: 12)(
-                activityIndicatorView,
+                headerView,
                 titleLabel.text(title),
                 messageLabel.text(message)
             ).insetting(by: 24).fillingParent().layout(in: hudView)
