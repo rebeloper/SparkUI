@@ -76,9 +76,9 @@ open class SHud {
         
         activityIndicatorView.startAnimating()
         
-        stack(.vertical)(
-            activityIndicatorView
-            ).fillingParent().layout(in: headerView)
+//        stack(.vertical)(
+//            activityIndicatorView
+//            ).fillingParent().layout(in: headerView)
         
         stack(.vertical)(
             headerImageView

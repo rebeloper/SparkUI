@@ -95,10 +95,10 @@ extension UIImageView {
     }
     
     @discardableResult
-    open func setSystemImage(_ systemName: String, renderingMode: UIImage.RenderingMode = .alwaysTemplate, contentMode: UIView.ContentMode = .scaleAspectFit, placeholderImage: UIImage? = nil) -> UIImageView {
+    open func setSystemImage(_ systemName: String, configuration: UIImage.SymbolConfiguration = UIImage.SymbolConfiguration(weight: .regular), renderingMode: UIImage.RenderingMode = .alwaysTemplate, contentMode: UIView.ContentMode = .scaleAspectFit, placeholderImage: UIImage? = nil) -> UIImageView {
         self.contentMode = contentMode
         if UIImage(systemName: systemName) != nil {
-            self.image = UIImage(systemName: systemName)?.withRenderingMode(renderingMode)
+            self.image = UIImage(systemName: systemName, withConfiguration: configuration)?.withRenderingMode(renderingMode)
         } else if let placeholderImage = placeholderImage {
             self.image = placeholderImage.withRenderingMode(renderingMode)
         }
