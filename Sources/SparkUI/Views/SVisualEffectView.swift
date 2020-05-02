@@ -12,9 +12,9 @@ open class SVisualEffectView: UIVisualEffectView {
     private var animator: UIViewPropertyAnimator!
     private let blurEffect = (NSClassFromString("_UICustomBlurEffect") as! UIBlurEffect.Type).init()
     
-    public init(blurEffect: UIVisualEffect, intensity: CGFloat) {
+    public init(style: UIBlurEffect.Style, intensity: CGFloat) {
         super.init(effect: nil)
-        animator = UIViewPropertyAnimator(duration: 1, curve: .linear) { [unowned self] in self.effect = blurEffect }
+        animator = UIViewPropertyAnimator(duration: 1, curve: .linear) { [unowned self] in self.effect = UIBlurEffect(style: style) }
         animator.fractionComplete = intensity
     }
     
