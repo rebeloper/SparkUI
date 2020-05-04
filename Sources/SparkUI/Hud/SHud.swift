@@ -26,7 +26,7 @@ public enum SHudStyle {
 }
 
 open class SHud {
-    public static let apply = SHud(style: .small)
+    public static let apply = SHud(style: .medium)
     
     private let size = UIScreen.main.bounds.size
     
