@@ -19,8 +19,14 @@ public enum SHudDelay: Double {
     case extraLong = 5.0
 }
 
+public enum SHudStyle {
+    case small
+    case medium
+    case large
+}
+
 open class SHud {
-    public static let apply = SHud()
+    public static let apply = SHud(style: .small)
     
     private let size = UIScreen.main.bounds.size
     
@@ -37,6 +43,35 @@ open class SHud {
     private let errorImageView: UIImageView
     
     private let headerView = UIView()
+    
+    public convenience init(style: SHudStyle) {
+        switch style {
+        case .small:
+            self.init(activityIndicatorViewStyle: .medium,
+                      titleLabelFont: .systemFont(ofSize: 16, weight: .medium),
+                      messageLabelFont: .systemFont(ofSize: 12, weight: .medium),
+                      infoImageViewFont: .boldSystemFont(ofSize: 32),
+                      successImageViewFont: .boldSystemFont(ofSize: 32),
+                      warningImageViewFont: .boldSystemFont(ofSize: 32),
+                      errorImageViewFont: .boldSystemFont(ofSize: 32))
+        case .medium:
+            self.init(activityIndicatorViewStyle: .medium,
+                      titleLabelFont: .systemFont(ofSize: 20, weight: .medium),
+                      messageLabelFont: .systemFont(ofSize: 13, weight: .medium),
+                      infoImageViewFont: .boldSystemFont(ofSize: 32),
+                      successImageViewFont: .boldSystemFont(ofSize: 32),
+                      warningImageViewFont: .boldSystemFont(ofSize: 32),
+                      errorImageViewFont: .boldSystemFont(ofSize: 32))
+        case .large:
+            self.init(activityIndicatorViewStyle: .large,
+                      titleLabelFont: .systemFont(ofSize: 24, weight: .medium),
+                      messageLabelFont: .systemFont(ofSize: 14, weight: .medium),
+                      infoImageViewFont: .boldSystemFont(ofSize: 32),
+                      successImageViewFont: .boldSystemFont(ofSize: 32),
+                      warningImageViewFont: .boldSystemFont(ofSize: 32),
+                      errorImageViewFont: .boldSystemFont(ofSize: 32))
+        }
+    }
     
     public init(backgroundColor: UIColor = UIColor.systemBlack.withAlphaComponent(0.2),
                 hudColor: UIColor = UIColor.systemWhite.withAlphaComponent(0.9),
