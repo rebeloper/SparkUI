@@ -50,10 +50,10 @@ open class SHud {
             self.init(activityIndicatorViewStyle: .medium,
                       titleLabelFont: .systemFont(ofSize: 16, weight: .medium),
                       messageLabelFont: .systemFont(ofSize: 12, weight: .medium),
-                      infoImageViewFont: .boldSystemFont(ofSize: 20),
-                      successImageViewFont: .boldSystemFont(ofSize: 20),
-                      warningImageViewFont: .boldSystemFont(ofSize: 20),
-                      errorImageViewFont: .boldSystemFont(ofSize: 20))
+                      infoImageViewFont: .boldSystemFont(ofSize: 18),
+                      successImageViewFont: .boldSystemFont(ofSize: 18),
+                      warningImageViewFont: .boldSystemFont(ofSize: 18),
+                      errorImageViewFont: .boldSystemFont(ofSize: 18))
         case .medium:
             self.init(activityIndicatorViewStyle: .large,
                       titleLabelFont: .systemFont(ofSize: 20, weight: .medium),
