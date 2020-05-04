@@ -50,18 +50,18 @@ open class SHud {
             self.init(activityIndicatorViewStyle: .medium,
                       titleLabelFont: .systemFont(ofSize: 16, weight: .medium),
                       messageLabelFont: .systemFont(ofSize: 12, weight: .medium),
-                      infoImageViewFont: .boldSystemFont(ofSize: 28),
-                      successImageViewFont: .boldSystemFont(ofSize: 28),
-                      warningImageViewFont: .boldSystemFont(ofSize: 28),
-                      errorImageViewFont: .boldSystemFont(ofSize: 28))
+                      infoImageViewFont: .boldSystemFont(ofSize: 22),
+                      successImageViewFont: .boldSystemFont(ofSize: 22),
+                      warningImageViewFont: .boldSystemFont(ofSize: 22),
+                      errorImageViewFont: .boldSystemFont(ofSize: 22))
         case .medium:
-            self.init(activityIndicatorViewStyle: .medium,
+            self.init(activityIndicatorViewStyle: .large,
                       titleLabelFont: .systemFont(ofSize: 20, weight: .medium),
                       messageLabelFont: .systemFont(ofSize: 13, weight: .medium),
-                      infoImageViewFont: .boldSystemFont(ofSize: 28),
-                      successImageViewFont: .boldSystemFont(ofSize: 28),
-                      warningImageViewFont: .boldSystemFont(ofSize: 28),
-                      errorImageViewFont: .boldSystemFont(ofSize: 28))
+                      infoImageViewFont: .boldSystemFont(ofSize: 32),
+                      successImageViewFont: .boldSystemFont(ofSize: 32),
+                      warningImageViewFont: .boldSystemFont(ofSize: 32),
+                      errorImageViewFont: .boldSystemFont(ofSize: 32))
         case .large:
             self.init(activityIndicatorViewStyle: .large,
                       titleLabelFont: .systemFont(ofSize: 24, weight: .medium),
