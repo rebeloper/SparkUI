@@ -56,6 +56,7 @@ extension UIViewController {
                  modalPresentationStyle: UIViewControllerModalPresentationStyle = .sheet(),
                  swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
                  animationType: UIViewControllerAnimationType = .slide,
+                 hapticFeedbackType: EKAttributes.NotificationHapticFeedback = .success,
                  attributes: EKAttributes = .bottomToast) {
         
         var attributes = attributes
@@ -66,6 +67,7 @@ extension UIViewController {
         attributes.positionConstraints.safeArea = .overridden
         attributes.entryInteraction = .absorbTouches
         attributes.screenInteraction = .forward
+        attributes.hapticFeedbackType = hapticFeedbackType
         
         switch modalPresentationStyle {
         case .fill:
