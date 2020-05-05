@@ -47,3 +47,9 @@ public enum UIViewControllerSwipeToDismissStyle {
     case enabled
     case sticky
 }
+
+public enum UIViewControllerAnimationType {
+    case none
+    case slide
+    case fade(duration: TimeInterval = 0.25)
+}

@@ -55,6 +55,7 @@ extension UIViewController {
     public func present(_ viewControllerToPresent: UIViewController,
                  modalPresentationStyle: UIViewControllerModalPresentationStyle = .sheet(),
                  swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
+                 animationType: UIViewControllerAnimationType = .slide,
                  attributes: EKAttributes = .bottomToast) {
         
         var attributes = attributes
@@ -97,6 +98,18 @@ extension UIViewController {
             attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
         case .sticky:
             attributes.scroll = .enabled(swipeable: false, pullbackAnimation: .easeOut)
+        }
+        
+        switch animationType {
+        case .none:
+            attributes.entranceAnimation = .none
+            attributes.exitAnimation = .none
+        case .slide:
+            attributes.entranceAnimation = .translation
+            attributes.exitAnimation = .translation
+        case .fade(let duration):
+            attributes.entranceAnimation = .init(fade: .init(from: 0.0, to: 1.0, duration: duration))
+            attributes.exitAnimation = .init(fade: .init(from: 1.0, to: 0.0, duration: duration))
         }
         
         SwiftEntryKit.display(entry: viewControllerToPresent, using: attributes)
