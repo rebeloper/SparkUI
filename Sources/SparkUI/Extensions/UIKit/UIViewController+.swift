@@ -97,7 +97,7 @@ extension UIViewController {
         case .enabled:
             attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
         case .sticky:
-            attributes.scroll = .enabled(swipeable: false, pullbackAnimation: .init(duration: 0.5, damping: 5, initialSpringVelocity: 5))
+            attributes.scroll = .enabled(swipeable: false, pullbackAnimation: .easeOut)
         }
         
         switch animationType {
