@@ -50,6 +50,14 @@ extension UIViewController {
 // MARK: - SwiftEntryKit present modal
 
 import SwiftEntryKit
+import ReactiveKit
+
+struct UIViewControllerLifecycleEvents {
+    static let willAppear = Property(false)
+    static let didAppear = Property(false)
+    static let willDisappear = Property(false)
+    static let didDisappear = Property(false)
+}
 
 extension UIViewController {
     public func present(_ viewControllerToPresent: UIViewController,
@@ -112,6 +120,22 @@ extension UIViewController {
         case .fade(let duration):
             attributes.entranceAnimation = .init(fade: .init(from: 0.0, to: 1.0, duration: duration))
             attributes.exitAnimation = .init(fade: .init(from: 1.0, to: 0.0, duration: duration))
+        }
+        
+        attributes.lifecycleEvents.willAppear = {
+            UIViewControllerLifecycleEvents.willAppear.value = true
+        }
+
+        attributes.lifecycleEvents.didAppear = {
+            UIViewControllerLifecycleEvents.didAppear.value = true
+        }
+
+        attributes.lifecycleEvents.willDisappear = {
+            UIViewControllerLifecycleEvents.willDisappear.value = true
+        }
+
+        attributes.lifecycleEvents.didDisappear = {
+            UIViewControllerLifecycleEvents.didDisappear.value = true
         }
         
         SwiftEntryKit.display(entry: viewControllerToPresent, using: attributes)
