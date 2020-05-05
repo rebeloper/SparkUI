@@ -34,3 +34,16 @@ public enum SAppearenceMode: Int {
 public enum STextFieldPlaceholderAnimation {
     case fade, slideUp
 }
+
+enum UIViewControllerModalPresentationStyle {
+    case fill
+    case sheet(topPadding: CGFloat = 80, topCornerRadius: CGFloat = 15)
+    case intrinsic(topCornerRadius: CGFloat = 15)
+    case constant(height: CGFloat, topCornerRadius: CGFloat = 15)
+}
+
+enum UIViewControllerSwipeToDismissStyle {
+    case disabled
+    case enabled
+    case sticky
+}

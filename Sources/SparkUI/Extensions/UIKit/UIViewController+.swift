@@ -47,3 +47,66 @@ extension UIViewController {
 
 }
 
+// MARK: - SwiftEntryKit present modal
+
+import SwiftEntryKit
+
+extension UIViewController {
+    public func present(_ viewControllerToPresent: UIViewController,
+                 modalPresentationStyle: UIViewControllerModalPresentationStyle = .sheet(),
+                 swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
+                 attributes: EKAttributes = .bottomToast) {
+        
+        var attributes = attributes
+        attributes.screenBackground = .color(color: EKColor(UIColor.black.withAlphaComponent(0.7)))
+        attributes.displayDuration = .infinity
+        
+        attributes.positionConstraints.verticalOffset = 0
+        attributes.positionConstraints.safeArea = .overridden
+        attributes.entryInteraction = .absorbTouches
+        attributes.screenInteraction = .forward
+        
+        switch modalPresentationStyle {
+        case .fill:
+            viewControllerToPresent.view.setCorner(0, maskedCorners: CACornerMask_topCorners)
+            attributes.positionConstraints.size = .screen
+        case .sheet(let topPadding, let topCornerRadius):
+            viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            attributes.positionConstraints.size = .init(
+                width: .fill,
+                height: .constant(value: view.frame.height - topPadding)
+            )
+        case .intrinsic(let topCornerRadius):
+            viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            attributes.positionConstraints.size = .init(
+                width: .constant(value: viewControllerToPresent.view.frame.width),
+                height: .intrinsic
+            )
+        case .constant(let height, let topCornerRadius):
+            viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            attributes.positionConstraints.size = .init(
+                width: .constant(value: viewControllerToPresent.view.frame.width),
+                height: .constant(value: height)
+            )
+        }
+        
+        switch swipeToDismissStyle {
+        case .disabled:
+            attributes.scroll = .disabled
+        case .enabled:
+            attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+        case .sticky:
+            attributes.scroll = .enabled(swipeable: false, pullbackAnimation: .easeOut)
+        }
+        
+        SwiftEntryKit.display(entry: viewControllerToPresent, using: attributes)
+    }
+    
+    public func dismiss(completion: @escaping () -> () = {}) {
+        SwiftEntryKit.dismiss {
+            completion()
+        }
+    }
+}
+
+
