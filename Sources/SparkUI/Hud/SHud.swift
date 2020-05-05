@@ -76,7 +76,7 @@ open class SHud {
         }
     }
     
-    public init(backgroundColor: UIColor = UIColor.systemBlack.withAlphaComponent(0.2),
+    public init(backgroundColor: UIColor = UIColor.black.withAlphaComponent(0.2),
                 hudColor: UIColor = UIColor.systemWhite.withAlphaComponent(0.9),
                 hudCornerRadius: CGFloat = 15,
                 hudHorizontalPadding: Int = 48,
