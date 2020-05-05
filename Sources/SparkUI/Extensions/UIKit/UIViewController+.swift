@@ -52,11 +52,11 @@ extension UIViewController {
 import SwiftEntryKit
 import ReactiveKit
 
-struct UIViewControllerLifecycleEvents {
-    static let willAppear = Property(false)
-    static let didAppear = Property(false)
-    static let willDisappear = Property(false)
-    static let didDisappear = Property(false)
+public struct UIViewControllerLifecycleEvents {
+    public static let willAppear = Property(false)
+    public static let didAppear = Property(false)
+    public static let willDisappear = Property(false)
+    public static let didDisappear = Property(false)
 }
 
 extension UIViewController {
