@@ -16,7 +16,7 @@ open class SNavigator: NSObject, SNavigatable {
     
     open func start() { }
     
-    public init(_ navigationController: UINavigationController) {
+    public init(_ navigationController: UINavigationController = UINavigationController()) {
         self.navigation = navigationController
     }
     
