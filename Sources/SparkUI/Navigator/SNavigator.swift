@@ -10,11 +10,11 @@ import UIKit
 
 public typealias Navigator = SNavigator
 
-public class SNavigator: NSObject, SNavigatable {
+open class SNavigator: NSObject, SNavigatable {
     public var childNavigators: [SNavigatable] = [SNavigatable]()
     public var navigation: UINavigationController
     
-    public func start() { }
+    open func start() { }
     
     public init(_ navigationController: UINavigationController) {
         self.navigation = navigationController
