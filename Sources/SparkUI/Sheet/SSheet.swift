@@ -9,6 +9,10 @@ import SwiftEntryKit
 import ReactiveKit
 import UIKit
 
+public typealias SheetState = SSheetState
+public typealias SheetAttributes = SSheetAttributes
+public typealias Sheet = SSheet
+
 public struct SSheetState {
     public static let isPresented = Property(false)
 }
@@ -35,8 +39,6 @@ public struct SSheetAttributes {
         return attributes
     }()
 }
-
-public typealias Sheet = SSheet
 
 public struct SSheet {
     public static func present(_ viewControllerToPresent: UIViewController,
