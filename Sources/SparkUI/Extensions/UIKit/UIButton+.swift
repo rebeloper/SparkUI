@@ -6,27 +6,51 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 extension UIButton {
     
     open func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil) {
         imageView?.contentMode = contentMode
         if imageUrl.contains("https:") {
-            self.sd_setImage(with: URL(string: imageUrl), for: .normal, placeholderImage: placeholderImage, options: .lowPriority) { (image, err, cacheType, url) in
-                guard let url = url else {
-                    print("SDWebImage error: Invalid url provided: \(imageUrl)")
-                    return
-                }
-                if let err = err {
+            guard let downloadURL = URL(string: imageUrl) else {
+                print("Invalid url: \(imageUrl)")
+                return
+            }
+            
+            let resource = ImageResource(downloadURL: downloadURL)
+            KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: { (receivedSize, totalSize) in
+                let percentage = (Float(receivedSize) / Float(totalSize)) * 100.0
+                print("downloading progress: \(percentage)%")
+            }, downloadTaskUpdated: nil) { (result) in
+                switch result {
+                case .success(let retrieveImageResult):
+                    let image = retrieveImageResult.image
+                    let cacheType = retrieveImageResult.cacheType
+                    let source = retrieveImageResult.source
+                    let originalSource = retrieveImageResult.originalSource
+                    self.setImage(image.withRenderingMode(renderingMode), for: .normal)
+                    let message = """
+                    - 🌄 ------------------------
+                    Successfully loaded image
+                    Image size:
+                    \(image.size)
+                    Cache type:
+                    \(cacheType)
+                    Source:
+                    \(source)
+                    Original source:
+                    \(originalSource)
+                    - 🌄 ------------------------
+                    """
+                    print(message)
+                case .failure(let err):
+                    if let placeholderImage = placeholderImage {
+                        self.setImage(placeholderImage.withRenderingMode(renderingMode), for: .normal)
+                    }
+                    self.setImage(placeholderImage?.withRenderingMode(renderingMode), for: .normal)
                     print(err.localizedDescription)
-                    return
                 }
-                guard image != nil else {
-                    print("SDWebImage error: Could not load image; it is nil")
-                    return
-                }
-                print("Successfully loaded image from Url: \(url.absoluteString) with Cache Type: \(cacheType)")
             }
         } else {
             if UIImage(named: imageUrl) != nil {
