@@ -36,7 +36,7 @@ public struct SSheetAttributes {
     }()
 }
 
-typealias Sheet = SSheet
+public typealias Sheet = SSheet
 
 public struct SSheet {
     public static func dismiss(completion: @escaping () -> () = {}) {
