@@ -52,11 +52,8 @@ extension UIViewController {
 import SwiftEntryKit
 import ReactiveKit
 
-public struct UIViewControllerLifecycleEvents {
-    public static let willAppear = Property(false)
-    public static let didAppear = Property(false)
-    public static let willDisappear = Property(false)
-    public static let didDisappear = Property(false)
+public struct UIViewControllerState {
+    public static let isPresented = Property(false)
 }
 
 extension UIViewController {
@@ -122,20 +119,12 @@ extension UIViewController {
             attributes.exitAnimation = .init(fade: .init(from: 1.0, to: 0.0, duration: duration))
         }
         
-        attributes.lifecycleEvents.willAppear = {
-            UIViewControllerLifecycleEvents.willAppear.value = true
-        }
-
         attributes.lifecycleEvents.didAppear = {
-            UIViewControllerLifecycleEvents.didAppear.value = true
-        }
-
-        attributes.lifecycleEvents.willDisappear = {
-            UIViewControllerLifecycleEvents.willDisappear.value = true
+            UIViewControllerState.isPresented.value = true
         }
 
         attributes.lifecycleEvents.didDisappear = {
-            UIViewControllerLifecycleEvents.didDisappear.value = true
+            UIViewControllerState.isPresented.value = false
         }
         
         SwiftEntryKit.display(entry: viewControllerToPresent, using: attributes)
