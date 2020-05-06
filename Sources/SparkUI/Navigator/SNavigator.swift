@@ -12,13 +12,9 @@ public typealias Navigator = SNavigator
 
 open class SNavigator: NSObject, SNavigatable {
     public var childNavigators: [SNavigatable] = [SNavigatable]()
-    public var navigation: UINavigationController
+    public var navigation: UINavigationController = UINavigationController()
     
     open func start() { }
-    
-    public init(_ navigationController: UINavigationController = UINavigationController()) {
-        self.navigation = navigationController
-    }
     
     public func didDismiss(_ child: Navigatable?) {
         for (index, navigator) in childNavigators.enumerated() {
