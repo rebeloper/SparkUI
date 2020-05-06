@@ -56,15 +56,9 @@ public struct UIViewControllerState {
     public static let isPresented = Property(false)
 }
 
-extension UIViewController {
-    public func present(_ viewControllerToPresent: UIViewController,
-                 modalPresentationStyle: UIViewControllerModalPresentationStyle = .sheet(),
-                 swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
-                 animationType: UIViewControllerAnimationType = .slide,
-                 hapticFeedbackType: EKAttributes.NotificationHapticFeedback = .success,
-                 attributes: EKAttributes = .bottomToast) {
-        
-        var attributes = attributes
+public struct UIViewControllerAttributes {
+    public static lazy var shared: EKAttributes = {
+        var attributes: EKAttributes = .bottomToast
         attributes.screenBackground = .color(color: EKColor(UIColor.black.withAlphaComponent(0.7)))
         attributes.displayDuration = .infinity
         
@@ -72,52 +66,6 @@ extension UIViewController {
         attributes.positionConstraints.safeArea = .overridden
         attributes.entryInteraction = .absorbTouches
         attributes.screenInteraction = .forward
-        attributes.hapticFeedbackType = hapticFeedbackType
-        
-        switch modalPresentationStyle {
-        case .fill:
-            viewControllerToPresent.view.setCorner(0, maskedCorners: CACornerMask_topCorners)
-            attributes.positionConstraints.size = .screen
-        case .sheet(let topPadding, let topCornerRadius):
-            viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
-            attributes.positionConstraints.size = .init(
-                width: .fill,
-                height: .constant(value: view.frame.height - topPadding)
-            )
-        case .intrinsic(let topCornerRadius):
-            viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
-            attributes.positionConstraints.size = .init(
-                width: .constant(value: viewControllerToPresent.view.frame.width),
-                height: .intrinsic
-            )
-        case .constant(let height, let topCornerRadius):
-            viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
-            attributes.positionConstraints.size = .init(
-                width: .constant(value: viewControllerToPresent.view.frame.width),
-                height: .constant(value: height)
-            )
-        }
-        
-        switch swipeToDismissStyle {
-        case .disabled:
-            attributes.scroll = .disabled
-        case .enabled:
-            attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
-        case .sticky:
-            attributes.scroll = .enabled(swipeable: false, pullbackAnimation: .easeOut)
-        }
-        
-        switch animationType {
-        case .none:
-            attributes.entranceAnimation = .none
-            attributes.exitAnimation = .none
-        case .slide:
-            attributes.entranceAnimation = .translation
-            attributes.exitAnimation = .translation
-        case .fade(let duration):
-            attributes.entranceAnimation = .init(fade: .init(from: 0.0, to: 1.0, duration: duration))
-            attributes.exitAnimation = .init(fade: .init(from: 1.0, to: 0.0, duration: duration))
-        }
         
         attributes.lifecycleEvents.didAppear = {
             UIViewControllerState.isPresented.value = true
@@ -125,6 +73,65 @@ extension UIViewController {
 
         attributes.lifecycleEvents.didDisappear = {
             UIViewControllerState.isPresented.value = false
+        }
+        
+        return attributes
+    }()
+}
+
+extension UIViewController {
+    
+    public func present(_ viewControllerToPresent: UIViewController,
+                 modalPresentationStyle: UIViewControllerModalPresentationStyle = .sheet(),
+                 swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
+                 animationType: UIViewControllerAnimationType = .slide,
+                 hapticFeedbackType: EKAttributes.NotificationHapticFeedback = .none) {
+        
+        UIViewControllerAttributes.shared.hapticFeedbackType = hapticFeedbackType
+        
+        switch modalPresentationStyle {
+        case .fill:
+            viewControllerToPresent.view.setCorner(0, maskedCorners: CACornerMask_topCorners)
+            UIViewControllerAttributes.shared.positionConstraints.size = .screen
+        case .sheet(let topPadding, let topCornerRadius):
+            viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            UIViewControllerAttributes.shared.positionConstraints.size = .init(
+                width: .fill,
+                height: .constant(value: view.frame.height - topPadding)
+            )
+        case .intrinsic(let topCornerRadius):
+            viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            UIViewControllerAttributes.shared.positionConstraints.size = .init(
+                width: .constant(value: viewControllerToPresent.view.frame.width),
+                height: .intrinsic
+            )
+        case .constant(let height, let topCornerRadius):
+            viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            UIViewControllerAttributes.shared.positionConstraints.size = .init(
+                width: .constant(value: viewControllerToPresent.view.frame.width),
+                height: .constant(value: height)
+            )
+        }
+        
+        switch swipeToDismissStyle {
+        case .disabled:
+            UIViewControllerAttributes.shared.scroll = .disabled
+        case .enabled:
+            UIViewControllerAttributes.shared.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+        case .sticky:
+            UIViewControllerAttributes.shared.scroll = .enabled(swipeable: false, pullbackAnimation: .easeOut)
+        }
+        
+        switch animationType {
+        case .none:
+            UIViewControllerAttributes.shared.entranceAnimation = .none
+            UIViewControllerAttributes.shared.exitAnimation = .none
+        case .slide:
+            UIViewControllerAttributes.shared.entranceAnimation = .translation
+            UIViewControllerAttributes.shared.exitAnimation = .translation
+        case .fade(let duration):
+            UIViewControllerAttributes.shared.entranceAnimation = .init(fade: .init(from: 0.0, to: 1.0, duration: duration))
+            UIViewControllerAttributes.shared.exitAnimation = .init(fade: .init(from: 1.0, to: 0.0, duration: duration))
         }
         
         SwiftEntryKit.display(entry: viewControllerToPresent, using: attributes)
