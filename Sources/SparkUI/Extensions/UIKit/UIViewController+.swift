@@ -57,7 +57,7 @@ public struct UIViewControllerState {
 }
 
 public struct UIViewControllerAttributes {
-    public static lazy var shared: EKAttributes = {
+    public static var shared: EKAttributes = {
         var attributes: EKAttributes = .bottomToast
         attributes.screenBackground = .color(color: EKColor(UIColor.black.withAlphaComponent(0.7)))
         attributes.displayDuration = .infinity
@@ -134,7 +134,7 @@ extension UIViewController {
             UIViewControllerAttributes.shared.exitAnimation = .init(fade: .init(from: 1.0, to: 0.0, duration: duration))
         }
         
-        SwiftEntryKit.display(entry: viewControllerToPresent, using: attributes)
+        SwiftEntryKit.display(entry: viewControllerToPresent, using: UIViewControllerAttributes.shared)
     }
     
     public func dismiss(completion: @escaping () -> () = {}) {
