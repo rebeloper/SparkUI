@@ -47,3 +47,15 @@ extension UIViewController {
 
 }
 
+extension UIViewController {
+    public func setTabBarItem(title: String?, selectedImageSystemImageName: String, unselectedImageSystemImageName: String, selectedColor: UIColor, unSelectedColor: UIColor) {
+        self.title = title
+        tabBarItem.image = UIImage(systemName: unselectedImageSystemImageName)!
+            .withTintColor(unSelectedColor, renderingMode: .alwaysTemplate)
+            .withRenderingMode(.alwaysOriginal)
+        tabBarItem.selectedImage = UIImage(systemName: selectedImageSystemImageName)!
+            .withTintColor(selectedColor, renderingMode: .alwaysTemplate)
+            .withRenderingMode(.alwaysOriginal)
+    }
+}
+
