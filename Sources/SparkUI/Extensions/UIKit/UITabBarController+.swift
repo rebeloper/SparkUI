@@ -8,10 +8,10 @@
 import UIKit
 
 extension UITabBarController {
-    public func adjustTabBarItemsForNoTitle() {
+    public func adjustTabBarItemsForNoTitle(distance: CGFloat = 4) {
         guard let items = tabBar.items else { return }
         for item in items {
-            item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+            item.imageInsets = UIEdgeInsets(top: distance, left: 0, bottom: -distance, right: 0)
         }
     }
 }
