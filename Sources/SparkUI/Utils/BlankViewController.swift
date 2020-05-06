@@ -7,4 +7,4 @@
 
 import Foundation
 
-class BlankViewController: SViewController {}
+public class BlankViewController: SViewController {}
