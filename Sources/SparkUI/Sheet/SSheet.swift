@@ -39,12 +39,6 @@ public struct SSheetAttributes {
 public typealias Sheet = SSheet
 
 public struct SSheet {
-    public static func dismiss(completion: @escaping () -> () = {}) {
-        SwiftEntryKit.dismiss {
-            completion()
-        }
-    }
-    
     public static func present(_ viewControllerToPresent: UIViewController,
                  modalPresentationStyle: UIViewControllerModalPresentationStyle = .sheet(),
                  swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
@@ -99,6 +93,12 @@ public struct SSheet {
         }
         
         SwiftEntryKit.display(entry: viewControllerToPresent, using: SSheetAttributes.shared)
+    }
+    
+    public static func dismiss(completion: @escaping () -> () = {}) {
+        SwiftEntryKit.dismiss {
+            completion()
+        }
     }
 }
 
