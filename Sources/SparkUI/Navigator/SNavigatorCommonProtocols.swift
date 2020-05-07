@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: -
 public protocol Dismissable_withCompletion: AnyObject {
     func dismiss(completion: @escaping () -> ())
 }
@@ -17,7 +18,7 @@ extension SNavigator: Dismissable_withCompletion {
     }
 }
 
-
+// MARK: -
 public protocol Dismissable: AnyObject {
     func dismiss()
 }
@@ -28,7 +29,7 @@ extension SNavigator: Dismissable {
     }
 }
 
-
+// MARK: -
 public protocol Popable_Animated: AnyObject {
     func pop(animated: Bool)
 }
@@ -39,7 +40,7 @@ extension SNavigator: Popable_Animated {
     }
 }
 
-
+// MARK: -
 public protocol Popable: AnyObject {
     func pop()
 }
@@ -50,7 +51,7 @@ extension SNavigator: Popable {
     }
 }
 
-
+// MARK: -
 public protocol PopToRootable_Animated: AnyObject {
     func popToRoot(animated: Bool)
 }
@@ -61,7 +62,7 @@ extension SNavigator: PopToRootable_Animated {
     }
 }
 
-
+// MARK: -
 public protocol PopToRootable: AnyObject {
     func popToRoot()
 }
@@ -72,8 +73,7 @@ extension SNavigator: PopToRootable {
     }
 }
 
-
-
+// MARK: -
 public protocol WebNavigatable: AnyObject {
     func pushWeb(url: String)
 }
