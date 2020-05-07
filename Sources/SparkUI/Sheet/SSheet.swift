@@ -42,7 +42,7 @@ public struct SSheet {
                  modalPresentationStyle: UIViewControllerModalPresentationStyle = .sheet(),
                  swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
                  animationType: UIViewControllerAnimationType = .slide,
-                 priority: Int = 1000,
+                 priority: Int = 500,
                  hapticFeedbackType: EKAttributes.NotificationHapticFeedback = .none) {
         
         SSheetAttributes.shared.hapticFeedbackType = hapticFeedbackType
