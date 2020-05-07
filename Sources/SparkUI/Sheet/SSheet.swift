@@ -42,7 +42,6 @@ public struct SSheet {
                  modalPresentationStyle: UIViewControllerModalPresentationStyle = .sheet(),
                  swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
                  animationType: UIViewControllerAnimationType = .slide,
-                 priority: Int = 500,
                  hapticFeedbackType: EKAttributes.NotificationHapticFeedback = .none) {
         
         SSheetAttributes.shared.hapticFeedbackType = hapticFeedbackType
@@ -91,8 +90,6 @@ public struct SSheet {
             SSheetAttributes.shared.entranceAnimation = .init(fade: .init(from: 0.0, to: 1.0, duration: duration))
             SSheetAttributes.shared.exitAnimation = .init(fade: .init(from: 1.0, to: 0.0, duration: duration))
         }
-        
-        SSheetAttributes.shared.precedence = .enqueue(priority: .normal)
         
         SwiftEntryKit.display(entry: viewControllerToPresent, using: SSheetAttributes.shared, presentInsideKeyWindow: true)
     }
