@@ -24,7 +24,7 @@ public struct SSheetAttributes {
         
         attributes.positionConstraints.verticalOffset = 0
         attributes.positionConstraints.safeArea = .overridden
-        attributes.entryInteraction = .delayExit(by: 60)
+        attributes.entryInteraction = .delayExit(by: Int.max)
         attributes.screenInteraction = .absorbTouches
         
         attributes.lifecycleEvents.didAppear = {
