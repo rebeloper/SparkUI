@@ -7,42 +7,42 @@
 
 import Foundation
 
-protocol Dismissable_withCompletion: AnyObject {
+public protocol Dismissable_withCompletion: AnyObject {
     func dismiss(completion: @escaping () -> ())
 }
 
-protocol Dismissable: AnyObject {
+public protocol Dismissable: AnyObject {
     func dismiss()
 }
 
-protocol Popable_Animated: AnyObject {
+public protocol Popable_Animated: AnyObject {
     func pop(animated: Bool)
 }
 
-protocol Popable: AnyObject {
+public protocol Popable: AnyObject {
     func pop()
 }
 
-protocol PopToRootable_Animated: AnyObject {
+public protocol PopToRootable_Animated: AnyObject {
     func popToRoot(animated: Bool)
 }
 
-protocol PopToRootable: AnyObject {
+public protocol PopToRootable: AnyObject {
     func popToRoot()
 }
 
-protocol WebNavigatable: AnyObject {
+public protocol WebNavigatable: AnyObject {
     func pushWeb(url: String)
 }
 
 extension SNavigator: Dismissable_withCompletion {
-    func dismiss(completion: @escaping () -> ()) {
+    public func dismiss(completion: @escaping () -> ()) {
         SSheet.dismiss(completion: completion)
     }
 }
 
 extension SNavigator: Dismissable {
-    func dismiss() {
+    public func dismiss() {
         SSheet.dismiss()
     }
 }
