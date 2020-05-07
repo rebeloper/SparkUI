@@ -104,6 +104,14 @@ extension UINavigationController {
     public func display(_ viewController: UIViewController) {
         pushViewController(viewController, animated: false)
     }
+    
+    public func pop(animated: Bool = true) {
+        popViewController(animated: animated)
+    }
+    
+    public func popToRoot(animated: Bool = true) {
+        popToRootViewController(animated: animated)
+    }
 }
 
 
