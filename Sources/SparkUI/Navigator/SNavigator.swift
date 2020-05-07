@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
+public typealias NavigatorActionType = SNavigatorActionType
 public typealias Navigator = SNavigator
+
+public enum SNavigatorActionType {
+    case pushed
+    case presented
+}
 
 open class SNavigator: NSObject, SNavigatable {
     public var childNavigators: [SNavigatable] = [SNavigatable]()

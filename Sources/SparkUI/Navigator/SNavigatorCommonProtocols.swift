@@ -75,7 +75,15 @@ extension SNavigator: PopToRootable {
 
 // MARK: -
 public protocol WebNavigatable: AnyObject {
-    func pushWeb(url: String)
+    func pushWeb(url: String, navigatorActionType: SNavigatorActionType)
+}
+
+extension SNavigator: WebNavigatable {
+    public func pushWeb(url: String, navigatorActionType: SNavigatorActionType) {
+        let controller = SWebViewController_withNavigator(url: url, navigatorActionType: navigatorActionType)
+        controller.navigator = self
+        navigation.push(controller)
+    }
 }
 
 

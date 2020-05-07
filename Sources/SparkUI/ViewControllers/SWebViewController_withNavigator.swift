@@ -2,7 +2,7 @@
 //  SWebViewController.swift
 //  
 //
-//  Created by Alex Nagy on 07/05/2020.
+//  Created by Alex Nagy on 05/03/2020.
 //
 
 import WebKit
@@ -10,9 +10,13 @@ import ReactiveKit
 import Bond
 import Layoutless
 
-open class SWebViewController: SViewController {
+open class SWebViewController_withNavigator: SViewController {
     
-    public init(url: String, safeArea: SSafeArea = .none) {
+    weak var navigator: (Popable & Dismissable)?
+    var navigatorActionType: NavigatorActionType?
+    
+    public init(url: String, safeArea: SSafeArea = .none, navigatorActionType: NavigatorActionType = .pushed) {
+        self.navigatorActionType = navigatorActionType
         super.init(safeArea: safeArea)
         
         guard let url = URL(string: url) else { return }
@@ -74,7 +78,14 @@ open class SWebViewController: SViewController {
         
         cancelBarButtonItem.reactive.tap.observeNext { [weak self] in
             guard let self = self else { return }
-            self.navigationController?.popViewController(animated: true)
+            switch self.navigatorActionType {
+            case .pushed:
+                self.navigator?.pop()
+            case .presented:
+                self.navigator?.dismiss()
+            case .none:
+                print("SWebViewController_withNavigator: invalid navigatorActionType - none")
+            }
         }.dispose(in: bag)
         
         refreshBarButtonItem.reactive.tap.observeNext { [weak self] in
@@ -84,7 +95,7 @@ open class SWebViewController: SViewController {
     }
 }
 
-extension SWebViewController: WKNavigationDelegate {
+extension SWebViewController_withNavigator: WKNavigationDelegate {
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         title = webView.title
     }
@@ -95,4 +106,3 @@ extension SWebViewController: WKNavigationDelegate {
         }
     }
 }
-
