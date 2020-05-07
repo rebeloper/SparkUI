@@ -82,7 +82,12 @@ extension SNavigator: WebNavigatable {
     public func showWeb(url: String, navigatorActionType: SNavigatorActionType) {
         let controller = SWebViewController_withNavigator(url: url, navigatorActionType: navigatorActionType)
         controller.navigator = self
-        navigation.push(controller)
+        switch navigatorActionType {
+        case .pushed:
+            navigation.push(controller)
+        case .presented:
+            SSheet.present(controller)
+        }
     }
 }
 
