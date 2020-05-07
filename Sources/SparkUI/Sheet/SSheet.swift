@@ -16,6 +16,9 @@ public struct SSheetState {
 public struct SSheetAttributes {
     public static var shared: EKAttributes = {
         var attributes: EKAttributes = .bottomToast
+        
+        attributes.windowLevel = .normal
+        
         attributes.screenBackground = .color(color: EKColor(UIColor.black.withAlphaComponent(0.5)))
         attributes.displayDuration = .infinity
         
