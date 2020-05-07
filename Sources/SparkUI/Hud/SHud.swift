@@ -110,7 +110,7 @@ open class SHud {
     }
     
     public init(backgroundView: UIView = UIView().setBackground(color: UIColor.systemBlack.withAlphaComponent(0.2)),
-                hudView: UIView = UIView().setBackground(color: UIColor.systemWhite.withAlphaComponent(0.9)).setCorner(15),
+                hudView: UIView = UIView().setBackground(color: UIColor.systemWhite.withAlphaComponent(0.95)).setCorner(15),
                 hudHorizontalPadding: Int = 48,
                 activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView().style(.large).color(.systemBlack),
                 titleLabel: UILabel = UILabel().text(color: .systemBlack).textAlignment(.center).setMultiline().font(.systemFont(ofSize: 24, weight: .medium)),
