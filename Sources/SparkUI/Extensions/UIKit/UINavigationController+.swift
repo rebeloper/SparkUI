@@ -96,5 +96,15 @@ extension UINavigationController {
     
 }
 
+extension UINavigationController {
+    public func push(_ viewController: UIViewController, animated: Bool = true) {
+        pushViewController(viewController, animated: animated)
+    }
+    
+    public func display(_ viewController: UIViewController) {
+        pushViewController(viewController, animated: false)
+    }
+}
+
 
 
