@@ -19,3 +19,4 @@ public typealias SheetState = SSheetState
 public typealias SheetAttributes = SSheetAttributes
 public typealias Sheet = SSheet
 public typealias STextView = RSKPlaceholderTextView
+public typealias Hideable = Dismissable_withCompletion & Dismissable & Popable_Animated & Popable & PopToRootable_Animated & PopToRootable
