@@ -12,7 +12,10 @@ import Layoutless
 
 open class SWebViewController: SViewController {
     
-    public init(url: String, safeArea: SSafeArea = .none) {
+    var navigatorActionType: NavigatorActionType?
+    
+    public init(url: String, safeArea: SSafeArea = .none, navigatorActionType: NavigatorActionType = .pushed) {
+        self.navigatorActionType = navigatorActionType
         super.init(safeArea: safeArea)
         
         guard let url = URL(string: url) else { return }
@@ -74,7 +77,15 @@ open class SWebViewController: SViewController {
         
         cancelBarButtonItem.reactive.tap.observeNext { [weak self] in
             guard let self = self else { return }
-            self.navigationController?.popViewController(animated: true)
+            switch self.navigatorActionType {
+            case .pushed:
+                self.navigationController?.popViewController(animated: true)
+            case .presented:
+                self.dismiss(animated: true)
+            case .none:
+                print("SWebViewController: invalid navigatorActionType - none")
+            }
+            
         }.dispose(in: bag)
         
         refreshBarButtonItem.reactive.tap.observeNext { [weak self] in
