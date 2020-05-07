@@ -92,7 +92,7 @@ public struct SSheet {
             SSheetAttributes.shared.exitAnimation = .init(fade: .init(from: 1.0, to: 0.0, duration: duration))
         }
         
-        SSheetAttributes.shared.precedence.priority = .init(rawValue: priority)
+        SSheetAttributes.shared.precedence = .enqueue(priority: .normal)
         
         SwiftEntryKit.display(entry: viewControllerToPresent, using: SSheetAttributes.shared, presentInsideKeyWindow: true)
     }
