@@ -16,7 +16,7 @@ public class SAlertController {
         }
         if let window = UIWindow().getKeyWindow() {
             alert.popoverPresentationController?.sourceView = window.rootViewController?.view
-            alert.popoverPresentationController?.sourceRect = CGRect(x: window.rootViewController?.view.bounds.midX, y: window.rootViewController?.view.bounds.midY, width: 0, height: 0)
+            alert.popoverPresentationController?.sourceRect = CGRect(x: window.bounds.midX, y: window.bounds.midY, width: 0, height: 0)
             alert.popoverPresentationController?.permittedArrowDirections = []
             window.rootViewController?.present(alert, animated: true, completion: completion)
         }
