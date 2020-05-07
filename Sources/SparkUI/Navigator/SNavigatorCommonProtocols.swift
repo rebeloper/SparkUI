@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: -
 public protocol Dismissable_withCompletion: AnyObject {
@@ -86,7 +87,8 @@ extension SNavigator: WebNavigatable {
         case .pushed:
             navigation.push(controller)
         case .presented:
-            SSheet.present(controller)
+            let navigationController = UINavigationController(rootViewController: controller)
+            SSheet.present(navigationController, swipeToDismissStyle: .enabled)
         }
     }
 }
