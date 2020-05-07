@@ -53,3 +53,8 @@ public enum UIViewControllerAnimationType {
     case slide
     case fade(duration: TimeInterval = 0.25)
 }
+
+public enum SNavigatorActionType {
+    case pushed
+    case presented
+}
