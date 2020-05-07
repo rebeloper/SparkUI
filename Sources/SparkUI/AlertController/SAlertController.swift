@@ -7,8 +7,6 @@
 
 import UIKit
 
-public typealias Alert = SAlertController
-
 public class SAlertController {
     
     public static func show(_ style: UIAlertController.Style, title: String?, message: String?, actions: [UIAlertAction] = [UIAlertAction(title: "OK", style: .cancel, handler: nil)], completion: (() -> Swift.Void)? = nil) {

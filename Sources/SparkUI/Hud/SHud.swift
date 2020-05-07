@@ -8,8 +8,6 @@
 import UIKit
 import Layoutless
 
-public typealias Hud = SHud
-
 public enum SHudDelay: Double {
     case none = 0.0
     case mini = 1.0

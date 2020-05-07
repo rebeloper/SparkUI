@@ -7,8 +7,6 @@
 
 import UIKit
 
-public typealias Spacer = UIView
-
 public enum SSafeArea {
     case top, leading, trailing, bottom, exceptTop, exceptLeading, exceptTrailing, exceptBottom, vertical, horizontal, all, none
 }

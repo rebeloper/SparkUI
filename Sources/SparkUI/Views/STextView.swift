@@ -8,8 +8,6 @@
 import UIKit
 import RSKPlaceholderTextView
 
-public typealias STextView = RSKPlaceholderTextView
-
 extension STextView {
     
     @discardableResult

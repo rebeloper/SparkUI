@@ -8,9 +8,6 @@
 import Foundation
 import UIKit
 
-public typealias NavigatorActionType = SNavigatorActionType
-public typealias Navigator = SNavigator
-
 open class SNavigator: NSObject, SNavigatable {
     public var childNavigators: [SNavigatable] = [SNavigatable]()
     public var navigation: UINavigationController = UINavigationController()
