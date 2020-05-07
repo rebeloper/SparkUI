@@ -9,23 +9,24 @@ import UIKit
 
 public class SAlertController {
     
-    public static func show(_ style: UIAlertController.Style, title: String?, message: String?, actions: [UIAlertAction] = [UIAlertAction(title: "OK", style: .cancel, handler: nil)], completion: (() -> Swift.Void)? = nil) {
+    public static func show(_ style: UIAlertController.Style, title: String?, message: String?, actions: [UIAlertAction] = [UIAlertAction(title: "OK", style: .cancel, handler: nil)], onViewController: UIViewController? = nil, completion: (() -> Swift.Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         for action in actions {
             alert.addAction(action)
         }
-        if let window = UIWindow().getKeyWindow() {
-            alert.popoverPresentationController?.sourceView = window.rootViewController?.view
-            alert.popoverPresentationController?.sourceRect = CGRect(x: window.bounds.midX, y: window.bounds.midY, width: 0, height: 0)
+        if let onViewController = onViewController {
+            alert.popoverPresentationController?.sourceView = onViewController.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: onViewController.view.bounds.midX, y: onViewController.view.bounds.midY, width: 0, height: 0)
             alert.popoverPresentationController?.permittedArrowDirections = []
-            window.rootViewController?.present(alert, animated: true, completion: completion)
+            onViewController.present(alert, animated: true, completion: completion)
+        } else {
+            if let visibleViewController = visibleViewController() {
+                alert.popoverPresentationController?.sourceView = visibleViewController.view
+                alert.popoverPresentationController?.sourceRect = CGRect(x: visibleViewController.view.bounds.midX, y: visibleViewController.view.bounds.midY, width: 0, height: 0)
+                alert.popoverPresentationController?.permittedArrowDirections = []
+                visibleViewController.present(alert, animated: true, completion: completion)
+            }
         }
-//        if let visibleViewController = visibleViewController() {
-//            alert.popoverPresentationController?.sourceView = visibleViewController.view
-//            alert.popoverPresentationController?.sourceRect = CGRect(x: visibleViewController.view.bounds.midX, y: visibleViewController.view.bounds.midY, width: 0, height: 0)
-//            alert.popoverPresentationController?.permittedArrowDirections = []
-//            visibleViewController.present(alert, animated: true, completion: completion)
-//        }
     }
     
     public static func show(_ style: UIAlertController.Style, title: String?, message: String?, textFields: [UITextField], submitActionTitle: String = "Submit", completion: @escaping ([String]?) -> ()) {
