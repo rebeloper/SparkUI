@@ -20,7 +20,7 @@ public struct SSheetState {
 public struct SSheetAttributes {
     public static var shared: EKAttributes = {
         var attributes: EKAttributes = .bottomToast
-        attributes.screenBackground = .color(color: EKColor(UIColor.black.withAlphaComponent(0.7)))
+        attributes.screenBackground = .color(color: EKColor(UIColor.black.withAlphaComponent(0.5)))
         attributes.displayDuration = .infinity
         
         attributes.positionConstraints.verticalOffset = 0
