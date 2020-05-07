@@ -17,7 +17,7 @@ public struct SSheetAttributes {
     public static var shared: EKAttributes = {
         var attributes: EKAttributes = .bottomToast
         
-        attributes.windowLevel = .alerts
+//        attributes.windowLevel = .normal
         
         attributes.screenBackground = .color(color: EKColor(UIColor.black.withAlphaComponent(0.5)))
         attributes.displayDuration = .infinity
@@ -93,7 +93,7 @@ public struct SSheet {
             SSheetAttributes.shared.exitAnimation = .init(fade: .init(from: 1.0, to: 0.0, duration: duration))
         }
         
-        SwiftEntryKit.display(entry: viewControllerToPresent, using: SSheetAttributes.shared)
+        SwiftEntryKit.display(entry: viewControllerToPresent, using: SSheetAttributes.shared, presentInsideKeyWindow: true)
     }
     
     public static func dismiss(completion: @escaping () -> () = {}) {
