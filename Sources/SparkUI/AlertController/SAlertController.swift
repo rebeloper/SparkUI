@@ -9,23 +9,16 @@ import UIKit
 
 public class SAlertController {
     
-    public static func show(_ style: UIAlertController.Style, title: String?, message: String?, actions: [UIAlertAction] = [UIAlertAction(title: "OK", style: .cancel, handler: nil)], onViewController: UIViewController? = nil, completion: (() -> Swift.Void)? = nil) {
+    public static func show(_ style: UIAlertController.Style, title: String?, message: String?, actions: [UIAlertAction] = [UIAlertAction(title: "OK", style: .cancel, handler: nil)], completion: (() -> Swift.Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         for action in actions {
             alert.addAction(action)
         }
-        if let onViewController = onViewController {
-            alert.popoverPresentationController?.sourceView = onViewController.view// UIScreen.main.focusedView
-            alert.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 0, height: 0)
+        if let visibleViewController = visibleViewController() {
+            alert.popoverPresentationController?.sourceView = visibleViewController.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: visibleViewController.view.bounds.midX, y: visibleViewController.view.bounds.midY, width: 0, height: 0)
             alert.popoverPresentationController?.permittedArrowDirections = []
-            onViewController.present(alert, animated: true, completion: completion)
-        } else {
-            if let visibleViewController = visibleViewController() {
-                alert.popoverPresentationController?.sourceView = visibleViewController.view
-                alert.popoverPresentationController?.sourceRect = CGRect(x: visibleViewController.view.bounds.midX, y: visibleViewController.view.bounds.midY, width: 0, height: 0)
-                alert.popoverPresentationController?.permittedArrowDirections = []
-                visibleViewController.present(alert, animated: true, completion: completion)
-            }
+            visibleViewController.present(alert, animated: true, completion: completion)
         }
     }
     
