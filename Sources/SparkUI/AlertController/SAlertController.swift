@@ -14,12 +14,18 @@ public class SAlertController {
         for action in actions {
             alert.addAction(action)
         }
-        if let visibleViewController = visibleViewController() {
-            alert.popoverPresentationController?.sourceView = visibleViewController.view
-            alert.popoverPresentationController?.sourceRect = CGRect(x: visibleViewController.view.bounds.midX, y: visibleViewController.view.bounds.midY, width: 0, height: 0)
+        if let window = UIWindow().getKeyWindow() {
+            alert.popoverPresentationController?.sourceView = window.rootViewController?.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: window.rootViewController?.view.bounds.midX, y: window.rootViewController?.view.bounds.midY, width: 0, height: 0)
             alert.popoverPresentationController?.permittedArrowDirections = []
-            visibleViewController.present(alert, animated: true, completion: completion)
+            window.rootViewController?.present(alert, animated: true, completion: completion)
         }
+//        if let visibleViewController = visibleViewController() {
+//            alert.popoverPresentationController?.sourceView = visibleViewController.view
+//            alert.popoverPresentationController?.sourceRect = CGRect(x: visibleViewController.view.bounds.midX, y: visibleViewController.view.bounds.midY, width: 0, height: 0)
+//            alert.popoverPresentationController?.permittedArrowDirections = []
+//            visibleViewController.present(alert, animated: true, completion: completion)
+//        }
     }
     
     public static func show(_ style: UIAlertController.Style, title: String?, message: String?, textFields: [UITextField], submitActionTitle: String = "Submit", completion: @escaping ([String]?) -> ()) {
