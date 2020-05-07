@@ -37,7 +37,7 @@ public enum STextFieldPlaceholderAnimation {
 
 public enum UIViewControllerModalPresentationStyle {
     case fill
-    case sheet(topPadding: CGFloat = 80, topCornerRadius: CGFloat = 15)
+    case sheet(topPadding: CGFloat = 50, topCornerRadius: CGFloat = 15)
     case intrinsic(topCornerRadius: CGFloat = 15)
     case constant(height: CGFloat, topCornerRadius: CGFloat = 15)
 }
