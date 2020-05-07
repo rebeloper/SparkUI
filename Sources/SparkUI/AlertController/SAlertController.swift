@@ -15,9 +15,9 @@ public class SAlertController {
             alert.addAction(action)
         }
         if let onViewController = onViewController {
-            alert.popoverPresentationController?.sourceView = UIScreen.main.focusedView // onViewController.view// UIScreen.main.focusedView
-            alert.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 0, height: 0)
-            alert.popoverPresentationController?.permittedArrowDirections = []
+//            alert.popoverPresentationController?.sourceView = onViewController.view// UIScreen.main.focusedView
+//            alert.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 0, height: 0)
+//            alert.popoverPresentationController?.permittedArrowDirections = []
             onViewController.present(alert, animated: true, completion: completion)
         } else {
             if let visibleViewController = visibleViewController() {
