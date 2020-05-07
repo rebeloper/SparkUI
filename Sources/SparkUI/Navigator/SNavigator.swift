@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-open class SNavigator: NSObject, SNavigatable {
+open class SNavigator: NSObject, SNavigatable, Hideable {
     public var childNavigators: [SNavigatable] = [SNavigatable]()
     public var navigation: UINavigationController = UINavigationController()
     
