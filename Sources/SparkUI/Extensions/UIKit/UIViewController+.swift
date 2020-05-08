@@ -48,9 +48,7 @@ extension UIViewController {
 }
 
 extension UIViewController {
-    public func setTabBarItem(title: String?, selectedImageSystemImageName: String, unselectedImageSystemImageName: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: TabBarTag, tabBarItemTitle: String? = nil) {
-        
-        
+    public func setTabBarItem(selectedImageSystemImageName: String, unselectedImageSystemImageName: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: TabBarTag, title: String? = nil, tabBarItemTitle: String? = nil) {
         
         self.title = title
 //
@@ -71,6 +69,10 @@ extension UIViewController {
                 .withRenderingMode(.alwaysOriginal)
         )
         tabBarItem.tag = tag.rawValue
+        
+        if title == nil, tabBarItemTitle == nil {
+            UITabBarController().adjustTabBarItemsForNoTitle()
+        }
     }
 }
 
