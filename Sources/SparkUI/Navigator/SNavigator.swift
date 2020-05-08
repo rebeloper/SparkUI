@@ -52,7 +52,7 @@ extension SNavigator: SHideable {
 }
 
 extension SNavigator {
-    public func showSheet(_ viewControllerToPresent: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
+    public func presentSheet(_ viewControllerToPresent: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
         if let visibleViewController = visibleViewController() {
             visibleViewController.present(viewControllerToPresent, animated: flag, completion: completion)
         }
