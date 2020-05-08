@@ -117,7 +117,7 @@ extension UINavigationController {
         present(viewControllerToPresent, animated: flag, completion: completion)
     }
     
-    public dismissSheet(animated flag: Bool, completion: (() -> Void)? = nil) {
+    public func dismissSheet(animated flag: Bool, completion: (() -> Void)? = nil) {
         dismiss(animated: flag, completion: completion)
     }
 }
