@@ -59,17 +59,3 @@ extension UIViewController {
     }
 }
 
-extension UIViewController {
-    public func showSheet(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
-        if let visibleViewController = visibleViewController() {
-            visibleViewController.present(viewControllerToPresent, animated: flag, completion: completion)
-        }
-    }
-    
-    public func dismissSheet(animated flag: Bool, completion: (() -> Void)? = nil) {
-        if let visibleViewController = visibleViewController() {
-            visibleViewController.dismiss(animated: flag, completion: completion)
-        }
-    }
-}
-
