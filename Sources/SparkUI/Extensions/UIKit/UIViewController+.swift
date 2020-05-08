@@ -48,17 +48,29 @@ extension UIViewController {
 }
 
 extension UIViewController {
-    public func setTabBarItem(title: String?, selectedImageSystemImageName: String, unselectedImageSystemImageName: String, selectedColor: UIColor, unSelectedColor: UIColor, tabBarItemTitle: String? = nil) {
+    public func setTabBarItem(title: String?, selectedImageSystemImageName: String, unselectedImageSystemImageName: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: TabBarTag, tabBarItemTitle: String? = nil) {
+        
+        
+        
         self.title = title
-        tabBarItem.image = UIImage(systemName: unselectedImageSystemImageName)!
-            .withTintColor(unSelectedColor, renderingMode: .alwaysTemplate)
-            .withRenderingMode(.alwaysOriginal)
-        tabBarItem.selectedImage = UIImage(systemName: selectedImageSystemImageName)!
-            .withTintColor(selectedColor, renderingMode: .alwaysTemplate)
-            .withRenderingMode(.alwaysOriginal)
-        if let tabBarItemTitle = tabBarItemTitle {
-            tabBarItem.title = tabBarItemTitle
-        }
+//
+//        tabBarItem.image = UIImage(systemName: unselectedImageSystemImageName)!
+//            .withTintColor(unSelectedColor, renderingMode: .alwaysTemplate)
+//            .withRenderingMode(.alwaysOriginal)
+//        tabBarItem.selectedImage = UIImage(systemName: selectedImageSystemImageName)!
+//            .withTintColor(selectedColor, renderingMode: .alwaysTemplate)
+//            .withRenderingMode(.alwaysOriginal)
+        
+        tabBarItem = UITabBarItem(
+            title: tabBarItemTitle,
+            image: UIImage(systemName: unselectedImageSystemImageName)?
+                .withTintColor(unSelectedColor, renderingMode: .alwaysTemplate)
+                .withRenderingMode(.alwaysOriginal),
+            selectedImage: UIImage(systemName: selectedImageSystemImageName)?
+                .withTintColor(selectedColor, renderingMode: .alwaysTemplate)
+                .withRenderingMode(.alwaysOriginal)
+        )
+        tabBarItem.tag = tag.rawValue
     }
 }
 
