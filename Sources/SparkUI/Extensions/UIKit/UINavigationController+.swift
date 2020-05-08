@@ -112,6 +112,14 @@ extension UINavigationController {
     public func popToRoot(animated: Bool = true) {
         popToRootViewController(animated: animated)
     }
+    
+    public func showSheet(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        present(viewControllerToPresent, animated: flag, completion: completion)
+    }
+    
+    public dismissSheet(animated flag: Bool, completion: (() -> Void)? = nil) {
+        dismiss(animated: flag, completion: completion)
+    }
 }
 
 
