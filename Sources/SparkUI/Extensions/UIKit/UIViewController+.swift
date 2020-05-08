@@ -68,8 +68,9 @@ extension UIViewController {
     }
     
     public func setTitleOnly(_ title: String?) {
+        let currentTabBarItemTitle = tabBarItem.title
         self.title = title
-        tabBarItem.title = nil
+        tabBarItem.title = currentTabBarItemTitle
     }
     
 }
