@@ -29,7 +29,7 @@ public class SNextButton: UIView {
     }
     
     public init(
-        uiView: UIView = UILabel()
+        uiView: UIView? = UILabel()
         .text("Next")
         .text(color: .systemBlue),
         accessoryView: UIView = UIImageView()
@@ -37,30 +37,28 @@ public class SNextButton: UIView {
         .templateImageColor(.systemBlue)
         .size(CGSize(width: 22, height: 28))) {
         
-        object = uiView
-        self.accessoryView = accessoryView
-        super.init(frame: .zero)
-        
-        stack(.horizontal)(
-            uiView,
-            accessoryView
-            ).fillingParent().layout(in: self)
-    }
-    
-    public init(
-        accessoryView: UIView = UIImageView()
-        .setSystemImage("chevron.right")
-        .templateImageColor(.systemBlue)
-        .size(CGSize(width: 22, height: 28))) {
-        
-        object = UIView()
-        self.accessoryView = accessoryView
-        super.init(frame: .zero)
-        
-        stack(.horizontal)(
-            uiView,
-            accessoryView
-            ).fillingParent().layout(in: self)
+        if let uiView = uiView {
+            object = uiView
+            
+            self.accessoryView = accessoryView
+            super.init(frame: .zero)
+            
+            stack(.horizontal)(
+                uiView,
+                accessoryView
+                ).fillingParent().layout(in: self)
+        } else {
+            let uiView = UIView()
+            object = uiView
+            
+            self.accessoryView = accessoryView
+            super.init(frame: .zero)
+            
+            stack(.horizontal)(
+                uiView,
+                accessoryView
+                ).fillingParent().layout(in: self)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
