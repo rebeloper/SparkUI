@@ -31,10 +31,6 @@ public enum SAppearenceMode: Int {
     case none = 0, light = 1, dark = 2, preiOS13 = 3
 }
 
-public enum STextFieldPlaceholderAnimation {
-    case fade, slideUp
-}
-
 public enum UIViewControllerModalPresentationStyle {
     case fill
     case sheet(topPadding: CGFloat = 60, topCornerRadius: CGFloat = 15)
