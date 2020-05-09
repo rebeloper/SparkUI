@@ -47,6 +47,22 @@ public class SNextButton: UIView {
             ).fillingParent().layout(in: self)
     }
     
+    public init(
+        accessoryView: UIView = UIImageView()
+        .setSystemImage("chevron.right")
+        .templateImageColor(.systemBlue)
+        .size(CGSize(width: 22, height: 28))) {
+        
+        object = UIView()
+        self.accessoryView = accessoryView
+        super.init(frame: .zero)
+        
+        stack(.horizontal)(
+            uiView,
+            accessoryView
+            ).fillingParent().layout(in: self)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
