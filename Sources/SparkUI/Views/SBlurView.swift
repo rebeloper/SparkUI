@@ -7,7 +7,26 @@
 
 import UIKit
 
-open class SBlurView: UIVisualEffectView {
+open class SBlurView: UIView {
+    
+    public var visualEffectView: SVisualEffectView?
+    
+    public init(style: UIBlurEffect.Style, intensity: CGFloat) {
+        super.init(frame: .zero)
+        visualEffectView = SVisualEffectView(style: style, intensity: intensity)
+    }
+    
+    public init(color: UIColor? = nil, alpha: CGFloat = 0.5, blurRadius: CGFloat = 3, scale: CGFloat = 1.0) {
+        super.init(frame: .zero)
+        visualEffectView = SVisualEffectView(color: color, alpha: alpha, blurRadius: blurRadius, scale: scale)
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+open class SVisualEffectView: UIVisualEffectView {
     
     private var animator: UIViewPropertyAnimator!
     private let blurEffect = (NSClassFromString("_UICustomBlurEffect") as! UIBlurEffect.Type).init()
