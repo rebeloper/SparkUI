@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftEntryKit
 
 open class SNavigator: NSObject, SNavigatable {
     public var childNavigators: [SNavigatable] = [SNavigatable]()
@@ -24,6 +25,21 @@ open class SNavigator: NSObject, SNavigatable {
     }
     
 }
+
+extension SNavigator: Presentable {
+    public func present(_ viewControllerToPresent: UIViewController,
+                        modalPresentationStyle: UIViewControllerModalPresentationStyle = .sheet(),
+                        swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
+                        animationType: UIViewControllerAnimationType = .slide,
+                        hapticFeedbackType: EKAttributes.NotificationHapticFeedback = .none) {
+        SSheet.present(viewControllerToPresent,
+                       modalPresentationStyle: modalPresentationStyle,
+                       swipeToDismissStyle: swipeToDismissStyle,
+                       animationType: animationType,
+                       hapticFeedbackType: hapticFeedbackType)
+    }
+}
+
 
 extension SNavigator: SHideable {
     public func dismiss(completion: @escaping () -> ()) {
@@ -52,13 +68,13 @@ extension SNavigator: SHideable {
 }
 
 extension SNavigator {
-    public func presentSheet(_ viewControllerToPresent: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
+    public func present(_ viewControllerToPresent: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
         if let visibleViewController = visibleViewController() {
             visibleViewController.present(viewControllerToPresent, animated: flag, completion: completion)
         }
     }
     
-    public func dismissSheet(animated flag: Bool = true, completion: (() -> Void)? = nil) {
+    public func dismiss(animated flag: Bool = true, completion: (() -> Void)? = nil) {
         if let visibleViewController = visibleViewController() {
             visibleViewController.dismiss(animated: flag, completion: completion)
         }
