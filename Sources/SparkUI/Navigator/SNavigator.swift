@@ -67,7 +67,7 @@ extension SNavigator: SHideable {
 }
 
 extension SNavigator: ModalNavigatable {
-    public func present(_ viewControllerToPresent: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
+    public func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         if let visibleViewController = visibleViewController() {
             visibleViewController.present(viewControllerToPresent, animated: flag, completion: completion)
         }
