@@ -68,3 +68,7 @@ public enum TabBarTag: Int {
     case nine = 9
     case ten = 10
 }
+
+public enum SSide {
+    case top, left, bottom, right
+}
