@@ -8,7 +8,7 @@
 import UIKit
 import Layoutless
 
-struct SafeArea {
+public struct SafeArea {
     public func insets() -> UIEdgeInsets {
         if let window = UIWindow().getKeyWindow() {
             return window.safeAreaInsets
