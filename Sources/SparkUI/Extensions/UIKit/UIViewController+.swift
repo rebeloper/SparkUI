@@ -76,7 +76,7 @@ extension UIViewController {
 }
 
 extension UIViewController {
-    public func setAsRoot(for navigator: Navigator, with parentNavigator: Navigator?) {
+    public func setAsRoot(for navigator: Navigator, withParentNavigator parentNavigator: Navigator?) {
         navigator.navigation.display(self)
         navigator.present(navigator.navigation)
         SheetState.isPresented.dropFirst(1).observeNext { (isPresented) in
