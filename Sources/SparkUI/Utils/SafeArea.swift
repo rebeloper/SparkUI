@@ -9,7 +9,7 @@ import UIKit
 import Layoutless
 
 public struct SafeArea {
-    public func insets() -> UIEdgeInsets {
+    public static func insets() -> UIEdgeInsets {
         if let window = UIWindow().getKeyWindow() {
             return window.safeAreaInsets
         } else {
@@ -17,7 +17,7 @@ public struct SafeArea {
         }
     }
     
-    public func lenght(for side: SSide) -> Length {
+    public static func lenght(for side: SSide) -> Length {
         switch side {
         case .top:
             return Length(integerLiteral: Int(insets().top))
