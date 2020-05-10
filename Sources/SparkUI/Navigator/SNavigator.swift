@@ -73,7 +73,7 @@ extension SNavigator: ModalNavigatable {
         }
     }
     
-    public func dismiss(animated flag: Bool = true, completion: (() -> Void)? = nil) {
+    public func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         if let visibleViewController = visibleViewController() {
             visibleViewController.dismiss(animated: flag, completion: completion)
         }
