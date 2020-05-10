@@ -20,3 +20,4 @@ public typealias SheetAttributes = SSheetAttributes
 public typealias Sheet = SSheet
 public typealias STextView = RSKPlaceholderTextView
 public typealias SHideable = Dismissable_withCompletion & Dismissable & Popable_Animated & Popable & PopToRootable_Animated & PopToRootable
+public typealias ModalNavigatable = Modal_Presentable & Modal_Dismissable

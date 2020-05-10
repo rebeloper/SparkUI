@@ -40,3 +40,11 @@ public protocol PopToRootable_Animated: AnyObject {
 public protocol PopToRootable: AnyObject {
     func popToRoot()
 }
+
+public protocol Modal_Presentable: AnyObject {
+    func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?)
+}
+
+public protocol Modal_Dismissable: AnyObject {
+    func dismiss(animated flag: Bool, completion: (() -> Void)?)
+}

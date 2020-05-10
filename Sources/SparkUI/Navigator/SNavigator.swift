@@ -40,7 +40,6 @@ extension SNavigator: Presentable {
     }
 }
 
-
 extension SNavigator: SHideable {
     public func dismiss(completion: @escaping () -> ()) {
         SSheet.dismiss(completion: completion)
@@ -67,7 +66,7 @@ extension SNavigator: SHideable {
     }
 }
 
-extension SNavigator {
+extension SNavigator: ModalNavigatable {
     public func present(_ viewControllerToPresent: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
         if let visibleViewController = visibleViewController() {
             visibleViewController.present(viewControllerToPresent, animated: flag, completion: completion)
