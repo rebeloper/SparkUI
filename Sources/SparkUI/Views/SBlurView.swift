@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Layoutless
 
 open class SBlurView: UIView {
     
@@ -14,11 +15,19 @@ open class SBlurView: UIView {
     public init(style: UIBlurEffect.Style, intensity: CGFloat) {
         super.init(frame: .zero)
         visualEffectView = SVisualEffectView(style: style, intensity: intensity)
+        
+        stack(.vertical)(
+            visualEffectView as! AnyLayout
+            ).fillingParent().layout(in: self)
     }
     
     public init(color: UIColor? = nil, alpha: CGFloat = 0.5, blurRadius: CGFloat = 3, scale: CGFloat = 1.0) {
         super.init(frame: .zero)
         visualEffectView = SVisualEffectView(color: color, alpha: alpha, blurRadius: blurRadius, scale: scale)
+        
+        stack(.vertical)(
+            visualEffectView as! AnyLayout
+        ).fillingParent().layout(in: self)
     }
     
     required public init?(coder: NSCoder) {
