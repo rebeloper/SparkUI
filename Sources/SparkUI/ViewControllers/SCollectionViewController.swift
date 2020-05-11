@@ -10,6 +10,10 @@ import Layoutless
 
 open class SCollectionViewController: SViewController {
     
+    public enum Section {
+        case main
+    }
+    
     public var collectionView: UICollectionView! = nil
     
     required public init?(coder: NSCoder) {
