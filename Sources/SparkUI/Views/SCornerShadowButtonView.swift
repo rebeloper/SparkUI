@@ -34,7 +34,7 @@ public class SCornerShadowButtonView: SButton {
     }
     
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(SDebug.Message.FatalError.initCoder)
     }
     
     override open func layoutSubviews() {

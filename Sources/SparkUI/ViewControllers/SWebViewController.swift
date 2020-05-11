@@ -26,7 +26,7 @@ open class SWebViewController: SViewController {
     }
     
     public required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(SDebug.Message.FatalError.initCoder)
     }
     
     public lazy var webView: WKWebView = {

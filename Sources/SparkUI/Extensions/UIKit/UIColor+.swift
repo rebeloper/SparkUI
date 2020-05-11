@@ -57,7 +57,7 @@ extension UIColor {
             case .dark:
                 return .white
             @unknown default:
-                fatalError()
+                fatalError(SDebug.Message.FatalError.unknownDefault)
             }
         }
     }
@@ -72,7 +72,7 @@ extension UIColor {
             case .dark:
                 return .black
             @unknown default:
-                fatalError()
+                fatalError(SDebug.Message.FatalError.unknownDefault)
             }
         }
     }

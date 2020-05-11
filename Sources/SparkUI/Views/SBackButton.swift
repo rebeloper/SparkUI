@@ -63,7 +63,7 @@ public class SBackButton: UIView {
     
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(SDebug.Message.FatalError.initCoder)
     }
     
     public func enable() {

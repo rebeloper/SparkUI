@@ -66,7 +66,7 @@ open class SSignInWithAppleViewController: SViewController {
     }
     
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(SDebug.Message.FatalError.initCoder)
     }
     
     // MARK: - Life cycle

@@ -16,8 +16,9 @@ open class SBlurView: UIView {
         super.init(frame: .zero)
         visualEffectView = SVisualEffectView(style: style, intensity: intensity)
         
+        guard let visualEffectView = visualEffectView else { return }
         stack(.vertical)(
-            visualEffectView as! AnyLayout
+            visualEffectView
             ).fillingParent().layout(in: self)
     }
     
@@ -25,12 +26,13 @@ open class SBlurView: UIView {
         super.init(frame: .zero)
         visualEffectView = SVisualEffectView(color: color, alpha: alpha, blurRadius: blurRadius, scale: scale)
         
+        guard let visualEffectView = visualEffectView else { return }
         stack(.vertical)(
-            visualEffectView as! AnyLayout
+            visualEffectView
         ).fillingParent().layout(in: self)
     }
     
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(SDebug.Message.FatalError.initCoder)
     }
 }
