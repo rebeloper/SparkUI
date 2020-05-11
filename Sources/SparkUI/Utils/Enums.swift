@@ -72,3 +72,7 @@ public enum TabBarTag: Int {
 public enum SSide {
     case top, left, bottom, right
 }
+
+public enum AspectRatioBase {
+    case width, height
+}

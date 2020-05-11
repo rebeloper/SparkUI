@@ -26,5 +26,14 @@ extension UIImage {
             _ in draw(in: CGRect(origin: .zero, size: canvas))
         }
     }
+    
+    public func aspectRatio(_ aspectRatioBase: AspectRatioBase = .width) -> CGFloat {
+        switch aspectRatioBase {
+        case .width:
+            return size.width / size.height
+        case .height:
+            return size.height / size.width
+        }
+    }
 }
 
