@@ -449,7 +449,7 @@ extension UIView {
 
 extension UIView {
     @discardableResult
-    func centerHorizontally(withViewHeight height: CGFloat) -> UIView {
+    public func centerHorizontally(withViewHeight height: CGFloat) -> UIView {
         let container = UIView()
         container.setHeight(height)
         stack(.vertical)(
@@ -459,7 +459,7 @@ extension UIView {
     }
     
     @discardableResult
-    func centerVertically(withViewWidth width: CGFloat) -> UIView {
+    public func centerVertically(withViewWidth width: CGFloat) -> UIView {
         let container = UIView()
         container.setWidth(width)
         stack(.vertical)(
