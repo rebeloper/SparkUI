@@ -1,11 +1,12 @@
 //
-//  File.swift
+//  UIView+.swift
 //  
 //
 //  Created by Alex Nagy on 13/02/2020.
 //
 
 import UIKit
+import Layoutless
 
 public enum SSafeArea {
     case top, leading, trailing, bottom, exceptTop, exceptLeading, exceptTrailing, exceptBottom, vertical, horizontal, all, none
@@ -445,3 +446,25 @@ extension UIView {
     }
 }
 
+
+extension UIView {
+    @discardableResult
+    func centerHorizontally(withViewHeight height: CGFloat) -> UIView {
+        let container = UIView()
+        container.setHeight(height)
+        stack(.vertical)(
+            self
+        ).centeringInParent().layout(in: container)
+        return container
+    }
+    
+    @discardableResult
+    func centerVertically(withViewWidth width: CGFloat) -> UIView {
+        let container = UIView()
+        container.setWidth(width)
+        stack(.vertical)(
+            self
+        ).centeringInParent().layout(in: container)
+        return container
+    }
+}
