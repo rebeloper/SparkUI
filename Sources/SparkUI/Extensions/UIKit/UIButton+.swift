@@ -8,9 +8,9 @@
 import UIKit
 import Kingfisher
 
-extension UIButton {
+public extension UIButton {
     
-    open func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil) {
+    func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil) {
         imageView?.contentMode = contentMode
         if imageUrl.contains("https:") {
             guard let downloadURL = URL(string: imageUrl) else {
@@ -62,49 +62,49 @@ extension UIButton {
     }
     
     @discardableResult
-    open func image(_ image: UIImage?, renderingMode: UIImage.RenderingMode = .alwaysOriginal) -> UIButton {
+    func image(_ image: UIImage?, renderingMode: UIImage.RenderingMode = .alwaysOriginal) -> UIButton {
         setImage(image?.withRenderingMode(renderingMode), for: .normal)
         return self
     }
     
     @discardableResult
-    open func text(_ text: String) -> UIButton {
+    func text(_ text: String) -> UIButton {
         setTitle(text, for: .normal)
         return self
     }
     
     @discardableResult
-    open func text(color: UIColor) -> UIButton {
+    func text(color: UIColor) -> UIButton {
         setTitleColor(color, for: .normal)
         return self
     }
     
     @discardableResult
-    open func tint(color: UIColor) -> UIButton {
+    func tint(color: UIColor) -> UIButton {
         tintColor = color
         return self
     }
     
     @discardableResult
-    open func background(color: UIColor) -> UIButton {
+    func background(color: UIColor) -> UIButton {
         backgroundColor = color
         return self
     }
     
     @discardableResult
-    open func background(image: UIImage?) -> UIButton {
+    func background(image: UIImage?) -> UIButton {
         setBackgroundImage(image, for: .normal)
         return self
     }
     
     @discardableResult
-    open func font(_ font: UIFont) -> UIButton {
+    func font(_ font: UIFont) -> UIButton {
         titleLabel?.font = font
         return self
     }
     
     @discardableResult
-    open func textStyle(_ textStyle: TextStyle, ofSize: CGFloat = 17.5) -> UIButton {
+    func textStyle(_ textStyle: TextStyle, ofSize: CGFloat = 17.5) -> UIButton {
         switch textStyle {
         case .regular:
             titleLabel?.font = .systemFont(ofSize: ofSize)
@@ -117,7 +117,7 @@ extension UIButton {
     }
     
     @discardableResult
-    open func underlineTextStyle(_ textStyle: TextStyle, underlineStyle: NSUnderlineStyle, ofSize: CGFloat = 17.5) -> UIButton {
+    func underlineTextStyle(_ textStyle: TextStyle, underlineStyle: NSUnderlineStyle, ofSize: CGFloat = 17.5) -> UIButton {
         
         switch textStyle {
         case .regular:
@@ -143,7 +143,7 @@ extension UIButton {
     }
     
     @discardableResult
-    open func strikethroughTextStyle(_ textStyle: TextStyle, strikethroughStyle: NSUnderlineStyle, ofSize: CGFloat = 17.5) -> UIButton {
+    func strikethroughTextStyle(_ textStyle: TextStyle, strikethroughStyle: NSUnderlineStyle, ofSize: CGFloat = 17.5) -> UIButton {
         
         switch textStyle {
         case .regular:
@@ -169,7 +169,7 @@ extension UIButton {
     }
     
     @discardableResult
-    open func regular(_ ofSize: CGFloat = 17.5, weight: UIFont.Weight? = nil) -> UIButton {
+    func regular(_ ofSize: CGFloat = 17.5, weight: UIFont.Weight? = nil) -> UIButton {
         if let weight = weight {
             titleLabel?.font = .systemFont(ofSize: ofSize, weight: weight)
         } else {
@@ -179,31 +179,31 @@ extension UIButton {
     }
     
     @discardableResult
-    open func bold(_ ofSize: CGFloat = 17.5) -> UIButton {
+    func bold(_ ofSize: CGFloat = 17.5) -> UIButton {
         textStyle(.bold, ofSize: ofSize)
         return self
     }
     
     @discardableResult
-    open func italic(_ ofSize: CGFloat = 17.5) -> UIButton {
+    func italic(_ ofSize: CGFloat = 17.5) -> UIButton {
         textStyle(.italic, ofSize: ofSize)
         return self
     }
     
     @discardableResult
-    open func underlined(_ underlinedTextStyle: TextStyle = .regular, underlineStyle: NSUnderlineStyle = .single, ofSize: CGFloat = 17.5) -> UIButton {
+    func underlined(_ underlinedTextStyle: TextStyle = .regular, underlineStyle: NSUnderlineStyle = .single, ofSize: CGFloat = 17.5) -> UIButton {
         self.underlineTextStyle(underlinedTextStyle, underlineStyle: underlineStyle, ofSize: ofSize)
         return self
     }
     
     @discardableResult
-    open func strikethrough(_ strikethroughTextStyle: TextStyle = .regular, strikethroughStyle: NSUnderlineStyle = .single, ofSize: CGFloat = 17.5) -> UIButton {
+    func strikethrough(_ strikethroughTextStyle: TextStyle = .regular, strikethroughStyle: NSUnderlineStyle = .single, ofSize: CGFloat = 17.5) -> UIButton {
         self.strikethroughTextStyle(strikethroughTextStyle, strikethroughStyle: strikethroughStyle, ofSize: ofSize)
         return self
     }
     
     @discardableResult
-    public func corner(radius: CGFloat, maskedCorners: CACornerMask = CACornerMask_allCorners) -> UIButton {
+    func corner(radius: CGFloat, maskedCorners: CACornerMask = CACornerMask_allCorners) -> UIButton {
         layer.cornerRadius = radius
         layer.maskedCorners = maskedCorners
         layer.masksToBounds = true
@@ -211,21 +211,21 @@ extension UIButton {
     }
     
     @discardableResult
-    public func border(width: CGFloat) -> UIButton {
+    func border(width: CGFloat) -> UIButton {
         layer.borderWidth = width
         layer.masksToBounds = true
         return self
     }
     
     @discardableResult
-    public func border(color: UIColor) -> UIButton {
+    func border(color: UIColor) -> UIButton {
         layer.borderColor = color.cgColor
         layer.masksToBounds = true
         return self
     }
     
     @discardableResult
-    public func border(width: CGFloat, color: UIColor) -> UIButton {
+    func border(width: CGFloat, color: UIColor) -> UIButton {
         layer.borderWidth = width
         layer.borderColor = color.cgColor
         layer.masksToBounds = true
@@ -233,19 +233,19 @@ extension UIButton {
     }
     
     @discardableResult
-    open func content(mode: UIView.ContentMode) -> UIButton {
+    func content(mode: UIView.ContentMode) -> UIButton {
         imageView?.contentMode = mode
         return self
     }
     
     @discardableResult
-    open func tag(_ tag: Int) -> UIButton {
+    func tag(_ tag: Int) -> UIButton {
         self.tag = tag
         return self
     }
     
     @discardableResult
-    public func rotate(by angle: CGFloat) -> UIButton {
+    func rotate(by angle: CGFloat) -> UIButton {
         let radians = angle / 180.0 * CGFloat.pi
         let rotation = transform.rotated(by: radians)
         transform = rotation
@@ -253,7 +253,7 @@ extension UIButton {
     }
     
     @discardableResult
-    public func circular(radius: CGFloat) -> UIButton {
+    func circular(radius: CGFloat) -> UIButton {
         layer.cornerRadius = radius
         layer.masksToBounds = true
         size(CGSize(width: radius * 2, height: radius * 2))
@@ -261,7 +261,7 @@ extension UIButton {
     }
     
     @discardableResult
-    public func insets(_ insets: UIEdgeInsets) -> UIButton {
+    func insets(_ insets: UIEdgeInsets) -> UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         topAnchor.constraint(equalTo: self.topAnchor, constant: insets.top).isActive = true
         bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: insets.bottom).isActive = true
@@ -271,7 +271,7 @@ extension UIButton {
     }
     
     @discardableResult
-    open func size(_ size: CGSize) -> UIButton {
+    func size(_ size: CGSize) -> UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: size.width).isActive = true
         heightAnchor.constraint(equalToConstant: size.height).isActive = true
@@ -279,34 +279,34 @@ extension UIButton {
     }
     
     @discardableResult
-    open func height(_ height: CGFloat) -> UIButton {
+    func height(_ height: CGFloat) -> UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
     
     @discardableResult
-    open func width(_ width: CGFloat) -> UIButton {
+    func width(_ width: CGFloat) -> UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    open func isEnabled(_ isEnabled: Bool) -> UIButton {
+    func isEnabled(_ isEnabled: Bool) -> UIButton {
         self.isEnabled = isEnabled
         return self
     }
     
     @discardableResult
-    open func isDisabled(_ isDisabled: Bool, textColor: UIColor = .systemGray) -> UIButton {
+    func isDisabled(_ isDisabled: Bool, textColor: UIColor = .systemGray) -> UIButton {
         self.isEnabled = !isDisabled
         setTitleColor(textColor, for: .normal)
         return self
     }
     
     @discardableResult
-    open func isDisabled(_ isDisabled: Bool, textColor: UIColor = .systemWhite, backgroundColor: UIColor = .systemGray) -> UIButton {
+    func isDisabled(_ isDisabled: Bool, textColor: UIColor = .systemWhite, backgroundColor: UIColor = .systemGray) -> UIButton {
         self.isEnabled = !isDisabled
         setTitleColor(textColor, for: .normal)
         self.backgroundColor = backgroundColor
@@ -314,13 +314,13 @@ extension UIButton {
     }
     
     @discardableResult
-    open func isHidden(_ isHidden: Bool = true) -> UIButton {
+    func isHidden(_ isHidden: Bool = true) -> UIButton {
         self.isHidden = isHidden
         return self
     }
     
     @discardableResult
-    open func add(target: Any? = nil, action: Selector? = nil) -> UIButton {
+    func add(target: Any? = nil, action: Selector? = nil) -> UIButton {
         if let action = action {
             addTarget(target, action: action, for: .touchUpInside)
         }

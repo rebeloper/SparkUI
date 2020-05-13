@@ -7,9 +7,9 @@
 
 import UIKit
 
-extension UINavigationBar {
+public extension UINavigationBar {
     
-    public func setTransparency(to backgroundColor: UIColor?, tintColor: UIColor = .systemBlue) {
+    func setTransparency(to backgroundColor: UIColor?, tintColor: UIColor = .systemBlue) {
         if backgroundColor == .clear {
             setBackgroundImage(UIImage(), for: .default)
             shadowImage = UIImage()
@@ -22,7 +22,7 @@ extension UINavigationBar {
         self.tintColor = tintColor
     }
     
-    public func resetTransparencyToDefault() {
+    func resetTransparencyToDefault() {
         setBackgroundImage(nil, for: .default)
         shadowImage = nil
         backgroundColor = nil

@@ -7,38 +7,38 @@
 
 import UIKit
 
-extension SSwitch {
+public extension SSwitch {
     
-    public func isOn() -> Bool? {
+    func isOn() -> Bool? {
         object.isOn
     }
     
     @discardableResult
-    public func onTintColor(_ onTintColor: UIColor?) -> SSwitch {
+    func onTintColor(_ onTintColor: UIColor?) -> SSwitch {
         object.onTintColor(onTintColor)
         return self
     }
     
     @discardableResult
-    public func offTintColor(_ offTintColor: UIColor?) -> SSwitch {
+    func offTintColor(_ offTintColor: UIColor?) -> SSwitch {
         object.offTintColor(offTintColor)
         return self
     }
     
     @discardableResult
-    public func onImage(_ onImage: UIImage?) -> SSwitch {
+    func onImage(_ onImage: UIImage?) -> SSwitch {
         object.onImage(onImage)
         return self
     }
     
     @discardableResult
-    public func offImage(_ offImage: UIImage?) -> SSwitch {
+    func offImage(_ offImage: UIImage?) -> SSwitch {
         object.offImage(offImage)
         return self
     }
     
     @discardableResult
-    public func setSwitchBorder(width: CGFloat, color: UIColor) -> SSwitch {
+    func setSwitchBorder(width: CGFloat, color: UIColor) -> SSwitch {
         object.layer.borderWidth = width
         object.layer.cornerRadius = self.object.frame.height / 2
         object.layer.borderColor = color.cgColor
@@ -47,13 +47,13 @@ extension SSwitch {
     }
     
     @discardableResult
-    public func setToOn(_ on: Bool = true, animated: Bool = true) -> SSwitch {
+    func setToOn(_ on: Bool = true, animated: Bool = true) -> SSwitch {
         object.setOn(on, animated: animated)
         return self
     }
     
     @discardableResult
-    public func setToOff(_ off: Bool = true, animated: Bool = true) -> SSwitch {
+    func setToOff(_ off: Bool = true, animated: Bool = true) -> SSwitch {
         object.setOn(!off, animated: animated)
         return self
     }

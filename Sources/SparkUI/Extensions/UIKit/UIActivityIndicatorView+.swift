@@ -7,16 +7,16 @@
 
 import UIKit
 
-extension UIActivityIndicatorView {
+public extension UIActivityIndicatorView {
     
     @discardableResult
-    public func color(_ color: UIColor) -> UIActivityIndicatorView {
+    func color(_ color: UIColor) -> UIActivityIndicatorView {
         self.color = color
         return self
     }
     
     @discardableResult
-    public func style(_ style: UIActivityIndicatorView.Style) -> UIActivityIndicatorView {
+    func style(_ style: UIActivityIndicatorView.Style) -> UIActivityIndicatorView {
         self.style = style
         return self
     }

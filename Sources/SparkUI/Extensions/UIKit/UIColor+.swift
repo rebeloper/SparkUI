@@ -7,17 +7,17 @@
 
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     
-    public convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
     }
     
-    public convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: a)
     }
     
-    public convenience init(hex: String, alpha: CGFloat = 1.0) {
+    convenience init(hex: String, alpha: CGFloat = 1.0) {
         var hexFormatted: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
 
         if hexFormatted.hasPrefix("#") {
@@ -37,8 +37,8 @@ extension UIColor {
     
 }
 
-extension UIColor {
-    public static var random: UIColor {
+public extension UIColor {
+    static var random: UIColor {
         return UIColor(red: .random(in: 0...1),
                        green: .random(in: 0...1),
                        blue: .random(in: 0...1),
@@ -46,8 +46,8 @@ extension UIColor {
     }
 }
 
-extension UIColor {
-    public static var systemBlack: UIColor {
+public extension UIColor {
+    static var systemBlack: UIColor {
         return UIColor { (traitCollection) -> UIColor in
             switch traitCollection.userInterfaceStyle {
             case .unspecified:
@@ -62,7 +62,7 @@ extension UIColor {
         }
     }
     
-    public static var systemWhite: UIColor {
+    static var systemWhite: UIColor {
         return UIColor { (traitCollection) -> UIColor in
             switch traitCollection.userInterfaceStyle {
             case .unspecified:

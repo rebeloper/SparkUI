@@ -29,15 +29,15 @@ public struct SButtonStyle<View: SButton> {
     }
 }
 
-extension SButton {
+public extension SButton {
     
-    public convenience init<V>(uiView: UIView = UIView(), style: SButtonStyle<V>) {
+    convenience init<V>(uiView: UIView = UIView(), style: SButtonStyle<V>) {
         self.init(uiView: uiView)
         apply(style)
     }
 
     /// Applies the given style to self.
-    public func apply<V>(_ style: SButtonStyle<V>) {
+    func apply<V>(_ style: SButtonStyle<V>) {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return
@@ -45,7 +45,7 @@ extension SButton {
         style.apply(to: view)
     }
     
-    public func styled<V>(with style: SButtonStyle<V>) -> Self {
+    func styled<V>(with style: SButtonStyle<V>) -> Self {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return self
@@ -77,15 +77,15 @@ public struct SImageViewStyle<View: SImageView> {
     }
 }
 
-extension SImageView {
+public extension SImageView {
     
-    public convenience init<V>(uiImageView: UIImageView = UIImageView(), style: SImageViewStyle<V>) {
+    convenience init<V>(uiImageView: UIImageView = UIImageView(), style: SImageViewStyle<V>) {
         self.init(uiImageView: uiImageView)
         apply(style)
     }
 
     /// Applies the given style to self.
-    public func apply<V>(_ style: SImageViewStyle<V>) {
+    func apply<V>(_ style: SImageViewStyle<V>) {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return
@@ -93,7 +93,7 @@ extension SImageView {
         style.apply(to: view)
     }
     
-    public func styled<V>(with style: SImageViewStyle<V>) -> Self {
+    func styled<V>(with style: SImageViewStyle<V>) -> Self {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return self
@@ -125,15 +125,15 @@ public struct SLabelStyle<View: SLabel> {
     }
 }
 
-extension SLabel {
+public extension SLabel {
     
-    public convenience init<V>(uiLabel: UILabel = UILabel(), style: SLabelStyle<V>) {
+    convenience init<V>(uiLabel: UILabel = UILabel(), style: SLabelStyle<V>) {
         self.init(uiLabel: uiLabel)
         apply(style)
     }
 
     /// Applies the given style to self.
-    public func apply<V>(_ style: SLabelStyle<V>) {
+    func apply<V>(_ style: SLabelStyle<V>) {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return
@@ -141,7 +141,7 @@ extension SLabel {
         style.apply(to: view)
     }
     
-    public func styled<V>(with style: SLabelStyle<V>) -> Self {
+    func styled<V>(with style: SLabelStyle<V>) -> Self {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return self
@@ -173,15 +173,15 @@ public struct SSwitchStyle<View: SSwitch> {
     }
 }
 
-extension SSwitch {
+public extension SSwitch {
     
-    public convenience init<V>(uiSwitch: UISwitch = UISwitch(), style: SSwitchStyle<V>) {
+    convenience init<V>(uiSwitch: UISwitch = UISwitch(), style: SSwitchStyle<V>) {
         self.init(uiSwitch: uiSwitch)
         apply(style)
     }
 
     /// Applies the given style to self.
-    public func apply<V>(_ style: SSwitchStyle<V>) {
+    func apply<V>(_ style: SSwitchStyle<V>) {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return
@@ -189,7 +189,7 @@ extension SSwitch {
         style.apply(to: view)
     }
     
-    public func styled<V>(with style: SSwitchStyle<V>) -> Self {
+    func styled<V>(with style: SSwitchStyle<V>) -> Self {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return self
@@ -221,9 +221,9 @@ public struct STextFieldStyle<View: STextField> {
     }
 }
 
-extension STextField {
+public extension STextField {
     
-    public convenience init<V>(placeholder: UILabel = UILabel(),
+    convenience init<V>(placeholder: UILabel = UILabel(),
                                placeholderInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 4, right: 0),
                                sTextFieldBase: STextFieldBase = STextFieldBase(),
                                isSecure: Bool = false,
@@ -235,7 +235,7 @@ extension STextField {
     }
 
     /// Applies the given style to self.
-    public func apply<V>(_ style: STextFieldStyle<V>) {
+    func apply<V>(_ style: STextFieldStyle<V>) {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return
@@ -243,7 +243,7 @@ extension STextField {
         style.apply(to: view)
     }
     
-    public func styled<V>(with style: STextFieldStyle<V>) -> Self {
+    func styled<V>(with style: STextFieldStyle<V>) -> Self {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return self
@@ -275,15 +275,15 @@ public struct STextViewStyle<View: STextView> {
     }
 }
 
-extension STextView {
+public extension STextView {
     
-    public convenience init<V>(frame: CGRect = .zero, textContainer: NSTextContainer? = nil, style: STextViewStyle<V>) {
+    convenience init<V>(frame: CGRect = .zero, textContainer: NSTextContainer? = nil, style: STextViewStyle<V>) {
         self.init(frame: frame, textContainer: textContainer)
         apply(style)
     }
 
     /// Applies the given style to self.
-    public func apply<V>(_ style: STextViewStyle<V>) {
+    func apply<V>(_ style: STextViewStyle<V>) {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return
@@ -291,7 +291,7 @@ extension STextView {
         style.apply(to: view)
     }
     
-    public func styled<V>(with style: STextViewStyle<V>) -> Self {
+    func styled<V>(with style: STextViewStyle<V>) -> Self {
         guard let view = self as? V else {
             print("💥 Could not apply style for \(V.self) to \(type(of: self))")
             return self

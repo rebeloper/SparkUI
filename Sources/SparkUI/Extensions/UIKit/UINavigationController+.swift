@@ -11,10 +11,10 @@ public enum STransitionSubtype {
     case toTop, toBottom, toLeft, toRight
 }
 
-extension UINavigationController {
+public extension UINavigationController {
     
     /// Hides the navigation item background. Does show the navigation items
-    open func setNavigationItemBackground(hidden: Bool) {
+    func setNavigationItemBackground(hidden: Bool) {
         if hidden {
             self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
             self.navigationBar.shadowImage = UIImage()
@@ -27,7 +27,7 @@ extension UINavigationController {
         
     }
     
-    open func execute(_ transitionType: CATransitionType, _ controller: UIViewController, _ from: CATransitionSubtype, duration: CFTimeInterval = 0.3, timingFunctionName: CAMediaTimingFunctionName = .default) {
+    func execute(_ transitionType: CATransitionType, _ controller: UIViewController, _ from: CATransitionSubtype, duration: CFTimeInterval = 0.3, timingFunctionName: CAMediaTimingFunctionName = .default) {
         var subtype = from
         switch from {
         case .fromTop:
@@ -50,7 +50,7 @@ extension UINavigationController {
         pushViewController(controller, animated: false)
     }
     
-    open func pop(_ to: STransitionSubtype, _ transitionType: CATransitionType = .push, duration: CFTimeInterval = 0.3, timingFunctionName: CAMediaTimingFunctionName = .default) {
+    func pop(_ to: STransitionSubtype, _ transitionType: CATransitionType = .push, duration: CFTimeInterval = 0.3, timingFunctionName: CAMediaTimingFunctionName = .default) {
         var subtype: CATransitionSubtype = .fromLeft
         switch to {
         case .toTop:
@@ -71,7 +71,7 @@ extension UINavigationController {
         popViewController(animated: false)
     }
     
-    open func popToRootViewController(_ from: CATransitionSubtype, _ transitionType: CATransitionType = .push, duration: CFTimeInterval = 0.3, timingFunctionName: CAMediaTimingFunctionName = .linear) {
+    func popToRootViewController(_ from: CATransitionSubtype, _ transitionType: CATransitionType = .push, duration: CFTimeInterval = 0.3, timingFunctionName: CAMediaTimingFunctionName = .linear) {
         var subtype = from
         switch from {
         case .fromTop:
@@ -96,20 +96,20 @@ extension UINavigationController {
     
 }
 
-extension UINavigationController {
-    public func push(_ viewController: UIViewController, animated: Bool = true) {
+public extension UINavigationController {
+    func push(_ viewController: UIViewController, animated: Bool = true) {
         pushViewController(viewController, animated: animated)
     }
     
-    public func display(_ viewController: UIViewController) {
+    func display(_ viewController: UIViewController) {
         pushViewController(viewController, animated: false)
     }
     
-    public func pop(animated: Bool = true) {
+    func pop(animated: Bool = true) {
         popViewController(animated: animated)
     }
     
-    public func popToRoot(animated: Bool = true) {
+    func popToRoot(animated: Bool = true) {
         popToRootViewController(animated: animated)
     }
 }

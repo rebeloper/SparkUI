@@ -8,16 +8,16 @@
 import UIKit
 import Kingfisher
 
-extension SImageView {
+public extension SImageView {
     
     @discardableResult
-    public func background(color: UIColor) -> SImageView {
+    func background(color: UIColor) -> SImageView {
         self.object.backgroundColor = color
         return self
     }
     
     @discardableResult
-    public func circular(radius: CGFloat) -> SImageView {
+    func circular(radius: CGFloat) -> SImageView {
         layer.cornerRadius = radius
         layer.masksToBounds = true
         setSize(CGSize(width: radius * 2, height: radius * 2))
@@ -25,7 +25,7 @@ extension SImageView {
     }
     
     @discardableResult
-    open func size(_ size: CGSize) -> SImageView {
+    func size(_ size: CGSize) -> SImageView {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: size.width).isActive = true
         heightAnchor.constraint(equalToConstant: size.height).isActive = true
@@ -33,20 +33,20 @@ extension SImageView {
     }
     
     @discardableResult
-    open func height(_ height: CGFloat) -> SImageView {
+    func height(_ height: CGFloat) -> SImageView {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
     
     @discardableResult
-    open func width(_ width: CGFloat) -> SImageView {
+    func width(_ width: CGFloat) -> SImageView {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
-    open func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil, indicatorType: IndicatorType = .none) {
+    func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil, indicatorType: IndicatorType = .none) {
         self.object.contentMode = contentMode
         if imageUrl.contains("https:") {
             guard let downloadURL = URL(string: imageUrl) else {
@@ -95,7 +95,7 @@ extension SImageView {
     }
     
     @discardableResult
-    open func setImage(_ named: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil) -> SImageView {
+    func setImage(_ named: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil) -> SImageView {
         self.object.contentMode = contentMode
         if UIImage(named: named) != nil {
             self.object.image = UIImage(named: named)?.withRenderingMode(renderingMode)
@@ -106,7 +106,7 @@ extension SImageView {
     }
     
     @discardableResult
-    open func setSystemImage(_ systemName: String, renderingMode: UIImage.RenderingMode = .alwaysTemplate, contentMode: UIView.ContentMode = .scaleAspectFit, placeholderImage: UIImage? = nil) -> SImageView {
+    func setSystemImage(_ systemName: String, renderingMode: UIImage.RenderingMode = .alwaysTemplate, contentMode: UIView.ContentMode = .scaleAspectFit, placeholderImage: UIImage? = nil) -> SImageView {
         self.object.contentMode = contentMode
         if UIImage(systemName: systemName) != nil {
             self.object.image = UIImage(systemName: systemName)?.withRenderingMode(renderingMode)
@@ -117,31 +117,31 @@ extension SImageView {
     }
     
     @discardableResult
-    open func templateImageColor(_ color: UIColor) -> SImageView {
+    func templateImageColor(_ color: UIColor) -> SImageView {
         self.object.tintColor = color
         return self
     }
     
     @discardableResult
-    open func isHidden(_ isHidden: Bool = true) -> SImageView {
+    func isHidden(_ isHidden: Bool = true) -> SImageView {
         self.object.isHidden = isHidden
         return self
     }
     
     @discardableResult
-    open func contentMode(_ contentMode: ContentMode) -> SImageView {
+    func contentMode(_ contentMode: ContentMode) -> SImageView {
         self.object.contentMode = contentMode
         return self
     }
     
     @discardableResult
-    open func masksToBounds(_ value: Bool = true) -> SImageView {
+    func masksToBounds(_ value: Bool = true) -> SImageView {
         object.layer.masksToBounds = value
         return self
     }
     
     @discardableResult
-    open func cornerRadius(_ radius: CGFloat) -> SImageView {
+    func cornerRadius(_ radius: CGFloat) -> SImageView {
         object.layer.cornerRadius = radius
         object.layer.masksToBounds = true
         return self

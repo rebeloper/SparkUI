@@ -8,16 +8,16 @@
 import UIKit
 import Kingfisher
 
-extension UIImageView {
+public extension UIImageView {
     
     @discardableResult
-    public func background(color: UIColor) -> UIImageView {
+    func background(color: UIColor) -> UIImageView {
         self.backgroundColor = color
         return self
     }
     
     @discardableResult
-    public func circular(radius: CGFloat) -> UIImageView {
+    func circular(radius: CGFloat) -> UIImageView {
         layer.cornerRadius = radius
         layer.masksToBounds = true
         setSize(CGSize(width: radius * 2, height: radius * 2))
@@ -25,7 +25,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    public func insets(_ insets: UIEdgeInsets) -> UIImageView {
+    func insets(_ insets: UIEdgeInsets) -> UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
         topAnchor.constraint(equalTo: self.topAnchor, constant: insets.top).isActive = true
         bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: insets.bottom).isActive = true
@@ -35,7 +35,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    open func size(_ size: CGSize) -> UIImageView {
+    func size(_ size: CGSize) -> UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: size.width).isActive = true
         heightAnchor.constraint(equalToConstant: size.height).isActive = true
@@ -43,20 +43,20 @@ extension UIImageView {
     }
     
     @discardableResult
-    open func height(_ height: CGFloat) -> UIImageView {
+    func height(_ height: CGFloat) -> UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
     
     @discardableResult
-    open func width(_ width: CGFloat) -> UIImageView {
+    func width(_ width: CGFloat) -> UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
-    open func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil, indicatorType: IndicatorType = .none) {
+    func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil, indicatorType: IndicatorType = .none) {
         self.contentMode = contentMode
         if imageUrl.contains("https:") {
             guard let downloadURL = URL(string: imageUrl) else {
@@ -105,7 +105,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    open func setImage(_ named: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil) -> UIImageView {
+    func setImage(_ named: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil) -> UIImageView {
         self.contentMode = contentMode
         if UIImage(named: named) != nil {
             self.image = UIImage(named: named)?.withRenderingMode(renderingMode)
@@ -116,7 +116,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    open func setSystemImage(_ systemName: String, configuration: UIImage.SymbolConfiguration = UIImage.SymbolConfiguration(weight: .regular), renderingMode: UIImage.RenderingMode = .alwaysTemplate, contentMode: UIView.ContentMode = .scaleAspectFit, placeholderImage: UIImage? = nil) -> UIImageView {
+    func setSystemImage(_ systemName: String, configuration: UIImage.SymbolConfiguration = UIImage.SymbolConfiguration(weight: .regular), renderingMode: UIImage.RenderingMode = .alwaysTemplate, contentMode: UIView.ContentMode = .scaleAspectFit, placeholderImage: UIImage? = nil) -> UIImageView {
         self.contentMode = contentMode
         if UIImage(systemName: systemName) != nil {
             self.image = UIImage(systemName: systemName, withConfiguration: configuration)?.withRenderingMode(renderingMode)
@@ -127,31 +127,31 @@ extension UIImageView {
     }
     
     @discardableResult
-    open func templateImageColor(_ color: UIColor) -> UIImageView {
+    func templateImageColor(_ color: UIColor) -> UIImageView {
         self.tintColor = color
         return self
     }
     
     @discardableResult
-    open func isHidden(_ isHidden: Bool = true) -> UIImageView {
+    func isHidden(_ isHidden: Bool = true) -> UIImageView {
         self.isHidden = isHidden
         return self
     }
     
     @discardableResult
-    open func contentMode(_ contentMode: ContentMode) -> UIImageView {
+    func contentMode(_ contentMode: ContentMode) -> UIImageView {
         self.contentMode = contentMode
         return self
     }
     
     @discardableResult
-    open func masksToBounds(_ value: Bool = true) -> UIImageView {
+    func masksToBounds(_ value: Bool = true) -> UIImageView {
         layer.masksToBounds = value
         return self
     }
     
     @discardableResult
-    open func cornerRadius(_ radius: CGFloat, maskedCorners: CACornerMask = CACornerMask_allCorners) -> UIImageView {
+    func cornerRadius(_ radius: CGFloat, maskedCorners: CACornerMask = CACornerMask_allCorners) -> UIImageView {
         layer.cornerRadius = radius
         layer.maskedCorners = maskedCorners
         layer.masksToBounds = true

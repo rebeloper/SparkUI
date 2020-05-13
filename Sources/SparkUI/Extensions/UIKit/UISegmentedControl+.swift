@@ -7,10 +7,10 @@
 
 import UIKit
 
-extension UISegmentedControl {
+public extension UISegmentedControl {
     
     @discardableResult
-    public func insertSegments(_ segments: [String]) -> UISegmentedControl {
+    func insertSegments(_ segments: [String]) -> UISegmentedControl {
         for i in 0..<segments.count {
             let segment = segments[i]
             insertSegment(withTitle: segment, at: i, animated: false)
@@ -19,7 +19,7 @@ extension UISegmentedControl {
     }
     
     @discardableResult
-    public func select(_ index: Int) -> UISegmentedControl {
+    func select(_ index: Int) -> UISegmentedControl {
         selectedSegmentIndex = index
         return self
     }

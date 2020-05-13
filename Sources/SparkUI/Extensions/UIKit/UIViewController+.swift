@@ -7,9 +7,9 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     
-    public func hideTabBar(_ hidden: Bool = true, animated: Bool = true, duration: TimeInterval = 0.3) {
+    func hideTabBar(_ hidden: Bool = true, animated: Bool = true, duration: TimeInterval = 0.3) {
 
         //* This cannot be called before viewDidLayoutSubviews(), because the frame is not set before this time
         
@@ -37,18 +37,18 @@ extension UIViewController {
         
     }
 
-    public func isTabBarVisible() -> Bool {
+    func isTabBarVisible() -> Bool {
         return (self.tabBarController?.tabBar.frame.origin.y)! < self.view.frame.maxY
     }
     
-    public func showTabBar(_ show: Bool = true, animated: Bool = true, duration: TimeInterval = 0.3) {
+    func showTabBar(_ show: Bool = true, animated: Bool = true, duration: TimeInterval = 0.3) {
         hideTabBar(!show, animated: animated, duration: duration)
     }
 
 }
 
-extension UIViewController {
-    public func setTabBarItem(selectedImageSystemImageName: String, unselectedImageSystemImageName: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: TabBarTag? = nil, title: String? = nil, tabBarItemTitle: String? = nil) {
+public extension UIViewController {
+    func setTabBarItem(selectedImageSystemImageName: String, unselectedImageSystemImageName: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: TabBarTag? = nil, title: String? = nil, tabBarItemTitle: String? = nil) {
         
         self.title = title
         
@@ -67,7 +67,7 @@ extension UIViewController {
         
     }
     
-    public func setTitleOnly(_ title: String?) {
+    func setTitleOnly(_ title: String?) {
         let currentTabBarItemTitle = tabBarItem.title
         self.title = title
         tabBarItem.title = currentTabBarItemTitle
@@ -75,8 +75,8 @@ extension UIViewController {
     
 }
 
-extension UIViewController {
-    public func setAsRoot(for navigator: Navigator, withParentNavigator parentNavigator: Navigator?) {
+public extension UIViewController {
+    func setAsRoot(for navigator: Navigator, withParentNavigator parentNavigator: Navigator?) {
         navigator.navigation.display(self)
         navigator.present(navigator.navigation)
         SheetState.isPresented.dropFirst(1).observeNext { (isPresented) in

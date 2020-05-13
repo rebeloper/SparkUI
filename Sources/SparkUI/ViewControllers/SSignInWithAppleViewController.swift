@@ -100,9 +100,9 @@ open class SSignInWithAppleViewController: SViewController {
     
 }
 
-extension SSignInWithAppleViewController {
+public extension SSignInWithAppleViewController {
     // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
-    public func randomNonceString(length: Int = 32) -> String {
+    func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: Array<Character> =
             Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
@@ -135,7 +135,7 @@ extension SSignInWithAppleViewController {
     }
     
     @available(iOS 13, *)
-    public func sha256(_ input: String) -> String {
+    func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
         let hashString = hashedData.compactMap {
@@ -146,8 +146,8 @@ extension SSignInWithAppleViewController {
     }
 }
 
-extension SSignInWithAppleViewController {
-    public func getName(from appleIDCredential: ASAuthorizationAppleIDCredential) -> String {
+public extension SSignInWithAppleViewController {
+    func getName(from appleIDCredential: ASAuthorizationAppleIDCredential) -> String {
         var name = ""
         let fullName = appleIDCredential.fullName
         let givenName = fullName?.givenName ?? ""

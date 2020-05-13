@@ -7,8 +7,8 @@
 
 import UIKit
 
-extension UIFont {
-    public func insert(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
+public extension UIFont {
+    func insert(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         if fontDescriptor.symbolicTraits.contains(traits) {
             return self
         } else {
@@ -19,7 +19,7 @@ extension UIFont {
         }
     }
     
-    public func remove(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
+    func remove(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         if !fontDescriptor.symbolicTraits.contains(traits) {
             return self
         } else {
@@ -31,18 +31,18 @@ extension UIFont {
     }
 }
 
-extension UIFont {
-    public var ultraLight: UIFont { return withWeight(.ultraLight) }
-    public var thin: UIFont { return withWeight(.thin) }
-    public var light: UIFont { return withWeight(.light) }
-    public var regular: UIFont { return withWeight(.regular) }
-    public var medium: UIFont { return withWeight(.medium) }
-    public var semibold: UIFont { return withWeight(.semibold) }
-    public var bold: UIFont { return withWeight(.bold) }
-    public var heavy: UIFont { return withWeight(.heavy) }
-    public var black: UIFont { return withWeight(.black) }
+public extension UIFont {
+    var ultraLight: UIFont { return withWeight(.ultraLight) }
+    var thin: UIFont { return withWeight(.thin) }
+    var light: UIFont { return withWeight(.light) }
+    var regular: UIFont { return withWeight(.regular) }
+    var medium: UIFont { return withWeight(.medium) }
+    var semibold: UIFont { return withWeight(.semibold) }
+    var bold: UIFont { return withWeight(.bold) }
+    var heavy: UIFont { return withWeight(.heavy) }
+    var black: UIFont { return withWeight(.black) }
 
-    public func withWeight(_ weight: UIFont.Weight) -> UIFont {
+    func withWeight(_ weight: UIFont.Weight) -> UIFont {
         var attributes = fontDescriptor.fontAttributes
         var traits = (attributes[.traits] as? [UIFontDescriptor.TraitKey: Any]) ?? [:]
 

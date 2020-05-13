@@ -7,8 +7,8 @@
 
 import UIKit
 
-extension UIApplication {
-    public static func openMailApp() {
+public extension UIApplication {
+    static func openMailApp() {
         if let url = URL(string: "message://") {
             if self.shared.canOpenURL(url) {
                 self.shared.open(url)
@@ -18,7 +18,7 @@ extension UIApplication {
         }
     }
     
-    public static func preventsScreenDimming(_ preventsScreenDimming: Bool = true) {
+    static func preventsScreenDimming(_ preventsScreenDimming: Bool = true) {
         shared.isIdleTimerDisabled = preventsScreenDimming
     }
 }

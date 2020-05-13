@@ -7,9 +7,9 @@
 
 import UIKit
 
-extension UIImage {
+public extension UIImage {
     
-    public func resized(withPercentage percentage: CGFloat, isOpaque: Bool = true) -> UIImage? {
+    func resized(withPercentage percentage: CGFloat, isOpaque: Bool = true) -> UIImage? {
         let canvas = CGSize(width: size.width * percentage, height: size.height * percentage)
         let format = imageRendererFormat
         format.opaque = isOpaque
@@ -18,7 +18,7 @@ extension UIImage {
         }
     }
     
-    public func resized(toWidth width: CGFloat, isOpaque: Bool = true) -> UIImage? {
+    func resized(toWidth width: CGFloat, isOpaque: Bool = true) -> UIImage? {
         let canvas = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
         let format = imageRendererFormat
         format.opaque = isOpaque
@@ -27,7 +27,7 @@ extension UIImage {
         }
     }
     
-    public func aspectRatio(_ aspectRatioBase: AspectRatioBase = .width) -> CGFloat {
+    func aspectRatio(_ aspectRatioBase: AspectRatioBase = .width) -> CGFloat {
         switch aspectRatioBase {
         case .width:
             return size.width / size.height
