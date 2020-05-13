@@ -16,10 +16,10 @@ public enum SSpacerType {
     case extraSmall, small, normal, medium, large, extraLarge
 }
 
-extension UIView {
+public extension UIView {
     
     @discardableResult
-    public func edgeTo(_ view: UIView, safeArea: SSafeArea = .none) -> UIView {
+    func edgeTo(_ view: UIView, safeArea: SSafeArea = .none) -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         switch safeArea {
@@ -88,7 +88,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func centerIn(_ view: UIView) -> UIView {
+    func centerIn(_ view: UIView) -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
         centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -96,7 +96,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func setBackground(image: UIImage, contentMode: ContentMode = .scaleAspectFit) -> UIView {
+    func setBackground(image: UIImage, contentMode: ContentMode = .scaleAspectFit) -> UIView {
         let imageView = UIImageView(image: image.withRenderingMode(.alwaysOriginal))
         imageView.contentMode = contentMode
         self.addSubview(imageView)
@@ -105,7 +105,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func horizontal(_ type: SSpacerType) -> UIView {
+    func horizontal(_ type: SSpacerType) -> UIView {
         switch type {
         case .extraSmall:
             setWidth(6)
@@ -124,7 +124,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func vertical(_ type: SSpacerType) -> UIView {
+    func vertical(_ type: SSpacerType) -> UIView {
         switch type {
         case .extraSmall:
             setHeight(6)
@@ -155,16 +155,16 @@ private let UIViewAnimationSpringDamping: CGFloat = 0.5
 private let UIViewAnimationSpringVelocity: CGFloat = 0.5
 public let UIViewDefaultFadeDuration: TimeInterval = 0.4
 
-extension UIView {
+public extension UIView {
     
     @discardableResult
-    public func setBackground(color: UIColor) -> UIView {
+    func setBackground(color: UIColor) -> UIView {
         backgroundColor = color
         return self
     }
     
     @discardableResult
-    open func setSize(_ size: CGSize) -> UIView {
+    func setSize(_ size: CGSize) -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: size.width).isActive = true
         heightAnchor.constraint(equalToConstant: size.height).isActive = true
@@ -172,21 +172,21 @@ extension UIView {
     }
     
     @discardableResult
-    open func setHeight(_ height: CGFloat) -> UIView {
+    func setHeight(_ height: CGFloat) -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
     
     @discardableResult
-    open func setWidth(_ width: CGFloat) -> UIView {
+    func setWidth(_ width: CGFloat) -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    public func addRotate(by angle: CGFloat) -> UIView {
+    func addRotate(by angle: CGFloat) -> UIView {
         let radians = angle / 180.0 * CGFloat.pi
         let rotation = self.transform.rotated(by: radians)
         self.transform = rotation
@@ -194,7 +194,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func asImage() -> UIImage? {
+    func asImage() -> UIImage? {
         if #available(iOS 10.0, *) {
             let renderer = UIGraphicsImageRenderer(size: self.bounds.size)
             let image = renderer.image { ctx in
@@ -212,20 +212,20 @@ extension UIView {
         }
     }
     
-    public func addSubviews(_ views: UIView...) {
+    func addSubviews(_ views: UIView...) {
         views.forEach { [weak self] eachView in
             self?.addSubview(eachView)
         }
     }
     
-    public func removeSubviews() {
+    func removeSubviews() {
         for subview in subviews {
             subview.removeFromSuperview()
         }
     }
     
     @discardableResult
-    public func setCorner(_ radius: CGFloat, maskedCorners: CACornerMask = CACornerMask_allCorners) -> UIView {
+    func setCorner(_ radius: CGFloat, maskedCorners: CACornerMask = CACornerMask_allCorners) -> UIView {
         layer.cornerRadius = radius
         layer.maskedCorners = maskedCorners
         layer.masksToBounds = true
@@ -242,21 +242,21 @@ extension UIView {
     }
     
     @discardableResult
-    public func setBorder(width: CGFloat) -> UIView {
+    func setBorder(width: CGFloat) -> UIView {
         layer.borderWidth = width
         layer.masksToBounds = true
         return self
     }
     
     @discardableResult
-    public func setBorder(color: UIColor) -> UIView {
+    func setBorder(color: UIColor) -> UIView {
         layer.borderColor = color.cgColor
         layer.masksToBounds = true
         return self
     }
     
     @discardableResult
-    public func setBorder(width: CGFloat, color: UIColor) -> UIView {
+    func setBorder(width: CGFloat, color: UIColor) -> UIView {
         layer.borderWidth = width
         layer.borderColor = color.cgColor
         layer.masksToBounds = true
@@ -264,7 +264,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func setBorder(width: CGFloat, cornerRadius: CGFloat, color: UIColor, maskedCorners: CACornerMask = CACornerMask_allCorners) -> UIView {
+    func setBorder(width: CGFloat, cornerRadius: CGFloat, color: UIColor, maskedCorners: CACornerMask = CACornerMask_allCorners) -> UIView {
         layer.borderWidth = width
         layer.cornerRadius = cornerRadius
         layer.maskedCorners = maskedCorners
@@ -274,7 +274,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func setCapsuleBorder(width: CGFloat, color: UIColor, orientation: CapsuleBorderOrientation = .horizontal) -> UIView {
+    func setCapsuleBorder(width: CGFloat, color: UIColor, orientation: CapsuleBorderOrientation = .horizontal) -> UIView {
         layer.borderWidth = width
         layer.cornerRadius = (orientation == .horizontal ? frame.height : frame.width) / 2
         layer.borderColor = color.cgColor
@@ -282,23 +282,23 @@ extension UIView {
         return self
     }
     
-    public func setBorderTop(size: CGFloat, color: UIColor) {
+    func setBorderTop(size: CGFloat, color: UIColor) {
         borderUtility(x: 0, y: 0, width: frame.width, radius: size, color: color)
     }
     
-    public func setBorderTopWithPadding(size: CGFloat, color: UIColor, padding: CGFloat) {
+    func setBorderTopWithPadding(size: CGFloat, color: UIColor, padding: CGFloat) {
         borderUtility(x: padding, y: 0, width: frame.width - padding*2, radius: size, color: color)
     }
     
-    public func setBorderBottom(size: CGFloat, color: UIColor) {
+    func setBorderBottom(size: CGFloat, color: UIColor) {
         borderUtility(x: 0, y: frame.height - size, width: frame.width, radius: size, color: color)
     }
     
-    public func setBorderLeft(size: CGFloat, color: UIColor) {
+    func setBorderLeft(size: CGFloat, color: UIColor) {
         borderUtility(x: 0, y: 0, width: size, radius: frame.height, color: color)
     }
     
-    public func setBorderRight(size: CGFloat, color: UIColor) {
+    func setBorderRight(size: CGFloat, color: UIColor) {
         borderUtility(x: frame.width - size, y: 0, width: size, radius: frame.height, color: color)
     }
     
@@ -309,18 +309,18 @@ extension UIView {
         layer.addSublayer(border)
     }
     
-    public func setScale(x: CGFloat, y: CGFloat) {
+    func setScale(x: CGFloat, y: CGFloat) {
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
         transform = CATransform3DScale(transform, x, y, 1)
         self.layer.transform = transform
     }
     
-    public func addSpring(animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
+    func addSpring(animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
         addSpring(duration: UIViewAnimationDuration, animations: animations, completion: completion)
     }
     
-    public func addSpring(duration: TimeInterval, animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
+    func addSpring(duration: TimeInterval, animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
         UIView.animate(
             withDuration: UIViewAnimationDuration,
             delay: 0,
@@ -332,36 +332,36 @@ extension UIView {
         )
     }
     
-    public func addAnimations(duration: TimeInterval, animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
+    func addAnimations(duration: TimeInterval, animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
         UIView.animate(withDuration: duration, animations: animations, completion: completion)
     }
     
-    public func addAnimations(animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
+    func addAnimations(animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
         addAnimations(duration: UIViewAnimationDuration, animations: animations, completion: completion)
     }
     
-    public func addPop() {
+    func addPop() {
         setScale(x: 1.1, y: 1.1)
         addSpring(duration: 0.2, animations: { [unowned self] () -> Void in
             self.setScale(x: 1, y: 1)
         })
     }
     
-    public func addPopBig() {
+    func addPopBig() {
         setScale(x: 1.25, y: 1.25)
         addSpring(duration: 0.2, animations: { [unowned self] () -> Void in
             self.setScale(x: 1, y: 1)
         })
     }
     
-    public func addReversePop() {
+    func addReversePop() {
         setScale(x: 0.9, y: 0.9)
         UIView.animate(withDuration: 0.05, delay: 0, options: .allowUserInteraction, animations: {[weak self] in
             self?.setScale(x: 1, y: 1)
             }, completion: { (_) in })
     }
     
-    public func addShakeForTimes(_ times: Int) {
+    func addShakeForTimes(_ times: Int) {
         let anim = CAKeyframeAnimation(keyPath: "transform")
         anim.values = [
             NSValue(caTransform3D: CATransform3DMakeTranslation(-5, 0, 0 )),
@@ -374,22 +374,22 @@ extension UIView {
         self.layer.add(anim, forKey: nil)
     }
     
-    public func addFadeIn(_ duration: TimeInterval? = UIViewDefaultFadeDuration, delay: TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
+    func addFadeIn(_ duration: TimeInterval? = UIViewDefaultFadeDuration, delay: TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
         addFadeTo(1.0, duration: duration, delay: delay, completion: completion)
     }
     
-    public func addFadeOut(_ duration: TimeInterval? = UIViewDefaultFadeDuration, delay: TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
+    func addFadeOut(_ duration: TimeInterval? = UIViewDefaultFadeDuration, delay: TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
         addFadeTo(0.0, duration: duration, delay: delay, completion: completion)
     }
     
-    public func addFadeTo(_ value: CGFloat, duration: TimeInterval? = UIViewDefaultFadeDuration, delay: TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
+    func addFadeTo(_ value: CGFloat, duration: TimeInterval? = UIViewDefaultFadeDuration, delay: TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
         UIView.animate(withDuration: duration ?? UIViewDefaultFadeDuration, delay: delay ?? UIViewDefaultFadeDuration, options: .curveEaseInOut, animations: {
             self.alpha = value
         }, completion: completion)
     }
     
     @discardableResult
-    public func setCircular(_ radius: CGFloat) -> UIView {
+    func setCircular(_ radius: CGFloat) -> UIView {
         layer.cornerRadius = radius
         layer.masksToBounds = true
         setSize(CGSize(width: radius * 2, height: radius * 2))
@@ -397,18 +397,18 @@ extension UIView {
     }
     
     @discardableResult
-    public func alpha(_ alpha: CGFloat) -> UIView {
+    func alpha(_ alpha: CGFloat) -> UIView {
         self.alpha = alpha
         return self
     }
     
     @discardableResult
-    public func setHidden(_ setHidden: Bool = true) -> UIView {
+    func setHidden(_ setHidden: Bool = true) -> UIView {
         self.isHidden = setHidden
         return self
     }
     
-    public func gradientBackground(from color1: UIColor, to color2: UIColor, direction: SGradientDirection) {
+    func gradientBackground(from color1: UIColor, to color2: UIColor, direction: SGradientDirection) {
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = [color1.cgColor, color2.cgColor]
@@ -430,7 +430,7 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
-    open func rotate(duration: CFTimeInterval, speed: Double, clockWise: Bool) {
+    func rotate(duration: CFTimeInterval, speed: Double, clockWise: Bool) {
         let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotation.toValue = NSNumber(value: Double.pi * 2 * speed * (clockWise ? 1.0 : -1.0))
         rotation.duration = duration
@@ -440,7 +440,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func isUserInteractionEnabled(_ isUserInteractionEnabled: Bool = true) -> UIView {
+    func isUserInteractionEnabled(_ isUserInteractionEnabled: Bool = true) -> UIView {
         self.isUserInteractionEnabled = isUserInteractionEnabled
         return self
     }
