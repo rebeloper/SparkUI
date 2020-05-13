@@ -17,7 +17,6 @@ public struct SSheetAttributes {
     public static var shared: EKAttributes = {
         var attributes: EKAttributes = .bottomToast
         
-        attributes.screenBackground = .color(color: EKColor(UIColor.black.withAlphaComponent(0.5)))
         attributes.displayDuration = .infinity
         
         attributes.positionConstraints.verticalOffset = 0
@@ -42,9 +41,11 @@ public struct SSheet {
                  modalPresentationStyle: UIViewControllerModalPresentationStyle = .sheet(),
                  swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
                  animationType: UIViewControllerAnimationType = .slide,
-                 hapticFeedbackType: EKAttributes.NotificationHapticFeedback = .none) {
+                 hapticFeedbackType: EKAttributes.NotificationHapticFeedback = .none,
+                 backgroundColor: UIColor = UIColor.black.withAlphaComponent(0.5)) {
         
         SSheetAttributes.shared.hapticFeedbackType = hapticFeedbackType
+        SSheetAttributes.shared.screenBackground = .color(color: EKColor(backgroundColor))
         
         switch modalPresentationStyle {
         case .fill:
