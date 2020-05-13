@@ -79,12 +79,12 @@ public extension UIViewController {
     func setAsRoot(for navigator: Navigator, withParentNavigator parentNavigator: Navigator?) {
         navigator.navigation.display(self)
         navigator.present(navigator.navigation)
-        SheetState.isPresented.dropFirst(1).observeNext { (isPresented) in
+        SheetState.isPresented.onNext { (isPresented) in
+            guard let isPresented = isPresented else { return }
             if !isPresented {
                 parentNavigator?.didDismiss(navigator)
-                self.bag.dispose()
             }
-        }.dispose(in: bag)
+        }
     }
 }
 

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ReactiveKit
 import AuthenticationServices
 import CryptoKit
 
@@ -37,8 +36,8 @@ open class SSignInWithAppleViewController: SViewController {
     
     // MARK: - Observers
     
-    public lazy var signInWithAppleObserver = Property(defaultSignInWithAppleObserver)
-    public lazy var signInWithAppleErrorObserver = Property(defaultSignInWithAppleErrorObserver)
+    public lazy var signInWithAppleObserver = Bucket(defaultSignInWithAppleObserver)
+    public lazy var signInWithAppleErrorObserver = Bucket(defaultSignInWithAppleErrorObserver)
     
     // MARK: - Views
     public var signInWithAppleButton: ASAuthorizationAppleIDButton!
@@ -88,8 +87,8 @@ open class SSignInWithAppleViewController: SViewController {
     
     // MARK: - Bind
     
-    override open func bind() {
-        super.bind()
+    override open func assign() {
+        super.assign()
     }
     
     // MARK: - Observe

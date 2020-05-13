@@ -6,10 +6,9 @@
 //
 
 import UIKit
-import ReactiveKit
 
 open class SImagePickerViewController: SViewController {
-    public var imagePickerControllerImage = Property(UIImage())
+    public var imagePickerControllerImage = Bucket(UIImage())
 }
 
 extension SImagePickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import ReactiveKit
-import Bond
 import Layoutless
 
 public class STextField: UIView {
@@ -16,7 +14,7 @@ public class STextField: UIView {
     private let eyeButton = UIButton()
         .image(UIImage(systemName: "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysTemplate))
         .size(CGSize(width: 30, height: 30))
-    private let showingSecureText = Property(false)
+    private var showingSecureText = Bucket(false)
     
     public var placeholder: UILabel
     
@@ -146,12 +144,12 @@ public class STextField: UIView {
     }
     
     fileprivate func observe() {
-        eyeButton.reactive.tap.observeNext { [weak self] in
-            guard let self = self else { return }
-            self.showingSecureText.value.toggle()
-        }.dispose(in: bag)
+        eyeButton.addAction {
+            self.showingSecureText.value?.toggle()
+        }
         
-        showingSecureText.observeNext { (showing) in
+        showingSecureText.onNextWithFirst { (showing) in
+            guard let showing = showing else { return }
             if showing {
                 self.isSecureTextEntry(false)
                 self.eyeButton
@@ -161,7 +159,7 @@ public class STextField: UIView {
                 self.eyeButton
                     .image(UIImage(systemName: "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysTemplate))
             }
-        }.dispose(in: bag)
+        }
         
     }
     

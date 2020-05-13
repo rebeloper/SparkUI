@@ -17,8 +17,6 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/DeclarativeHub/Layoutless.git", .upToNextMajor(from: "0.4.2")),
-        .package(url: "https://github.com/DeclarativeHub/ReactiveKit.git", .upToNextMajor(from: "3.17.0")),
-        .package(url: "https://github.com/DeclarativeHub/Bond.git", .upToNextMajor(from: "7.6.6")),
         .package(url: "https://github.com/ruslanskorb/RSKPlaceholderTextView.git", .upToNextMajor(from: "6.0.2")),
         .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "5.13.4")),
         .package(url: "https://github.com/HeroTransitions/Hero.git", .upToNextMajor(from: "1.5.0")),
@@ -31,8 +29,6 @@ let package = Package(
             name: "SparkUI",
             dependencies: [
                 "Layoutless",
-                "ReactiveKit",
-                "Bond",
                 "RSKPlaceholderTextView",
                 "Kingfisher",
                 "Hero",

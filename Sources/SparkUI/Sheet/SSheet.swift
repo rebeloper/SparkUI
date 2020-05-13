@@ -6,11 +6,10 @@
 //
 
 import SwiftEntryKit
-import ReactiveKit
 import UIKit
 
 public struct SSheetState {
-    public static let isPresented = Property(false)
+    public static let isPresented = Bucket(false)
 }
 
 public struct SSheetAttributes {

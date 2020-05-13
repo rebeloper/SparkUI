@@ -27,7 +27,7 @@ open class SViewController: UIViewController {
         view.backgroundColor = .systemBackground
         container.backgroundColor = .systemBackground
         layoutViews()
-        bind()
+        assign()
         observe()
         continueViewDidLoad()
     }
@@ -47,7 +47,7 @@ open class SViewController: UIViewController {
         container.edgeTo(view, safeArea: safeArea)
     }
     
-    open func bind() {}
+    open func assign() {}
     open func observe() {}
     open func continueViewDidLoad() {}
 }

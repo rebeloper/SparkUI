@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ReactiveKit
 
 public struct SAppearance {
     

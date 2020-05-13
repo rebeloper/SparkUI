@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ReactiveKit
 import Layoutless
 
 open class SSwipeToDeleteView: UIView {
@@ -21,7 +20,7 @@ open class SSwipeToDeleteView: UIView {
     
     public var scrollView: UIScrollView?
     
-    public var didDelete = Property(false)
+    public var didDelete = Bucket(false)
     
     public init(width: CGFloat) {
         if width == 0 {

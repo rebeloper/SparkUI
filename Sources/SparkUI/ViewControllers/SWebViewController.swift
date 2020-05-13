@@ -6,8 +6,6 @@
 //
 
 import WebKit
-import ReactiveKit
-import Bond
 import Layoutless
 
 open class SWebViewController: SViewController {
@@ -37,9 +35,20 @@ open class SWebViewController: SViewController {
         return view
     }()
     
-    public lazy var cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
+    public lazy var cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel) {
+        switch self.navigatorActionType {
+        case .pushed:
+            self.navigationController?.popViewController(animated: true)
+        case .presented:
+            self.dismiss(animated: true)
+        case .none:
+            print("SWebViewController: invalid navigatorActionType - none")
+        }
+    }
     
-    public lazy var refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: nil)
+    public lazy var refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh) {
+        self.webView.reload()
+    }
     
     public lazy var progressView: UIProgressView = {
         let progressView = UIProgressView(progressViewStyle: .default)
@@ -68,31 +77,6 @@ open class SWebViewController: SViewController {
         ).fillingParent().layout(in: container)
     }
     
-    override open func bind() {
-        super.bind()
-    }
-    
-    override open func observe() {
-        super.observe()
-        
-        cancelBarButtonItem.reactive.tap.observeNext { [weak self] in
-            guard let self = self else { return }
-            switch self.navigatorActionType {
-            case .pushed:
-                self.navigationController?.popViewController(animated: true)
-            case .presented:
-                self.dismiss(animated: true)
-            case .none:
-                print("SWebViewController: invalid navigatorActionType - none")
-            }
-            
-        }.dispose(in: bag)
-        
-        refreshBarButtonItem.reactive.tap.observeNext { [weak self] in
-            guard let self = self else { return }
-            self.webView.reload()
-        }.dispose(in: bag)
-    }
 }
 
 extension SWebViewController: WKNavigationDelegate {
