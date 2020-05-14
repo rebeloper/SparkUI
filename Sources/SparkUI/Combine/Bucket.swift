@@ -12,7 +12,7 @@ public class Bucket<Value> {
     private var cancelableValue: AnyCancellable?
     @Published public var value: Value {
         didSet {
-            print("Bucket: set new value: \(value): \(Value)")
+            print("Bucket: set new value: \(value): \(Value.self)")
         }
     }
     
