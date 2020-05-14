@@ -26,7 +26,7 @@ public extension UISegmentedControl {
 }
 
 public extension UISegmentedControl {
-    func addAction(completion: @escaping (_ selectedIndex: Int) -> ()) {
+    func addAction(completion: @escaping (Int) -> ()) {
         self.addAction(events: [.valueChanged]) { (uiSegmentedControl: UISegmentedControl) in
             completion(uiSegmentedControl.selectedSegmentIndex)
         }
