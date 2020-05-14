@@ -28,7 +28,8 @@ open class SViewController: UIViewController {
         container.backgroundColor = .systemBackground
         layoutViews()
         assign()
-        observe()
+        addActions()
+        listen()
         continueViewDidLoad()
     }
     
@@ -48,6 +49,7 @@ open class SViewController: UIViewController {
     }
     
     open func assign() {}
-    open func observe() {}
+    open func addActions() {}
+    open func listen() {}
     open func continueViewDidLoad() {}
 }

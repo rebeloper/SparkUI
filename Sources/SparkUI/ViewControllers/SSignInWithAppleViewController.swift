@@ -75,28 +75,6 @@ open class SSignInWithAppleViewController: SViewController {
         signInWithAppleButton.addTarget(self, action: #selector(didTapSignInWithAppleButton), for: .touchUpInside)
     }
     
-    override open func continueViewDidLoad() {
-        super.continueViewDidLoad()
-    }
-    
-    // MARK: - Layout
-    
-    override open func layoutViews() {
-        super.layoutViews()
-    }
-    
-    // MARK: - Bind
-    
-    override open func assign() {
-        super.assign()
-    }
-    
-    // MARK: - Observe
-    
-    override open func observe() {
-        super.observe()
-    }
-    
 }
 
 public extension SSignInWithAppleViewController {
