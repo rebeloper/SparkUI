@@ -11,12 +11,12 @@ public class STextView: SPlaceholderTextView {
     
     public var textBucket = Bucket("")
     
-    override init(frame: CGRect = .zero, textContainer: NSTextContainer? = nil) {
+    public override init(frame: CGRect = .zero, textContainer: NSTextContainer? = nil) {
         super.init(frame: frame, textContainer: textContainer)
         NotificationCenter.default.addObserver(self, selector: #selector(STextView.applyTextViewTextDidChangeNotification(_:)), name: UITextView.textDidChangeNotification, object: self)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError(SDebug.Message.FatalError.initCoder)
     }
     
@@ -31,4 +31,10 @@ public class STextView: SPlaceholderTextView {
         textBucket.value = object.text
     }
     
+}
+
+public extension STextView {
+    func onNext(interval: TimeInterval = 0.1, completion: @escaping (String) -> ()) {
+        self.textBucket.onNext(throttle: interval, completion: completion)
+    }
 }
