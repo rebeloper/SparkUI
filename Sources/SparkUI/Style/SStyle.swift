@@ -253,10 +253,10 @@ public extension STextField {
     }
 }
 
-// MARK: - STextView
+// MARK: - SPlaceholderTextView
 
 /// Represents view style with a closure that configures the view.
-public struct STextViewStyle<View: STextView> {
+public struct STextViewStyle<View: SPlaceholderTextView> {
 
     public let style: (View) -> Void
 

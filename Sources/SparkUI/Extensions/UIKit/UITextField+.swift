@@ -18,3 +18,15 @@ public extension UITextField {
         return self
     }
 }
+
+public extension UITextField {
+    func onNext(_ event: UIControl.Event = .editingChanged, interval: TimeInterval = 0.1, completion: @escaping (String?) -> ()) {
+        self.throttle(event, interval: interval) { (textField: UITextField) in
+            guard let text = textField.text else {
+                completion(nil)
+                return
+            }
+            completion(text)
+        }
+    }
+}
