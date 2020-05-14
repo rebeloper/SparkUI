@@ -145,11 +145,10 @@ public class STextField: UIView {
     
     fileprivate func observe() {
         eyeButton.addAction {
-            self.showingSecureText.value?.toggle()
+            self.showingSecureText.value.toggle()
         }
         
         showingSecureText.onNextWithFirst { (showing) in
-            guard let showing = showing else { return }
             if showing {
                 self.isSecureTextEntry(false)
                 self.eyeButton

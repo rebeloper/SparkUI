@@ -80,7 +80,6 @@ public extension UIViewController {
         navigator.navigation.display(self)
         navigator.present(navigator.navigation)
         SheetState.isPresented.onNext { (isPresented) in
-            guard let isPresented = isPresented else { return }
             if !isPresented {
                 parentNavigator?.didDismiss(navigator)
             }
