@@ -64,3 +64,10 @@ public extension UISwitch {
     
 }
 
+public extension UISwitch {
+    func addAction(completion: @escaping (Bool) -> ()) {
+        self.addAction(events: [.valueChanged]) { (uiSwitch: UISwitch) in
+            completion(uiSwitch.isOn)
+        }
+    }
+}
