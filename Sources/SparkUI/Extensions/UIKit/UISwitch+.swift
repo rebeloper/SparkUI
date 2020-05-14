@@ -65,7 +65,7 @@ public extension UISwitch {
 }
 
 public extension UISwitch {
-    func addAction(completion: @escaping (Bool) -> ()) {
+    func addAction(completion: @escaping (_ isOn: Bool) -> ()) {
         self.addAction(events: [.valueChanged]) { (uiSwitch: UISwitch) in
             completion(uiSwitch.isOn)
         }
