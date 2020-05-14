@@ -10,11 +10,7 @@ import Combine
 
 public class Bucket<Value> {
     private var cancelableValue: AnyCancellable?
-    @Published public var value: Value {
-        didSet {
-            print("Bucket: set new value: \(value): \(Value.self)")
-        }
-    }
+    @Published public var value: Value
     
     public init(_ first: Value) {
         self.value = first
