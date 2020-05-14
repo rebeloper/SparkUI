@@ -29,7 +29,7 @@ open class SViewController: UIViewController {
         layoutViews()
         assign()
         addActions()
-        listen()
+        onNext()
         continueViewDidLoad()
     }
     
@@ -50,6 +50,6 @@ open class SViewController: UIViewController {
     
     open func assign() {}
     open func addActions() {}
-    open func listen() {}
+    open func onNext() {}
     open func continueViewDidLoad() {}
 }
