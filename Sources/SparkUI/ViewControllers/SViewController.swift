@@ -48,7 +48,6 @@ open class SViewController: UIViewController {
     open func layoutViews() {
         view.addSubview(container)
         container.edgeTo(view, safeArea: safeArea)
-        
     }
     
     open func assign() {}
