@@ -15,6 +15,7 @@ public class SButton: UIView {
     var activityIndicatorView = UIActivityIndicatorView()
     var activityIndicatorViewMessageLabel = UILabel().bold()
     var text = ""
+    var isEnabled = true
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -110,11 +111,13 @@ public class SButton: UIView {
     
     public func enable() {
         isUserInteractionEnabled = true
+        isEnabled = true
         addFadeTo(1.0, duration: 0.2)
     }
     
     public func disable() {
         isUserInteractionEnabled = false
+        isEnabled = false
         addFadeTo(0.5, duration: 0.2)
     }
     
@@ -128,5 +131,12 @@ public class SButton: UIView {
     public func disabled() -> SButton {
         self.disable()
         return self
+    }
+    
+    @discardableResult
+    public func addAction(sButtonAction: @escaping () -> Void) -> UIGestureRecognizer {
+        if isEnabled {
+            addAction(action: sButtonAction)
+        }
     }
 }
