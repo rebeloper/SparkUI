@@ -18,8 +18,6 @@ public class SButton: UIView {
     var activityIndicatorViewMessageLabel = UILabel().bold()
     var text = ""
     
-    var disableColorView: UIView!
-    
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         addFadeTo(0.2, duration: 0.0)
@@ -35,19 +33,15 @@ public class SButton: UIView {
         addFadeTo(1.0, duration: 0.2)
     }
     
-    public init(uiView: UIView, disableColorView: UIView = UIView().setBackground(color: UIColor.systemGray.withAlphaComponent(0.5))) {
+    public init(uiView: UIView) {
         object = uiView
-        self.disableColorView = disableColorView
         super.init(frame: .zero)
         
         addSubview(uiView)
         addSubview(activityContainerView)
-        addSubview(disableColorView)
         
         uiView.edgeTo(self)
         activityContainerView.edgeTo(self)
-        disableColorView.edgeTo(self)
-        disableColorView.addFadeTo(0.0, duration: 0.0)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -119,13 +113,13 @@ public class SButton: UIView {
     public func enable() {
         isUserInteractionEnabled = true
         isEnabled = true
-        disableColorView.addFadeTo(0.0, duration: 0.2)
+        addFadeTo(0.0, duration: 0.2)
     }
     
     public func disable() {
         isUserInteractionEnabled = false
         isEnabled = false
-        disableColorView.addFadeTo(1.0, duration: 0.2)
+        addFadeTo(1.0, duration: 0.2)
     }
     
     @discardableResult
