@@ -29,6 +29,7 @@ open class SViewController: UIViewController {
         preLoad()
         configureNavigationBar()
         layoutViews()
+        configureViews()
         assign()
         addActions()
         onNext()
@@ -56,6 +57,7 @@ open class SViewController: UIViewController {
         container.edgeTo(view, safeArea: safeArea)
     }
     
+    open func configureViews() {}
     open func assign() {}
     open func addActions() {}
     open func onNext() {}
