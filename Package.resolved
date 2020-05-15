@@ -1,0 +1,61 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Hero",
+        "repositoryURL": "https://github.com/HeroTransitions/Hero.git",
+        "state": {
+          "branch": null,
+          "revision": "ae951b89f23485de8a7b95aaa5cead7f78ab1df0",
+          "version": "1.5.0"
+        }
+      },
+      {
+        "package": "Kingfisher",
+        "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
+        "state": {
+          "branch": null,
+          "revision": "349ed06467a6f8a4939bcb83db301542bc84eac9",
+          "version": "5.13.4"
+        }
+      },
+      {
+        "package": "Layoutless",
+        "repositoryURL": "https://github.com/DeclarativeHub/Layoutless.git",
+        "state": {
+          "branch": null,
+          "revision": "63ff2afcc3cbb3dd4f8aabecfc749591b8d4ef21",
+          "version": "0.4.2"
+        }
+      },
+      {
+        "package": "QuickLayout",
+        "repositoryURL": "https://github.com/huri000/QuickLayout",
+        "state": {
+          "branch": null,
+          "revision": "6be62decbe508d8fc8f9dbafc349d05bab03c38b",
+          "version": "3.0.1"
+        }
+      },
+      {
+        "package": "RSKPlaceholderTextView",
+        "repositoryURL": "https://github.com/ruslanskorb/RSKPlaceholderTextView.git",
+        "state": {
+          "branch": null,
+          "revision": "387cca8f23437809977dad928cbfef9be005f486",
+          "version": "6.0.2"
+        }
+      },
+      {
+        "package": "SwiftEntryKit",
+        "repositoryURL": "https://github.com/huri000/SwiftEntryKit.git",
+        "state": {
+          "branch": null,
+          "revision": "796981500de29ee72f72ef8e9c46eaed2fe6364e",
+          "version": "1.2.3"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

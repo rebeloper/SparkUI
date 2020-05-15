@@ -10,11 +10,13 @@ import UIKit
 open class SViewController: UIViewController {
     
     public var safeArea: SSafeArea
+    public var state: SViewControllerState
     
     public let container = UIView()
     
-    public init(safeArea: SSafeArea = .all) {
+    public init(safeArea: SSafeArea = .all, state: SViewControllerState = 0) {
         self.safeArea = safeArea
+        self.state = state
         super.init(nibName: nil, bundle: nil)
     }
     
