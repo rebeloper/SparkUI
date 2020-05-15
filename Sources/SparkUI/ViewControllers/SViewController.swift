@@ -10,13 +10,13 @@ import UIKit
 open class SViewController: UIViewController {
     
     public var safeArea: SSafeArea
-    public var state = Bucket<SViewControllerState>(0)
+    public var stateTag = Bucket(0)
     
     public let container = UIView()
     
-    public init(safeArea: SSafeArea = .all, state: SViewControllerState = 0) {
+    public init(safeArea: SSafeArea = .all, stateTag: Int = 0) {
         self.safeArea = safeArea
-        self.state.value = state
+        self.stateTag.value = stateTag
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -53,8 +53,8 @@ open class SViewController: UIViewController {
     open func assign() {}
     open func addActions() {}
     open func onNext() {
-        let state = self.state.value
-        self.state.value = state
+        let stateTag = self.stateTag.value
+        self.stateTag.value = stateTag
     }
     open func continueViewDidLoad() {}
 }
