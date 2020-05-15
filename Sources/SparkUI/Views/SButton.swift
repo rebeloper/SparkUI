@@ -11,11 +11,12 @@ import Layoutless
 public class SButton: UIView {
     
     public var object: UIView!
+    public var isEnabled = true
+    
     var activityContainerView = UIView().alpha(0)
     var activityIndicatorView = UIActivityIndicatorView()
     var activityIndicatorViewMessageLabel = UILabel().bold()
     var text = ""
-    var isEnabled = true
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
