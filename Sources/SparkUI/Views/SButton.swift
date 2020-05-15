@@ -133,6 +133,9 @@ public class SButton: UIView {
         return self
     }
     
+}
+
+extension UIView {
     @discardableResult
     public func addSButtonAction(action: @escaping () -> Void) -> UIGestureRecognizer {
         if isEnabled {
