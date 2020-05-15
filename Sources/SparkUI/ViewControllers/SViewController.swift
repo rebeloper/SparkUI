@@ -27,6 +27,7 @@ open class SViewController: UIViewController {
         view.backgroundColor = .systemBackground
         container.backgroundColor = .systemBackground
         preLoad()
+        configureNavigationBar()
         layoutViews()
         assign()
         addActions()
@@ -48,6 +49,7 @@ open class SViewController: UIViewController {
     
     
     open func preLoad() {}
+    open func configureNavigationBar() {}
     
     open func layoutViews() {
         view.addSubview(container)
