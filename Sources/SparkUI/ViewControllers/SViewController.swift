@@ -10,13 +10,11 @@ import UIKit
 open class SViewController: UIViewController {
     
     public var safeArea: SSafeArea
-    public var stateTag = Bucket(0)
     
     public let container = UIView()
     
-    public init(safeArea: SSafeArea = .all, stateTag: Int = 0) {
+    public init(safeArea: SSafeArea = .all) {
         self.safeArea = safeArea
-        self.stateTag.value = stateTag
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,29 +30,31 @@ open class SViewController: UIViewController {
         assign()
         addActions()
         onNext()
-        continueViewDidLoad()
+        onLoad()
     }
     
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SHero.enable(in: self)
+        onAppear()
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         SHero.disable(in: self)
+        onDisappear()
     }
     
     open func layoutViews() {
         view.addSubview(container)
         container.edgeTo(view, safeArea: safeArea)
+        
     }
     
     open func assign() {}
     open func addActions() {}
-    open func onNext() {
-        let stateTag = self.stateTag.value
-        self.stateTag.value = stateTag
-    }
-    open func continueViewDidLoad() {}
+    open func onNext() {}
+    open func onLoad() {}
+    open func onAppear() {}
+    open func onDisappear() {}
 }

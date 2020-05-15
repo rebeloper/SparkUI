@@ -59,8 +59,8 @@ open class SWebViewController: SViewController {
         super.viewDidLoad()
     }
     
-    override open func continueViewDidLoad() {
-        super.continueViewDidLoad()
+    override open func onLoad() {
+        super.onLoad()
         setupNavigation()
     }
     
