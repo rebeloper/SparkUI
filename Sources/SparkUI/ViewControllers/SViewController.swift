@@ -26,6 +26,7 @@ open class SViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         container.backgroundColor = .systemBackground
+        preLoad()
         layoutViews()
         assign()
         addActions()
@@ -45,6 +46,9 @@ open class SViewController: UIViewController {
         onDisappear()
     }
     
+    
+    open func preLoad() {}
+    
     open func layoutViews() {
         view.addSubview(container)
         container.edgeTo(view, safeArea: safeArea)
@@ -54,6 +58,7 @@ open class SViewController: UIViewController {
     open func addActions() {}
     open func onNext() {}
     open func onLoad() {}
+    
     open func onAppear() {}
     open func onDisappear() {}
 }
