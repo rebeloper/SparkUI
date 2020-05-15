@@ -52,6 +52,9 @@ open class SViewController: UIViewController {
     
     open func assign() {}
     open func addActions() {}
-    open func onNext() {}
+    open func onNext() {
+        let currentState = state.value
+        state.value = currentState
+    }
     open func continueViewDidLoad() {}
 }
