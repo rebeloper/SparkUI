@@ -134,9 +134,9 @@ public class SButton: UIView {
     }
     
     @discardableResult
-    public func addAction(sButtonAction: @escaping () -> Void) -> UIGestureRecognizer {
+    public func addSButtonAction(action: @escaping () -> Void) -> UIGestureRecognizer {
         if isEnabled {
-            addAction(action: sButtonAction)
+            addAction(action: action)
         }
     }
 }
