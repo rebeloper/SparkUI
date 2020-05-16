@@ -32,13 +32,14 @@ public extension Array {
     }
 }
 
-extension Array where Element: Equatable {
-    
-    public mutating func move(_ element: Element, to destinationIndex: Index) {
+public extension Array where Element: Equatable {
+    mutating func move(_ element: Element, to destinationIndex: Index) {
         if let oldIndex: Int = self.firstIndex(of: element) { self.move(from: oldIndex, to: destinationIndex) }
     }
-    
-    public mutating func move(from sourceIndex: Index, to destinationIndex: Index) {
+}
+
+public extension Array {
+    mutating func move(from sourceIndex: Index, to destinationIndex: Index) {
         // Don't work for free and use swap when indices are next to each other - this
         // won't rebuild the array and will be super efficient.
         if sourceIndex == destinationIndex { return }
