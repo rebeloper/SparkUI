@@ -22,7 +22,7 @@ open class STableCell<T>: UITableViewCell {
     
     public let container = UIView()
     
-    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         SDispatchQueue.delay(bySeconds: 0.5) {
             self.assign()

@@ -22,7 +22,7 @@ open class SCollectionCell<T>: UICollectionViewCell {
     
     public let container = UIView()
     
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         SDispatchQueue.delay(bySeconds: 0.5) {
             self.assign()
