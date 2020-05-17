@@ -21,4 +21,6 @@ public typealias Sheet = SSheet
 public typealias SPlaceholderTextView = RSKPlaceholderTextView
 public typealias SHideable = Dismissable_withCompletion & Dismissable & Popable_Animated & Popable & PopToRootable_Animated & PopToRootable
 public typealias ModalNavigatable = Modal_Presentable & Modal_Dismissable
-public typealias DiffableDataSource = UICollectionViewDiffableDataSource
+public typealias CollectionCell = SCollectionCell
+public typealias CollectionSupplementary = SCollectionSupplementary
+public typealias TableCell = STableCell
