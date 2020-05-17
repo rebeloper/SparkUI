@@ -47,7 +47,7 @@ public enum Gesture {
     case multiSwipe(direction: UISwipeGestureRecognizer.Direction, fingers: Int)
     
     /// A long press gesture with a single finger, with the given number of tasps and touches, minimum press duration and allowable movement
-    case longPress(taps: Int, fingers: Int,  minimumPressDuration: CFTimeInterval, allowableMovement: CGFloat)
+    case longPress(taps: Int = 0, fingers: Int = 1, minimumPressDuration: CFTimeInterval = 0.3, allowableMovement: CGFloat = 10)
     
     fileprivate func recognizer(action: Action) -> UIGestureRecognizer {
         
