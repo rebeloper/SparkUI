@@ -1,15 +1,15 @@
 //
-//  STableSupplementary.swift
+//  SCollectionSupplementaryView.swift
 //  
 //
-//  Created by Alex Nagy on 17/05/2020.
+//  Created by Alex Nagy on 11/05/2020.
 //
 
 import UIKit
 import Layoutless
 
-open class STableSupplementary<T>: UITableViewHeaderFooterView {
-    
+open class SCollectionSupplementaryView<T>: UICollectionReusableView {
+
     open var item: T? {
         didSet {
             layoutViews()
@@ -22,8 +22,11 @@ open class STableSupplementary<T>: UITableViewHeaderFooterView {
 
     public let container = UIView()
     
-    override public init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        assign()
+        addActions()
+        onNext()
     }
     
     required public init?(coder: NSCoder) {
@@ -61,5 +64,8 @@ open class STableSupplementary<T>: UITableViewHeaderFooterView {
     public func setBackgroundColor(all color: UIColor = .systemBackground) {
         setBackgroundColor(color, containerBackgroundColor: color)
     }
+
 }
+
+
 
