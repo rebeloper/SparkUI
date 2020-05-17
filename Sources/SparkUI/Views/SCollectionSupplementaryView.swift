@@ -24,11 +24,9 @@ open class SCollectionSupplementaryView<T>: UICollectionReusableView {
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        SDispatchQueue.delay(bySeconds: 0.5) {
-            self.assign()
-            self.addActions()
-            self.onNext()
-        }
+        assign()
+        addActions()
+        onNext()
     }
     
     required public init?(coder: NSCoder) {
