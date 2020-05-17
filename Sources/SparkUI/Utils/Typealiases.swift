@@ -24,3 +24,4 @@ public typealias ModalNavigatable = Modal_Presentable & Modal_Dismissable
 public typealias CollectionCell = SCollectionCell
 public typealias CollectionSupplementary = SCollectionSupplementary
 public typealias TableCell = STableCell
+public typealias TableSupplementary = STableSupplementary
