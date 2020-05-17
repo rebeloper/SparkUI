@@ -447,9 +447,9 @@ public extension UIView {
 }
 
 
-extension UIView {
+public extension UIView {
     @discardableResult
-    public func centerHorizontally(withViewHeight height: CGFloat) -> UIView {
+    func centerHorizontally(withViewHeight height: CGFloat) -> UIView {
         let container = UIView()
         container.setHeight(height)
         stack(.vertical)(
@@ -459,12 +459,35 @@ extension UIView {
     }
     
     @discardableResult
-    public func centerVertically(withViewWidth width: CGFloat) -> UIView {
+    func centerVertically(withViewWidth width: CGFloat) -> UIView {
         let container = UIView()
         container.setWidth(width)
         stack(.vertical)(
             self
         ).centeringInParent().layout(in: container)
         return container
+    }
+}
+
+public extension UIView {
+    func longPressGestureState() -> LongPressGestureState {
+        var state = LongPressGestureState.none
+        if let gestureRecognizers = gestureRecognizers {
+            gestureRecognizers.forEach { (gestureRecognizer) in
+                if let gestureRecognizer = gestureRecognizer as? UILongPressGestureRecognizer {
+                    switch gestureRecognizer.state.rawValue {
+                    case 1:
+                        state = .didBegin
+                    case 2:
+                        state = .pressing
+                    case 3:
+                        state = .didEnd
+                    default:
+                        state = .none
+                    }
+                }
+            }
+        }
+        return state
     }
 }

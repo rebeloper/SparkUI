@@ -137,7 +137,7 @@ extension UIView {
     }
     
     @discardableResult
-    private func add(gesture: Gesture, action: Action) -> UIGestureRecognizer{
+    private func add(gesture: Gesture, action: Action) -> UIGestureRecognizer {
         retainAction(action, self)
         let gesture = gesture.recognizer(action: action)
         isUserInteractionEnabled = true

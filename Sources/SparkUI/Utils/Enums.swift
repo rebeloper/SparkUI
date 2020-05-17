@@ -76,3 +76,7 @@ public enum SSide {
 public enum AspectRatioBase {
     case width, height
 }
+
+public enum LongPressGestureState {
+    case none, didBegin, pressing, didEnd
+}
