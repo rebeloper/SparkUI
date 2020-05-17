@@ -24,9 +24,11 @@ open class STableCell<T>: UITableViewCell {
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        assign()
-        addActions()
-        onNext()
+        SDispatchQueue.delay(bySeconds: 0.5) {
+            self.assign()
+            self.addActions()
+            self.onNext()
+        }
     }
     
     required public init?(coder: NSCoder) {

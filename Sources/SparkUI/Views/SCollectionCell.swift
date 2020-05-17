@@ -24,9 +24,11 @@ open class SCollectionCell<T>: UICollectionViewCell {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        assign()
-        addActions()
-        onNext()
+        SDispatchQueue.delay(bySeconds: 0.5) {
+            self.assign()
+            self.addActions()
+            self.onNext()
+        }
     }
     
     required public init?(coder: NSCoder) {

@@ -24,6 +24,11 @@ open class STableSupplementaryView<T>: UITableViewHeaderFooterView {
     
     override public init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        SDispatchQueue.delay(bySeconds: 0.5) {
+            self.assign()
+            self.addActions()
+            self.onNext()
+        }
     }
     
     required public init?(coder: NSCoder) {
