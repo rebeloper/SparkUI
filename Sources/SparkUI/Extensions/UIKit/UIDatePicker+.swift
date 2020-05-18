@@ -22,8 +22,8 @@ public extension UIDatePicker {
     }
     
     @discardableResult
-    func addAction(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) -> UIDatePicker {
-        self.addTarget(target, action: action, for: controlEvents)
+    func addAction(_ target: Any?, action: Selector) -> UIDatePicker {
+        self.addTarget(target, action: action, for: .valueChanged)
         return self
     }
 }
