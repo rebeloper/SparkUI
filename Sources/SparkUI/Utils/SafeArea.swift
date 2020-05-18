@@ -17,16 +17,16 @@ public struct SafeArea {
         }
     }
     
-    public static func lenght(for side: SSide) -> Length {
+    public static func lenght(for side: SSide) -> CGFloat {
         switch side {
         case .top:
-            return Length(integerLiteral: Int(insets().top))
+            return insets().top
         case .left:
-            return Length(integerLiteral: Int(insets().left))
+            return insets().left
         case .bottom:
-            return Length(integerLiteral: Int(insets().bottom))
+            return insets().bottom
         case .right:
-            return Length(integerLiteral: Int(insets().right))
+            return insets().right
         }
     }
 }
