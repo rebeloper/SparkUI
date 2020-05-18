@@ -12,7 +12,7 @@ open class SImagePickerViewController: SViewController {
 }
 
 extension SImagePickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    public func showChooseSourceTypeAlertController(photoLibraryActionTitle: String = "Choose a Photo", cameraActionTitle: String = "Take a New Photo", allowsEditing: Bool = true) {
+    public func showChooseImageSourceTypeAlertController(photoLibraryActionTitle: String = "Choose a Photo", cameraActionTitle: String = "Take a New Photo", allowsEditing: Bool = true) {
         let photoLibraryAction = UIAlertAction(title: photoLibraryActionTitle, style: .default) { (action) in
             self.showImagePickerController(sourceType: .photoLibrary, allowsEditing: allowsEditing)
         }
