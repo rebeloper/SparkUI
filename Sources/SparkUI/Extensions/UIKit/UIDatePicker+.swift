@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIDatePicker {
+public extension UIDatePicker {
     
     @discardableResult
     func date(_ date: Date) -> UIDatePicker {
