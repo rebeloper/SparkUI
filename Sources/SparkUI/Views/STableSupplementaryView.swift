@@ -55,9 +55,7 @@ open class STableSupplementaryView<T>: UITableViewHeaderFooterView {
     open func addActions() {}
     open func onNext() {}
     
-    public func setBackgroundColor(_ backgroundColor: UIColor,
-                                   containerBackgroundColor: UIColor) {
-        self.backgroundColor = backgroundColor
+    public func setBackgroundColor(_ containerBackgroundColor: UIColor) {
         container.backgroundColor = containerBackgroundColor
     }
     
