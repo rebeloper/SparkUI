@@ -60,7 +60,7 @@ open class STableSupplementaryView<T>: UITableViewHeaderFooterView {
     }
     
     public func setBackgroundColor(all color: UIColor = .systemBackground) {
-        setBackgroundColor(color, containerBackgroundColor: color)
+        setBackgroundColor(color)
     }
 }
 
