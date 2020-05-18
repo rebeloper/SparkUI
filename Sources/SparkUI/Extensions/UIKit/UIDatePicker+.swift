@@ -7,6 +7,10 @@
 
 import UIKit
 
+public struct UIDatePickerDate {
+    static let selectedDate = Bucket(Date())
+}
+
 public extension UIDatePicker {
     
     @discardableResult
@@ -22,8 +26,12 @@ public extension UIDatePicker {
     }
     
     @discardableResult
-    func addAction(_ target: Any?, action: Selector) -> UIDatePicker {
-        self.addTarget(target, action: action, for: .valueChanged)
+    func addAction() -> UIDatePicker {
+        self.addTarget(self, action: #selector(pickerViewSelected(sender:)), for: .valueChanged)
         return self
+    }
+    
+    @objc fileprivate func pickerViewSelected(sender: UIDatePicker) {
+        UIDatePickerDate.selectedDate.value = sender.date
     }
 }
