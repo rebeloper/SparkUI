@@ -397,6 +397,13 @@ public extension UIView {
     }
     
     @discardableResult
+    func setSquare(_ lenght: CGFloat) -> UIView {
+        layer.masksToBounds = true
+        setSize(CGSize(width: lenght, height: lenght))
+        return self
+    }
+    
+    @discardableResult
     func alpha(_ alpha: CGFloat) -> UIView {
         self.alpha = alpha
         return self

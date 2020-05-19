@@ -56,6 +56,21 @@ public extension UIImageView {
         return self
     }
     
+    @discardableResult
+    func circular(_ radius: CGFloat) -> UIImageView {
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
+        size(CGSize(width: radius * 2, height: radius * 2))
+        return self
+    }
+    
+    @discardableResult
+    func square(_ lenght: CGFloat) -> UIImageView {
+        layer.masksToBounds = true
+        size(CGSize(width: lenght, height: lenght))
+        return self
+    }
+    
     func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil, indicatorType: IndicatorType = .none) {
         self.contentMode = contentMode
         if imageUrl.contains("https:") {
