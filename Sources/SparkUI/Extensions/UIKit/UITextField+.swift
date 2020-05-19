@@ -17,6 +17,12 @@ public extension UITextField {
         self.autocorrectionType = autocorrectionType
         return self
     }
+    
+    @discardableResult
+    func userInteractionEnabled(_ isUserInteractionEnabled: Bool = true) -> UITextField {
+        self.isUserInteractionEnabled = isUserInteractionEnabled
+        return self
+    }
 }
 
 public extension UITextField {

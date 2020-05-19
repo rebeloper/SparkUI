@@ -205,6 +205,12 @@ public extension STextField {
         return self
     }
     
+    @discardableResult
+    func userInteractionEnabled(_ isUserInteractionEnabled: Bool = true) -> STextField {
+        self.isUserInteractionEnabled = isUserInteractionEnabled
+        return self
+    }
+    
 }
 
 public extension STextField {

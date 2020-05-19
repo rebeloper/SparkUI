@@ -38,3 +38,11 @@ public extension STextView {
         self.textBucket.onNext(throttle: interval, completion: completion)
     }
 }
+
+public extension STextView {
+    @discardableResult
+    func userInteractionEnabled(_ isUserInteractionEnabled: Bool = true) -> STextView {
+        self.isUserInteractionEnabled = isUserInteractionEnabled
+        return self
+    }
+}
