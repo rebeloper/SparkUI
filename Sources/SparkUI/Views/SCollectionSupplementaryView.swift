@@ -17,8 +17,8 @@ open class SCollectionSupplementaryView<T>: UICollectionReusableView {
         }
     }
 
-    public var indexPath: IndexPath?
-    public var reuse = true
+    open var indexPath: IndexPath?
+    open var reuse = true
 
     public let container = UIView()
     

@@ -17,8 +17,8 @@ open class STableCell<T>: UITableViewCell {
         }
     }
     
-    public var indexPath: IndexPath?
-    public var reuse = true
+    open var indexPath: IndexPath?
+    open var reuse = true
     
     public let container = UIView()
     

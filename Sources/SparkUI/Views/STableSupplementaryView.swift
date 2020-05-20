@@ -17,8 +17,8 @@ open class STableSupplementaryView<T>: UITableViewHeaderFooterView {
         }
     }
 
-    public var indexPath: IndexPath?
-    public var reuse = true
+    open var indexPath: IndexPath?
+    open var reuse = true
 
     public let container = UIView()
     
