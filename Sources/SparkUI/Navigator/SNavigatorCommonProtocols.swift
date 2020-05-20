@@ -21,8 +21,7 @@ extension SNavigator: WebNavigatable {
         case .pushed:
             navigation.push(controller)
         case .presented:
-            let navigationController = UINavigationController(rootViewController: controller)
-            SSheet.present(navigationController, swipeToDismissStyle: .enabled)
+            SSheet.present(navigationController, swipeToDismissStyle: .enabled, withNavigationBar: true)
         }
     }
 }
