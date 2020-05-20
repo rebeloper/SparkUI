@@ -14,7 +14,8 @@ public protocol Presentable: AnyObject {
                  modalPresentationStyle: UIViewControllerModalPresentationStyle,
                  swipeToDismissStyle: UIViewControllerSwipeToDismissStyle,
                  animationType: UIViewControllerAnimationType,
-                 hapticFeedbackType: EKAttributes.NotificationHapticFeedback)
+                 hapticFeedbackType: EKAttributes.NotificationHapticFeedback,
+                 withNavigationBar: Bool)
 }
 
 public protocol Dismissable_withCompletion: AnyObject {

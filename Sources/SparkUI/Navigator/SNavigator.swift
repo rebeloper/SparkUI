@@ -31,12 +31,22 @@ extension SNavigator: Presentable {
                         modalPresentationStyle: UIViewControllerModalPresentationStyle = .sheet(),
                         swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
                         animationType: UIViewControllerAnimationType = .slide,
-                        hapticFeedbackType: EKAttributes.NotificationHapticFeedback = .none) {
-        SSheet.present(viewControllerToPresent,
-                       modalPresentationStyle: modalPresentationStyle,
-                       swipeToDismissStyle: swipeToDismissStyle,
-                       animationType: animationType,
-                       hapticFeedbackType: hapticFeedbackType)
+                        hapticFeedbackType: EKAttributes.NotificationHapticFeedback = .none,
+                        withNavigationBar: Bool = false) {
+        if withNavigationBar {
+            let navigationController = UINavigationController(rootViewController: viewControllerToPresent)
+            SSheet.present(navigationController,
+                           modalPresentationStyle: modalPresentationStyle,
+                           swipeToDismissStyle: swipeToDismissStyle,
+                           animationType: animationType,
+                           hapticFeedbackType: hapticFeedbackType)
+        } else {
+            SSheet.present(viewControllerToPresent,
+                           modalPresentationStyle: modalPresentationStyle,
+                           swipeToDismissStyle: swipeToDismissStyle,
+                           animationType: animationType,
+                           hapticFeedbackType: hapticFeedbackType)
+        }
     }
 }
 
