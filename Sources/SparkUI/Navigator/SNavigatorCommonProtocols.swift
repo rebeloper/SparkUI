@@ -21,7 +21,7 @@ extension SNavigator: WebNavigatable {
         case .pushed:
             navigation.push(controller)
         case .presented:
-            SSheet.present(navigationController, swipeToDismissStyle: .enabled, withNavigationBar: true)
+            SSheet.present(controller, swipeToDismissStyle: .enabled, withNavigationBar: true)
         }
     }
 }
