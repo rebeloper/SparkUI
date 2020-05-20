@@ -25,3 +25,4 @@ public typealias CollectionCell = SCollectionCell
 public typealias CollectionSupplementaryView = SCollectionSupplementaryView
 public typealias TableCell = STableCell
 public typealias TableSupplementaryView = STableSupplementaryView
+public typealias Keyboard = SKeyboard
