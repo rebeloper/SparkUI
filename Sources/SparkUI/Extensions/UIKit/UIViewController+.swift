@@ -87,3 +87,9 @@ public extension UIViewController {
     }
 }
 
+public extension UIViewController {
+    func prefersLargeTitles(_ prefersLargeTitles: Bool = true) {
+        navigationController?.navigationBar.prefersLargeTitles = prefersLargeTitles
+    }
+}
+
