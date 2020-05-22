@@ -62,7 +62,7 @@ public class Network {
     
     // MARK: - Method Implementation
     
-    public func startMonitoring() {
+    public func startMonitoringInSceneWillConnectToSession() {
         guard !isMonitoring else { return }
         
         monitor = NWPathMonitor()
@@ -95,7 +95,7 @@ public class Network {
         isMonitoring = false
     }
     
-    public func checkConnection() {
+    public func checkConnectionInSceneWillEnterForeground() {
         guard isMonitoring else { return }
         if self.shouldShowConnectionLostAlert,
             !self.isShowingConnectionLostAlert,
