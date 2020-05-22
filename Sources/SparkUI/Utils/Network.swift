@@ -11,6 +11,10 @@ public class Network {
     
     public static let status = Network()
     
+    public enum MonitoringStatus {
+        case none, started, stoped
+    }
+    
     var monitor: NWPathMonitor?
     
     public var isMonitoring = false
@@ -21,11 +25,8 @@ public class Network {
         stopMonitoring()
     }
     
-    public var didStartMonitoring: (() -> ())?
-     
-    public var didStopMonitoring: (() -> ())?
-     
-    public var didChange: ((NWPath.Status) -> ())?
+    public let monitoringDidChange = Bucket(Network.MonitoringStatus.none)
+    public let didChange = Bucket(NWPath.Status.requiresConnection)
     
     public func startMonitoring() {
         guard !isMonitoring else { return }
@@ -35,11 +36,11 @@ public class Network {
         monitor?.start(queue: queue)
      
         monitor?.pathUpdateHandler = { path in
-            self.didChange?(path.status)
+            self.didChange.value = path.status
         }
      
         isMonitoring = true
-        didStartMonitoring?()
+        monitoringDidChange.value = .started
     }
     
     public func stopMonitoring() {
@@ -47,7 +48,7 @@ public class Network {
         monitor.cancel()
         self.monitor = nil
         isMonitoring = false
-        didStopMonitoring?()
+        monitoringDidChange.value = .stoped
     }
     
     public var isConnected: Bool {
