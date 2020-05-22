@@ -5,6 +5,7 @@
 //  Created by Alex Nagy on 22/05/2020.
 //
 
+import UIKit
 import Network
 
 public class Network {
@@ -15,10 +16,13 @@ public class Network {
     
     var monitor: NWPathMonitor?
     
+    public var shouldShowConnectionLostAlert = true
+    
     public var isMonitoring = false
     public var current = NWPath.Status.requiresConnection
     
     public let didChange = Bucket(NWPath.Status.requiresConnection)
+    public let isOnline = Bucket(false)
     
     public var isConnected: Bool {
         guard let monitor = monitor else { return false }
@@ -66,8 +70,17 @@ public class Network {
         
         monitor?.pathUpdateHandler = { path in
             if self.current != path.status {
+                
+                if self.shouldShowConnectionLostAlert, path.status != .satisfied {
+                    let settingsAction = UIAlertAction(title: "Go to Settings", style: .cancel) { (action) in
+                        print("Going to settings...")
+                    }
+                    Alert.show(.alert, title: "You are offline", message: "Connect to the internet", actions: [settingsAction], completion: nil)
+                }
+                
                 self.current = path.status
                 self.didChange.value = path.status
+                self.isOnline.value = path.status == .satisfied ? true : false
             }
         }
         
