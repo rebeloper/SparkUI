@@ -7,23 +7,23 @@
 
 import Network
 
-struct NetworkMonitor {
+public struct NetworkMonitor {
     static let status = Bucket(NWPath.Status.requiresConnection)
     static let isExpensive = Bucket(true)
 }
 
-class SNetwork: NSObject {
+public class SNetwork: NSObject {
     
     let monitor: NWPathMonitor?
     
-    init(connectionType: NWInterface.InterfaceType) {
+    public init(connectionType: NWInterface.InterfaceType) {
         monitor = NWPathMonitor(requiredInterfaceType: connectionType)
         super.init()
         onNext()
         start()
     }
     
-    override init() {
+    public init() {
         monitor = NWPathMonitor()
         super.init()
         onNext()
