@@ -52,6 +52,7 @@ open class SViewController: UIViewController {
     open func preLoad() {
         Network.status.startMonitoring()
     }
+    
     open func configureNavigationBar() {}
     
     open func layoutViews() {
