@@ -48,6 +48,43 @@ public extension UIViewController {
 }
 
 public extension UIViewController {
+    
+    func setTabBarItem(selectedImageName: String, unselectedImageName: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: TabBarTag? = nil, title: String? = nil, tabBarItemTitle: String? = nil) {
+        
+        self.title = title
+        
+        tabBarItem = UITabBarItem(
+            title: tabBarItemTitle,
+            image: UIImage(named: unselectedImageName)?
+                .withTintColor(unSelectedColor, renderingMode: .alwaysTemplate)
+                .withRenderingMode(.alwaysTemplate),
+            selectedImage: UIImage(named: selectedImageName)?
+                .withTintColor(selectedColor, renderingMode: .alwaysTemplate)
+                .withRenderingMode(.alwaysTemplate)
+        )
+        if let tag = tag {
+            tabBarItem.tag = tag.rawValue
+        }
+        
+    }
+    
+    func setTabBarItem(selectedImageName: String, unselectedImageName: String, tag: TabBarTag? = nil, title: String? = nil, tabBarItemTitle: String? = nil) {
+        
+        self.title = title
+        
+        tabBarItem = UITabBarItem(
+            title: tabBarItemTitle,
+            image: UIImage(named: unselectedImageName)?
+                .withRenderingMode(.alwaysOriginal),
+            selectedImage: UIImage(named: selectedImageName)?
+                .withRenderingMode(.alwaysOriginal)
+        )
+        if let tag = tag {
+            tabBarItem.tag = tag.rawValue
+        }
+        
+    }
+    
     func setTabBarItem(selectedImageSystemImageName: String, unselectedImageSystemImageName: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: TabBarTag? = nil, title: String? = nil, tabBarItemTitle: String? = nil) {
         
         self.title = title
@@ -56,10 +93,10 @@ public extension UIViewController {
             title: tabBarItemTitle,
             image: UIImage(systemName: unselectedImageSystemImageName)?
                 .withTintColor(unSelectedColor, renderingMode: .alwaysTemplate)
-                .withRenderingMode(.alwaysOriginal),
+                /*.withRenderingMode(.alwaysOriginal)*/,
             selectedImage: UIImage(systemName: selectedImageSystemImageName)?
                 .withTintColor(selectedColor, renderingMode: .alwaysTemplate)
-                .withRenderingMode(.alwaysOriginal)
+//                .withRenderingMode(.alwaysOriginal)
         )
         if let tag = tag {
             tabBarItem.tag = tag.rawValue
