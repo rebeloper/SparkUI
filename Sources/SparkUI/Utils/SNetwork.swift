@@ -23,7 +23,7 @@ public class SNetwork: NSObject {
         start()
     }
     
-    public init() {
+    public override init() {
         monitor = NWPathMonitor()
         super.init()
         onNext()
