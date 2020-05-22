@@ -8,8 +8,8 @@
 import Network
 
 public struct NetworkMonitor {
-    static let status = Bucket(NWPath.Status.requiresConnection)
-    static let isExpensive = Bucket(true)
+    public static let status = Bucket(NWPath.Status.requiresConnection)
+    public static let isExpensive = Bucket(true)
 }
 
 public class SNetwork: NSObject {
