@@ -115,7 +115,7 @@ public class Network {
                 self.isShowingConnectionLostAlert = false
                 self.checkConnection()
             }
-            Alert.show(.alert, title: "Looks like you're offline", message: "Check if 'Mobile Data' is turned ON in your phone's Settings", actions: [settingsAction, tryAgainAction], completion: nil)
+            Alert.show(.alert, title: "Looks like you're offline", message: "Make sure you're connected to wi-fi or check if 'Mobile Data' is turned ON in your phone's Settings", actions: [settingsAction, tryAgainAction], completion: nil)
         }
     }
     
