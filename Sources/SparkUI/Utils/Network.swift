@@ -16,12 +16,13 @@ public class Network {
     var monitor: NWPathMonitor?
     
     public var isMonitoring = false
+    public var currentPathStatus = NWPath.Status.requiresConnection
     
     public var didStartMonitoring: (() -> Void)?
 
     public var didStopMonitoring: (() -> Void)?
 
-    public var didChange: (() -> Void)?
+    public var didChange: ((NWPath.Status) -> Void)?
     
     
     public var isConnected: Bool {
@@ -70,8 +71,11 @@ public class Network {
         let queue = DispatchQueue(label: "NetworkStatus_Monitor")
         monitor?.start(queue: queue)
         
-        monitor?.pathUpdateHandler = { _ in
-            self.didChange?()
+        monitor?.pathUpdateHandler = { path in
+            if self.currentPathStatus != path.status {
+                self.currentPathStatus = path.status
+                self.didChange?(path.status)
+            }
         }
         
         isMonitoring = true
