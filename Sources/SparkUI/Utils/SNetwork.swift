@@ -33,14 +33,17 @@ public class SNetwork: NSObject {
     func onNext() {
         guard let monitor = monitor else { return }
         monitor.pathUpdateHandler = { path in
+            print("Network did change path to: \(path)")
             NetworkMonitor.status.value = path.status
             NetworkMonitor.isExpensive.value = path.isExpensive
         }
+        print("Network monitor observed")
     }
     
     func start() {
         guard let monitor = monitor else { return }
         let queue = DispatchQueue(label: "Monitor")
         monitor.start(queue: queue)
+        print("Networ monitor started")
     }
 }
