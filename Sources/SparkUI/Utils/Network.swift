@@ -7,30 +7,30 @@
 
 import Network
 
-class Network {
+public class Network {
     
     // MARK: - Properties
     
-    static let status = Network()
+    public static let status = Network()
     
     var monitor: NWPathMonitor?
     
-    var isMonitoring = false
+    public var isMonitoring = false
     
-    var didStartMonitoring: (() -> Void)?
+    public var didStartMonitoring: (() -> Void)?
+
+    public var didStopMonitoring: (() -> Void)?
+
+    public var didChange: (() -> Void)?
     
-    var didStopMonitoring: (() -> Void)?
     
-    var didChange: (() -> Void)?
-    
-    
-    var isConnected: Bool {
+    public var isConnected: Bool {
         guard let monitor = monitor else { return false }
         return monitor.currentPath.status == .satisfied
     }
     
     
-    var interfaceType: NWInterface.InterfaceType? {
+    public var interfaceType: NWInterface.InterfaceType? {
         guard let monitor = monitor else { return nil }
         
         return monitor.currentPath.availableInterfaces.filter {
@@ -38,13 +38,13 @@ class Network {
     }
     
     
-    var availableInterfacesTypes: [NWInterface.InterfaceType]? {
+    public var availableInterfacesTypes: [NWInterface.InterfaceType]? {
         guard let monitor = monitor else { return nil }
         return monitor.currentPath.availableInterfaces.map { $0.type }
     }
     
     
-    var isExpensive: Bool {
+    public var isExpensive: Bool {
         return monitor?.currentPath.isExpensive ?? false
     }
     
@@ -63,7 +63,7 @@ class Network {
     
     // MARK: - Method Implementation
     
-    func startMonitoring() {
+    public func startMonitoring() {
         guard !isMonitoring else { return }
         
         monitor = NWPathMonitor()
@@ -79,7 +79,7 @@ class Network {
     }
     
     
-    func stopMonitoring() {
+    public func stopMonitoring() {
         guard isMonitoring, let monitor = monitor else { return }
         monitor.cancel()
         self.monitor = nil
