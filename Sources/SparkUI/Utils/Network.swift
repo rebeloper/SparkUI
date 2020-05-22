@@ -7,68 +7,84 @@
 
 import Network
 
-public class Network {
+class Network {
     
-    public static let status = Network()
+    // MARK: - Properties
     
-    public enum MonitoringStatus {
-        case none, started, stoped
-    }
+    static let status = Network()
     
     var monitor: NWPathMonitor?
     
-    public var isMonitoring = false
+    var isMonitoring = false
     
-    private init() {}
+    var didStartMonitoring: (() -> Void)?
+    
+    var didStopMonitoring: (() -> Void)?
+    
+    var didChange: (() -> Void)?
+    
+    
+    var isConnected: Bool {
+        guard let monitor = monitor else { return false }
+        return monitor.currentPath.status == .satisfied
+    }
+    
+    
+    var interfaceType: NWInterface.InterfaceType? {
+        guard let monitor = monitor else { return nil }
+        
+        return monitor.currentPath.availableInterfaces.filter {
+            monitor.currentPath.usesInterfaceType($0.type) }.first?.type
+    }
+    
+    
+    var availableInterfacesTypes: [NWInterface.InterfaceType]? {
+        guard let monitor = monitor else { return nil }
+        return monitor.currentPath.availableInterfaces.map { $0.type }
+    }
+    
+    
+    var isExpensive: Bool {
+        return monitor?.currentPath.isExpensive ?? false
+    }
+    
+    
+    // MARK: - Init & Deinit
+    
+    private init() {
+        
+    }
+    
     
     deinit {
         stopMonitoring()
     }
     
-    public let monitoringDidChange = Bucket(Network.MonitoringStatus.none)
-    public let didChange = Bucket(NWPath.Status.requiresConnection)
     
-    public func startMonitoring() {
+    // MARK: - Method Implementation
+    
+    func startMonitoring() {
         guard !isMonitoring else { return }
-     
+        
         monitor = NWPathMonitor()
-        let queue = DispatchQueue(label: "NetStatus_Monitor")
+        let queue = DispatchQueue(label: "NetworkStatus_Monitor")
         monitor?.start(queue: queue)
-     
-        monitor?.pathUpdateHandler = { path in
-            self.didChange.value = path.status
+        
+        monitor?.pathUpdateHandler = { _ in
+            self.didChange?()
         }
-     
+        
         isMonitoring = true
-        monitoringDidChange.value = .started
+        didStartMonitoring?()
     }
     
-    public func stopMonitoring() {
+    
+    func stopMonitoring() {
         guard isMonitoring, let monitor = monitor else { return }
         monitor.cancel()
         self.monitor = nil
         isMonitoring = false
-        monitoringDidChange.value = .stoped
+        didStopMonitoring?()
     }
     
-    public var isConnected: Bool {
-        guard let monitor = monitor else { return false }
-        return monitor.currentPath.status == .satisfied
-    }
-    
-    public var interfaceType: NWInterface.InterfaceType? {
-        guard let monitor = monitor else { return nil }
-     
-        return monitor.currentPath.availableInterfaces.filter {
-            monitor.currentPath.usesInterfaceType($0.type) }.first?.type
-    }
-    
-    public var availableInterfacesTypes: [NWInterface.InterfaceType]? {
-        guard let monitor = monitor else { return nil }
-        return monitor.currentPath.availableInterfaces.map { $0.type }
-    }
-    
-    public var isExpensive: Bool {
-        return monitor?.currentPath.isExpensive ?? false
-    }
 }
