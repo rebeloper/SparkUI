@@ -16,14 +16,9 @@ public class Network {
     var monitor: NWPathMonitor?
     
     public var isMonitoring = false
-    public var currentPathStatus = NWPath.Status.requiresConnection
+    public var current = NWPath.Status.requiresConnection
     
-    public var didStartMonitoring: (() -> Void)?
-
-    public var didStopMonitoring: (() -> Void)?
-
-    public var didChange: ((NWPath.Status) -> Void)?
-    
+    public let didChange = Bucket(NWPath.Status.requiresConnection)
     
     public var isConnected: Bool {
         guard let monitor = monitor else { return false }
@@ -52,9 +47,7 @@ public class Network {
     
     // MARK: - Init & Deinit
     
-    private init() {
-        
-    }
+    private init() { }
     
     
     deinit {
@@ -72,14 +65,13 @@ public class Network {
         monitor?.start(queue: queue)
         
         monitor?.pathUpdateHandler = { path in
-            if self.currentPathStatus != path.status {
-                self.currentPathStatus = path.status
-                self.didChange?(path.status)
+            if self.current != path.status {
+                self.current = path.status
+                self.didChange.value = path.status
             }
         }
         
         isMonitoring = true
-        didStartMonitoring?()
     }
     
     
@@ -88,7 +80,6 @@ public class Network {
         monitor.cancel()
         self.monitor = nil
         isMonitoring = false
-        didStopMonitoring?()
     }
     
 }
