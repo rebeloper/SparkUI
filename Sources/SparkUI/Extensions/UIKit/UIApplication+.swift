@@ -18,6 +18,16 @@ public extension UIApplication {
         }
     }
     
+    static func openSettingsApp() {
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            if self.shared.canOpenURL(url) {
+                self.shared.open(url)
+            } else {
+                Alert.showError(message: "Could not open Settings app")
+            }
+        }
+    }
+    
     static func preventsScreenDimming(_ preventsScreenDimming: Bool = true) {
         shared.isIdleTimerDisabled = preventsScreenDimming
     }

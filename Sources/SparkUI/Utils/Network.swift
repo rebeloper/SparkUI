@@ -74,7 +74,7 @@ public class Network {
                 if self.shouldShowConnectionLostAlert, path.status != .satisfied {
                     DispatchQueue.main.async {
                         let settingsAction = UIAlertAction(title: "Go to Settings", style: .cancel) { (action) in
-                            print("Going to settings...")
+                            UIApplication.openSettingsApp()
                         }
                         Alert.show(.alert, title: "You are offline", message: "Connect to the internet", actions: [settingsAction], completion: nil)
                     }
