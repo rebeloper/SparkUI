@@ -1,5 +1,5 @@
 //
-//  NetworkStatus.swift
+//  Network.swift
 //  
 //
 //  Created by Alex Nagy on 22/05/2020.
@@ -7,9 +7,9 @@
 
 import Network
 
-public class NetworkStatus {
+public class Network {
     
-    public static let shared = NetworkStatus()
+    public static let status = Network()
     
     var monitor: NWPathMonitor?
     
@@ -21,11 +21,11 @@ public class NetworkStatus {
         stopMonitoring()
     }
     
-    public var didStartMonitoring: (() -> Void)?
+    public var didStartMonitoring: (() -> ())?
      
-    public var didStopMonitoring: (() -> Void)?
+    public var didStopMonitoring: (() -> ())?
      
-    public var didChange: ((NWPath.Status) -> Void)?
+    public var didChange: ((NWPath.Status) -> ())?
     
     public func startMonitoring() {
         guard !isMonitoring else { return }
