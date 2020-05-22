@@ -112,6 +112,7 @@ public class Network {
                 UIApplication.openSettingsApp()
             }
             let tryAgainAction = UIAlertAction(title: "Try again", style: .default) { (action) in
+                self.isShowingConnectionLostAlert = false
                 self.checkConnection()
             }
             Alert.show(.alert, title: "Looks like you're offline", message: "Check if 'Mobile Data' is turned ON in your phone's Settings", actions: [settingsAction, tryAgainAction], completion: nil)
