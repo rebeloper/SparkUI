@@ -9,7 +9,7 @@ import CoreLocation
 
 public extension CLGeocoder {
     
-    func getPlace(for location: CLLocation, completion: @escaping (Result<CLPlacemark?, Error>) -> ()) {
+    func getPlacemark(for location: CLLocation, completion: @escaping (Result<CLPlacemark?, Error>) -> ()) {
         self.reverseGeocodeLocation(location) { placemarks, err in
             
             if let err = err {
