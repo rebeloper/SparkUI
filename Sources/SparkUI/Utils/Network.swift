@@ -17,6 +17,7 @@ public class Network {
     var monitor: NWPathMonitor?
     
     public var shouldShowConnectionLostAlert = true
+    private var isShowingConnectionLostAlert = false
     
     public var isMonitoring = false
     public var current = NWPath.Status.requiresConnection
@@ -71,7 +72,9 @@ public class Network {
         monitor?.pathUpdateHandler = { path in
             if self.current != path.status {
                 
-                if self.shouldShowConnectionLostAlert, path.status != .satisfied {
+                if self.shouldShowConnectionLostAlert,
+                    !self.isShowingConnectionLostAlert,
+                    path.status != .satisfied {
                     self.showConnectionLostAlert()
                 }
                 
@@ -93,18 +96,22 @@ public class Network {
     }
     
     public func checkConnection() {
-        guard isMonitoring, let monitor = monitor else { return }
-        if self.shouldShowConnectionLostAlert, !isConnected {
+        guard isMonitoring else { return }
+        if self.shouldShowConnectionLostAlert,
+            !self.isShowingConnectionLostAlert,
+            !isConnected {
             showConnectionLostAlert()
         }
     }
     
     private func showConnectionLostAlert() {
+        isShowingConnectionLostAlert = true
         DispatchQueue.main.async {
             let settingsAction = UIAlertAction(title: "Go to Settings", style: .cancel) { (action) in
+                self.isShowingConnectionLostAlert = false
                 UIApplication.openSettingsApp()
             }
-            Alert.show(.alert, title: "You are offline", message: "Connect to the internet", actions: [settingsAction], completion: nil)
+            Alert.show(.alert, title: "Looks like you're offline", message: "Check if 'Mobile Data' is turned ON in your phone's Settings", actions: [settingsAction], completion: nil)
         }
     }
     
