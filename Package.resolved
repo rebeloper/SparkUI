@@ -54,6 +54,15 @@
           "revision": "796981500de29ee72f72ef8e9c46eaed2fe6364e",
           "version": "1.2.3"
         }
+      },
+      {
+        "package": "UIFontComplete",
+        "repositoryURL": "https://github.com/Nirma/UIFontComplete.git",
+        "state": {
+          "branch": null,
+          "revision": "28959719e8078c3a9cc359cb85589016b57f1fd4",
+          "version": "4.0.1"
+        }
       }
     ]
   },
