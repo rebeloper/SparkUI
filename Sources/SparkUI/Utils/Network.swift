@@ -72,10 +72,12 @@ public class Network {
             if self.current != path.status {
                 
                 if self.shouldShowConnectionLostAlert, path.status != .satisfied {
-                    let settingsAction = UIAlertAction(title: "Go to Settings", style: .cancel) { (action) in
-                        print("Going to settings...")
+                    DispatchQueue.main.async {
+                        let settingsAction = UIAlertAction(title: "Go to Settings", style: .cancel) { (action) in
+                            print("Going to settings...")
+                        }
+                        Alert.show(.alert, title: "You are offline", message: "Connect to the internet", actions: [settingsAction], completion: nil)
                     }
-                    Alert.show(.alert, title: "You are offline", message: "Connect to the internet", actions: [settingsAction], completion: nil)
                 }
                 
                 self.current = path.status
