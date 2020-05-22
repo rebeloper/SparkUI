@@ -72,12 +72,7 @@ public class Network {
             if self.current != path.status {
                 
                 if self.shouldShowConnectionLostAlert, path.status != .satisfied {
-                    DispatchQueue.main.async {
-                        let settingsAction = UIAlertAction(title: "Go to Settings", style: .cancel) { (action) in
-                            UIApplication.openSettingsApp()
-                        }
-                        Alert.show(.alert, title: "You are offline", message: "Connect to the internet", actions: [settingsAction], completion: nil)
-                    }
+                    self.showConnectionLostAlert()
                 }
                 
                 self.current = path.status
@@ -95,6 +90,22 @@ public class Network {
         monitor.cancel()
         self.monitor = nil
         isMonitoring = false
+    }
+    
+    public func checkConnection() {
+        guard isMonitoring, let monitor = monitor else { return }
+        if self.shouldShowConnectionLostAlert, !isConnected {
+            showOfflineAlert()
+        }
+    }
+    
+    private func showConnectionLostAlert() {
+        DispatchQueue.main.async {
+            let settingsAction = UIAlertAction(title: "Go to Settings", style: .cancel) { (action) in
+                UIApplication.openSettingsApp()
+            }
+            Alert.show(.alert, title: "You are offline", message: "Connect to the internet", actions: [settingsAction], completion: nil)
+        }
     }
     
 }

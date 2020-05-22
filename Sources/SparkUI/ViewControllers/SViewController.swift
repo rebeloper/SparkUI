@@ -50,7 +50,7 @@ open class SViewController: UIViewController {
     
     
     open func preLoad() {
-        Network.status.startMonitoring()
+//        Network.status.startMonitoring()
     }
     
     open func configureNavigationBar() {}
