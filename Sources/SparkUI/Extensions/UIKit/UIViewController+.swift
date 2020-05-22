@@ -92,11 +92,9 @@ public extension UIViewController {
         tabBarItem = UITabBarItem(
             title: tabBarItemTitle,
             image: UIImage(systemName: unselectedImageSystemImageName)?
-                .withTintColor(unSelectedColor, renderingMode: .alwaysTemplate)
-                /*.withRenderingMode(.alwaysOriginal)*/,
+                .withTintColor(unSelectedColor, renderingMode: .alwaysTemplate),
             selectedImage: UIImage(systemName: selectedImageSystemImageName)?
                 .withTintColor(selectedColor, renderingMode: .alwaysTemplate)
-//                .withRenderingMode(.alwaysOriginal)
         )
         if let tag = tag {
             tabBarItem.tag = tag.rawValue
