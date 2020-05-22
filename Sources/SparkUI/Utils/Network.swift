@@ -95,7 +95,7 @@ public class Network {
     public func checkConnection() {
         guard isMonitoring, let monitor = monitor else { return }
         if self.shouldShowConnectionLostAlert, !isConnected {
-            showOfflineAlert()
+            showConnectionLostAlert()
         }
     }
     
