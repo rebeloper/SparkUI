@@ -498,3 +498,23 @@ public extension UIView {
         return state
     }
 }
+
+public extension UIView {
+    func length(_ percentage: Percentage, of side: Side) -> CGFloat {
+        switch side {
+        case .width:
+            return frame.size.width * percentage.rawValue
+        case .height:
+            return frame.size.height * percentage.rawValue
+        }
+    }
+    
+    func length(percentage: CGFloat, of side: Side) -> CGFloat {
+        switch side {
+        case .width:
+            return frame.size.width * percentage
+        case .height:
+            return frame.size.height * percentage
+        }
+    }
+}

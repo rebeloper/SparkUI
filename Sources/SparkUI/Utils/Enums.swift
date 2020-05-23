@@ -80,3 +80,15 @@ public enum AspectRatioBase {
 public enum LongPressGestureState {
     case none, didBegin, pressing, didEnd
 }
+
+public enum Side {
+    case width, height
+}
+
+public enum Percentage: CGFloat {
+    case tenth = 0.1
+    case fifth = 0.2
+    case quarter = 0.25
+    case third = 0.33
+    case half = 0.5
+}
