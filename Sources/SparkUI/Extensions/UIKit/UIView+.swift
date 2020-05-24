@@ -500,7 +500,7 @@ public extension UIView {
 }
 
 public extension UIView {
-    func length(_ percentage: Percentage, of side: Side) -> CGFloat {
+    func length(_ percentage: Percentage = .full, of side: Side) -> CGFloat {
         switch side {
         case .width:
             return frame.size.width * percentage.rawValue

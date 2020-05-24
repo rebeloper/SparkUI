@@ -91,4 +91,5 @@ public enum Percentage: CGFloat {
     case quarter = 0.25
     case third = 0.33
     case half = 0.5
+    case full = 1.0
 }
