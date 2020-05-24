@@ -48,14 +48,14 @@ open class STableCell<T>: UITableViewCell {
     }
     
     open func configureViews(for item: T?) {
-        setBackgroundColor()
+        setCellBackgroundColor()
     }
     
     open func assign() {}
     open func addActions() {}
     open func onNext() {}
     
-    public func setBackgroundColor(selectedBackgroundViewColor: UIColor,
+    public func setCellBackgroundColor(selectedBackgroundViewColor: UIColor,
                                    backgroundColor: UIColor,
                                    contentViewBackgroundColor: UIColor,
                                    containerBackgroundColor: UIColor) {
@@ -65,7 +65,7 @@ open class STableCell<T>: UITableViewCell {
         container.backgroundColor = containerBackgroundColor
     }
     
-    public func setBackgroundColor(all color: UIColor = .systemBackground) {
-        setBackgroundColor(selectedBackgroundViewColor: color, backgroundColor: color, contentViewBackgroundColor: color, containerBackgroundColor: color)
+    public func setCellBackgroundColor(all color: UIColor = .systemBackground) {
+        setCellBackgroundColor(selectedBackgroundViewColor: color, backgroundColor: color, contentViewBackgroundColor: color, containerBackgroundColor: color)
     }
 }

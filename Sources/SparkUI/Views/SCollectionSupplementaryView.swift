@@ -48,21 +48,21 @@ open class SCollectionSupplementaryView<T>: UICollectionReusableView {
     }
 
     open func configureViews(for item: T?) {
-        setBackgroundColor()
+        setSupplementaryViewBackgroundColor()
     }
     
     open func assign() {}
     open func addActions() {}
     open func onNext() {}
     
-    public func setBackgroundColor(_ backgroundColor: UIColor,
+    public func setSupplementaryViewBackgroundColor(_ backgroundColor: UIColor,
                                    containerBackgroundColor: UIColor) {
         self.backgroundColor = backgroundColor
         container.backgroundColor = containerBackgroundColor
     }
     
-    public func setBackgroundColor(all color: UIColor = .systemBackground) {
-        setBackgroundColor(color, containerBackgroundColor: color)
+    public func setSupplementaryViewBackgroundColor(all color: UIColor = .systemBackground) {
+        setSupplementaryViewBackgroundColor(color, containerBackgroundColor: color)
     }
 
 }

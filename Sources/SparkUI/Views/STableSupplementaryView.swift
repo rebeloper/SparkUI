@@ -48,19 +48,19 @@ open class STableSupplementaryView<T>: UITableViewHeaderFooterView {
     }
 
     open func configureViews(for item: T?) {
-        setBackgroundColor()
+        setSupplementaryViewBackgroundColor()
     }
     
     open func assign() {}
     open func addActions() {}
     open func onNext() {}
     
-    public func setBackgroundColor(_ containerBackgroundColor: UIColor) {
+    public func setSupplementaryViewBackgroundColor(_ containerBackgroundColor: UIColor) {
         container.backgroundColor = containerBackgroundColor
     }
     
-    public func setBackgroundColor(all color: UIColor = .systemBackground) {
-        setBackgroundColor(color)
+    public func setSupplementaryViewBackgroundColor(all color: UIColor = .systemBackground) {
+        setSupplementaryViewBackgroundColor(color)
     }
 }
 
