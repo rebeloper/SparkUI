@@ -24,11 +24,11 @@ public struct SSheetAttributes {
         attributes.screenInteraction = .absorbTouches
         
         attributes.lifecycleEvents.didAppear = {
-            SSheetState.isPresented.value = true
+            SSheetState.isPresented.setValue = true
         }
 
         attributes.lifecycleEvents.didDisappear = {
-            SSheetState.isPresented.value = false
+            SSheetState.isPresented.setValue = false
         }
         
         return attributes

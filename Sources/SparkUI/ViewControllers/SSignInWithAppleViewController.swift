@@ -159,18 +159,18 @@ extension SSignInWithAppleViewController: ASAuthorizationControllerDelegate, ASA
                 let errMessage = "Unable to fetch identity token"
                 Hud.large.hideWithErrorAlert(message: errMessage)
                 let err = NSError(domain: errMessage, code: 4, userInfo: nil)
-                self.signInWithAppleErrorObserver.value = SSignInWithAppleErrorObserver(error: err)
+                self.signInWithAppleErrorObserver.setValue = SSignInWithAppleErrorObserver(error: err)
                 return
             }
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                 let errMessage = "Unable to serialize token string from data"
                 Hud.large.hideWithErrorAlert(message: errMessage)
                 let err = NSError(domain: errMessage, code: 4, userInfo: nil)
-                self.signInWithAppleErrorObserver.value = SSignInWithAppleErrorObserver(error: err)
+                self.signInWithAppleErrorObserver.setValue = SSignInWithAppleErrorObserver(error: err)
                 return
             }
             
-            self.signInWithAppleObserver.value = SSignInWithAppleObserver(name: getName(from: appleIDCredential), nonce: nonce, idTokenString: idTokenString)
+            self.signInWithAppleObserver.setValue = SSignInWithAppleObserver(name: getName(from: appleIDCredential), nonce: nonce, idTokenString: idTokenString)
             Hud.large.hide()
             
         } else {
@@ -179,7 +179,7 @@ extension SSignInWithAppleViewController: ASAuthorizationControllerDelegate, ASA
     }
     
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        self.signInWithAppleErrorObserver.value = SSignInWithAppleErrorObserver(error: error)
+        self.signInWithAppleErrorObserver.setValue = SSignInWithAppleErrorObserver(error: error)
         Hud.large.hideWithErrorAlert(message: error.localizedDescription)
     }
     

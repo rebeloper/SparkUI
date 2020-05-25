@@ -28,7 +28,7 @@ public class STextView: SPlaceholderTextView {
         guard let object = notification.object as? STextView, object === self else {
             return
         }
-        textBucket.value = object.text
+        textBucket.setValue = object.text
     }
     
 }
