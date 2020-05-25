@@ -9,20 +9,23 @@ import UIKit
 import Combine
 
 public class Bucket<Value> {
+    private var cancelable: AnyCancellable?
     private var cancelableValue: AnyCancellable?
-    @Published public var value: Value {
-        didSet {
-            get = value
-        }
-    }
+    @Published public var value: Value
     public var get: Value
     
     public init(_ first: Value) {
         self.value = first
         self.get = first
+        
+        cancelable = $value
+            .sink { (value) in
+                self.get = value
+        }
     }
     
     deinit {
+        cancelable?.cancel()
         cancelableValue?.cancel()
     }
     
