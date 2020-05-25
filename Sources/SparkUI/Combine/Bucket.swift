@@ -10,7 +10,11 @@ import Combine
 
 public class Bucket<Value> {
     private var cancelableValue: AnyCancellable?
-    @Published public var value: Value
+    @Published public var value: Value {
+        didSet {
+            get = value
+        }
+    }
     public var get: Value
     
     public init(_ first: Value) {
