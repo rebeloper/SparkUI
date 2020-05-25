@@ -9,23 +9,14 @@ import UIKit
 import Combine
 
 public class Bucket<Value> {
-    private var cancelable: AnyCancellable?
     private var cancelableValue: AnyCancellable?
     @Published public var value: Value
-    public var get: Value
     
     public init(_ first: Value) {
         self.value = first
-        self.get = first
-        
-        cancelable = $value
-            .sink { (value) in
-                self.get = value
-        }
     }
     
     deinit {
-        cancelable?.cancel()
         cancelableValue?.cancel()
     }
     
@@ -36,7 +27,6 @@ public extension Bucket {
     func onNextWithFirst(completion: @escaping (Value)->()) {
         cancelableValue = $value
             .sink { (value) in
-                self.get = value
                 completion(value)
         }
     }
@@ -45,7 +35,6 @@ public extension Bucket {
         cancelableValue = $value
             .throttle(for: RunLoop.SchedulerTimeType.Stride(throttle), scheduler: RunLoop.main, latest: false)
             .sink { (value) in
-                self.get = value
                 completion(value)
         }
     }
@@ -54,7 +43,6 @@ public extension Bucket {
         cancelableValue = $value
             .dropFirst(count)
             .sink { (value) in
-                self.get = value
                 completion(value)
         }
     }
@@ -64,7 +52,6 @@ public extension Bucket {
             .dropFirst()
             .throttle(for: RunLoop.SchedulerTimeType.Stride(throttle), scheduler: RunLoop.main, latest: false)
             .sink { (value) in
-                self.get = value
                 completion(value)
         }
     }
@@ -74,7 +61,6 @@ public extension Bucket {
             .dropFirst(count)
             .throttle(for: RunLoop.SchedulerTimeType.Stride(throttle), scheduler: RunLoop.main, latest: false)
             .sink { (value) in
-                self.get = value
                 completion(value)
         }
     }
@@ -83,7 +69,6 @@ public extension Bucket {
         cancelableValue = $value
             .dropFirst()
             .sink { (value) in
-                self.get = value
                 completion(value)
         }
     }

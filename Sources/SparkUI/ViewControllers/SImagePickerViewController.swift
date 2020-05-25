@@ -43,7 +43,7 @@ extension SImagePickerViewController: UIImagePickerControllerDelegate, UINavigat
     }
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.imagePickerControllerImage.value = self.imagePickerControllerImage.get
+        self.imagePickerControllerImage.value = self.imagePickerControllerImage.value
         dismiss(animated: true)
     }
     
