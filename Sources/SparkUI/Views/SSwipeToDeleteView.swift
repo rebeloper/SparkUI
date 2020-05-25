@@ -85,7 +85,7 @@ open class SSwipeToDeleteView: UIView {
 extension SSwipeToDeleteView: UIScrollViewDelegate {
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x >= self.frame.width {
-            didDelete.setValue = true
+            didDelete.value = true
         }
     }
 }

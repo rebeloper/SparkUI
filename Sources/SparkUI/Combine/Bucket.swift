@@ -10,12 +10,12 @@ import Combine
 
 public class Bucket<Value> {
     private var cancelableValue: AnyCancellable?
-    @Published public var setValue: Value
-    public var getValue: Value
+    @Published public var value: Value
+    public var get: Value
     
     public init(_ first: Value) {
-        self.setValue = first
-        self.getValue = first
+        self.value = first
+        self.get = first
     }
     
     deinit {
@@ -27,56 +27,56 @@ public class Bucket<Value> {
 public extension Bucket {
     
     func onNextWithFirst(completion: @escaping (Value)->()) {
-        cancelableValue = $setValue
+        cancelableValue = $value
             .sink { (value) in
-                self.getValue = value
+                self.get = value
                 completion(value)
         }
     }
     
     func onNextWithFirst(throttle: TimeInterval, completion: @escaping (Value)->()) {
-        cancelableValue = $setValue
+        cancelableValue = $value
             .throttle(for: RunLoop.SchedulerTimeType.Stride(throttle), scheduler: RunLoop.main, latest: false)
             .sink { (value) in
-                self.getValue = value
+                self.get = value
                 completion(value)
         }
     }
     
     func onNext(dropFirst count: Int, completion: @escaping (Value)->()) {
-        cancelableValue = $setValue
+        cancelableValue = $value
             .dropFirst(count)
             .sink { (value) in
-                self.getValue = value
+                self.get = value
                 completion(value)
         }
     }
     
     func onNext(throttle: TimeInterval, completion: @escaping (Value)->()) {
-        cancelableValue = $setValue
+        cancelableValue = $value
             .dropFirst()
             .throttle(for: RunLoop.SchedulerTimeType.Stride(throttle), scheduler: RunLoop.main, latest: false)
             .sink { (value) in
-                self.getValue = value
+                self.get = value
                 completion(value)
         }
     }
     
     func onNext(dropFirst count: Int, throttle: TimeInterval, completion: @escaping (Value)->()) {
-        cancelableValue = $setValue
+        cancelableValue = $value
             .dropFirst(count)
             .throttle(for: RunLoop.SchedulerTimeType.Stride(throttle), scheduler: RunLoop.main, latest: false)
             .sink { (value) in
-                self.getValue = value
+                self.get = value
                 completion(value)
         }
     }
     
     func onNext(completion: @escaping (Value)->()) {
-        cancelableValue = $setValue
+        cancelableValue = $value
             .dropFirst()
             .sink { (value) in
-                self.getValue = value
+                self.get = value
                 completion(value)
         }
     }

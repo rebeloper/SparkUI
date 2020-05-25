@@ -79,8 +79,8 @@ public class Network {
                 }
                 
                 self.current = path.status
-                self.didChange.setValue = path.status
-                self.isOnline.setValue = path.status == .satisfied ? true : false
+                self.didChange.value = path.status
+                self.isOnline.value = path.status == .satisfied ? true : false
             }
         }
         
