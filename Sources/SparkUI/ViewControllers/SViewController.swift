@@ -38,13 +38,13 @@ open class SViewController: UIViewController {
     
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        SHero.enable(in: self)
+        enableHero()
         onAppear()
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        SHero.disable(in: self)
+        disableHero()
         onDisappear()
     }
     
