@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Hero
 
 public enum STransitionSubtype {
     case toTop, toBottom, toLeft, toRight
@@ -111,6 +112,13 @@ public extension UINavigationController {
     
     func popToRoot(animated: Bool = true) {
         popToRootViewController(animated: animated)
+    }
+    
+    func show(_ viewController: UIViewController, navigationAnimationType: HeroDefaultAnimationType = .autoReverse(presenting: .slide(direction: .leading))) {
+        viewController.hero.isEnabled = true
+        hero.isEnabled = true
+        hero.navigationAnimationType = navigationAnimationType
+        pushViewController(viewController, animated: true)
     }
 }
 
