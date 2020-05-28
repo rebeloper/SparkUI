@@ -80,6 +80,12 @@ public extension UIButton {
     }
     
     @discardableResult
+    func textAlignment(_ textAlignment: NSTextAlignment) -> UIButton {
+        self.titleLabel?.textAlignment(textAlignment)
+        return self
+    }
+    
+    @discardableResult
     func numberOfLines(_ numberOfLines: Int) -> UIButton {
         self.titleLabel?.numberOfLines(numberOfLines)
         return self
