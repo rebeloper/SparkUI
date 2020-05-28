@@ -95,7 +95,7 @@ public class Network {
         isMonitoring = false
     }
     
-    public func checkConnectionInSceneWillEnterForeground() {
+    public func checkConnectionInSceneDidBecomeActive() {
         guard isMonitoring else { return }
         if self.shouldShowConnectionLostAlert,
             !self.isShowingConnectionLostAlert,
