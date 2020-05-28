@@ -80,6 +80,18 @@ public extension UIButton {
     }
     
     @discardableResult
+    func numberOfLines(_ numberOfLines: Int) -> UIButton {
+        self.titleLabel?.numberOfLines(numberOfLines)
+        return self
+    }
+    
+    @discardableResult
+    func setMultiline(_) -> UIButton {
+        self.titleLabel?.setMultiline()
+        return self
+    }
+    
+    @discardableResult
     func tint(color: UIColor) -> UIButton {
         tintColor = color
         return self
