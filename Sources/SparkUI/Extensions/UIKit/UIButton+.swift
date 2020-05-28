@@ -86,7 +86,7 @@ public extension UIButton {
     }
     
     @discardableResult
-    func setMultiline(_) -> UIButton {
+    func setMultiline() -> UIButton {
         self.titleLabel?.setMultiline()
         return self
     }
