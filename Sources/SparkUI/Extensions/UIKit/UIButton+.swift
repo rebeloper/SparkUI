@@ -106,7 +106,6 @@ public extension UIButton {
     @discardableResult
     func underlineTextStyle(_ textStyle: TextStyle, underlineStyle: NSUnderlineStyle, ofSize: CGFloat = 17.5) -> UIButton {
         self.titleLabel?.underlineTextStyle(textStyle, underlineStyle: underlineStyle, ofSize: ofSize)
-        switch textStyle {
         return self
     }
     
