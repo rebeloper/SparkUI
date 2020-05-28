@@ -81,43 +81,25 @@ public extension UIButton {
     
     @discardableResult
     func textAlignment(_ textAlignment: NSTextAlignment) -> UIButton {
-        self.titleLabel?.textAlignment(textAlignment)
+        titleLabel?.textAlignment(textAlignment)
         return self
     }
     
     @discardableResult
     func attributedText(_ text: NSAttributedString) -> UIButton {
-        self.titleLabel?.attributedText(text)
-        return self
-    }
-    
-    @discardableResult
-    func font(_ font: UIFont) -> UIButton {
-        self.titleLabel?.font(font)
-        return self
-    }
-    
-    @discardableResult
-    func textStyle(_ textStyle: TextStyle, ofSize: CGFloat = 17.5) -> UIButton {
-        self.titleLabel?.textStyle(textStyle, ofSize: ofSize)
-        return self
-    }
-    
-    @discardableResult
-    func underlineTextStyle(_ textStyle: TextStyle, underlineStyle: NSUnderlineStyle, ofSize: CGFloat = 17.5) -> UIButton {
-        self.titleLabel?.underlineTextStyle(textStyle, underlineStyle: underlineStyle, ofSize: ofSize)
+        titleLabel?.attributedText(text)
         return self
     }
     
     @discardableResult
     func numberOfLines(_ numberOfLines: Int) -> UIButton {
-        self.titleLabel?.numberOfLines(numberOfLines)
+        titleLabel?.numberOfLines(numberOfLines)
         return self
     }
     
     @discardableResult
     func setMultiline() -> UIButton {
-        self.titleLabel?.setMultiline()
+        titleLabel?.setMultiline()
         return self
     }
     
