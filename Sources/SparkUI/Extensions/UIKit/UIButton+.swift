@@ -74,6 +74,12 @@ public extension UIButton {
     }
     
     @discardableResult
+    func attributedText(_ text: NSAttributedString) -> UIButton {
+        setAttributedTitle(text, for: .normal)
+        return self
+    }
+    
+    @discardableResult
     func text(color: UIColor) -> UIButton {
         setTitleColor(color, for: .normal)
         return self
@@ -82,12 +88,6 @@ public extension UIButton {
     @discardableResult
     func textAlignment(_ textAlignment: NSTextAlignment) -> UIButton {
         titleLabel?.textAlignment(textAlignment)
-        return self
-    }
-    
-    @discardableResult
-    func attributedText(_ text: NSAttributedString) -> UIButton {
-        titleLabel?.attributedText(text)
         return self
     }
     
