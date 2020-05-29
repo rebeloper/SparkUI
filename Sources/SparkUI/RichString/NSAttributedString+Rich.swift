@@ -14,22 +14,28 @@ import UIKit
  * Extension to add all RichString functionality to `NSAttributedString`.
  */
 extension NSAttributedString: RichString {
+    
+    @discardableResult
     public func color(_ color: RichColor) -> NSAttributedString {
         return addingAttribute(.foregroundColor, value: color)
     }
-
+    
+    @discardableResult
     public func backgroundColor(_ color: RichColor) -> NSAttributedString {
         return addingAttribute(.backgroundColor, value: color)
     }
 
+    @discardableResult
     public func font(_ font: RichFont) -> NSAttributedString {
         return addingAttribute(.font, value: font)
     }
 
+    @discardableResult
     public func paragraphStyle(_ paragraphStyle: NSParagraphStyle) -> NSAttributedString {
         return addingAttribute(.paragraphStyle, value: paragraphStyle)
     }
 
+    @discardableResult
     public func paragraphStyle(configure: (NSMutableParagraphStyle) -> Void)
             -> NSAttributedString {
         let style: NSMutableParagraphStyle
@@ -43,48 +49,59 @@ extension NSAttributedString: RichString {
         return addingAttribute(.paragraphStyle, value: style)
     }
 
+    @discardableResult
     public func ligature(_ ligature: Bool) -> NSAttributedString {
         return addingAttribute(.ligature, value: ligature ? 1 : 0)
     }
 
+    @discardableResult
     public func kern(_ kern: Float) -> NSAttributedString {
         return addingAttribute(.kern, value: kern)
     }
 
+    @discardableResult
     public func strikeThrough(style: NSUnderlineStyle) -> NSAttributedString {
         return addingAttribute(.strikethroughStyle, value: style.rawValue)
     }
 
+    @discardableResult
     public func strikeThrough(color: RichColor) -> NSAttributedString {
         return addingAttribute(.strikethroughColor, value: color)
     }
 
+    @discardableResult
     public func strikeThrough(color: RichColor, style: NSUnderlineStyle) -> NSAttributedString {
         return strikeThrough(color: color).strikeThrough(style: style)
     }
 
+    @discardableResult
     public func underline(style: NSUnderlineStyle) -> NSAttributedString {
         return addingAttribute(.underlineStyle, value: style.rawValue)
     }
 
+    @discardableResult
     public func underline(color: RichColor) -> NSAttributedString {
         return addingAttribute(.underlineColor, value: color)
     }
 
+    @discardableResult
     public func underline(color: RichColor, style: NSUnderlineStyle)
             -> NSAttributedString {
         return underline(color: color).underline(style: style)
     }
 
+    @discardableResult
     public func stroke(width: Float, color: RichColor) -> NSAttributedString {
         return addingAttribute(.strokeColor, value: color)
             .addingAttribute(.strokeWidth, value: width)
     }
 
+    @discardableResult
     public func shadow(_ shadow: NSShadow) -> NSAttributedString {
         return addingAttribute(.shadow, value: shadow)
     }
 
+    @discardableResult
     public func shadow(configure: (NSShadow) -> Void) -> NSAttributedString {
         let shadow: NSShadow
         if let myShadow = self.shadow {
@@ -96,6 +113,7 @@ extension NSAttributedString: RichString {
         return self.shadow(shadow)
     }
 
+    @discardableResult
     public func attachment(configure: (NSTextAttachment) -> Void)
         -> NSAttributedString {
             let attachment = NSTextAttachment()
@@ -103,26 +121,32 @@ extension NSAttributedString: RichString {
             return addingAttribute(.attachment, value: attachment)
     }
 
+    @discardableResult
     public func letterPressed() -> NSAttributedString {
         return addingAttribute(.textEffect, value: NSAttributedString.TextEffectStyle.letterpressStyle)
     }
 
+    @discardableResult
     public func link(url: NSURL) -> NSAttributedString {
         return addingAttribute(.link, value: url)
     }
 
+    @discardableResult
     public func link(string: String) -> NSAttributedString {
         return addingAttribute(.link, value: string)
     }
 
+    @discardableResult
     public func baselineOffset(_ offset: Float) -> NSAttributedString {
         return addingAttribute(.baselineOffset, value: offset)
     }
 
+    @discardableResult
     public func obliqueness(_ obliqueness: Float) -> NSAttributedString {
         return addingAttribute(.obliqueness, value: obliqueness)
     }
 
+    @discardableResult
     public func expansion(_ expansion: Float) -> NSAttributedString {
         return addingAttribute(.expansion, value: expansion)
     }

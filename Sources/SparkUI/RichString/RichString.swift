@@ -24,6 +24,7 @@ public protocol RichString {
      * - Param font: The font that the attributed string should have.
      * - Returns: A new attributed string that has the given font attribute.
      */
+    @discardableResult
     func font(_ font: RichFont) -> NSAttributedString
 
     /**
@@ -33,6 +34,7 @@ public protocol RichString {
      * - Parameter size: The desired point size of the attributed string.
      * - Returns: A new attributed string that has the given font size attribute.
      */
+    @discardableResult
     func fontSize(_ size: CGFloat) -> NSAttributedString
 
     /**
@@ -41,6 +43,7 @@ public protocol RichString {
      * - Parameter paragraphStyle: The paragraph style that is applied.
      * - Returns: A new attributed string that has the paragraph style applied.
      */
+    @discardableResult
     func paragraphStyle(_ paragraphStyle: NSParagraphStyle) -> NSAttributedString
 
     /**
@@ -59,6 +62,7 @@ public protocol RichString {
      * - Parameter configure: The closure that you can use to configure the paragraph style.
      * - Returns: A new attributed string that has the configured paragraph style applied.
      */
+    @discardableResult
     func paragraphStyle(configure: (NSMutableParagraphStyle) -> Void)
             -> NSAttributedString
 
@@ -68,6 +72,7 @@ public protocol RichString {
      * - Parameter color: The foreground color that is applied.
      * - Returns: A new attributed string that has the given foreground color.
      */
+    @discardableResult
     func color(_ color: RichColor) -> NSAttributedString
 
     /**
@@ -76,6 +81,7 @@ public protocol RichString {
      * - Parameter color: the background color that is applied
      * - Returns: a new attributed string that has the given background color.
      */
+    @discardableResult
     func backgroundColor(_ color: RichColor) -> NSAttributedString
 
     /**
@@ -84,6 +90,7 @@ public protocol RichString {
      * - Parameter ligature: Indicates whether or not ligatures should be used.
      * - Returns: A new attributed string that has the given ligature attribute.
      */
+    @discardableResult
     func ligature(_ ligature: Bool) -> NSAttributedString
 
     /**
@@ -94,6 +101,7 @@ public protocol RichString {
      *                   `0` means kerning is disabled.
      * - Returns: A new attributed string that has the given kerning applied.
      */
+    @discardableResult
     func kern(_ kern: Float) -> NSAttributedString
 
     /**
@@ -103,6 +111,7 @@ public protocol RichString {
      *                    OS and version not all styles may actually work.
      * - Returns: A new attributed string that has the given strike through style applied.
      */
+    @discardableResult
     func strikeThrough(style: NSUnderlineStyle) -> NSAttributedString
 
     /**
@@ -112,6 +121,7 @@ public protocol RichString {
      *                    has no effect, the style must be configured as well.
      * - Returns: A new attributed string that has the given strike through color applied.
      */
+    @discardableResult
     func strikeThrough(color: RichColor) -> NSAttributedString
 
     /**
@@ -122,6 +132,7 @@ public protocol RichString {
      *                    OS and version not all styles may actually work.
      * - Returns: A new attributed string that has the given strike through color and style applied.
      */
+    @discardableResult
     func strikeThrough(color: RichColor, style: NSUnderlineStyle) -> NSAttributedString
 
     /**
@@ -131,6 +142,7 @@ public protocol RichString {
      *                    OS and version not all styles may actually work.
      * - Returns: A new attributed string that has the given underline style applied.
      */
+    @discardableResult
     func underline(style: NSUnderlineStyle) -> NSAttributedString
 
     /**
@@ -140,6 +152,7 @@ public protocol RichString {
      *                    has no effect, the style must be configured as well.
      * - Returns: A new attributed string that has the given underline color applied.
      */
+    @discardableResult
     func underline(color: RichColor) -> NSAttributedString
 
     /**
@@ -150,6 +163,7 @@ public protocol RichString {
      *                    OS and version not all styles may actually work.
      * - Returns: A new attributed string that has the given underline color and style applied.
      */
+    @discardableResult
     func underline(color: RichColor, style: NSUnderlineStyle) -> NSAttributedString
 
     /**
@@ -159,6 +173,7 @@ public protocol RichString {
      * - Parameter color: The color of the stroke.
      * - Returns: A new attributed string that has the given stroke attributes applied.
      */
+    @discardableResult
     func stroke(width: Float, color: RichColor) -> NSAttributedString
 
     /**
@@ -167,6 +182,7 @@ public protocol RichString {
      * - Parameter shadow: The `NSShadow` to apply.
      * - Returns: A new attributed string that has the given shadow applied.
      */
+    @discardableResult
     func shadow(_ shadow: NSShadow) -> NSAttributedString
 
     /**
@@ -186,6 +202,7 @@ public protocol RichString {
      *                        an `NSShadow` instance that you can change and is then applied.
      * - Returns: A new attributed string that has the configured shadow applied.
      */
+    @discardableResult
     func shadow(configure: (NSShadow) -> Void) -> NSAttributedString
 
     /**
@@ -195,6 +212,7 @@ public protocol RichString {
      *                        `NSTextAttachment` instance.
      * - Returns: A new attributed string that has the configured text attachment.
      */
+    @discardableResult
     func attachment(configure: (NSTextAttachment) -> Void)
         -> NSAttributedString
 
@@ -203,6 +221,7 @@ public protocol RichString {
      *
      * - Returns: A new attributed string that has the "letter pressed" text effect applied.
      */
+    @discardableResult
     func letterPressed() -> NSAttributedString
 
     /**
@@ -211,6 +230,7 @@ public protocol RichString {
      * - Parameter url: The URL to which the hyperlink points.
      * - Returns: A new attributed string that is the receiver converted to a hyperlink.
      */
+    @discardableResult
     func link(url: NSURL) -> NSAttributedString
 
     /**
@@ -219,6 +239,7 @@ public protocol RichString {
      * - Parameter string: The URL string to which the hyperlink points.
      * - Returns: A new attributed string that is the receiver converted to a hyperlink.
      */
+    @discardableResult
     func link(string: String) -> NSAttributedString
 
     /**
@@ -227,6 +248,7 @@ public protocol RichString {
      * - Parameter offset: The number of points the text is offset from the baseline.
      * - Returns: A new attributed string that has the given baseline offset configured.
      */
+    @discardableResult
     func baselineOffset(_ offset: Float) -> NSAttributedString
 
     /**
@@ -235,6 +257,7 @@ public protocol RichString {
      * - Parameter obliqueness: The skew that is applied to glyphs; `0` means no skew.
      * - Returns: A new attributed string that has the given obliqueness configured.
      */
+    @discardableResult
     func obliqueness(_ obliqueness: Float) -> NSAttributedString
 
     /**
@@ -243,10 +266,11 @@ public protocol RichString {
      * - Parameter expansion: The log of the expansion factor to be applied to glyphs.
      * - Returns: A new attributed string that has the given expansion configured.
      */
+    @discardableResult
     func expansion(_ expansion: Float) -> NSAttributedString
 }
-
-private func xcodeBugWorkaround() {
-    print("https://stackoverflow.com/a/54510891")
-}
+//
+//private func xcodeBugWorkaround() {
+//    print("https://stackoverflow.com/a/54510891")
+//}
 
