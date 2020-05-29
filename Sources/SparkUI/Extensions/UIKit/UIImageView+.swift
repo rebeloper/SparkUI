@@ -141,6 +141,14 @@ public extension UIImageView {
         return self
     }
     
+    func setImageFrom(urlOrName: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil, indicatorType: IndicatorType = .none) {
+        if urlOrName.contains("https") {
+            setImage(from: urlOrName, renderingMode: renderingMode, contentMode: contentMode, placeholderImage: placeholderImage, indicatorType: indicatorType)
+        } else {
+            setImage(urlOrName, renderingMode: renderingMode, contentMode: contentMode, placeholderImage: placeholderImage)
+        }
+    }
+    
     @discardableResult
     func templateImageColor(_ color: UIColor) -> UIImageView {
         self.tintColor = color
