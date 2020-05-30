@@ -24,9 +24,8 @@ open class STableCell<T>: UITableViewCell {
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        assign()
         addActions()
-        onNext()
+        subscribe()
     }
     
     required public init?(coder: NSCoder) {
@@ -51,9 +50,8 @@ open class STableCell<T>: UITableViewCell {
         setCellBackgroundColor()
     }
     
-    open func assign() {}
     open func addActions() {}
-    open func onNext() {}
+    open func subscribe() {}
     
     public func setCellBackgroundColor(selectedBackgroundViewColor: UIColor,
                                    backgroundColor: UIColor,

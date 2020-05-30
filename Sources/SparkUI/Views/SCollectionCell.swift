@@ -24,9 +24,8 @@ open class SCollectionCell<T>: UICollectionViewCell {
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        assign()
         addActions()
-        onNext()
+        subscribe()
     }
     
     required public init?(coder: NSCoder) {
@@ -51,9 +50,8 @@ open class SCollectionCell<T>: UICollectionViewCell {
         setCellBackgroundColor()
     }
     
-    open func assign() {}
     open func addActions() {}
-    open func onNext() {}
+    open func subscribe() {}
     
     public func setCellBackgroundColor(selectedBackgroundViewColor: UIColor,
                                    backgroundColor: UIColor,

@@ -24,9 +24,8 @@ open class SCollectionSupplementaryView<T>: UICollectionReusableView {
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        assign()
         addActions()
-        onNext()
+        subscribe()
     }
     
     required public init?(coder: NSCoder) {
@@ -51,9 +50,8 @@ open class SCollectionSupplementaryView<T>: UICollectionReusableView {
         setSupplementaryViewBackgroundColor()
     }
     
-    open func assign() {}
     open func addActions() {}
-    open func onNext() {}
+    open func subscribe() {}
     
     public func setSupplementaryViewBackgroundColor(_ backgroundColor: UIColor,
                                    containerBackgroundColor: UIColor) {

@@ -214,7 +214,7 @@ public extension STextField {
 }
 
 public extension STextField {
-    func onNext(_ event: UIControl.Event = .editingChanged, interval: TimeInterval = 0.1, completion: @escaping (String?) -> ()) {
+    func subscribe(_ event: UIControl.Event = .editingChanged, interval: TimeInterval = 0.1, completion: @escaping (String?) -> ()) {
         self.object.throttle(event, interval: interval) { (textField: UITextField) in
             guard let text = textField.text else {
                 completion(nil)

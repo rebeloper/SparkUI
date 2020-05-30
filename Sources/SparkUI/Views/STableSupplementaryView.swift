@@ -24,9 +24,8 @@ open class STableSupplementaryView<T>: UITableViewHeaderFooterView {
     
     override public init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        assign()
         addActions()
-        onNext()
+        subscribe()
     }
     
     required public init?(coder: NSCoder) {
@@ -51,9 +50,8 @@ open class STableSupplementaryView<T>: UITableViewHeaderFooterView {
         setSupplementaryViewBackgroundColor()
     }
     
-    open func assign() {}
     open func addActions() {}
-    open func onNext() {}
+    open func subscribe() {}
     
     public func setSupplementaryViewBackgroundColor(_ containerBackgroundColor: UIColor) {
         container.backgroundColor = containerBackgroundColor
