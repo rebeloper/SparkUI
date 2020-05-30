@@ -23,7 +23,7 @@ open class SMailComposeViewController: MFMailComposeViewController {
 }
 
 public struct MailComposer {
-    static func canSendEmail() -> Bool {
+    public static func canSendEmail() -> Bool {
         MFMailComposeViewController.canSendMail()
     }
 }
