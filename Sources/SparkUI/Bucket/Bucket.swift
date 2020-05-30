@@ -11,34 +11,35 @@ import Signals
 /// 🧙‍♂️ Observable object that emits signals that can be subscribed to
 public class Bucket<T> {
     
-    private var shouldDebug: Bool = false
+    private var shouldDebugWillSet: Bool = false
+    private var shouldDebugDidSet: Bool = false
     
-    /// 🧙‍♂️ The `Signal` of the `Bucket` that creates a number of signals that can be subscribed to
-    public let value = Signal<T>()
+    /// 🧙‍♂️ The `Content` of the `Bucket` that creates a number of signals that can be subscribed to
+    public let content = Signal<T>()
     
-    /// 🧙‍♂️ Gets the latest value of the `Bucket`
-    public var getValue: T {
-        didSet {
-            if shouldDebug {
+    ///  🧙‍♂️ Gets / Sets the latest value
+    public var value: T {
+        willSet(newValue) {
+            if shouldDebugWillSet {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MMM d, HH:mm:ss:SSSZ"
-                print("🧙‍♂️ Bucket ~~> [\(Thread.isMainThread ? "" : "!")M] [\(dateFormatter.string(from: Foundation.Date()))] ~~> did set value: \(getValue)")
+                print("🧙‍♂️ Bucket ~~> [\(Thread.isMainThread ? "" : "!")M] [\(dateFormatter.string(from: Foundation.Date()))] ~~> `\(self.value)` is going to be set as `\(newValue)`")
             }
         }
-    }
-    
-    /// 🧙‍♂️ Sets a new value into the Bucket
-    /// - Parameter value: The new value of the `Bucket`.
-    public func setValue(_ value: T) {
-        self.getValue = value
-        self.value.fire(value)
+        didSet(oldValue) {
+            if shouldDebugDidSet {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMM d, HH:mm:ss:SSSZ"
+                print("🧙‍♂️ Bucket ~~> [\(Thread.isMainThread ? "" : "!")M] [\(dateFormatter.string(from: Foundation.Date()))] ~~> `\(oldValue)` has been set as `\(self.value)`")
+            }
+            self.content.fire(value)
+        }
     }
     
     /// 🧙‍♂️ Initializes a `Bucket` with an initial value
     /// - Parameter initialValue: The initial value of the `Bucket`.
     public init(_ initialValue: T) {
-        self.getValue = initialValue
-        setValue(initialValue)
+        self.value = initialValue
     }
 }
 
@@ -46,8 +47,20 @@ public extension Bucket {
     
     /// 🧙‍♂️ Debugs the `Bucket` in console
     func debug() -> Bucket {
-        shouldDebug = true
+        shouldDebugWillSet = true
+        shouldDebugDidSet = true
+        return self
+    }
+    
+    /// 🧙‍♂️ Debugs `willSet` of the `Bucket` in console
+    func debugWillSet() -> Bucket {
+        shouldDebugWillSet = true
+        return self
+    }
+    
+    /// 🧙‍♂️ Debugs `didSet` of the `Bucket` in console
+    func debugDidSet() -> Bucket {
+        shouldDebugDidSet = true
         return self
     }
 }
-
