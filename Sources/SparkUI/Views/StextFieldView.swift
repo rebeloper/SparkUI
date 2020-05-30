@@ -8,14 +8,14 @@
 import UIKit
 import Layoutless
 
-class STextFieldView: UIView {
+public class STextFieldView: UIView {
     
-    var textField: UITextField?
+    public var textField: UITextField?
     
     private let eyeButton = UIButton().image(UIImage(systemName: "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysTemplate))
     private let showingSecureText = Bucket(false)
     
-    init(placeholder: String = "", text: String = "", isSecure: Bool = false, insetting: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12), height: Length = 44) {
+    public init(placeholder: String = "", text: String = "", isSecure: Bool = false, insetting: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12), height: Length = 44) {
         super.init(frame: .zero)
         textField = UITextField()
         textField?.placeholder = placeholder
@@ -44,7 +44,7 @@ class STextFieldView: UIView {
             .layout(in: self)
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -68,7 +68,7 @@ class STextFieldView: UIView {
         }
     }
     
-    func subscribe(_ event: UIControl.Event = .editingChanged, interval: TimeInterval = 0.1, completion: @escaping (String?) -> ()) {
+    public func subscribe(_ event: UIControl.Event = .editingChanged, interval: TimeInterval = 0.1, completion: @escaping (String?) -> ()) {
         self.textField?.throttle(event, interval: interval) { (textField: UITextField) in
             guard let text = textField.text else {
                 completion(nil)

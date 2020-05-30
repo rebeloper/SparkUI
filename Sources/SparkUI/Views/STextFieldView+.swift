@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension STextFieldView {
+public extension STextFieldView {
     @discardableResult
     func placeholder(_ placeholder: String?) -> STextFieldView {
         self.textField?.placeholder = placeholder
