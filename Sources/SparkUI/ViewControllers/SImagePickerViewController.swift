@@ -34,16 +34,16 @@ extension SImagePickerViewController: UIImagePickerControllerDelegate, UINavigat
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             let image = editedImage.withRenderingMode(.alwaysOriginal)
-            self.imagePickerControllerImage.value = image
+            self.imagePickerControllerImage.setValue(image)
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             let image = originalImage.withRenderingMode(.alwaysOriginal)
-            self.imagePickerControllerImage.value = image
+            self.imagePickerControllerImage.setValue(image)
         }
         dismiss(animated: true)
     }
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.imagePickerControllerImage.value = self.imagePickerControllerImage.value
+        self.imagePickerControllerImage.setValue(self.imagePickerControllerImage.getValue)
         dismiss(animated: true)
     }
     

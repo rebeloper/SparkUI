@@ -47,6 +47,15 @@
         }
       },
       {
+        "package": "Signals",
+        "repositoryURL": "https://github.com/artman/Signals.git",
+        "state": {
+          "branch": null,
+          "revision": "e792eb51a64f85d043d17f09f6323b803b9f73b8",
+          "version": "6.1.0"
+        }
+      },
+      {
         "package": "SwiftEntryKit",
         "repositoryURL": "https://github.com/huri000/SwiftEntryKit.git",
         "state": {

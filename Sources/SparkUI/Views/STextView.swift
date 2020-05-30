@@ -28,15 +28,9 @@ public class STextView: SPlaceholderTextView {
         guard let object = notification.object as? STextView, object === self else {
             return
         }
-        textBucket.value = object.text
+        textBucket.setValue(object.text)
     }
     
-}
-
-public extension STextView {
-    func onNext(interval: TimeInterval = 0.1, completion: @escaping (String) -> ()) {
-        self.textBucket.onNext(throttle: interval, completion: completion)
-    }
 }
 
 public extension STextView {

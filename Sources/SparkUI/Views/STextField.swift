@@ -7,6 +7,7 @@
 
 import UIKit
 import Layoutless
+import Signals
 
 public class STextField: UIView {
     
@@ -145,10 +146,11 @@ public class STextField: UIView {
     
     fileprivate func observe() {
         eyeButton.addAction {
-            self.showingSecureText.value.toggle()
+            let showingSecureText = self.showingSecureText.getValue
+            self.showingSecureText.setValue(!showingSecureText)
         }
         
-        showingSecureText.onNextWithFirst { (showing) in
+        showingSecureText.value.subscribe(with: self) { (showing) in
             if showing {
                 self.isSecureTextEntry(false)
                 self.eyeButton

@@ -21,7 +21,8 @@ let package = Package(
         .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "5.13.4")),
         .package(url: "https://github.com/HeroTransitions/Hero.git", .upToNextMajor(from: "1.5.0")),
         .package(url: "https://github.com/huri000/SwiftEntryKit.git", .upToNextMajor(from: "1.2.3")),
-        .package(url: "https://github.com/Nirma/UIFontComplete.git", .upToNextMajor(from: "4.0.1"))
+        .package(url: "https://github.com/Nirma/UIFontComplete.git", .upToNextMajor(from: "4.0.1")),
+        .package(url: "https://github.com/artman/Signals.git", .upToNextMajor(from: "6.1.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -34,7 +35,8 @@ let package = Package(
                 "Kingfisher",
                 "Hero",
                 "SwiftEntryKit",
-                "UIFontComplete"
+                "UIFontComplete",
+                "Signals"
         ]),
         .testTarget(
             name: "SparkUITests",
