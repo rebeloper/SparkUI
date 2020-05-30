@@ -30,9 +30,8 @@ open class SViewController: UIViewController {
         configureNavigationBar()
         layoutViews()
         configureViews()
-        assign()
         addActions()
-        onNext()
+        subscribe()
         onLoad()
     }
     
@@ -58,9 +57,8 @@ open class SViewController: UIViewController {
     }
     
     open func configureViews() {}
-    open func assign() {}
     open func addActions() {}
-    open func onNext() {}
+    open func subscribe() {}
     open func onLoad() {}
     
     open func onAppear() {}
