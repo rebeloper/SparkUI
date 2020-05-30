@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import Layoutless
 
 public extension UIButton {
     
@@ -104,6 +105,14 @@ public extension UIButton {
         imageView?.translatesAutoresizingMaskIntoConstraints = false
         imageView?.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         imageView?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        return self
+    }
+    
+    @discardableResult
+    func underlined(with color: UIColor = .systemGray5, height: CGFloat = 0.5) -> UIButton {
+        let underlineView = UIView().setBackground(color: color)
+        underlineView.setHeight(height)
+        underlineView.stickingToParentEdges(left: 0, right: 0, bottom: 0).layout(in: self)
         return self
     }
     
