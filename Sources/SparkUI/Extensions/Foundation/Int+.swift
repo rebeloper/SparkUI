@@ -35,4 +35,6 @@ public extension Int {
     mutating func makeZero() {
         self = 0
     }
+    
+    static var zero: Int = Int(0)
 }
