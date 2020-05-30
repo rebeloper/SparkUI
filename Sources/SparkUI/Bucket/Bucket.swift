@@ -30,7 +30,7 @@ public class Bucket<T> {
             if shouldDebugDidSet {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MMM d, HH:mm:ss:SSSZ"
-                print("🧙‍♂️ Bucket ~~> [\(Thread.isMainThread ? "" : "!")M] [\(dateFormatter.string(from: Foundation.Date()))] ~~> `\(oldValue)` has been set as `\(self.value)`")
+                print("🧙‍♂️ Bucket ~~> [\(Thread.isMainThread ? "" : "!")M] [\(dateFormatter.string(from: Foundation.Date()))] ~~> `\(oldValue)` has been set to `\(self.value)`")
             }
             self.content.fire(value)
         }
