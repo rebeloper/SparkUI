@@ -86,8 +86,24 @@ public extension UIButton {
     }
     
     @discardableResult
-    func textAlignment(_ textAlignment: NSTextAlignment) -> UIButton {
-        titleLabel?.textAlignment(textAlignment)
+    func textAlignment(_ alignment: ContentHorizontalAlignment) -> UIButton {
+        contentHorizontalAlignment = alignment
+        return self
+    }
+    
+    @discardableResult
+    func setImageOnRight() -> UIButton {
+        transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        return self
+    }
+    
+    @discardableResult
+    func setImageOnFarRight() -> UIButton {
+        imageView?.translatesAutoresizingMaskIntoConstraints = false
+        imageView?.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        imageView?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
         return self
     }
     
