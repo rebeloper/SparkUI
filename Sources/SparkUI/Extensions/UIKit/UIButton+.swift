@@ -109,10 +109,10 @@ public extension UIButton {
     }
     
     @discardableResult
-    func underline(with color: UIColor = .systemGray5, height: CGFloat = 0.5, leftPadding: CGFloat = 0, rightPadding: CGFloat = 0) -> UIButton {
+    func underline(with color: UIColor = .systemGray5, height: CGFloat = 0.5, leftPadding: Length = 0, rightPadding: Length = 0) -> UIButton {
         let underlineView = UIView().setBackground(color: color)
         underlineView.setHeight(height)
-        underlineView.stickingToParentEdges(left: leftPadding, rightPadding: 0, bottom: 0).layout(in: self)
+        underlineView.stickingToParentEdges(left: leftPadding, right: rightPadding, bottom: 0).layout(in: self)
         return self
     }
     
