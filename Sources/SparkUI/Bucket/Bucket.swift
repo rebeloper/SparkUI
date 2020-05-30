@@ -45,7 +45,7 @@ public class Bucket<T> {
 public extension Bucket {
     
     /// 🧙‍♂️ Debugs the `Bucket` in console
-    func /// 🧙‍♂️ Initializes a `Bucket` with an initial value() -> Bucket {
+    func debug() -> Bucket {
         shouldDebug = true
         return self
     }
