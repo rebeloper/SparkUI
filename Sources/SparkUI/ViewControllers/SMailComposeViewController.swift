@@ -20,10 +20,12 @@ open class SMailComposeViewController: MFMailComposeViewController {
         fatalError(SDebug.Message.FatalError.initCoder)
     }
     
-    public func canSendEmail() -> Bool {
+}
+
+public struct MailComposer {
+    static func canSendEmail() -> Bool {
         MFMailComposeViewController.canSendMail()
     }
-    
 }
 
 
