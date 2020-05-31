@@ -46,7 +46,7 @@ public extension SImageView {
         return self
     }
     
-    func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil, indicatorType: IndicatorType = .none) {
+    func setImage(from imageUrl: String, renderingMode: UIImage.RenderingMode = .alwaysOriginal, contentMode: UIView.ContentMode = .scaleAspectFill, placeholderImage: UIImage? = nil, indicatorType: IndicatorType = .none, completion: @escaping (Result<RetrieveImageResult?, Error>) -> () = {_ in}) {
         self.object.contentMode = contentMode
         if imageUrl.contains("https:") {
             guard let downloadURL = URL(string: imageUrl) else {
@@ -57,32 +57,13 @@ public extension SImageView {
             let resource = ImageResource(downloadURL: downloadURL)
             
             self.object.kf.indicatorType = indicatorType
-            self.object.kf.setImage(with: resource, placeholder: placeholderImage, options: nil, progressBlock: { (receivedSize, totalSize) in
-                let percentage = (Float(receivedSize) / Float(totalSize)) * 100.0
-                print("downloading progress: \(percentage)%")
-            }) { (result) in
+            self.object.kf.setImage(with: resource, placeholder: placeholderImage, options: nil) { (result) in
                 switch result {
                 case .success(let retrieveImageResult):
-                    let image = retrieveImageResult.image
-                    let cacheType = retrieveImageResult.cacheType
-                    let source = retrieveImageResult.source
-                    let originalSource = retrieveImageResult.originalSource
-                    let message = """
-                    - 🌄 ------------------------
-                    Successfully loaded image
-                    Image size:
-                    \(image.size)
-                    Cache type:
-                    \(cacheType)
-                    Source:
-                    \(source)
-                    Original source:
-                    \(originalSource)
-                    - 🌄 ------------------------
-                    """
-                    print(message)
+                    completion(.success(retrieveImageResult))
                 case .failure(let err):
                     print(err.localizedDescription)
+                    completion(.failure(err))
                 }
             }
         } else {
@@ -92,6 +73,10 @@ public extension SImageView {
                 self.object.image = placeholderImage.withRenderingMode(renderingMode)
             }
         }
+    }
+    
+    func cancelDownload() {
+        object.kf.cancelDownloadTask()
     }
     
     @discardableResult
