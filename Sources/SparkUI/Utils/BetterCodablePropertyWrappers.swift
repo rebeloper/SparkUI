@@ -5,6 +5,7 @@
 //  Created by Alex Nagy on 03/06/2020.
 //
 
+import Foundation
 import BetterCodable
 
 // MARK: - True
@@ -50,3 +51,14 @@ public struct DefaultZeroDoubleStrategy: DefaultCodableStrategy {
 ///
 /// `@DefaultZeroDouble` decodes Doubles and defaults the value to an 0.0 if the Decoder is unable to decode the value.
 public typealias DefaultZeroDouble = DefaultCodable<DefaultZeroDoubleStrategy>
+
+// MARK: - Now
+
+public struct DefaultNowStrategy: DefaultCodableStrategy {
+    public static var defaultValue: Date { return Date.now }
+}
+
+/// Decodes Date defaulting to now if applicable
+///
+/// `@DefaultNow` decodes Dates and defaults the value to now if the Decoder is unable to decode the value.
+public typealias DefaultNow = DefaultCodable<DefaultNowStrategy>
