@@ -14,4 +14,12 @@ public extension Dictionary {
             self.updateValue(value, forKey:key)
         }
     }
+    
+    static func empty() -> Dictionary {
+        self.init()
+    }
+    
+    mutating func makeEmpty() {
+        self.removeAll()
+    }
 }

@@ -8,5 +8,6 @@
 import Foundation
 
 public extension Float {
-    static var zero: Float = Float(0)
+    static var zero = Float(0)
+    static var empty = Float()
 }

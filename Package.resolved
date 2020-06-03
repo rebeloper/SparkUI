@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "BetterCodable",
+        "repositoryURL": "https://github.com/marksands/BetterCodable.git",
+        "state": {
+          "branch": null,
+          "revision": "3b91cd0b6bab5c2716e05ca15fa64a25877175cd",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "Hero",
         "repositoryURL": "https://github.com/HeroTransitions/Hero.git",
         "state": {

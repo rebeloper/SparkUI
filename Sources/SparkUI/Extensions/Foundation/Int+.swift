@@ -36,5 +36,6 @@ public extension Int {
         self = 0
     }
     
-    static var zero: Int = Int(0)
+    static var zero = Int(0)
+    static var empty = Int()
 }

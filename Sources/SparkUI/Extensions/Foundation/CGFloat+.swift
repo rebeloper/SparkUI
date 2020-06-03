@@ -8,5 +8,6 @@
 import UIKit
 
 public extension CGFloat {
-    static var zero: CGFloat = CGFloat(0)
+    static var zero = CGFloat(0)
+    static var empty = CGFloat()
 }

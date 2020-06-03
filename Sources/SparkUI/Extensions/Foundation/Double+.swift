@@ -8,5 +8,6 @@
 import Foundation
 
 public extension Double {
-    static var zero: Double = Double(0)
+    static var zero = Double(0)
+    static var empty = Double()
 }
