@@ -21,25 +21,25 @@ public extension STextFieldView {
     }
     
     @discardableResult
-    public func isSecureTextEntry(_ isSecureTextEntry: Bool) -> STextFieldView {
+    func isSecureTextEntry(_ isSecureTextEntry: Bool) -> STextFieldView {
         textField?.isSecureTextEntry = isSecureTextEntry
         return self
     }
     
     @discardableResult
-    public func keyboardType(_ keyboardType: UIKeyboardType) -> STextFieldView {
+    func keyboardType(_ keyboardType: UIKeyboardType) -> STextFieldView {
         textField?.keyboardType = keyboardType
         return self
     }
     
     @discardableResult
-    public func autocapitalizationType(_ autocapitalizationType: UITextAutocapitalizationType) -> STextFieldView {
+    func autocapitalizationType(_ autocapitalizationType: UITextAutocapitalizationType) -> STextFieldView {
         textField?.autocapitalizationType = autocapitalizationType
         return self
     }
     
     @discardableResult
-    open func isEnabled(_ isEnabled: Bool) -> STextFieldView {
+    func isEnabled(_ isEnabled: Bool) -> STextFieldView {
         textField?.isEnabled = isEnabled
         return self
     }

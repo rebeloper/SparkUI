@@ -13,7 +13,7 @@ public class SButton: UIView {
     public var object: UIView!
     public var isEnabled = true
     
-    var activityContainerView = UIView().alpha(0)
+    var activityContainerView = UIView().setAlpha(0)
     var activityIndicatorView = UIActivityIndicatorView()
     var activityIndicatorViewMessageLabel = UILabel().bold()
     var text = ""
