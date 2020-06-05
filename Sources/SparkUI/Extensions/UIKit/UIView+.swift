@@ -404,7 +404,7 @@ public extension UIView {
     }
     
     @discardableResult
-    func alpha(_ alpha: CGFloat) -> UIView {
+    func setAlpha(_ alpha: CGFloat) -> UIView {
         self.alpha = alpha
         return self
     }

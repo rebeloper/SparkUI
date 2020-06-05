@@ -165,6 +165,12 @@ public extension UIImageView {
         layer.masksToBounds = true
         return self
     }
+    
+    @discardableResult
+    func alpha(_ alpha: CGFloat) -> UIImageView {
+        self.alpha = alpha
+        return self
+    }
 }
 
 
