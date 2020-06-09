@@ -32,6 +32,7 @@ extension SNavigator: Presentable {
                         swipeToDismissStyle: UIViewControllerSwipeToDismissStyle = .enabled,
                         animationType: UIViewControllerAnimationType = .slide,
                         hapticFeedbackType: EKAttributes.NotificationHapticFeedback = .none,
+                        backgroundColor: UIColor = UIColor.black.withAlphaComponent(0.5),
                         withNavigationBar: Bool = false) {
         if withNavigationBar {
             let navigationController = UINavigationController(rootViewController: viewControllerToPresent)
@@ -39,13 +40,15 @@ extension SNavigator: Presentable {
                            modalPresentationStyle: modalPresentationStyle,
                            swipeToDismissStyle: swipeToDismissStyle,
                            animationType: animationType,
-                           hapticFeedbackType: hapticFeedbackType)
+                           hapticFeedbackType: hapticFeedbackType,
+                           backgroundColor: backgroundColor)
         } else {
             SSheet.present(viewControllerToPresent,
                            modalPresentationStyle: modalPresentationStyle,
                            swipeToDismissStyle: swipeToDismissStyle,
                            animationType: animationType,
-                           hapticFeedbackType: hapticFeedbackType)
+                           hapticFeedbackType: hapticFeedbackType,
+                           backgroundColor: backgroundColor)
         }
     }
 }
