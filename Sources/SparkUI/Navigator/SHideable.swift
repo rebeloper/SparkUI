@@ -9,15 +9,6 @@ import Foundation
 import UIKit
 import SwiftEntryKit
 
-public protocol Presentable: AnyObject {
-    func present(_ viewControllerToPresent: UIViewController,
-                 modalPresentationStyle: UIViewControllerModalPresentationStyle,
-                 swipeToDismissStyle: UIViewControllerSwipeToDismissStyle,
-                 animationType: UIViewControllerAnimationType,
-                 hapticFeedbackType: EKAttributes.NotificationHapticFeedback,
-                 withNavigationBar: Bool)
-}
-
 public protocol Dismissable_withCompletion: AnyObject {
     func dismiss(completion: @escaping () -> ())
 }
