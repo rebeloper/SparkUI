@@ -154,3 +154,18 @@ public extension UIViewController {
     }
 }
 
+public extension UIViewController {
+    func switchToTabBar(index: Int, delay: TimeInterval = 0.2) {
+        let timeInterval = 0.2 + delay
+        Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.switchTabBarController), userInfo: index, repeats: false)
+    }
+    
+    @objc private func switchTabBarController(_ timer: Timer) {
+        guard
+            let tabBarController = UIWindow().getKeyWindow()?.rootViewController as? UITabBarController,
+            let selectedIndex = timer.userInfo as? Int
+            else { return }
+        tabBarController.selectedIndex = selectedIndex
+    }
+}
+
