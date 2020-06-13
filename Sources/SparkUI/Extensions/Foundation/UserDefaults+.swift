@@ -28,22 +28,15 @@ public extension UserDefaults {
         print("--------- UserDefaults End ---------")
     }
     
-    static func onFirst(_ key: String, completion: @escaping () -> ()) {
+    static func onFirst(_ key: String, reset: Bool = false, completion: @escaping () -> ()) {
         if !standard.bool(forKey: key) {
-            standard.set(true, forKey: key)
+            standard.set(!reset, forKey: key)
             completion()
         }
     }
     
-    static func resetFirst(_ key: String) {
-        standard.set(false, forKey: key)
+    static func onFirstLaunch(reset: Bool = false, completion: @escaping () -> ()) {
+        onFirst("launch", reset: reset, completion: completion)
     }
     
-    static func onFirstLaunch(completion: @escaping () -> ()) {
-        onFirst("launch", completion: completion)
-    }
-    
-    static func resetFirstLaunch() {
-        resetFirst("launch")
-    }
 }
