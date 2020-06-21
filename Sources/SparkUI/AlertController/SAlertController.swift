@@ -75,7 +75,7 @@ public class SAlertController {
         show(.alert, title: "Error", message: message)
     }
     
-    public static func showErrorSomethingWentWrong {
+    public static func showErrorSomethingWentWrong() {
         show(.alert, title: "Error", message: "Something went wrong")
     }
     
