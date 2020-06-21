@@ -75,6 +75,10 @@ public class SAlertController {
         show(.alert, title: "Error", message: message)
     }
     
+    public static func showErrorSomethingWentWrong {
+        show(.alert, title: "Error", message: "Something went wrong")
+    }
+    
     public static func defaultAction(title: String) -> UIAlertAction {
         return UIAlertAction(title: title, style: .default)
     }
