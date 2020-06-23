@@ -132,6 +132,9 @@ public class SAudioKit: NSObject {
         }
         if recorder.url.path == choosenUrl?.path && choosenUrl != nil {
             audioPlayer.play()
+            isPlaying = true
+            playTime.value = 0
+            playTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updatePlayTimer), userInfo: nil, repeats: true)
             completion(.success(true))
             return
         }
