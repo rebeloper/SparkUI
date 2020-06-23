@@ -226,7 +226,6 @@ public class SAudioKit: NSObject {
         audioPlayer.stop()
         isPlaying = false
         playTimer.invalidate()
-        playTimer.invalidate()
         completion()
     }
     
@@ -271,8 +270,8 @@ public class SAudioKit: NSObject {
 extension SAudioKit: AVAudioRecorderDelegate {
     
     public func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        isRecording = false
         recordingUrl = nil
+        isRecording = false
         recordTimer.invalidate()
         delegate?.audioRecorderDidFinishRecording(recorder, successfully: flag)
     }
@@ -286,6 +285,7 @@ extension SAudioKit: AVAudioPlayerDelegate {
     
     public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         isPlaying = false
+        playTimer.invalidate()
         delegate?.audioPlayerDidFinishPlaying(player, successfully: flag)
     }
     
