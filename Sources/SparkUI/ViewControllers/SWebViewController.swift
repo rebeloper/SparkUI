@@ -46,7 +46,6 @@ open class SWebViewController: SViewController {
         case .none:
             print("SWebViewController: invalid navigatorActionType - none")
         }
-        onDismissSWebViewControllerUrl.value = self.url
     }
     
     public lazy var refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh) {
@@ -69,7 +68,7 @@ open class SWebViewController: SViewController {
     
     open override func onDisappear() {
         super.onDisappear()
-        onDismissSWebViewControllerUrl.value = self.url
+        onDisappearSWebViewControllerUrl.value = self.url
     }
     
     fileprivate func setupNavigation() {

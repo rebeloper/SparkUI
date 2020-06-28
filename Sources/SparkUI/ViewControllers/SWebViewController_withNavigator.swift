@@ -8,7 +8,7 @@
 import WebKit
 import Layoutless
 
-public let onDismissSWebViewControllerUrl = Bucket("")
+public let onDisappearSWebViewControllerUrl = Bucket("")
 
 open class SWebViewController_withNavigator: SViewController {
     
@@ -49,7 +49,6 @@ open class SWebViewController_withNavigator: SViewController {
         case .none:
             print("SWebViewController_withNavigator: invalid navigatorActionType - none")
         }
-        onDismissSWebViewControllerUrl.value = self.url
     }
     
     public lazy var refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh) {
@@ -72,7 +71,7 @@ open class SWebViewController_withNavigator: SViewController {
     
     open override func onDisappear() {
         super.onDisappear()
-        onDismissSWebViewControllerUrl.value = self.url
+        onDisappearSWebViewControllerUrl.value = self.url
     }
     
     fileprivate func setupNavigation() {
