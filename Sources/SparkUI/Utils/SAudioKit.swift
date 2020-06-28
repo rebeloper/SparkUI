@@ -7,7 +7,6 @@
 
 import UIKit
 import AVFoundation
-import SparkUI
 
 public protocol SAudioKitDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool)
