@@ -313,6 +313,13 @@ open class SHud {
         }
     }
     
+    public func hideWithSomethingWentWrongErrorAlert(completion: @escaping () -> () = {}) {
+        hide {
+            Alert.showErrorSomethingWentWrong()
+            completion()
+        }
+    }
+    
     public func hide(with delay: SHudDelay = .short, title: String, message: String, completion: @escaping () -> () = {}) {
         update(title: title, message: message) {
             self.hide(with: delay) {
