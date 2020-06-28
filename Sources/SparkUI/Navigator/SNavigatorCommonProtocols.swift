@@ -10,13 +10,14 @@ import UIKit
 
 // MARK: -
 public protocol WebNavigatable: AnyObject {
-    func showWeb(url: String, navigatorActionType: SNavigatorActionType)
+    func showWeb(url: String, navigatorActionType: SNavigatorActionType, delegate: UIViewController?)
 }
 
 extension SNavigator: WebNavigatable {
-    public func showWeb(url: String, navigatorActionType: SNavigatorActionType) {
+    public func showWeb(url: String, navigatorActionType: SNavigatorActionType, delegate: UIViewController? = nil) {
         let controller = SWebViewController_withNavigator(url: url, navigatorActionType: navigatorActionType)
         controller.navigator = self
+        controller.delegate = delegate as? SWebViewControllerDelegate
         switch navigatorActionType {
         case .pushed:
             navigation.push(controller)
