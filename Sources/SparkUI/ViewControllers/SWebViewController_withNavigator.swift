@@ -13,6 +13,8 @@ open class SWebViewController_withNavigator: SViewController {
     weak var navigator: (Popable & Dismissable)?
     var navigatorActionType: NavigatorActionType?
     
+    public var delegate: SWebViewControllerDelegate?
+    
     public init(url: String, safeArea: SSafeArea = .none, navigatorActionType: NavigatorActionType = .pushed) {
         self.navigatorActionType = navigatorActionType
         super.init(safeArea: safeArea)
@@ -45,6 +47,7 @@ open class SWebViewController_withNavigator: SViewController {
         case .none:
             print("SWebViewController_withNavigator: invalid navigatorActionType - none")
         }
+        self.delegate?.didDismiss()
     }
     
     public lazy var refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh) {
