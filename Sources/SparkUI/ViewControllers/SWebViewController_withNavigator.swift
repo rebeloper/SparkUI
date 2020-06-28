@@ -8,7 +8,7 @@
 import WebKit
 import Layoutless
 
-let onDismissSWebViewControllerUrl = Bucket("")
+public let onDismissSWebViewControllerUrl = Bucket("")
 
 open class SWebViewController_withNavigator: SViewController {
     
