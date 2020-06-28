@@ -67,6 +67,11 @@ open class SWebViewController: SViewController {
         setupNavigation()
     }
     
+    open override func onDisappear() {
+        super.onDisappear()
+        onDismissSWebViewControllerUrl.value = self.url
+    }
+    
     fileprivate func setupNavigation() {
         navigationItem.setLeftBarButton(cancelBarButtonItem, animated: false)
         navigationItem.setRightBarButton(refreshBarButtonItem, animated: false)
