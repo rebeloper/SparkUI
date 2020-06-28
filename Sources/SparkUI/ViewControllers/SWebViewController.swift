@@ -11,9 +11,11 @@ import Layoutless
 open class SWebViewController: SViewController {
     
     var navigatorActionType: NavigatorActionType?
+    private var url = ""
     
     public init(url: String, safeArea: SSafeArea = .none, navigatorActionType: NavigatorActionType = .pushed) {
         self.navigatorActionType = navigatorActionType
+        self.url = url
         super.init(safeArea: safeArea)
         
         guard let url = URL(string: url) else { return }
@@ -44,7 +46,7 @@ open class SWebViewController: SViewController {
         case .none:
             print("SWebViewController: invalid navigatorActionType - none")
         }
-        onDismissSWebViewController.value = true
+        onDismissSWebViewControllerUrl.value = self.url
     }
     
     public lazy var refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh) {

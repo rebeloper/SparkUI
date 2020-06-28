@@ -8,15 +8,17 @@
 import WebKit
 import Layoutless
 
-let onDismissSWebViewController = Bucket(false)
+let onDismissSWebViewControllerUrl = Bucket("")
 
 open class SWebViewController_withNavigator: SViewController {
     
     weak var navigator: (Popable & Dismissable)?
     var navigatorActionType: NavigatorActionType?
+    private var url = ""
     
     public init(url: String, safeArea: SSafeArea = .none, navigatorActionType: NavigatorActionType = .pushed) {
         self.navigatorActionType = navigatorActionType
+        self.url = url
         super.init(safeArea: safeArea)
         
         guard let url = URL(string: url) else { return }
@@ -47,7 +49,7 @@ open class SWebViewController_withNavigator: SViewController {
         case .none:
             print("SWebViewController_withNavigator: invalid navigatorActionType - none")
         }
-        onDismissSWebViewController.value = true
+        onDismissSWebViewControllerUrl.value = self.url
     }
     
     public lazy var refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh) {
