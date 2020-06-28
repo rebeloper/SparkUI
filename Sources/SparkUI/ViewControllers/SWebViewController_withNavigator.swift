@@ -47,7 +47,7 @@ open class SWebViewController_withNavigator: SViewController {
         case .none:
             print("SWebViewController_withNavigator: invalid navigatorActionType - none")
         }
-        self.delegate?.didDismiss()
+        self.delegate?.onDisappear()
     }
     
     public lazy var refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh) {
