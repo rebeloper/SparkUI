@@ -8,15 +8,9 @@
 import WebKit
 import Layoutless
 
-public protocol SWebViewControllerDelegate {
-    func onDisappear()
-}
-
 open class SWebViewController: SViewController {
     
     var navigatorActionType: NavigatorActionType?
-    
-    public var delegate: SWebViewControllerDelegate?
     
     public init(url: String, safeArea: SSafeArea = .none, navigatorActionType: NavigatorActionType = .pushed) {
         self.navigatorActionType = navigatorActionType
@@ -50,7 +44,7 @@ open class SWebViewController: SViewController {
         case .none:
             print("SWebViewController: invalid navigatorActionType - none")
         }
-        self.delegate?.onDisappear()
+        onDismissSWebViewController.value = true
     }
     
     public lazy var refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh) {
