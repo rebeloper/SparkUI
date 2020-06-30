@@ -28,14 +28,14 @@ public extension UICollectionViewFlowLayout {
     }
     
     @discardableResult
-    func sectionInset(_ sectionInset: UIEdgeInsets) -> UICollectionViewFlowLayout {
-        self.sectionInset = sectionInset
+    func sectionInsets(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) -> UICollectionViewFlowLayout {
+        self.sectionInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
         return self
     }
     
     @discardableResult
-    func itemSize(_ itemSize: CGSize) -> UICollectionViewFlowLayout {
-        self.itemSize = itemSize
+    func item(width: CGFloat, height: CGFloat) -> UICollectionViewFlowLayout {
+        self.itemSize = CGSize(width: width, height: height)
         return self
     }
     
@@ -61,8 +61,8 @@ public extension UICollectionViewFlowLayout {
     }
     
     @discardableResult
-    func estimatedItemSize(_ estimatedItemSize: CGSize) -> UICollectionViewFlowLayout {
-        self.estimatedItemSize = estimatedItemSize
+    func estimatedItem(width: CGFloat, height: CGFloat) -> UICollectionViewFlowLayout {
+        self.estimatedItemSize = CGSize(width: width, height: height)
         return self
     }
     
