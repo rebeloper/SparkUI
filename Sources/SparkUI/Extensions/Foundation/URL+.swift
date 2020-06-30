@@ -5,7 +5,7 @@
 //  Created by Alex Nagy on 07/03/2020.
 //
 
-import UIKit
+import Foundation
 
 public extension URL {
     func valueOf(_ queryParamaterName: String) -> String? {
