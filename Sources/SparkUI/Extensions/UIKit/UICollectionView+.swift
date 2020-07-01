@@ -16,6 +16,24 @@ public extension UICollectionView {
     }
     
     @discardableResult
+    func systemBackgroundColor() -> UICollectionView {
+        self.backgroundColor = .systemBackground
+        return self
+    }
+    
+    @discardableResult
+    func systemWhiteBackgroundColor() -> UICollectionView {
+        self.backgroundColor = .systemWhite
+        return self
+    }
+    
+    @discardableResult
+    func systemBlackBackgroundColor() -> UICollectionView {
+        self.backgroundColor = .systemBlack
+        return self
+    }
+    
+    @discardableResult
     func showsVerticalScrollIndicator(_ showsVerticalScrollIndicator: Bool) -> UICollectionView {
         self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
         return self
