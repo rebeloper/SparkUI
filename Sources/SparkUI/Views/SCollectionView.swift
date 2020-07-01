@@ -7,17 +7,25 @@
 
 import UIKit
 
-public class SCollectionView<T: CollectionCell<Any>>: UICollectionView {
+public class SCollectionView: UICollectionView {
     
-    public init(with layout: UICollectionViewFlowLayout, cellId cellReuseIdentifier: String, delegateAndDataSource: UIViewController?, backgroundColor: UIColor = .systemBackground) {
+    init(layout: UICollectionViewFlowLayout) {
         super.init(frame: .zero, collectionViewLayout: layout)
-        self.register(T.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+    }
+    
+    init(with layout: UICollectionViewFlowLayout, and backgroundColor: UIColor = .systemBackground) {
+        super.init(frame: .zero, collectionViewLayout: layout)
+        self.backgroundColor = backgroundColor
+    }
+    
+    init(with layout: UICollectionViewFlowLayout, delegateAndDataSource: UIViewController?, backgroundColor: UIColor = .systemBackground) {
+        super.init(frame: .zero, collectionViewLayout: layout)
         self.delegate = delegateAndDataSource as? UICollectionViewDelegate
         self.dataSource = delegateAndDataSource as? UICollectionViewDataSource
         self.backgroundColor = backgroundColor
     }
     
-    required public init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
