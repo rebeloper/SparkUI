@@ -34,14 +34,26 @@ public extension UICollectionView {
     }
     
     @discardableResult
-    func showsVerticalScrollIndicator(_ showsVerticalScrollIndicator: Bool) -> UICollectionView {
+    func showsVerticalScrollIndicator(_ showsVerticalScrollIndicator: Bool = true) -> UICollectionView {
         self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
         return self
     }
     
     @discardableResult
-    func showsHorizontalScrollIndicator(_ showsHorizontalScrollIndicator: Bool) -> UICollectionView {
+    func hidesVerticalScrollIndicator(_ hidesVerticalScrollIndicator: Bool = true) -> UICollectionView {
+        self.showsVerticalScrollIndicator = !hidesVerticalScrollIndicator
+        return self
+    }
+    
+    @discardableResult
+    func showsHorizontalScrollIndicator(_ showsHorizontalScrollIndicator: Bool = true) -> UICollectionView {
         self.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator
+        return self
+    }
+    
+    @discardableResult
+    func hidesHorizontalScrollIndicator(_ hidesHorizontalScrollIndicator: Bool = true) -> UICollectionView {
+        self.showsHorizontalScrollIndicator = !hidesHorizontalScrollIndicator
         return self
     }
     
