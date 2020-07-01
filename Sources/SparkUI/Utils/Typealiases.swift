@@ -28,3 +28,5 @@ public typealias TableSupplementaryView = STableSupplementaryView
 public typealias Keyboard = SKeyboard
 public typealias AudioKit = SAudioKit
 public typealias AudioKitDelegate = SAudioKitDelegate
+public typealias FlowLayout = UICollectionViewFlowLayout
+public typealias CollectionView = SCollectionView

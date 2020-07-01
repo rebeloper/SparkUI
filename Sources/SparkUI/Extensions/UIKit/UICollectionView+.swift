@@ -10,7 +10,7 @@ import UIKit
 public extension UICollectionView {
     
     @discardableResult
-    func backgroundColor(_ backgroundColor: UIColor) -> UICollectionView {
+    func backgroundColor(_ backgroundColor: UIColor?) -> UICollectionView {
         self.backgroundColor = backgroundColor
         return self
     }
@@ -58,13 +58,13 @@ public extension UICollectionView {
     }
     
     @discardableResult
-    func delegate(_ delegate: UIViewController) -> UICollectionView {
+    func delegate(_ delegate: UIViewController?) -> UICollectionView {
         self.delegate = delegate as? UICollectionViewDelegate
         return self
     }
     
     @discardableResult
-    func dataSource(_ dataSource: UIViewController) -> UICollectionView {
+    func dataSource(_ dataSource: UIViewController?) -> UICollectionView {
         self.dataSource = dataSource as? UICollectionViewDataSource
         return self
     }
@@ -88,13 +88,13 @@ public extension UICollectionView {
     }
     
     @discardableResult
-    func dragDelegate(_ dragDelegate: UIViewController) -> UICollectionView {
+    func dragDelegate(_ dragDelegate: UIViewController?) -> UICollectionView {
         self.dragDelegate = dragDelegate as? UICollectionViewDragDelegate
         return self
     }
     
     @discardableResult
-    func dropDelegate(_ dropDelegate: UIViewController) -> UICollectionView {
+    func dropDelegate(_ dropDelegate: UIViewController?) -> UICollectionView {
         self.dropDelegate = dropDelegate as? UICollectionViewDropDelegate
         return self
     }
