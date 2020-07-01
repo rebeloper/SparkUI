@@ -7,19 +7,11 @@
 
 import UIKit
 
-public class SCollectionView: UICollectionView {
+public class SCollectionView<T: CollectionCell<Any>>: UICollectionView {
     
-    init(layout: UICollectionViewFlowLayout) {
+    init(with layout: UICollectionViewFlowLayout, cellId cellReuseIdentifier: String, delegateAndDataSource: UIViewController?, backgroundColor: UIColor = .systemBackground) {
         super.init(frame: .zero, collectionViewLayout: layout)
-    }
-    
-    init(with layout: UICollectionViewFlowLayout, and backgroundColor: UIColor = .systemBackground) {
-        super.init(frame: .zero, collectionViewLayout: layout)
-        self.backgroundColor = backgroundColor
-    }
-    
-    init(with layout: UICollectionViewFlowLayout, delegateAndDataSource: UIViewController?, and backgroundColor: UIColor = .systemBackground) {
-        super.init(frame: .zero, collectionViewLayout: layout)
+        self.register(T.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         self.delegate = delegateAndDataSource as? UICollectionViewDelegate
         self.dataSource = delegateAndDataSource as? UICollectionViewDataSource
         self.backgroundColor = backgroundColor
