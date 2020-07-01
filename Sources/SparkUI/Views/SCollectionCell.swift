@@ -66,4 +66,10 @@ open class SCollectionCell<T>: UICollectionViewCell {
     public func setCellBackgroundColor(all color: UIColor = .systemBackground) {
         setCellBackgroundColor(selectedBackgroundViewColor: color, backgroundColor: color, contentViewBackgroundColor: color, containerBackgroundColor: color)
     }
+    
+    public func setup(with item: T, at indexPath: IndexPath, reuse: Bool = true) {
+        self.indexPath = indexPath
+        self.reuse = reuse
+        self.item = item // needs to be fired last to triger layout and congigure views
+    }
 }
