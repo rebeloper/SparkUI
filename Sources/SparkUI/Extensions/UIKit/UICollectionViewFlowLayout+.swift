@@ -34,6 +34,12 @@ public extension UICollectionViewFlowLayout {
     }
     
     @discardableResult
+    func itemSize(_ itemSize: CGSize) -> UICollectionViewFlowLayout {
+        self.itemSize = itemSize
+        return self
+    }
+    
+    @discardableResult
     func item(width: CGFloat, height: CGFloat) -> UICollectionViewFlowLayout {
         self.itemSize = CGSize(width: width, height: height)
         return self
@@ -57,6 +63,12 @@ public extension UICollectionViewFlowLayout {
         let width = containerSize.width * widthPercentage.rawValue - minimumInteritemSpacing - sectionInset.left - sectionInset.right
         let height = containerSize.height * heightPercentage.rawValue - minimumInteritemSpacing - sectionInset.top - sectionInset.bottom
         self.itemSize = CGSize(width: width, height: height)
+        return self
+    }
+    
+    @discardableResult
+    func estimatedItemSize(_ estimatedItemSize: CGSize) -> UICollectionViewFlowLayout {
+        self.estimatedItemSize = estimatedItemSize
         return self
     }
     
