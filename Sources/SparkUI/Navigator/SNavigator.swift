@@ -62,6 +62,11 @@ extension SNavigator: SHideable {
         SSheet.dismiss()
     }
     
+    public func dismissFromRoot() {
+        popToRoot(animated: false)
+        dismiss()
+    }
+    
     public func pop(animated: Bool) {
         navigation.pop(animated: animated)
     }

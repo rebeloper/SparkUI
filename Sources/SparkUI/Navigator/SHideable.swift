@@ -17,6 +17,10 @@ public protocol Dismissable: AnyObject {
     func dismiss()
 }
 
+public protocol Dismissable_fromRoot: AnyObject {
+    func dismissFromRoot()
+}
+
 public protocol Popable_Animated: AnyObject {
     func pop(animated: Bool)
 }
