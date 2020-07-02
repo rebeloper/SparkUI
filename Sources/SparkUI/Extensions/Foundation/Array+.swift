@@ -59,3 +59,11 @@ public extension Array where Element: Equatable {
         self = self.filter({$0 != element})
     }
 }
+
+public extension Array where Element: Equatable {
+    mutating func remove(elements: [Element]) {
+        for element in elements {
+            remove(element: element)
+        }
+    }
+}
