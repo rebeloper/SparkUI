@@ -55,7 +55,7 @@ public extension Array where Element: Equatable {
 }
 
 public extension Array where Element: Equatable {
-    mutating func remove(element: Element) -> Array {
-        self.filter({$0 != element})
+    mutating func remove(element: Element) {
+        self = self.filter({$0 != element})
     }
 }
