@@ -15,8 +15,8 @@ public extension UIFont {
     }
     
     @discardableResult
-    static func custom(font: UIFont?, ofSize size: CGFloat) -> UIFont {
-        return font ?? UIFont.systemFont(ofSize: size)
+    static func custom(font: UIFont?) -> UIFont {
+        return font ?? UIFont.systemFont(ofSize: 16)
     }
 }
 
