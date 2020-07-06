@@ -13,6 +13,11 @@ public extension UIFont {
     static func system(font: Font, ofSize size: CGFloat) -> UIFont {
         return UIFont(font: font, size: size) ?? UIFont.systemFont(ofSize: size)
     }
+    
+    @discardableResult
+    static func custom(font: UIFont?, ofSize size: CGFloat) -> UIFont {
+        return font ?? UIFont.systemFont(ofSize: size)
+    }
 }
 
 public extension FontRepresentable where Self.RawValue == String {
