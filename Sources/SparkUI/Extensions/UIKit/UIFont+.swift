@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import UIFontComplete
 
 public extension UIFont {
     func insert(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
@@ -60,8 +59,12 @@ public extension UIFont {
 }
 
 public extension UIFont {
-    @discardableResult
-    static func customFont(font: Font, size: CGFloat) -> UIFont {
-        return UIFont(font: font, size: size) ?? UIFont.systemFont(ofSize: size)
+    static func listAll() {
+        familyNames.forEach({ familyName in
+            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+            print(familyName, fontNames)
+        })
     }
 }
+
+
