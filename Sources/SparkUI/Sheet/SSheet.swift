@@ -136,13 +136,13 @@ public struct SSheet {
                     height: .constant(value: UIScreen.main.bounds.height - padding)
                 )
             case .intrinsic(let cornerRadius):
-                viewControllerToPresent.view.setCorner(cornerRadius, maskedCorners: CACornerMask_topCorners)
+                viewControllerToPresent.view.setCorner(cornerRadius, maskedCorners: CACornerMask_bottomCorners)
                 SSheetAttributes.topToast.positionConstraints.size = .init(
                     width: .constant(value: viewControllerToPresent.view.frame.width),
                     height: .intrinsic
                 )
             case .constant(let height, let cornerRadius):
-                viewControllerToPresent.view.setCorner(cornerRadius, maskedCorners: CACornerMask_topCorners)
+                viewControllerToPresent.view.setCorner(cornerRadius, maskedCorners: CACornerMask_bottomCorners)
                 SSheetAttributes.topToast.positionConstraints.size = .init(
                     width: .constant(value: viewControllerToPresent.view.frame.width),
                     height: .constant(value: height)
