@@ -16,5 +16,6 @@ public protocol Presentable: AnyObject {
                  animationType: UIViewControllerAnimationType,
                  hapticFeedbackType: EKAttributes.NotificationHapticFeedback,
                  backgroundColor: UIColor,
+                 sheetType: SSheetType,
                  withNavigationBar: Bool)
 }
