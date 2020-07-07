@@ -78,20 +78,20 @@ public struct SSheet {
             case .fill:
                 viewControllerToPresent.view.setCorner(0, maskedCorners: CACornerMask_topCorners)
                 SSheetAttributes.bottomToast.positionConstraints.size = .screen
-            case .sheet(let topPadding, let topCornerRadius):
-                viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            case .sheet(let padding, let cornerRadius):
+                viewControllerToPresent.view.setCorner(cornerRadius, maskedCorners: CACornerMask_topCorners)
                 SSheetAttributes.bottomToast.positionConstraints.size = .init(
                     width: .fill,
-                    height: .constant(value: UIScreen.main.bounds.height - topPadding)
+                    height: .constant(value: UIScreen.main.bounds.height - padding)
                 )
-            case .intrinsic(let topCornerRadius):
-                viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            case .intrinsic(let cornerRadius):
+                viewControllerToPresent.view.setCorner(cornerRadius, maskedCorners: CACornerMask_topCorners)
                 SSheetAttributes.bottomToast.positionConstraints.size = .init(
                     width: .constant(value: viewControllerToPresent.view.frame.width),
                     height: .intrinsic
                 )
-            case .constant(let height, let topCornerRadius):
-                viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            case .constant(let height, let cornerRadius):
+                viewControllerToPresent.view.setCorner(cornerRadius, maskedCorners: CACornerMask_topCorners)
                 SSheetAttributes.bottomToast.positionConstraints.size = .init(
                     width: .constant(value: viewControllerToPresent.view.frame.width),
                     height: .constant(value: height)
@@ -129,20 +129,20 @@ public struct SSheet {
             case .fill:
                 viewControllerToPresent.view.setCorner(0, maskedCorners: CACornerMask_topCorners)
                 SSheetAttributes.topToast.positionConstraints.size = .screen
-            case .sheet(let topPadding, let topCornerRadius):
-                viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            case .sheet(let padding, let cornerRadius):
+                viewControllerToPresent.view.setCorner(cornerRadius, maskedCorners: CACornerMask_bottomCorners)
                 SSheetAttributes.topToast.positionConstraints.size = .init(
                     width: .fill,
-                    height: .constant(value: UIScreen.main.bounds.height - topPadding)
+                    height: .constant(value: UIScreen.main.bounds.height - padding)
                 )
-            case .intrinsic(let topCornerRadius):
-                viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            case .intrinsic(let cornerRadius):
+                viewControllerToPresent.view.setCorner(cornerRadius, maskedCorners: CACornerMask_topCorners)
                 SSheetAttributes.topToast.positionConstraints.size = .init(
                     width: .constant(value: viewControllerToPresent.view.frame.width),
                     height: .intrinsic
                 )
-            case .constant(let height, let topCornerRadius):
-                viewControllerToPresent.view.setCorner(topCornerRadius, maskedCorners: CACornerMask_topCorners)
+            case .constant(let height, let cornerRadius):
+                viewControllerToPresent.view.setCorner(cornerRadius, maskedCorners: CACornerMask_topCorners)
                 SSheetAttributes.topToast.positionConstraints.size = .init(
                     width: .constant(value: viewControllerToPresent.view.frame.width),
                     height: .constant(value: height)

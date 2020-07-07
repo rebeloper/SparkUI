@@ -33,9 +33,9 @@ public enum SAppearenceMode: Int {
 
 public enum UIViewControllerModalPresentationStyle {
     case fill
-    case sheet(topPadding: CGFloat = 60, topCornerRadius: CGFloat = 15)
-    case intrinsic(topCornerRadius: CGFloat = 15)
-    case constant(height: CGFloat, topCornerRadius: CGFloat = 15)
+    case sheet(padding: CGFloat = 60, cornerRadius: CGFloat = 15)
+    case intrinsic(cornerRadius: CGFloat = 15)
+    case constant(height: CGFloat, cornerRadius: CGFloat = 15)
 }
 
 public enum UIViewControllerSwipeToDismissStyle {
