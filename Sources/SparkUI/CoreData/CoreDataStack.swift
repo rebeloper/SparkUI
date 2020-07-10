@@ -12,10 +12,12 @@ public class CoreDataStack {
     
     private let modelName: String
     private let usesCloudKit: Bool
+    private let usesFatalError: Bool
     
-    public init(modelName: String, usesCloudKit: Bool = false) {
+    public init(modelName: String, usesCloudKit: Bool = false, usesFatalError: Bool = false) {
         self.modelName = modelName
         self.usesCloudKit = usesCloudKit
+        self.usesFatalError = usesFatalError
     }
     
     public lazy var managedContext: NSManagedObjectContext = {
@@ -28,16 +30,14 @@ public class CoreDataStack {
             
             let container = NSPersistentCloudKitContainer(name: self.modelName)
             container.loadPersistentStores { (storeDescription, error) in
-                if let error = error as NSError? {
-                    print("Unresolved error \(error), \(error.userInfo)")
-                }
+                handle(error)
             }
             container.viewContext.automaticallyMergesChangesFromParent = true
             
             do {
                 try container.viewContext.setQueryGenerationFrom(.current)
-            } catch {
-                fatalError("###\(#function): Failed to pin viewContext to the current generation:\(error)")
+            } catch let error as NSError {
+                handle(error)
             }
             return container
             
@@ -45,22 +45,36 @@ public class CoreDataStack {
             
             let container = NSPersistentContainer(name: self.modelName)
             container.loadPersistentStores { (storeDescription, error) in
-                if let error = error as NSError? {
-                    print("Unresolved error \(error), \(error.userInfo)")
-                }
+                handle(error)
             }
             return container
             
         }
     }()
     
-    public func saveContext () {
+    public func saveContext(completion: @escaping (Result<Bool, Error>) -> () = {_ in}) {
         guard managedContext.hasChanges else { return }
         
         do {
             try managedContext.save()
+            completion(.success(true))
         } catch let error as NSError {
-            print("Unresolved error \(error), \(error.userInfo)")
+            handle(error) {
+                completion(.failure(error))
+            }
+            
+        }
+    }
+    
+    private func handle(_ error: Error?,completion: @escaping () -> () = {_ in}) {
+        if let error = error as NSError? {
+            let message = "CoreDataStack -> \(#function): Unresolved error: \(error), \(error.userInfo)"
+            if usesFatalError {
+                fatalError(message)
+            } else {
+                print(message)
+            }
+            completion()
         }
     }
 }
