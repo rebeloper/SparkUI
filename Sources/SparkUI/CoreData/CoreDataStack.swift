@@ -30,7 +30,7 @@ public class CoreDataStack {
             
             let container = NSPersistentCloudKitContainer(name: self.modelName)
             container.loadPersistentStores { (storeDescription, error) in
-                handle(error)
+                self.handle(error)
             }
             container.viewContext.automaticallyMergesChangesFromParent = true
             
@@ -45,7 +45,7 @@ public class CoreDataStack {
             
             let container = NSPersistentContainer(name: self.modelName)
             container.loadPersistentStores { (storeDescription, error) in
-                handle(error)
+                self.handle(error)
             }
             return container
             
@@ -66,7 +66,7 @@ public class CoreDataStack {
         }
     }
     
-    private func handle(_ error: Error?,completion: @escaping () -> () = {_ in}) {
+    private func handle(_ error: Error?,completion: @escaping () -> () = {}) {
         if let error = error as NSError? {
             let message = "CoreDataStack -> \(#function): Unresolved error: \(error), \(error.userInfo)"
             if usesFatalError {
