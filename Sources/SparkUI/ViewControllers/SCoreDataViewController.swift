@@ -12,7 +12,7 @@ open class SCoreDataViewController: SViewController {
     
     // MARK: - Dependencies
     
-    public var coreDataStack: CoreDataStack?
+    public var coreDataStack: CoreDataStack!
     
     public init(safeArea: SSafeArea, coreDataStack: CoreDataStack) {
         super.init(safeArea: safeArea)
