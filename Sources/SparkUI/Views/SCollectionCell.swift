@@ -70,6 +70,6 @@ open class SCollectionCell<T>: UICollectionViewCell {
     public func setup(with item: T, at indexPath: IndexPath, reuse: Bool = true) {
         self.indexPath = indexPath
         self.reuse = reuse
-        self.item = item // needs to be fired last to triger layout and congigure views
+        self.item = item // needs to be fired last to triger layout and configure views
     }
 }
