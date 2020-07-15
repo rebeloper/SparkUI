@@ -98,4 +98,10 @@ public extension UICollectionView {
         self.dropDelegate = dropDelegate as? UICollectionViewDropDelegate
         return self
     }
+    
+    func reloadDataOnMainThread() {
+        DispatchQueue.main.async {
+            self.reloadData()
+        }
+    }
 }
