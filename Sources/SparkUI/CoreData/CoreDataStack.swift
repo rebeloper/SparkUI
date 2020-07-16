@@ -65,8 +65,8 @@ public class CoreDataStack {
         }
     }
     
-    public func fetch<T: NSManagedObject>(_ named: String, ofType _: T.Type, completion: @escaping (Result<[T], Error>) -> ()) {
-        guard let fetchRequest = managedContext.persistentStoreCoordinator?.managedObjectModel.fetchRequestTemplate(forName: named) as? NSFetchRequest<T> else { return }
+    public func fetch<T: NSManagedObject>(requestName: String, ofType _: T.Type, completion: @escaping (Result<[T], Error>) -> ()) {
+        guard let fetchRequest = managedContext.persistentStoreCoordinator?.managedObjectModel.fetchRequestTemplate(forName: requestName) as? NSFetchRequest<T> else { return }
         
         do {
             let result = try managedContext.fetch(fetchRequest)
@@ -89,11 +89,7 @@ public class CoreDataStack {
         }
     }
     
-    public func fetch<T: NSManagedObject>(_ _: T.Type, completion: @escaping (Result<[T], Error>) -> ()) {
-        guard let entityName = T.entity().name else {
-            completion(.failure(CoreDataStackError.noEntityName))
-            return
-        }
+    public func fetch<T: NSManagedObject>(entityName: String, ofType _: T.Type, completion: @escaping (Result<[T], Error>) -> ()) {
         let fetchRequest = NSFetchRequest<T>(entityName: entityName)
         do {
             let result = try managedContext.fetch(fetchRequest)
