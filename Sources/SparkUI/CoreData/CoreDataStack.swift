@@ -62,7 +62,46 @@ public class CoreDataStack {
             handle(error) {
                 completion(.failure(error))
             }
-            
+        }
+    }
+    
+    public func fetch<T: NSManagedObject>(_ named: String, ofType _: T.Type, completion: @escaping (Result<[T], Error>) -> ()) {
+        guard let fetchRequest = managedContext.persistentStoreCoordinator?.managedObjectModel.fetchRequestTemplate(forName: named) as? NSFetchRequest<T> else { return }
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            completion(.success(result))
+        } catch let error as NSError {
+            handle(error) {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    public func fetch<T: NSManagedObject>(_ fetchRequest: NSFetchRequest<T>, ofType _: T.Type, completion: @escaping (Result<[T], Error>) -> ()) {
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            completion(.success(result))
+        } catch let error as NSError {
+            handle(error) {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    public func fetch<T: NSManagedObject>(_ _: T.Type, completion: @escaping (Result<[T], Error>) -> ()) {
+        guard let entityName = T.entity().name else {
+            completion(.failure(CoreDataStackError.noEntityName))
+            return
+        }
+        let fetchRequest = NSFetchRequest<T>(entityName: entityName)
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            completion(.success(result))
+        } catch let error as NSError {
+            handle(error) {
+                completion(.failure(error))
+            }
         }
     }
     
@@ -77,5 +116,9 @@ public class CoreDataStack {
             completion()
         }
     }
+}
+
+struct CoreDataStackError {
+    static let noEntityName = NSError(domain: "No Entity Name", code: 1, userInfo: nil)
 }
 
