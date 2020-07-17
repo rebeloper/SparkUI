@@ -5,6 +5,14 @@
 //  Created by Alex Nagy on 09/07/2020.
 //
 
+//
+//  CoreDataStack.swift
+//  CoreDataDemo5New
+//
+//  Created by Alex Nagy on 17/07/2020.
+//  Copyright © 2020 Alex Nagy. All rights reserved.
+//
+
 import Foundation
 import CoreData
 
@@ -58,7 +66,7 @@ public class CoreDataStack {
         do {
             try managedContext.save()
             completion(.success(true))
-        } catch let error as NSError {
+        } catch {
             handle(error) {
                 completion(.failure(error))
             }
@@ -134,4 +142,3 @@ struct CoreDataStackError {
     static let noFetchRequest = NSError(domain: "No Fetch Request", code: 1, userInfo: nil)
     static let noFinalResult = NSError(domain: "No Final Result", code: 1, userInfo: nil)
 }
-
