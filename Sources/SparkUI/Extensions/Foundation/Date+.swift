@@ -8,5 +8,7 @@
 import Foundation
 
 public extension Date {
-    static var now = Date()
+    static func now() -> Date {
+        Date()
+    }
 }

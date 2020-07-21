@@ -55,7 +55,7 @@ public typealias DefaultZeroDouble = DefaultCodable<DefaultZeroDoubleStrategy>
 // MARK: - Now
 
 public struct DefaultNowStrategy: DefaultCodableStrategy {
-    public static var defaultValue: Date { return Date.now }
+    public static var defaultValue: Date { return Date.now() }
 }
 
 /// Decodes Date defaulting to now if applicable
