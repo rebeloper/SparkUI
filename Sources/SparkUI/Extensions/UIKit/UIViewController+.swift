@@ -116,7 +116,7 @@ public extension UIViewController {
     func setAsRoot(for navigator: Navigator, withParentNavigator parentNavigator: Navigator?) {
         navigator.navigation.display(self)
         navigator.present(navigator.navigation)
-        SheetState.isPresented.content.subscribe(with: self) { (isPresented) in
+        SheetState.isPresented.subscribe(with: self) { (isPresented) in
             if !isPresented {
                 parentNavigator?.didDismiss(navigator)
             }

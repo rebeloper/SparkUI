@@ -149,7 +149,7 @@ public class STextField: UIView {
             self.showingSecureText.value = !self.showingSecureText.value
         }
         
-        showingSecureText.content.subscribe(with: self) { (showing) in
+        showingSecureText.subscribe(with: self) { (showing) in
             if showing {
                 self.isSecureTextEntry(false)
                 self.eyeButton

@@ -55,7 +55,7 @@ public class STextFieldView: UIView {
     }
     
     fileprivate func subscribe() {
-        showingSecureText.content.subscribe(with: self) { (showing) in
+        showingSecureText.subscribe(with: self) { (showing) in
             if showing {
                 self.isSecureTextEntry(false)
                 self.eyeButton

@@ -15,7 +15,7 @@ public class Bucket<T> {
     private var shouldDebugDidSet: Bool = false
     
     /// 🧙‍♂️ The `Content` of the `Bucket` that creates a number of signals that can be subscribed to
-    public let content = Signal<T>()
+    private let content = Signal<T>()
     
     ///  🧙‍♂️ Gets / Sets the latest value
     public var value: T {
