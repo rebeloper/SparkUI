@@ -273,7 +273,7 @@ public extension UILabel {
     }
     
     @discardableResult
-    func adjustsFontSizeToFitWidth(_ adjustsFontSizeToFitWidth: Bool) -> UILabel {
+    func adjustsFontSizeToFitWidth(_ adjustsFontSizeToFitWidth: Bool = true) -> UILabel {
         self.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
         return self
     }
