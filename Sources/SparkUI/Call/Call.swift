@@ -103,8 +103,19 @@ public struct Call {
         }
     }
     
-    public static func extractedNumber(from text: String, position: Int = 0) {
-        PhoneNumber.extractAll(from: text)[position].makeACall()
+    /// position starts with 1
+    public static func extractedNumber(from text: String, position: Int = 1) {
+        let phoneNumbers = PhoneNumber.extractAll(from: text)
+        if position < 1 {
+            Alert.showInfo(message: "Position of phone number should be greater than 1")
+            return
+        }
+        if position <= phoneNumbers.count {
+            phoneNumbers[position - 1].makeACall()
+        } else {
+            Alert.showInfo(message: "No phone number found")
+        }
+        
     }
     
     public static func firstExtractedNumber(from text: String) {
