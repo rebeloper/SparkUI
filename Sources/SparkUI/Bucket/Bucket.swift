@@ -82,3 +82,21 @@ public extension Bucket {
         return self
     }
 }
+
+public extension Bucket {
+    
+    /// 🧙‍♂️ Safely subscribes an observer to the `Bucket`.
+    @discardableResult
+    func subscribe(with observer: AnyObject, callback: @escaping (T) -> Void) -> SignalSubscription<T> {
+        content.cancelSubscription(for: self)
+        return content.subscribe(with: self, callback: callback)
+    }
+    
+    /// 🧙‍♂️ Safely subscribes an observer to the `Bucket`. The subscription is automatically canceled after the `Bucket` has fired once.
+    @discardableResult
+    func subscribeOnce(with observer: AnyObject, callback: @escaping (T) -> Void) -> SignalSubscription<T> {
+        content.cancelSubscription(for: self)
+        return content.subscribeOnce(with: self, callback: callback)
+    }
+    
+}
