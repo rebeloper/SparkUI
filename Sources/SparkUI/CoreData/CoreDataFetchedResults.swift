@@ -66,6 +66,10 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
         }
     }
     
+    public func delete(_ object: NSManagedObject) {
+        self.managedContext.delete(object)
+    }
+    
     private func handle(_ error: Error?, completion: @escaping () -> () = {}) {
         if let error = error as NSError? {
             let message = "CoreDataFetchedResults -> \(#function): Unresolved error: \(error), \(error.userInfo)"
