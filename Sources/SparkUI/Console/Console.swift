@@ -5,14 +5,6 @@
 //  Created by Alex Nagy on 01/08/2020.
 //
 
-//
-//  Console.swift
-//  Console
-//
-//  Created by Devran Uenal on 28.11.16.
-//
-//
-
 import UIKit
 
 open class Console {
@@ -51,7 +43,7 @@ open class Console {
     }
 
     // MARK: - Create View Contoller
-    public static func createViewController(rootViewController: UIViewController) -> UIViewController {
+    public static func rootViewController(_ rootViewController: UIViewController) -> UIViewController {
         set(rootViewController: rootViewController)
         return shared.consoleController
     }
