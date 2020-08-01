@@ -12,7 +12,7 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
     
     var entityName: String!
     var sortDescriptors: [NSSortDescriptor]!
-    var managedContext: NSManagedObjectContext!
+    public var managedContext: NSManagedObjectContext!
     var delegate: UIViewController?
     var sectionNameKeyPath: String?
     var cacheName: String?
