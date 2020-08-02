@@ -1,5 +1,5 @@
 //
-//  SCoreDataViewController.swift
+//  SCoreDataStackViewController.swift
 //  
 //
 //  Created by Alex Nagy on 09/07/2020.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-open class SCoreDataViewController: SViewController {
+open class SCoreDataStackViewController: SViewController {
     
     // MARK: - Dependencies
     
