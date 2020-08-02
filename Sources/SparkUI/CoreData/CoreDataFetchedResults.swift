@@ -59,6 +59,19 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
     public func performFetch(completion: @escaping (Result<Bool, Error>) -> () = {_ in}) {
         do {
             try controller.performFetch()
+            completion(.success(true))
+        } catch {
+            handle(error) {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    public func count(completion: @escaping (Result<Int, Error>) -> ()) {
+        let fetchRequest = NSFetchRequest<T>(entityName: entityName)
+        do {
+            let count = try managedContext.count(for: fetchRequest)
+            completion(.success(count))
         } catch {
             handle(error) {
                 completion(.failure(error))
@@ -76,7 +89,7 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
             if usesFatalError {
                 fatalError(message)
             } else {
-                print(message)
+                Console.print(message)
             }
             completion()
         }

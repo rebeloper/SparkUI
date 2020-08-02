@@ -80,8 +80,8 @@ public class CoreDataStack {
             let asyncFetchRequest = NSAsynchronousFetchRequest<T>(fetchRequest: fetchRequest) { (result: NSAsynchronousFetchResult) in
                 
                 guard let finalResult = result.finalResult else {
-                    self.handle(CoreDataStackError.noFinalResult) {
-                        completion(.failure(CoreDataStackError.noFinalResult))
+                    self.handle(CoreDataError.noFinalResult) {
+                        completion(.failure(CoreDataError.noFinalResult))
                     }
                     return
                 }
@@ -117,8 +117,8 @@ public class CoreDataStack {
     
     public func fetch<T: NSManagedObject>(requestName: String, ofType _: T.Type, async: Bool = true, completion: @escaping (Result<[T], Error>) -> ()) {
         guard let fetchRequest = managedContext.persistentStoreCoordinator?.managedObjectModel.fetchRequestTemplate(forName: requestName) as? NSFetchRequest<T> else {
-            self.handle(CoreDataStackError.noFetchRequest) {
-                completion(.failure(CoreDataStackError.noFetchRequest))
+            self.handle(CoreDataError.noFetchRequest) {
+                completion(.failure(CoreDataError.noFetchRequest))
             }
             return
         }
@@ -131,14 +131,9 @@ public class CoreDataStack {
             if usesFatalError {
                 fatalError(message)
             } else {
-                print(message)
+                Console.print(message)
             }
             completion()
         }
     }
-}
-
-struct CoreDataStackError {
-    static let noFetchRequest = NSError(domain: "No Fetch Request", code: 1, userInfo: nil)
-    static let noFinalResult = NSError(domain: "No Final Result", code: 1, userInfo: nil)
 }
