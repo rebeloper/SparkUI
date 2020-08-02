@@ -12,7 +12,7 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
     
     var entityName: String!
     var sortDescriptors: [NSSortDescriptor]!
-    public var managedContext: NSManagedObjectContext!
+    public var coreDataStack: CoreDataStack!
     var delegate: UIViewController?
     var sectionNameKeyPath: String?
     var cacheName: String?
@@ -24,7 +24,7 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: managedContext,
+            managedObjectContext: coreDataStack.managedContext,
             sectionNameKeyPath: sectionNameKeyPath,
             cacheName: cacheName)
         
@@ -33,10 +33,10 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
         return fetchedResultsController
     }()
     
-    public init(ofType _: T.Type, entityName: String, sortDescriptors: [NSSortDescriptor], managedContext: NSManagedObjectContext, delegate: UIViewController?, sectionNameKeyPath: String? = nil, cacheName: String? = nil, usesFatalError: Bool = false) {
+    public init(ofType _: T.Type, entityName: String, sortDescriptors: [NSSortDescriptor], coreDataStack: CoreDataStack, delegate: UIViewController?, sectionNameKeyPath: String? = nil, cacheName: String? = nil, usesFatalError: Bool = false) {
         self.entityName = entityName
         self.sortDescriptors = sortDescriptors
-        self.managedContext = managedContext
+        self.coreDataStack = coreDataStack
         self.delegate = delegate
         self.sectionNameKeyPath = sectionNameKeyPath
         self.cacheName = cacheName
@@ -44,10 +44,10 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
     }
     
     public func saveContext(completion: @escaping (Result<Bool, Error>) -> () = {_ in}) {
-        guard managedContext.hasChanges else { return }
+        guard coreDataStack.managedContext.hasChanges else { return }
         
         do {
-            try managedContext.save()
+            try coreDataStack.managedContext.save()
             completion(.success(true))
         } catch {
             handle(error) {
@@ -70,7 +70,7 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
     public func count(completion: @escaping (Result<Int, Error>) -> ()) {
         let fetchRequest = NSFetchRequest<T>(entityName: entityName)
         do {
-            let count = try managedContext.count(for: fetchRequest)
+            let count = try coreDataStack.managedContext.count(for: fetchRequest)
             completion(.success(count))
         } catch {
             handle(error) {
@@ -80,7 +80,7 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
     }
     
     public func delete(_ object: NSManagedObject) {
-        self.managedContext.delete(object)
+        self.coreDataStack.managedContext.delete(object)
     }
     
     private func handle(_ error: Error?, completion: @escaping () -> () = {}) {

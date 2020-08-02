@@ -8,14 +8,14 @@
 import UIKit
 import CoreData
 
-open class SCoreDataFetchedResultsViewController<T: NSManagedObject>: SViewController {
+open class SCoreDataFetchedResultsViewController<T: NSManagedObject>: SCoreDataStackViewController {
     
     // MARK: - Dependencies
     
     public var coreDataFetchedResults: CoreDataFetchedResults<T>!
     
     public init(safeArea: SSafeArea, coreDataFetchedResults: CoreDataFetchedResults<T>) {
-        super.init(safeArea: safeArea)
+        super.init(safeArea: safeArea, coreDataStack: coreDataFetchedResults.coreDataStack)
         self.coreDataFetchedResults = coreDataFetchedResults
     }
     
