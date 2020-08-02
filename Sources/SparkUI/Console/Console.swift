@@ -125,9 +125,13 @@ open class Console {
     public static func working(_ text: String) {
         print("⏳ \(text)...", color: UIColor.systemGray)
     }
+    
+    public static func info(_ text: String) {
+        print("🤖 \(text)", color: UIColor.systemTeal)
+    }
 
     public static func addLine() {
-        print("-----------", color: UIColor.systemTeal)
+        print("-----------", color: UIColor.systemBlue)
     }
     
     public static func setHeight(height: CGFloat) {
