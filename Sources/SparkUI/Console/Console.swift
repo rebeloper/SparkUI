@@ -72,7 +72,7 @@ open class Console {
 
     public static func print(_ text: String, color: UIColor = UIColor.white, global: Bool = true) {
         
-        let formattedText = NSMutableAttributedString(string: "🤖 ~ \(shared.currentThread) \(shared.currentTimeStamp) \(text)")
+        let formattedText = NSMutableAttributedString(string: "🤖~\(shared.currentThread) \(shared.currentTimeStamp) \(text)")
         formattedText.addAttributes(textAppearance, range: formattedText.range)
         formattedText.addAttribute(.foregroundColor, value: color, range: formattedText.range)
 
