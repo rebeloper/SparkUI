@@ -80,25 +80,27 @@ open class Console {
     }
 
     private static func print(_ text: NSAttributedString, global: Bool = true) {
-        // When we leave this method and global is true, we want to print it to console
-        defer {
-            if global {
-                Swift.print(text.string)
-            }
-        }
-        
-        guard let textView = shared.textView else { return }
-        
-        DispatchQueue.main.async {
-            let newLineText = NSMutableAttributedString(attributedString: text)
-            newLineText.append(.breakLine())
-            
-            let linesText = NSMutableAttributedString(attributedString: textView.attributedText)
-            linesText.append(newLineText)
-            
-            textView.attributedText = linesText
-            scrollToBottom()
-        }
+        #if DEBUG
+           // When we leave this method and global is true, we want to print it to console
+           defer {
+               if global {
+                   Swift.print(text.string)
+               }
+           }
+           
+           guard let textView = shared.textView else { return }
+           
+           DispatchQueue.main.async {
+               let newLineText = NSMutableAttributedString(attributedString: text)
+               newLineText.append(.breakLine())
+               
+               let linesText = NSMutableAttributedString(attributedString: textView.attributedText)
+               linesText.append(newLineText)
+               
+               textView.attributedText = linesText
+               scrollToBottom()
+           }
+        #endif
     }
 
     public static func clear() {
