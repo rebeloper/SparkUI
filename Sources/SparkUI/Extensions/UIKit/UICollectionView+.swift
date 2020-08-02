@@ -110,4 +110,16 @@ public extension UICollectionView {
             self.reloadData()
         }
     }
+    
+    func reloadSectionsOnMainThread(_ sections: IndexSet) {
+        DispatchQueue.main.async {
+            self.reloadSections(sections)
+        }
+    }
+    
+    func reloadItemsOnMainThread(at indexPaths: [IndexPath]) {
+        DispatchQueue.main.async {
+            self.reloadItems(at: indexPaths)
+        }
+    }
 }
