@@ -58,6 +58,12 @@ public extension UICollectionView {
     }
     
     @discardableResult
+    func enablePaging(_ isPagingEnabled: Bool = true) -> UICollectionView {
+        self.isPagingEnabled = isPagingEnabled
+        return self
+    }
+    
+    @discardableResult
     func delegate(_ delegate: UIViewController?) -> UICollectionView {
         self.delegate = delegate as? UICollectionViewDelegate
         return self
