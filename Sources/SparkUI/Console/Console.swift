@@ -127,7 +127,7 @@ open class Console {
     }
     
     public static func info(_ text: String) {
-        print("🔮 \(text)", color: UIColor.systemPurple)
+        print("🧿 \(text)", color: UIColor.systemBlue)
     }
 
     public static func addLine() {
