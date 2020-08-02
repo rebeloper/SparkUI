@@ -79,8 +79,9 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
         }
     }
     
-    public func delete(_ object: NSManagedObject) {
+    public func delete(_ object: NSManagedObject, completion: @escaping (Result<Bool, Error>) -> () = {_ in}) {
         self.coreDataStack.managedContext.delete(object)
+        self.coreDataStack.saveContext(completion: completion)
     }
     
     private func handle(_ error: Error?, completion: @escaping () -> () = {}) {
