@@ -12,6 +12,7 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
     
     var entityName: String!
     var sortDescriptors: [NSSortDescriptor]!
+    var predicate: NSPredicate?
     public var coreDataStack: CoreDataStack!
     var delegate: UIViewController?
     var sectionNameKeyPath: String?
@@ -21,6 +22,9 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
     public lazy var controller: NSFetchedResultsController<T> = {
         let fetchRequest = NSFetchRequest<T>(entityName: entityName)
         fetchRequest.sortDescriptors = sortDescriptors
+        if let predicate = self.predicate {
+            fetchRequest.predicate = predicate
+        }
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
@@ -33,9 +37,10 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
         return fetchedResultsController
     }()
     
-    public init(ofType _: T.Type, entityName: String, sortDescriptors: [NSSortDescriptor], coreDataStack: CoreDataStack, delegate: UIViewController?, sectionNameKeyPath: String? = nil, cacheName: String? = nil, usesFatalError: Bool = false) {
+    public init(ofType _: T.Type, entityName: String, sortDescriptors: [NSSortDescriptor], predicate: NSPredicate? = nil, coreDataStack: CoreDataStack, delegate: UIViewController?, sectionNameKeyPath: String? = nil, cacheName: String? = nil, usesFatalError: Bool = false) {
         self.entityName = entityName
         self.sortDescriptors = sortDescriptors
+        self.predicate = predicate
         self.coreDataStack = coreDataStack
         self.delegate = delegate
         self.sectionNameKeyPath = sectionNameKeyPath
