@@ -14,7 +14,7 @@ public class CoreDataFetchedResults<T: NSManagedObject> {
     var sortDescriptors: [NSSortDescriptor]!
     var predicate: NSPredicate?
     public var coreDataStack: CoreDataStack!
-    var delegate: UIViewController?
+    public var delegate: UIViewController?
     var sectionNameKeyPath: String?
     var cacheName: String?
     var usesFatalError: Bool!
