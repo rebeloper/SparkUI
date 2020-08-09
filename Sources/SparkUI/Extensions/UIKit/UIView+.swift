@@ -543,4 +543,50 @@ public extension UIView {
             return frame.size.height * percentage
         }
     }
+    
+    func tenth(of axis: Side = .width) -> CGFloat {
+        switch axis {
+        case .width:
+            return self.frame.width * Percentage.tenth.rawValue
+        case .height:
+            return self.frame.height * Percentage.tenth.rawValue
+        }
+    }
+    
+    func fifth(of axis: Side = .width) -> CGFloat {
+        switch axis {
+        case .width:
+            return self.frame.width * Percentage.fifth.rawValue
+        case .height:
+            return self.frame.height * Percentage.fifth.rawValue
+        }
+    }
+    
+    func quarter(of axis: Side = .width) -> CGFloat {
+        switch axis {
+        case .width:
+            return self.frame.width * Percentage.quarter.rawValue
+        case .height:
+            return self.frame.height * Percentage.quarter.rawValue
+        }
+    }
+    
+    func third(of axis: Side = .width) -> CGFloat {
+        switch axis {
+        case .width:
+            return self.frame.width * Percentage.third.rawValue
+        case .height:
+            return self.frame.height * Percentage.third.rawValue
+        }
+    }
+    
+    func half(of axis: Side = .width) -> CGFloat {
+        switch axis {
+        case .width:
+            return self.frame.width * Percentage.half.rawValue
+        case .height:
+            return self.frame.height * Percentage.half.rawValue
+        }
+    }
 }
+
