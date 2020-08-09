@@ -67,7 +67,9 @@ open class SViewController: UIViewController {
     
     fileprivate func load() {
         preLoad()
+        setupNavigationBar()
         configureNavigationBar()
+        setupViews()
         layoutViews()
         configureViews()
         addActions()
@@ -76,6 +78,7 @@ open class SViewController: UIViewController {
     }
     
     open func preLoad() {}
+    open func setupNavigationBar() {}
     open func configureNavigationBar() {}
     
     open func layoutViews() {
@@ -83,6 +86,7 @@ open class SViewController: UIViewController {
         container.edgeTo(view, safeArea: safeArea)
     }
     
+    open func setupViews() {}
     open func configureViews() {}
     open func addActions() {}
     open func subscribe() {}
