@@ -456,7 +456,7 @@ public extension UIView {
 
 public extension UIView {
     @discardableResult
-    func centerHorizontally(withViewHeight height: CGFloat) -> UIView {
+    func centerHorizontally(containerHeight height: CGFloat) -> UIView {
         let container = UIView()
         container.setHeight(height)
         stack(.vertical)(
@@ -466,9 +466,35 @@ public extension UIView {
     }
     
     @discardableResult
-    func centerVertically(withViewWidth width: CGFloat) -> UIView {
+    func centerVertically(containerWidth width: CGFloat) -> UIView {
         let container = UIView()
         container.setWidth(width)
+        stack(.vertical)(
+            self
+        ).centeringInParent().layout(in: container)
+        return container
+    }
+    
+    @discardableResult
+    func center(width: CGFloat, height: CGFloat) -> UIView {
+        setWidth(width)
+        setHeight(height)
+        let container = UIView()
+        container.setWidth(width)
+        container.setHeight(height)
+        stack(.vertical)(
+            self
+        ).centeringInParent().layout(in: container)
+        return container
+    }
+    
+    @discardableResult
+    func center(length: CGFloat) -> UIView {
+        setWidth(length)
+        setHeight(length)
+        let container = UIView()
+        container.setWidth(length)
+        container.setHeight(length)
         stack(.vertical)(
             self
         ).centeringInParent().layout(in: container)
