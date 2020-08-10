@@ -61,7 +61,10 @@ public class CoreDataStack {
     }()
     
     public func saveContext(completion: @escaping (Result<Bool, Error>) -> () = {_ in}) {
-        guard managedContext.hasChanges else { return }
+        guard managedContext.hasChanges else {
+            completion(.success(true))
+            return
+        }
         
         do {
             try managedContext.save()
@@ -71,6 +74,11 @@ public class CoreDataStack {
                 completion(.failure(error))
             }
         }
+    }
+    
+    public func delete(_ object: NSManagedObject, completion: @escaping (Result<Bool, Error>) -> () = {_ in}) {
+        managedContext.delete(object)
+        saveContext(completion: completion)
     }
     
     public func fetch<T: NSManagedObject>(_ fetchRequest: NSFetchRequest<T>, ofType _: T.Type, async: Bool = true, completion: @escaping (Result<[T], Error>) -> ()) {
