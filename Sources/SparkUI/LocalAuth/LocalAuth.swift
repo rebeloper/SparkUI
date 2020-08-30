@@ -7,7 +7,7 @@
 
 import LocalAuthentication
 
-struct LocalAuth {
+public struct LocalAuth {
     
     public static func authenticate(policy: LAPolicy = .deviceOwnerAuthentication, touchIdLocalizedReason: String,  completion: @escaping ((Bool) -> ())){
         
