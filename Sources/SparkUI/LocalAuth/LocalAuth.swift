@@ -18,22 +18,27 @@ public struct LocalAuth {
         
         if isValidSensor {
             authenticationContext.evaluatePolicy(policy, localizedReason: touchIdLocalizedReason) { (success, err) in
-                if success {
-                    completion(true)
-                } else {
-                    if let err = err {
-                        let message = errorMessage(errorCode: err._code)
-                        if message != "" {
-                            Alert.showError(message: message)
+                DispatchQueue.main.async {
+                    if success {
+                        completion(true)
+                    } else {
+                        if let err = err {
+                            let message = errorMessage(errorCode: err._code)
+                            if message != "" {
+                                Alert.showError(message: message)
+                            }
                         }
+                        completion(false)
                     }
-                    completion(false)
                 }
+                
             }
         } else {
-            let message = errorMessage(errorCode: (error?._code)!)
-            if message != "" {
-                Alert.showError(message: message)
+            DispatchQueue.main.async {
+                let message = errorMessage(errorCode: (error?._code)!)
+                if message != "" {
+                    Alert.showError(message: message)
+                }
             }
         }
         
