@@ -33,7 +33,7 @@ public extension String {
         case age
         case email
         case password
-        case website(extension: String = "", subpages: Bool = false)
+        case website
     }
     
     enum Regex: String {
@@ -57,7 +57,7 @@ public extension String {
             regex = Regex.email.rawValue
         case .password:
             regex = Regex.password.rawValue
-        case .website(let ext, let subpages):
+        case .website:
             regex = Regex.website.rawValue
         }
         

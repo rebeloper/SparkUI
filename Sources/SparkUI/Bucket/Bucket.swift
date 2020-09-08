@@ -26,7 +26,7 @@ public class Bucket<T> {
                 print(
                     """
                     -----------------------
-                    🧙‍♂️ Bucket ~~> [\(Thread.isMainThread ? "" : "!")M] [\(dateFormatter.string(from: Foundation.Date()))]
+                    🧙‍♂️ ~ \(Thread.isMainThread ? "🧵" : "🧶") Bucket ~~> [\(dateFormatter.string(from: Foundation.Date()))]
                     \(self.value)
                     --- is going to be set as ---
                     \(newValue)
@@ -42,7 +42,7 @@ public class Bucket<T> {
                 print(
                     """
                     -----------------------
-                    🧙‍♂️ Bucket ~~> [\(Thread.isMainThread ? "" : "!")M] [\(dateFormatter.string(from: Foundation.Date()))]
+                    🧙‍♂️ ~ \(Thread.isMainThread ? "🧵" : "🧶") Bucket ~~> [\(dateFormatter.string(from: Foundation.Date()))]
                     \(oldValue)
                     --- has been set to ---
                     \(self.value)
@@ -88,15 +88,15 @@ public extension Bucket {
     /// 🧙‍♂️ Safely subscribes an observer to the `Bucket`.
     @discardableResult
     func subscribe(with observer: AnyObject, callback: @escaping (T) -> Void) -> SignalSubscription<T> {
-        content.cancelSubscription(for: self)
-        return content.subscribe(with: self, callback: callback)
+        content.cancelSubscription(for: observer)
+        return content.subscribe(with: observer, callback: callback)
     }
     
     /// 🧙‍♂️ Safely subscribes an observer to the `Bucket`. The subscription is automatically canceled after the `Bucket` has fired once.
     @discardableResult
     func subscribeOnce(with observer: AnyObject, callback: @escaping (T) -> Void) -> SignalSubscription<T> {
-        content.cancelSubscription(for: self)
-        return content.subscribeOnce(with: self, callback: callback)
+        content.cancelSubscription(for: observer)
+        return content.subscribeOnce(with: observer, callback: callback)
     }
     
 }
