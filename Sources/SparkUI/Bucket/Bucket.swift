@@ -86,6 +86,10 @@ public extension Bucket {
 public extension Bucket {
     
     /// 🧙‍♂️ Safely subscribes an observer to the `Bucket`.
+    ///
+    /// - parameter observer: The observer that subscribes to the `Bucket`. Should the observer be deallocated, the subscription is automatically cancelled.
+    /// - parameter callback: The closure to invoke whenever the `Bucket` fires.
+    /// - returns: A `SignalSubscription` that can be used to cancel or filter the subscription.
     @discardableResult
     func subscribe(with observer: AnyObject, callback: @escaping (T) -> Void) -> SignalSubscription<T> {
         content.cancelSubscription(for: observer)
@@ -93,10 +97,25 @@ public extension Bucket {
     }
     
     /// 🧙‍♂️ Safely subscribes an observer to the `Bucket`. The subscription is automatically canceled after the `Bucket` has fired once.
+    ///
+    /// - parameter observer: The observer that subscribes to the `Bucket`. Should the observer be deallocated, the subscription is automatically cancelled.
+    /// - parameter callback: The closure to invoke when the signal fires for the first time.
+    /// - returns: A `SignalSubscription` that can be used to cancel or filter the subscription.
     @discardableResult
     func subscribeOnce(with observer: AnyObject, callback: @escaping (T) -> Void) -> SignalSubscription<T> {
         content.cancelSubscription(for: observer)
         return content.subscribeOnce(with: observer, callback: callback)
+    }
+    
+    /// 🧙‍♂️ Safely subscribes an observer forever to the `Bucket`.
+    /// Needs a new `Permanent` on every subscription
+    ///
+    /// - parameter permanent: The permanent observer that subscribes to the `Bucket`. The permanent observer will never be deallocated, the subscription will never be cancelled.
+    /// - parameter callback: The closure to invoke whenever the `Bucket` fires.
+    /// - returns: A `SignalSubscription` that can be used to cancel or filter the subscription.
+    @discardableResult
+    func subscribeForever(with permanent: Permanent, callback: @escaping (T) -> Void) -> SignalSubscription<T> {
+        subscribe(with: permanent, callback: callback)
     }
     
 }
