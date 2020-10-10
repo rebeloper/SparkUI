@@ -43,6 +43,38 @@ extension UIBarButtonItem {
         retainAction(action, self)
     }
     
+    // MARK: Init with system image name
+    
+    /**
+     Initializes a new item using the specified image and other properties.
+     
+     - parameter systemImageNamed: The system images displayed on the bar are derived from this image. If this image is too large to fit on the bar, it is scaled to fit. Typically, the size of a toolbar and navigation bar image is 20 x 20 points. The alpha values in the source image are used to create the images—opaque values are ignored.
+     - parameter systemLandscapeImagePhoneNamed: The style of the item. One of the constants defined in UIBarButtonItemStyle. nil by default
+     - parameter style: The style of the item. One of the constants defined in UIBarButtonItemStyle. (.Plain by default)
+     - parameter action: The action to be called when the button is tapped
+     - returns: Newly initialized item with the specified properties.
+     */
+    public convenience init<T: UIBarButtonItem>(systemImageNamed: String, systemLandscapeImagePhoneNamed: String? = nil, style: UIBarButtonItem.Style = .plain, action: @escaping (T) -> Void) {
+        let action = ParametizedAction(action: action)
+        self.init(image: UIImage(systemName: systemImageNamed), landscapeImagePhone: systemLandscapeImagePhoneNamed == nil ? nil : UIImage(systemName: systemLandscapeImagePhoneNamed), style: style, target: action, action: action.selector)
+        retainAction(action, self)
+    }
+    
+    /**
+     Initializes a new item using the specified image and other properties.
+     
+     - parameter systemImageNamed: The images displayed on the bar are derived from this image. If this image is too large to fit on the bar, it is scaled to fit. Typically, the size of a toolbar and navigation bar image is 20 x 20 points. The alpha values in the source image are used to create the images—opaque values are ignored.
+     - parameter systemLandscapeImagePhoneNamed: The style of the item. One of the constants defined in UIBarButtonItemStyle. nil by default
+     - parameter style: The style of the item. One of the constants defined in UIBarButtonItemStyle. (.Plain by default)
+     - parameter action: The action to be called when the button is tapped
+     - returns: Newly initialized item with the specified properties.
+     */
+    public convenience init(systemImageNamed: String, systemLandscapeImagePhoneNamed: String? = nil, style: UIBarButtonItem.Style = .plain, action: @escaping () -> Void) {
+        let action = VoidAction(action: action)
+        self.init(image: UIImage(systemName: systemImageNamed), landscapeImagePhone: systemLandscapeImagePhoneNamed == nil ? nil : UIImage(systemName: systemLandscapeImagePhoneNamed), style: style, target: action, action: action.selector)
+        retainAction(action, self)
+    }
+    
     // MARK: Init with title
     
     /**
