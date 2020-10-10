@@ -56,7 +56,7 @@ extension UIBarButtonItem {
      */
     public convenience init<T: UIBarButtonItem>(systemImageNamed: String, systemLandscapeImagePhoneNamed: String? = nil, style: UIBarButtonItem.Style = .plain, action: @escaping (T) -> Void) {
         let action = ParametizedAction(action: action)
-        self.init(image: UIImage(systemName: systemImageNamed), landscapeImagePhone: systemLandscapeImagePhoneNamed == nil ? nil : UIImage(systemName: systemLandscapeImagePhoneNamed), style: style, target: action, action: action.selector)
+        self.init(image: UIImage(systemName: systemImageNamed), landscapeImagePhone: systemLandscapeImagePhoneNamed == nil ? nil : UIImage(systemName: systemLandscapeImagePhoneNamed ?? ""), style: style, target: action, action: action.selector)
         retainAction(action, self)
     }
     
@@ -71,7 +71,7 @@ extension UIBarButtonItem {
      */
     public convenience init(systemImageNamed: String, systemLandscapeImagePhoneNamed: String? = nil, style: UIBarButtonItem.Style = .plain, action: @escaping () -> Void) {
         let action = VoidAction(action: action)
-        self.init(image: UIImage(systemName: systemImageNamed), landscapeImagePhone: systemLandscapeImagePhoneNamed == nil ? nil : UIImage(systemName: systemLandscapeImagePhoneNamed), style: style, target: action, action: action.selector)
+        self.init(image: UIImage(systemName: systemImageNamed), landscapeImagePhone: systemLandscapeImagePhoneNamed == nil ? nil : UIImage(systemName: systemLandscapeImagePhoneNamed ?? ""), style: style, target: action, action: action.selector)
         retainAction(action, self)
     }
     
