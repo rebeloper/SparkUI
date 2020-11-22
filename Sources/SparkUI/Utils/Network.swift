@@ -26,34 +26,27 @@ public class Network {
     public let isOnline = Bucket(false)
     
     public var isConnected: Bool {
-        DispatchQueue.main.async {
-            guard let monitor = monitor else { return false }
-            return monitor.currentPath.status == .satisfied
-        }
+        guard let monitor = monitor else { return false }
+        return monitor.currentPath.status == .satisfied
     }
     
     
     public var interfaceType: NWInterface.InterfaceType? {
-        DispatchQueue.main.async {
-            guard let monitor = monitor else { return nil }
-            return monitor.currentPath.availableInterfaces.filter {
-                monitor.currentPath.usesInterfaceType($0.type) }.first?.type
-        }
+        guard let monitor = monitor else { return nil }
+        
+        return monitor.currentPath.availableInterfaces.filter {
+            monitor.currentPath.usesInterfaceType($0.type) }.first?.type
     }
     
     
     public var availableInterfacesTypes: [NWInterface.InterfaceType]? {
-        DispatchQueue.main.async {
-            guard let monitor = monitor else { return nil }
-            return monitor.currentPath.availableInterfaces.map { $0.type }
-        }
+        guard let monitor = monitor else { return nil }
+        return monitor.currentPath.availableInterfaces.map { $0.type }
     }
     
     
     public var isExpensive: Bool {
-        DispatchQueue.main.async {
-            return monitor?.currentPath.isExpensive ?? false
-        }
+        return monitor?.currentPath.isExpensive ?? false
     }
     
     
