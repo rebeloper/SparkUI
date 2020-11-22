@@ -26,27 +26,34 @@ public class Network {
     public let isOnline = Bucket(false)
     
     public var isConnected: Bool {
-        guard let monitor = monitor else { return false }
-        return monitor.currentPath.status == .satisfied
+        DispatchQueue.main.async {
+            guard let monitor = monitor else { return false }
+            return monitor.currentPath.status == .satisfied
+        }
     }
     
     
     public var interfaceType: NWInterface.InterfaceType? {
-        guard let monitor = monitor else { return nil }
-        
-        return monitor.currentPath.availableInterfaces.filter {
-            monitor.currentPath.usesInterfaceType($0.type) }.first?.type
+        DispatchQueue.main.async {
+            guard let monitor = monitor else { return nil }
+            return monitor.currentPath.availableInterfaces.filter {
+                monitor.currentPath.usesInterfaceType($0.type) }.first?.type
+        }
     }
     
     
     public var availableInterfacesTypes: [NWInterface.InterfaceType]? {
-        guard let monitor = monitor else { return nil }
-        return monitor.currentPath.availableInterfaces.map { $0.type }
+        DispatchQueue.main.async {
+            guard let monitor = monitor else { return nil }
+            return monitor.currentPath.availableInterfaces.map { $0.type }
+        }
     }
     
     
     public var isExpensive: Bool {
-        return monitor?.currentPath.isExpensive ?? false
+        DispatchQueue.main.async {
+            return monitor?.currentPath.isExpensive ?? false
+        }
     }
     
     
@@ -70,17 +77,19 @@ public class Network {
         monitor?.start(queue: queue)
         
         monitor?.pathUpdateHandler = { path in
-            if self.current != path.status {
-                
-                if self.shouldShowConnectionLostAlert,
-                    !self.isShowingConnectionLostAlert,
-                    path.status != .satisfied {
-                    self.showConnectionLostAlert()
+            DispatchQueue.main.async {
+                if self.current != path.status {
+                    
+                    if self.shouldShowConnectionLostAlert,
+                        !self.isShowingConnectionLostAlert,
+                        path.status != .satisfied {
+                        self.showConnectionLostAlert()
+                    }
+                    
+                    self.current = path.status
+                    self.didChange.value = path.status
+                    self.isOnline.value = path.status == .satisfied ? true : false
                 }
-                
-                self.current = path.status
-                self.didChange.value = path.status
-                self.isOnline.value = path.status == .satisfied ? true : false
             }
         }
         
