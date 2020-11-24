@@ -16,7 +16,7 @@ public struct SSignInWithAppleObserver {
 }
 
 public struct SSignInWithAppleErrorObserver {
-    let error: Error
+    public let error: Error
 }
 
 open class SSignInWithAppleViewController: SViewController {
