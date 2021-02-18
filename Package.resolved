@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/HeroTransitions/Hero.git",
         "state": {
           "branch": null,
-          "revision": "ae951b89f23485de8a7b95aaa5cead7f78ab1df0",
+          "revision": "36c74ac138eede7dd7b31ea6b9139805deef3a39",
           "version": "1.5.0"
         }
       },
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
         "state": {
           "branch": null,
-          "revision": "349ed06467a6f8a4939bcb83db301542bc84eac9",
-          "version": "5.13.4"
+          "revision": "81dd1ce8401137637663046c7314e7c885bcc56d",
+          "version": "6.1.1"
         }
       },
       {
