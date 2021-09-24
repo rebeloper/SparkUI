@@ -18,7 +18,7 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/DeclarativeHub/Layoutless.git", .upToNextMajor(from: "0.4.2")),
         .package(url: "https://github.com/ruslanskorb/RSKPlaceholderTextView.git", .upToNextMajor(from: "6.0.2")),
-        .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "6.1.1")),
+        .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "7.0.0")),
         .package(url: "https://github.com/HeroTransitions/Hero.git", .upToNextMajor(from: "1.5.0")),
         .package(url: "https://github.com/huri000/SwiftEntryKit.git", .upToNextMajor(from: "1.2.3")),
         .package(url: "https://github.com/Nirma/UIFontComplete.git", .upToNextMajor(from: "4.0.1")),
